@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <div>
         <CustomToolbar />
-        <div className="container" style={{maxWidth: 900, margin: '10 auto'}}>
+        <div className="container" style={{maxWidth: 900, margin: 'auto'}}>
           {this.props.children}
         </div>
       </div>

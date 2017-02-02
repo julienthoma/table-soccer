@@ -1,5 +1,6 @@
 .score-button {
     width: 200px;
+    margin: 0 10px;
 }
 
 .game-list-item:hover {
@@ -9,11 +10,7 @@
 @media (max-width: 768px) {
     .score-button {
         min-width: 64px;
-        width: 64px;
-    }
-
-    .score-button span {
-        display: none;
+        width: 130px;
     }
 }
 

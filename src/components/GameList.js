@@ -1,5 +1,4 @@
 import React from 'react';
-import { FormattedDate } from 'react-intl';
 import GameListItem from '../components/GameListItem';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
 
@@ -10,12 +9,12 @@ const GameList = ({ games, handleRowClick }) => {
     <Table allRowsSelected={false}>
       <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
         <TableRow>
-          <TableHeaderColumn style={tableColumnStyle}>Rear</TableHeaderColumn>
-          <TableHeaderColumn style={tableColumnStyle}>Front</TableHeaderColumn>
+          <TableHeaderColumn style={tableColumnStyle}>Abwehr</TableHeaderColumn>
+          <TableHeaderColumn style={tableColumnStyle}>Sturm</TableHeaderColumn>
           <TableHeaderColumn style={tableColumnStyle}>Winner</TableHeaderColumn>
           <TableHeaderColumn style={tableColumnStyle}>Loser</TableHeaderColumn>
-          <TableHeaderColumn style={tableColumnStyle}>Front</TableHeaderColumn>
-          <TableHeaderColumn style={tableColumnStyle}>Rear</TableHeaderColumn>
+          <TableHeaderColumn style={tableColumnStyle}>Sturm</TableHeaderColumn>
+          <TableHeaderColumn style={tableColumnStyle}>Abwehr</TableHeaderColumn>
         </TableRow>
       </TableHeader>
       <TableBody>

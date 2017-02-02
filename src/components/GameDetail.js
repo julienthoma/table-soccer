@@ -10,14 +10,9 @@ const GameDetail = ({ game, players }) => {
   const enddate = new Date(game.enddate);
   const durationInSeconds = ((enddate.valueOf() - startdate.valueOf()) / 1000000).toFixed(2);
 
-
-  console.log(game)
-
   return (
     <div>
-
       <GameList games={[game]}/>
-
       <List>
         <ListItem primaryText={
         <FormattedDate
@@ -31,8 +26,6 @@ const GameDetail = ({ game, players }) => {
         />
         <ListItem primaryText={'Dauer: ' + durationInSeconds + ' Minuten'} />
       </List>
-
-
       <ScoreTimeline game={game} players={players}/>
     </div>
   );

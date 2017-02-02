@@ -9,7 +9,6 @@ class NewGame extends Component {
 
     return (
       <div>
-        <Subheader style={{fontSize: 20}}>Neues Game</Subheader>
         {
           players.length > 0 &&
           <GameCreator />

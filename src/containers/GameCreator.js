@@ -21,8 +21,13 @@ class GameCreator extends Component {
 
     return (
           <Stepper
+              style={{
+                maxWidth: 600,
+                margin: '0 auto'
+              }}
               activeStep={currentGame.stepperIndex}
               orientation="vertical"
+              connector={false}
           >
             {this.renderStep1()}
             {this.renderStep2()}
@@ -76,7 +81,7 @@ class GameCreator extends Component {
     const isFinished = this.props.currentGame.isFinished;
 
     return (
-      <div style={{margin: '12px 0'}}>
+      <div style={{ display: 'flex', justifyContent: 'space-between'}}>
         {step > 0 && (
           <RaisedButton
             label="Back"
@@ -105,7 +110,6 @@ class GameCreator extends Component {
     );
   }
 
-
   renderPlayerItems = players => players.map((player, index) =>
     <MenuItem value={index} key={index} primaryText={player.name} />
   )
@@ -118,14 +122,14 @@ class GameCreator extends Component {
       })));
     };
     const fieldStyle = {
-      margin: '0 30px 30px 0'
+      margin: '0 15px 0 0'
     };
 
     return (
       <Step>
         <StepLabel>Select Players</StepLabel>
         <StepContent>
-          <Subheader style={{fontSize: 16, paddingLeft: 0}}>TEAM 1</Subheader>
+          <Subheader style={{fontSize: 16, paddingLeft: 0, lineHeight: '24px'}}>TEAM 1</Subheader>
 
           <SelectField
             value={currentGame[TEAM1_FRONT_PLAYER]}
@@ -145,7 +149,7 @@ class GameCreator extends Component {
             {this.renderPlayerItems(players)}
           </SelectField>
 
-          <Subheader style={{fontSize: 16, paddingLeft: 0}}>TEAM 2</Subheader>
+          <Subheader style={{fontSize: 16, paddingLeft: 0, lineHeight: '24px'}}>TEAM 2</Subheader>
 
           <SelectField
             value={currentGame[TEAM2_FRONT_PLAYER]}
@@ -170,12 +174,10 @@ class GameCreator extends Component {
   }
 
   renderStep2 = () => {
-    const { currentGame, players } = this.props;
-
     return (
       <Step>
         <StepLabel>Play Game</StepLabel>
-        <StepContent>
+        <StepContent style={{padding: 0, borderLeft: 0, margin: 0}}>
           <GameScoreScreen />
         </StepContent>
       </Step>
