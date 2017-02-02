@@ -1,0 +1,19 @@
+.score-button {
+    width: 200px;
+}
+
+.game-list-item:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .score-button {
+        min-width: 64px;
+        width: 64px;
+    }
+
+    .score-button span {
+        display: none;
+    }
+}
+

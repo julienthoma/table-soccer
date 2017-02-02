@@ -3,41 +3,39 @@ import {TableRow, TableRowColumn} from 'material-ui/Table';
 import Avatar from 'material-ui/Avatar';
 import { FormattedDate } from 'react-intl';
 import { FRONT_PLAYER, REAR_PLAYER} from '../constants';
+import { Link } from 'react-router'
 
-const GameListItem = ({game}) => {
-  const date = new Date(game.date);
-  const winnerScore = game.winner.score;
-  const loserScore = game.loser.score;
-  const [ winnerRearPlayer ] = game.winner.players.filter(player => player.position === REAR_PLAYER);
-  const [ winnerFrontPlayer ] = game.winner.players.filter(player => player.position === FRONT_PLAYER);
-  const [ loserFrontPlayer ] = game.loser.players.filter(player => player.position === FRONT_PLAYER);
-  const [ loserRearPlayer ] = game.loser.players.filter(player => player.position === REAR_PLAYER);
+const GameListItem = ({game, handleClick}) => {
+  const date = new Date(game.startdate);
+  const winnerScore = game.winners[0].score + game.winners[1].score;
+  const loserScore = game.losers[0].score + game.losers[1].score;
 
-  winnerRearPlayer.image = 'https://pbs.twimg.com/profile_images/664169149002874880/z1fmxo00.jpg';
-  winnerFrontPlayer.image = 'https://pbs.twimg.com/profile_images/664169149002874880/z1fmxo00.jpg';
-  loserFrontPlayer.image = 'https://pbs.twimg.com/profile_images/664169149002874880/z1fmxo00.jpg';
-  loserRearPlayer.image = 'https://pbs.twimg.com/profile_images/664169149002874880/z1fmxo00.jpg';
-
+  const [ winnerRearPlayer ] = game.winners.filter(player => player.position === REAR_PLAYER);
+  const [ winnerFrontPlayer ] = game.winners.filter(player => player.position === FRONT_PLAYER);
+  const [ loserFrontPlayer ] = game.losers.filter(player => player.position === FRONT_PLAYER);
+  const [ loserRearPlayer ] = game.losers.filter(player => player.position === REAR_PLAYER);
 
   const tableColumnStyle = {padding: '3px', textAlign: 'center'};
 
   return (
-    <TableRow>
-      <TableRowColumn style={tableColumnStyle}>
-        <Avatar src={winnerRearPlayer.image} />
-      </TableRowColumn>
-      <TableRowColumn style={tableColumnStyle}>
-        <Avatar src={winnerFrontPlayer.image} />
-      </TableRowColumn>
-      <TableRowColumn style={tableColumnStyle}>{winnerScore}</TableRowColumn>
-      <TableRowColumn style={tableColumnStyle}>{loserScore}</TableRowColumn>
-      <TableRowColumn style={tableColumnStyle}>
-        <Avatar src={loserFrontPlayer.image} />
-      </TableRowColumn>
-      <TableRowColumn style={tableColumnStyle}>
-        <Avatar src={loserFrontPlayer.image} />
-      </TableRowColumn>
-    </TableRow>
+      <TableRow
+        onClick={handleClick ? handleClick(game) : ''}
+      >
+        <TableRowColumn style={tableColumnStyle}>
+          <Avatar src={winnerRearPlayer.icon} />
+        </TableRowColumn>
+        <TableRowColumn style={tableColumnStyle}>
+          <Avatar src={winnerFrontPlayer.icon} />
+        </TableRowColumn>
+        <TableRowColumn style={tableColumnStyle}>{winnerScore}</TableRowColumn>
+        <TableRowColumn style={tableColumnStyle}>{loserScore}</TableRowColumn>
+        <TableRowColumn style={tableColumnStyle}>
+          <Avatar src={loserFrontPlayer.icon} />
+        </TableRowColumn>
+        <TableRowColumn style={tableColumnStyle}>
+          <Avatar src={loserRearPlayer.icon} />
+        </TableRowColumn>
+      </TableRow>
   );
 };
 
