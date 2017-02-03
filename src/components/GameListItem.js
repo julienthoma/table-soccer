@@ -5,8 +5,8 @@ import { FormattedDate } from 'react-intl';
 import { FRONT_PLAYER, REAR_PLAYER} from '../constants';
 import { Link } from 'react-router'
 
-const GameListItem = ({game, handleClick}) => {
-  const date = new Date(game.startdate);
+const GameListItem = ({game, players, handleClick}) => {
+  const tableColumnStyle = {padding: '3px', textAlign: 'center'};
   const winnerScore = game.winners[0].score + game.winners[1].score;
   const loserScore = game.losers[0].score + game.losers[1].score;
 
@@ -15,25 +15,28 @@ const GameListItem = ({game, handleClick}) => {
   const [ loserFrontPlayer ] = game.losers.filter(player => player.position === FRONT_PLAYER);
   const [ loserRearPlayer ] = game.losers.filter(player => player.position === REAR_PLAYER);
 
-  const tableColumnStyle = {padding: '3px', textAlign: 'center'};
+  const [ winnerRearPlayerEntity ] = players.filter(player => player.id === winnerRearPlayer.playerId);
+  const [ winnerFrontPlayerEntity ] = players.filter(player => player.id === winnerFrontPlayer.playerId);
+  const [ loserFrontPlayerEntity ] = players.filter(player => player.id === loserFrontPlayer.playerId);
+  const [ loserRearPlayerEntity ] = players.filter(player => player.id === loserRearPlayer.playerId);
 
   return (
       <TableRow
         onClick={handleClick ? handleClick(game) : ''}
       >
         <TableRowColumn style={tableColumnStyle}>
-          <Avatar src={winnerRearPlayer.icon} />
+          <Avatar src={winnerRearPlayerEntity.icon} />
         </TableRowColumn>
         <TableRowColumn style={tableColumnStyle}>
-          <Avatar src={winnerFrontPlayer.icon} />
+          <Avatar src={winnerFrontPlayerEntity.icon} />
         </TableRowColumn>
         <TableRowColumn style={tableColumnStyle}>{winnerScore}</TableRowColumn>
         <TableRowColumn style={tableColumnStyle}>{loserScore}</TableRowColumn>
         <TableRowColumn style={tableColumnStyle}>
-          <Avatar src={loserFrontPlayer.icon} />
+          <Avatar src={loserFrontPlayerEntity.icon} />
         </TableRowColumn>
         <TableRowColumn style={tableColumnStyle}>
-          <Avatar src={loserRearPlayer.icon} />
+          <Avatar src={loserRearPlayerEntity.icon} />
         </TableRowColumn>
       </TableRow>
   );

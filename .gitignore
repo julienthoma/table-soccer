@@ -1,3 +1,5 @@
 node_modules
 .idea
 public/app.js
+testgames.json
+testPlayers.js

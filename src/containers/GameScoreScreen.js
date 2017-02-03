@@ -25,10 +25,9 @@ class GameScoreScreen extends Component {
       (position === TEAM1_FRONT_PLAYER || position === TEAM2_FRONT_PLAYER) ? FRONT_PLAYER : REAR_PLAYER;
     const { currentGame, players } = this.props;
     const score = this.getScoreByPosition(position);
-    const name = players[currentGame[position]].name;
-    const icon = players[currentGame[position]].icon
+    const playerId = players[currentGame[position]].id;
 
-    return {score, name, position: generalPosition, icon};
+    return {score, playerId, position: generalPosition};
   };
 
   componentDidUpdate = () => {
@@ -72,7 +71,7 @@ class GameScoreScreen extends Component {
     const scoreHeadlineStyle = {padding: '0 10px', lineHeight: '50px', margin: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', fontWeight: 400, fontSize: 36}
 
     return (
-      <div style={{display: 'flex', flexDirection: 'column', marginBottom: 10}} zDepth={2}>
+      <div style={{display: 'flex', flexDirection: 'column', marginBottom: 10}}>
         <Subheader>TEAM 1</Subheader>
         <div style={{padding: 0, display: 'flex', justifyContent: 'space-between'}}>
           { this.renderScoreButton(team1FrontPlayerScore, team1FrontPlayer, TEAM1_FRONT_PLAYER)}

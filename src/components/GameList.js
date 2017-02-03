@@ -2,8 +2,12 @@ import React from 'react';
 import GameListItem from '../components/GameListItem';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
 
-const GameList = ({ games, handleRowClick }) => {
+const GameList = ({ games, players, handleRowClick }) => {
   const tableColumnStyle = {padding: '3px', textAlign: 'center'};
+
+  if (!games || !players || games.length === 0 || players.lenght === 0) {
+    return false;
+  }
 
   return (
     <Table allRowsSelected={false}>
@@ -18,8 +22,9 @@ const GameList = ({ games, handleRowClick }) => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {games.map((game, index) =>
-          <GameListItem key={index} game={game} handleClick={handleRowClick} />
+        {
+          games.map((game, index) =>
+          <GameListItem key={index} game={game} handleClick={handleRowClick} players={players}/>
         )}
       </TableBody>
     </Table>

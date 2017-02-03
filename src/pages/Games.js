@@ -4,25 +4,23 @@ import GameList from '../components/GameList';
 import { browserHistory } from 'react-router'
 
 class Games extends Component {
-
   handleRowClick = game => () => {
-    console.log(game);
-
     browserHistory.push('/game/' + game.id);
-  }
+  };
 
   render() {
-    const { games } = this.props;
+    const { games, players } = this.props;
 
 
     return (
-      <GameList games={games} handleRowClick={this.handleRowClick}/>
+      <GameList games={games} handleRowClick={this.handleRowClick} players={players}/>
     );
   };
 }
 
 const mapStateToProps = state => ({
-  games: state.games
+  games: state.games,
+  players: state.players
 });
 
 const _Games = connect(mapStateToProps)(Games);
