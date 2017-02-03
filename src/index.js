@@ -11,6 +11,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import Home from './pages/Home';
 import Games from './pages/Games';
+import Players from './pages/Players';
 import Game from './pages/Game';
 import NewGame from './pages/NewGame';
 import de from 'react-intl/locale-data/de';
@@ -36,6 +37,7 @@ render(
               <Route component={App}>
                   <Route path="/" component={Home} />
                   <Route path="/games" component={Games} />
+                  <Route path="/players" component={Players} />
                   <Route path="/game/:id" component={Game} />
                   <Route path="/current" component={NewGame} />
               </Route>
