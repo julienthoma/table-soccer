@@ -8,7 +8,10 @@
     "start": "node ./server.js"
   },
   "author": "Julien Thoma",
-  "license": "ISC",
+  "license": "ISC",\
+  "engines": {
+    "node": "7.3"
+  },
   "dependencies": {
     "babel-core": "^6.22.1",
     "body-parser": "^1.16.1",
