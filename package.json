@@ -16,10 +16,7 @@
     "babel-core": "^6.22.1",
     "body-parser": "^1.16.1",
     "express": "^4.14.1",
-    "react": "^15.4.2",
-    "webpack": "^1.14.0"
-  },
-  "devDependencies": {
+    "webpack": "^1.14.0",
     "babel": "^6.5.2",
     "babel-jest": "^18.0.0",
     "babel-loader": "^6.2.10",
@@ -37,7 +34,9 @@
     "react-router": "^3.0.2",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
     "webpack-hot-middleware": "^2.15.0",
     "webpack-livereload-plugin": "^0.10.0"
   }
