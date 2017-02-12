@@ -8,7 +8,7 @@
     "start": "node ./server.js"
   },
   "author": "Julien Thoma",
-  "license": "ISC",\
+  "license": "ISC",
   "engines": {
     "node": "7.3"
   },
