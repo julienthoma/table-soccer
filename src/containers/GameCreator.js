@@ -1,206 +1,89 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
-import { updateCurrentGame, saveGame } from '../actions';
-import Subheader from 'material-ui/Subheader';
+import { startGame, cancelGame } from '../actions';
 import GameScoreScreen from './GameScoreScreen';
+import PlayerSelection from './PlayerSelection';
 import { browserHistory } from 'react-router'
-import { CURRENT_GAME } from '../presets';
+import { TEAM1_FRONT_PLAYER, TEAM1_REAR_PLAYER, TEAM2_FRONT_PLAYER, TEAM2_REAR_PLAYER } from '../constants';
 
-
-import { TEAM1_FRONT_PLAYER, TEAM1_REAR_PLAYER, TEAM2_FRONT_PLAYER, TEAM2_REAR_PLAYER } from '../constants';;
-
-import { Step, Stepper, StepLabel, StepContent} from 'material-ui/Stepper';
+export const SELECT_PLAYERS_STEP = 'SELECT_PLAYERS_STEP';
+export const ACTIVE_GAME_STEP = 'ACTIVE_GAME_STEP';
+export const GAME_END_STEP = 'GAME_END_STEP';
 
 class GameCreator extends Component {
   render() {
-    const { currentGame } = this.props;
-
-    return (
-          <Stepper
-              style={{
-                maxWidth: 600,
-                margin: '0 auto'
-              }}
-              activeStep={currentGame.stepperIndex}
-              orientation="vertical"
-              connector={false}
-          >
-            {this.renderStep1()}
-            {this.renderStep2()}
-            {this.renderStepActions(currentGame.stepperIndex)}
-          </Stepper>
-    );
-  };
-
-  createGame = () => {
-    const { startdate, enddate, winners, losers, scoreTimeline } = this.props.currentGame;
-
-    return {
-      startdate,
-      enddate,
-      winners,
-      losers,
-      scoreTimeline
-    };
-  };
-
-  handleNext = () => {
-    const { dispatch, currentGame } = this.props;
-    const stepperIndex = currentGame.stepperIndex + 1;
-    const newProps = { stepperIndex };
-
-    if (stepperIndex === 1) {
-      newProps.startdate = new Date();
-      console.log('startGame');
+    const { activeStep } = this.props;
+    let content;
+    switch (activeStep) {
+      case SELECT_PLAYERS_STEP:
+        content = this.renderSelectPlayers();
+        break;
+      case ACTIVE_GAME_STEP:
+        content = this.renderActiveGame();
+        break;
+      case GAME_END_STEP:
+        content = this.renderGameEnd();
+        break;
     }
 
-    dispatch(updateCurrentGame(Object.assign({}, currentGame, newProps)));
-
-    if (stepperIndex === 2) {
-      console.log('save game');
-      dispatch(saveGame(this.createGame()));
-      dispatch(updateCurrentGame(CURRENT_GAME));
-      browserHistory.push('/games');
-
-    }
+    return <div>{ content }</div>;
   };
 
-  handlePrev = () => {
-    const { dispatch, currentGame } = this.props;
-    const stepperIndex = currentGame.stepperIndex - 1;
+  renderSelectPlayers = () => (
+    <div>
+      <PlayerSelection />
+      <RaisedButton
+        label="Cancel"
+        onClick={this.cancelActiveGame}
+      />
+      <RaisedButton
+        label="Start Game"
+        primary={true}
+        disabled={!this.isValidPlayerCombo()}
+        onClick={this.startNewGame}
+        style={{marginLeft: 12}}
+      />
+    </div>
+  );
 
-    dispatch(updateCurrentGame(Object.assign({}, currentGame, { stepperIndex })))
-  };
+  renderActiveGame = () => (
+    <div>
+      <GameScoreScreen />
+      <RaisedButton
+        label="Cancel"
+        onClick={this.cancelActiveGame}
+      />
+    </div>
+  );
 
-  renderStepActions = (step) => {
-    const stepperIndex = this.props.currentGame.stepperIndex;
-    const isFinished = this.props.currentGame.isFinished;
-
-    return (
-      <div style={{ display: 'flex', justifyContent: 'space-between'}}>
-        {step > 0 && (
-          <RaisedButton
-            label="Back"
-            disabled={stepperIndex === 0}
-            disableTouchRipple={true}
-            disableFocusRipple={true}
-            onTouchTap={this.handlePrev}
-            style={{marginRight: 30}}
-          />
-        )}
-        <RaisedButton
-          label={stepperIndex === 0 ? 'Start Game' : 'Save Game'}
-          disableTouchRipple={true}
-          disableFocusRipple={true}
-          primary={true}
-          disabled={!this.isValidPlayerCombo() ||(stepperIndex === 1 && !isFinished)}
-          onTouchTap={this.handleNext}
-          style={{marginRight: 12}}
-        />
-
-        {
-          !this.isValidPlayerCombo() &&
-          <h4>Spieler mehrfach ausgewählt</h4>
-        }
-      </div>
-    );
+  renderGameEnd = () => {
+    return (<div>hello</div>)
   }
 
-  renderPlayerItems = players => players.map((player, index) =>
-    <MenuItem value={index} key={index} primaryText={player.name} />
-  )
-
-  renderStep1 = () => {
-    const { players, dispatch, currentGame } = this.props;
-    const selectPlayer = position => (evt, playerIndex) => {
-      dispatch(updateCurrentGame(Object.assign({}, currentGame, {
-        [position]: playerIndex
-      })));
-    };
-    const fieldStyle = {
-      margin: '0 15px 0 0'
-    };
-
-    return (
-      <Step>
-        <StepLabel>Select Players</StepLabel>
-        <StepContent>
-          <Subheader style={{fontSize: 16, paddingLeft: 0, lineHeight: '24px'}}>TEAM 1</Subheader>
-
-          <SelectField
-            value={currentGame[TEAM1_FRONT_PLAYER]}
-            floatingLabelText="STURM"
-            onChange={selectPlayer(TEAM1_FRONT_PLAYER)}
-            style={fieldStyle}
-          >
-            {this.renderPlayerItems(players)}
-          </SelectField>
-
-          <SelectField
-            value={currentGame[TEAM1_REAR_PLAYER]}
-            floatingLabelText="ABWEHR"
-            onChange={selectPlayer(TEAM1_REAR_PLAYER)}
-            style={fieldStyle}
-          >
-            {this.renderPlayerItems(players)}
-          </SelectField>
-
-          <Subheader style={{fontSize: 16, paddingLeft: 0, lineHeight: '24px'}}>TEAM 2</Subheader>
-
-          <SelectField
-            value={currentGame[TEAM2_FRONT_PLAYER]}
-            floatingLabelText="STURM"
-            onChange={selectPlayer(TEAM2_FRONT_PLAYER)}
-            style={fieldStyle}
-          >
-            {this.renderPlayerItems(players)}
-          </SelectField>
-
-          <SelectField
-            value={currentGame[TEAM2_REAR_PLAYER]}
-            floatingLabelText="ABWEHR"
-            onChange={selectPlayer(TEAM2_REAR_PLAYER)}
-            style={fieldStyle}
-          >
-            {this.renderPlayerItems(players)}
-          </SelectField>
-        </StepContent>
-      </Step>
-    );
+  startNewGame = () => this.props.dispatch(startGame());
+  cancelActiveGame = () => {
+    this.props.dispatch(cancelGame());
+    browserHistory.push('/');
   }
-
-  renderStep2 = () => {
-    return (
-      <Step>
-        <StepLabel>Play Game</StepLabel>
-        <StepContent style={{padding: 0, borderLeft: 0, margin: 0}}>
-          <GameScoreScreen />
-        </StepContent>
-      </Step>
-    );
-  };
 
   isValidPlayerCombo = () => {
-    const { currentGame } = this.props;
+    const { game } = this.props;
     const set = new Set([
-      currentGame[TEAM1_FRONT_PLAYER],
-      currentGame[TEAM1_REAR_PLAYER],
-      currentGame[TEAM2_FRONT_PLAYER],
-      currentGame[TEAM2_REAR_PLAYER]
+      game[TEAM1_FRONT_PLAYER],
+      game[TEAM1_REAR_PLAYER],
+      game[TEAM2_FRONT_PLAYER],
+      game[TEAM2_REAR_PLAYER]
     ]);
 
     return set.size === 4;
   }
 }
 
-
 const mapStateToProps = state => ({
   players: state.players,
-  currentGame: state.currentGame
+  game: state.newGame,
+  activeStep: state.newGame.activeStep
 });
 
 const _GameCreator = connect(mapStateToProps)(GameCreator);

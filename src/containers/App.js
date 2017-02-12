@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { getGames, getPlayers } from '../actions';
+import { getData } from '../actions';
 import { connect } from 'react-redux'
 import CustomToolbar from './CustomToolbar';
+import NewGameButton from './NewGameButton';
 
 class App extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(getGames());
-    dispatch(getPlayers());
+    dispatch(getData());
   }
 
   render() {
@@ -17,6 +17,7 @@ class App extends Component {
         <div className="container" style={{maxWidth: 900, margin: 'auto'}}>
           {this.props.children}
         </div>
+        <NewGameButton />
       </div>
     );
   }

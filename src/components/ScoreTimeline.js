@@ -17,7 +17,7 @@ const ScoreTimeline = ({ game }) => {
       </TableHeader>
       <TableBody displayRowCheckbox={false}>
         {game.scoreTimeline.map((entry, index) =>
-          <TableRow>
+          <TableRow key={index}>
             <TableRowColumn style={tableColumnStyle}>
               <FormattedDate
                 value={entry.timestamp}
@@ -27,11 +27,11 @@ const ScoreTimeline = ({ game }) => {
               />
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
-              {entry.name}
+              {entry.id}
             </TableRowColumn>
 
             <TableRowColumn style={tableColumnStyle}>
-              {POSITIONS[entry.goalScorer]}
+              {POSITIONS[entry.position]}
             </TableRowColumn>
           </TableRow>
         )}

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import GameCreator from '../containers/GameCreator';
-import Subheader from 'material-ui/Subheader';
 import { connect } from 'react-redux'
 
 class NewGame extends Component {
   render() {
     const { players } = this.props;
-
     return (
       <div>
         {

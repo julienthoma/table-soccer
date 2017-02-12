@@ -1,16 +1,11 @@
-.score-button {
-    width: 200px;
-    margin: 0 10px;
-}
-
 .game-list-item:hover {
     cursor: pointer;
 }
 
-@media (max-width: 768px) {
-    .score-button {
-        min-width: 64px;
-        width: 130px;
-    }
+.score h1 {
+    padding: 0 10px;
+    line-height: 50px;
+    margin: 0;
+    font-weight: 400;
+    font-size: 54px;
 }
-

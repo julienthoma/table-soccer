@@ -1,9 +1,5 @@
 import React from 'react';
 import {TableRow, TableRowColumn} from 'material-ui/Table';
-import Avatar from 'material-ui/Avatar';
-import { FormattedDate } from 'react-intl';
-import { Link } from 'react-router'
-
 
 const PlayerListItem = ({player, handleClick}) => {
   const tableColumnStyle = {padding: '3px', textAlign: 'center'};
@@ -15,22 +11,16 @@ const PlayerListItem = ({player, handleClick}) => {
 
   return (
       <TableRow
-        onClick={handleClick ? handleClick(player) : ''}
+        onClick={handleClick ? handleClick : ''}
       >
         <TableRowColumn style={tableColumnStyle}>
-          {player.name}
+          {player.id}
         </TableRowColumn>
         <TableRowColumn style={tableColumnStyle}>
         {gameCount}
         </TableRowColumn>
         <TableRowColumn style={tableColumnStyle}>
           {winCount}
-        </TableRowColumn>
-        <TableRowColumn style={tableColumnStyle}>
-          {player.winsFront.length}
-        </TableRowColumn>
-        <TableRowColumn style={tableColumnStyle}>
-          {player.winsRear.length}
         </TableRowColumn>
         <TableRowColumn style={tableColumnStyle}>
           {lossCount}
