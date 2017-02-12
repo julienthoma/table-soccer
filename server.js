@@ -8,11 +8,11 @@ const crypto = require('crypto');
 app.use(bodyParser.json());
 app.listen(port);
 
-app.get('/data', function(req, res) {
-    res.send(getData());
+app.get('/data', function (req, res) {
+  res.send(getData());
 });
 
-app.post('/data/savegame', function(req, res) {
+app.post('/data/savegame', function (req, res) {
   const game = req.body;
   const data = getData();
   const dateString = new Date().valueOf().toString();
@@ -22,12 +22,12 @@ app.post('/data/savegame', function(req, res) {
   res.send(data);
 });
 
+
 app.use(express.static(__dirname + '/public'));
 
 app.get('/*', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
+  res.sendFile(__dirname + '/public/index.html');
 });
-
 
 console.log('started at port: ' + port);
 
@@ -41,7 +41,7 @@ const getData = () => {
   } catch (err) {
     if (err.code === 'MODULE_NOT_FOUND') {
       data = {
-        games:[],
+        games: [],
         players: []
       };
       fs.writeFileSync('./data.json', JSON.stringify(data));
