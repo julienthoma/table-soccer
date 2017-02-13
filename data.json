@@ -29,59 +29,59 @@
       ],
       "scoreTimeline": [
         {
-          "goalScorer": "team1RearPlayer",
+          "position": "team1RearPlayer",
           "timestamp": "2017-02-03T16:04:42.268Z",
-          "name": "Julien"
+          "id": "jth"
         },
         {
-          "goalScorer": "team1FrontPlayer",
+          "position": "team1FrontPlayer",
           "timestamp": "2017-02-03T16:05:35.835Z",
-          "name": "Christian"
+          "id": "chr"
         },
         {
-          "goalScorer": "team1RearPlayer",
+          "position": "team1RearPlayer",
           "timestamp": "2017-02-03T16:06:59.550Z",
-          "name": "Julien"
+          "id": "jth"
         },
         {
-          "goalScorer": "team2RearPlayer",
+          "position": "team2RearPlayer",
           "timestamp": "2017-02-03T16:07:18.623Z",
-          "name": "Marius"
+          "id": "msb"
         },
         {
-          "goalScorer": "team2FrontPlayer",
+          "position": "team2FrontPlayer",
           "timestamp": "2017-02-03T16:08:33.141Z",
-          "name": "Alex"
+          "id": "aku"
         },
         {
-          "goalScorer": "team2FrontPlayer",
+          "position": "team2FrontPlayer",
           "timestamp": "2017-02-03T16:09:43.391Z",
-          "name": "Alex"
+          "id": "aku"
         },
         {
-          "goalScorer": "team1FrontPlayer",
+          "position": "team1FrontPlayer",
           "timestamp": "2017-02-03T16:09:58.715Z",
-          "name": "Christian"
+          "id": "chr"
         },
         {
-          "goalScorer": "team2FrontPlayer",
+          "position": "team2FrontPlayer",
           "timestamp": "2017-02-03T16:10:41.183Z",
-          "name": "Alex"
+          "id": "aku"
         },
         {
-          "goalScorer": "team2FrontPlayer",
+          "position": "team2FrontPlayer",
           "timestamp": "2017-02-03T16:10:54.369Z",
-          "name": "Alex"
+          "id": "aku"
         },
         {
-          "goalScorer": "team1FrontPlayer",
+          "position": "team1FrontPlayer",
           "timestamp": "2017-02-03T16:11:09.234Z",
-          "name": "Christian"
+          "id": "chr"
         },
         {
-          "goalScorer": "team1FrontPlayer",
+          "position": "team1FrontPlayer",
           "timestamp": "2017-02-03T16:11:42.865Z",
-          "name": "Christian"
+          "id": "chr"
         }
       ],
       "id": "cb683cf695b05e185371c19811aa4031e61b217f"
@@ -115,59 +115,59 @@
       ],
       "scoreTimeline": [
         {
-          "goalScorer": "team2FrontPlayer",
+          "position": "team2FrontPlayer",
           "timestamp": "2017-02-03T16:12:36.839Z",
-          "name": "Marius"
+          "id": "msb"
         },
         {
-          "goalScorer": "team1FrontPlayer",
+          "position": "team1FrontPlayer",
           "timestamp": "2017-02-03T16:13:49.556Z",
-          "name": "Julien"
+          "id": "jth"
         },
         {
-          "goalScorer": "team2FrontPlayer",
+          "position": "team2FrontPlayer",
           "timestamp": "2017-02-03T16:14:05.640Z",
-          "name": "Marius"
+          "id": "msb"
         },
         {
-          "goalScorer": "team2RearPlayer",
+          "position": "team2RearPlayer",
           "timestamp": "2017-02-03T16:14:38.009Z",
-          "name": "Christian"
+          "id": "chr"
         },
         {
-          "goalScorer": "team1FrontPlayer",
+          "position": "team1FrontPlayer",
           "timestamp": "2017-02-03T16:15:09.002Z",
-          "name": "Julien"
+          "id": "jth"
         },
         {
-          "goalScorer": "team1RearPlayer",
+          "position": "team1RearPlayer",
           "timestamp": "2017-02-03T16:15:32.248Z",
-          "name": "Alex"
+          "id": "aku"
         },
         {
-          "goalScorer": "team2FrontPlayer",
+          "position": "team2FrontPlayer",
           "timestamp": "2017-02-03T16:16:03.934Z",
-          "name": "Marius"
+          "id": "msb"
         },
         {
-          "goalScorer": "team2FrontPlayer",
+          "position": "team2FrontPlayer",
           "timestamp": "2017-02-03T16:16:23.750Z",
-          "name": "Marius"
+          "id": "msb"
         },
         {
-          "goalScorer": "team1FrontPlayer",
+          "position": "team1FrontPlayer",
           "timestamp": "2017-02-03T16:17:50.117Z",
-          "name": "Julien"
+          "id": "jth"
         },
         {
-          "goalScorer": "team1FrontPlayer",
+          "position": "team1FrontPlayer",
           "timestamp": "2017-02-03T16:18:59.277Z",
-          "name": "Julien"
+          "id": "jth"
         },
         {
-          "goalScorer": "team2RearPlayer",
+          "position": "team2RearPlayer",
           "timestamp": "2017-02-03T16:19:52.690Z",
-          "name": "Christian"
+          "id": "chr"
         }
       ],
       "id": "3d39e7718f57e4c4811d8de208a11c620a4e2eb2"
@@ -201,44 +201,44 @@
       ],
       "scoreTimeline": [
         {
-          "goalScorer": "team1FrontPlayer",
+          "position": "team1FrontPlayer",
           "timestamp": "2017-02-03T16:21:26.623Z",
-          "name": "Christian"
+          "id": "chr"
         },
         {
-          "goalScorer": "team1FrontPlayer",
+          "position": "team1FrontPlayer",
           "timestamp": "2017-02-03T16:22:27.974Z",
-          "name": "Christian"
+          "id": "chr"
         },
         {
-          "goalScorer": "team1FrontPlayer",
+          "position": "team1FrontPlayer",
           "timestamp": "2017-02-03T16:23:40.849Z",
-          "name": "Christian"
+          "id": "chr"
         },
         {
-          "goalScorer": "team2FrontPlayer",
+          "position": "team2FrontPlayer",
           "timestamp": "2017-02-03T16:24:06.886Z",
-          "name": "Julien"
+          "id": "jth"
         },
         {
-          "goalScorer": "team1RearPlayer",
+          "position": "team1RearPlayer",
           "timestamp": "2017-02-03T16:25:11.310Z",
-          "name": "Alex"
+          "id": "aku"
         },
         {
-          "goalScorer": "team1FrontPlayer",
+          "position": "team1FrontPlayer",
           "timestamp": "2017-02-03T16:26:24.351Z",
-          "name": "Christian"
+          "id": "chr"
         },
         {
-          "goalScorer": "team2RearPlayer",
+          "position": "team2RearPlayer",
           "timestamp": "2017-02-03T16:27:44.529Z",
-          "name": "Marius"
+          "id": "msb"
         },
         {
-          "goalScorer": "team1FrontPlayer",
+          "position": "team1FrontPlayer",
           "timestamp": "2017-02-03T16:28:56.701Z",
-          "name": "Christian"
+          "id": "chr"
         }
       ],
       "id": "ee516076283d666b1afc5aeea6bd552371afa9b4"
@@ -272,49 +272,49 @@
       ],
       "scoreTimeline": [
         {
-          "goalScorer": "team2RearPlayer",
+          "position": "team2RearPlayer",
           "timestamp": "2017-02-03T16:30:14.955Z",
-          "name": "Christian"
+          "id": "chr"
         },
         {
-          "goalScorer": "team1FrontPlayer",
+          "position": "team1FrontPlayer",
           "timestamp": "2017-02-03T16:31:23.541Z",
-          "name": "Alex"
+          "id": "aku"
         },
         {
-          "goalScorer": "team1RearPlayer",
+          "position": "team1RearPlayer",
           "timestamp": "2017-02-03T16:31:48.763Z",
-          "name": "Julien"
+          "id": "jth"
         },
         {
-          "goalScorer": "team2FrontPlayer",
+          "position": "team2FrontPlayer",
           "timestamp": "2017-02-03T16:33:02.993Z",
-          "name": "Marius"
+          "id": "msb"
         },
         {
-          "goalScorer": "team2RearPlayer",
+          "position": "team2RearPlayer",
           "timestamp": "2017-02-03T16:34:54.169Z",
-          "name": "Christian"
+          "id": "chr"
         },
         {
-          "goalScorer": "team1FrontPlayer",
+          "position": "team1FrontPlayer",
           "timestamp": "2017-02-03T16:36:57.443Z",
-          "name": "Alex"
+          "id": "aku"
         },
         {
-          "goalScorer": "team2RearPlayer",
+          "position": "team2RearPlayer",
           "timestamp": "2017-02-03T16:38:08.956Z",
-          "name": "Christian"
+          "id": "chr"
         },
         {
-          "goalScorer": "team2FrontPlayer",
+          "position": "team2FrontPlayer",
           "timestamp": "2017-02-03T16:38:58.266Z",
-          "name": "Marius"
+          "id": "msb"
         },
         {
-          "goalScorer": "team2FrontPlayer",
+          "position": "team2FrontPlayer",
           "timestamp": "2017-02-03T16:39:09.085Z",
-          "name": "Marius"
+          "id": "msb"
         }
       ],
       "id": "124c779022dd10bc37219c3e2f88edea3d17e5bd"

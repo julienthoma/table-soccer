@@ -11,5 +11,5 @@ export const POSITIONS = {
   [TEAM1_FRONT_PLAYER] : 'Team 1 Sturm',
   [TEAM1_REAR_PLAYER] : 'Team 1 Abwehr',
   [TEAM2_FRONT_PLAYER] : 'Team 2 Sturm',
-  [TEAM2_REAR_PLAYER] : 'Team 1 Abwehr',
+  [TEAM2_REAR_PLAYER] : 'Team 2 Abwehr',
 }
