@@ -23,8 +23,6 @@ class GameCreator extends Component {
         content = this.renderActiveGame();
         break;
       case GAME_END_STEP:
-        content = this.renderGameEnd();
-        break;
     }
 
     return <div>{ content }</div>;

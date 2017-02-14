@@ -37,6 +37,12 @@ export default (state = getInitState(), action) => {
         newGame: Object.assign({}, state.newGame, {scoreTimeline})
       });
 
+    case actions.ADD_GAME:
+      const games = state.games.slice(0);
+      games.push(action.game);
+
+      return Object.assign({}, state, { games});
+
     case actions.SELECT_PLAYER:
       return Object.assign({}, state, {newGame: Object.assign({}, state.newGame, {
         [action.position]: action.player

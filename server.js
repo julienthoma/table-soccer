@@ -4,22 +4,49 @@ const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser')
 const fs = require('fs');
 const crypto = require('crypto');
+const MongoClient = require('mongodb').MongoClient
+const config = require('./config.json');
+let db;
+
+MongoClient.connect(config.dbUrl, (err, database) => {
+  if (err) return console.log(err)
+  db = database
+
+  app.listen(port);
+});
 
 app.use(bodyParser.json());
-app.listen(port);
 
 app.get('/data', function (req, res) {
-  res.send(getData());
+  db.collection('games').find().toArray(function(err, games) {
+    db.collection('players').find().toArray(function(err, players) {
+      res.send({
+        players: players,
+        games: games
+      });
+    });
+  });
+});
+
+app.post('/data/addplayer', function (req, res) {
+  db.collection('players').save(req.body, (err, result) => {
+    if (err) return console.log(err)
+    console.log('saved to database')
+
+    res.send(result);
+  });
 });
 
 app.post('/data/savegame', function (req, res) {
-  const game = req.body;
-  const data = getData();
   const dateString = new Date().valueOf().toString();
+  const game = req.body;
   game.id = crypto.createHash('sha1').update(dateString + Math.random()).digest('hex');
-  data.games.push(game);
-  fs.writeFileSync('./data.json', JSON.stringify(data));
-  res.send(data);
+
+  db.collection('games').save(game, (err, result) => {
+    if (err) return console.log(err)
+    console.log('saved to database')
+    res.send('ok');
+  })
 });
 
 
@@ -32,21 +59,3 @@ app.get('/*', (req, res) => {
 console.log('started at port: ' + port);
 
 module.exports = app;
-
-const getData = () => {
-  let data;
-
-  try {
-    data = require('./data.json');
-  } catch (err) {
-    if (err.code === 'MODULE_NOT_FOUND') {
-      data = {
-        games: [],
-        players: []
-      };
-      fs.writeFileSync('./data.json', JSON.stringify(data));
-    }
-  }
-
-  return data;
-}

@@ -7,6 +7,7 @@ import NewGameButton from './NewGameButton';
 class App extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
+    console.log('will mount');
     dispatch(getData());
   }
 

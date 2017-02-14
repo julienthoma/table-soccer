@@ -4,6 +4,7 @@ import { TEAM1_FRONT_PLAYER, TEAM1_REAR_PLAYER, TEAM2_FRONT_PLAYER, TEAM2_REAR_P
 import RaisedButton from 'material-ui/RaisedButton';
 import { addGoal, saveGame, endGame } from '../actions';
 import { getScoreByPosition, getPlayerByName, applyFnForPositions } from '../helper';
+import { browserHistory } from 'react-router'
 
 class GameScoreScreen extends Component {
   componentDidUpdate = () => {
@@ -24,7 +25,6 @@ class GameScoreScreen extends Component {
       losers = [this.createPlayer(TEAM1_FRONT_PLAYER), this.createPlayer(TEAM1_REAR_PLAYER)];
     }
 
-    dispatch(endGame());
     dispatch(saveGame({
       startdate: game.startdate,
       enddate: new Date(),
@@ -32,6 +32,8 @@ class GameScoreScreen extends Component {
       winners,
       losers
     }));
+
+    browserHistory.push('/');
   };
 
   render() {
