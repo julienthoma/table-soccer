@@ -1,11 +1,38 @@
+body {
+    margin: 10px;
+}
 .game-list-item:hover {
     cursor: pointer;
 }
 
 .score h1 {
-    padding: 0 10px;
-    line-height: 50px;
+    padding: 0 30px;
+    line-height: 90px;
     margin: 0;
     font-weight: 400;
-    font-size: 54px;
+    font-size: 110px;
+}
+
+.team1 {
+    background: rgb(0, 188, 212);
+}
+
+.team1score {
+    color: rgb(0, 188, 212);
+}
+
+.team2score {
+    color: rgb(255, 64, 129);
+}
+
+.team2 {
+    background: rgb(255, 64, 129);
+}
+
+.topitems {
+    order: 1;
+}
+
+.botitems {
+    order: 2;
 }

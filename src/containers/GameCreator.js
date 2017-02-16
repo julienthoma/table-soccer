@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton';
-import { startGame, cancelGame } from '../actions';
+import { startGame, cancelGame, reverseOrder } from '../actions';
 import GameScoreScreen from './GameScoreScreen';
 import PlayerSelection from './PlayerSelection';
+import IconButton from 'material-ui/IconButton';
+import ActionCached from 'material-ui/svg-icons/action/cached';
 import { browserHistory } from 'react-router'
 import { TEAM1_FRONT_PLAYER, TEAM1_REAR_PLAYER, TEAM2_FRONT_PLAYER, TEAM2_REAR_PLAYER } from '../constants';
 
@@ -28,13 +30,23 @@ class GameCreator extends Component {
     return <div>{ content }</div>;
   };
 
+  handleRotateClick = () => {
+    this.props.dispatch(reverseOrder());
+  }
+
   renderSelectPlayers = () => (
     <div>
+      <IconButton
+        onClick={this.handleRotateClick}
+      >
+        <ActionCached />
+      </IconButton>
       <PlayerSelection />
       <RaisedButton
         label="Cancel"
         onClick={this.cancelActiveGame}
       />
+
       <RaisedButton
         label="Start Game"
         primary={true}

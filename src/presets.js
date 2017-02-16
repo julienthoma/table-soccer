@@ -7,5 +7,6 @@ export const NEW_GAME = {
   losers: [],
   isFinished: false,
   scoreTimeline: [],
-  activeStep: SELECT_PLAYERS_STEP
+  activeStep: SELECT_PLAYERS_STEP,
+  orderReversed: false
 };

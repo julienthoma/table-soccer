@@ -20,6 +20,11 @@ export default (state = getInitState(), action) => {
     case actions.CANCEL_GAME:
       return Object.assign({}, state, { newGame: NEW_GAME});
 
+    case actions.REVERSE_ORDER:
+      return Object.assign({}, state, { newGame: Object.assign({}, state.newGame, {
+        reverseOrder: !state.newGame.reverseOrder
+      })});
+
     case actions.END_GAME:
       return Object.assign({}, state, { newGame: Object.assign({}, state.newGame, {
         activeStep: GAME_END_STEP,

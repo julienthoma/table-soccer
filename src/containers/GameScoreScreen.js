@@ -39,47 +39,57 @@ class GameScoreScreen extends Component {
   render() {
     const { game } = this.props;
     const [t1RearScore, t1FrontScore, t2FrontScore, t2RearScore] = applyFnForPositions(getScoreByPosition);
-    const buttonStyle = {height: 80, width: '100%'};
+    const buttonStyle = {height: 180};
+    const outerStyle = {width: 'calc(50% - 5px)', marginBottom: 10};
+    const containerStyle = {display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'};
+    const reverseOrder = game.reverseOrder;
+    const team1Classes = 'team1 ' + (reverseOrder ? 'botitems' : 'topitems');
+    const team2Classes = 'team2 ' + (reverseOrder ? 'topitems' : 'botitems');
 
     return (
-      <div style={{display: 'flex', flexDirection: 'column', marginBottom: 10, padding: 5}}>
-        <div className="score" style={{display: 'flex', padding: 5, justifyContent: 'center'}}>
-          <h1 style={{}}>{t1FrontScore + t1RearScore}</h1>
-          <h1>:</h1>
-          <h1 style={{}}>{t2RearScore + t2FrontScore}</h1>
+      <div style={{display: 'flex', flexDirection: 'column', marginBottom: 10}}>
+        <div className="score" style={{display: 'flex', marginBottom: 10, justifyContent: 'center', fontFamily: 'Roboto'}}>
+          <h1 className="team1score">{t1FrontScore + t1RearScore}</h1>
+          <h1 className="team2score">{t2RearScore + t2FrontScore}</h1>
         </div>
-        <RaisedButton
-          disabled={this.props.game.isFinished}
-          primary={true}
-          onClick={this.handleScoreButtonClick(TEAM1_FRONT_PLAYER)}
-          buttonStyle={buttonStyle}
-          style={{marginBottom: 15}}
-          label={game[TEAM1_FRONT_PLAYER]}
-        />
-        <RaisedButton
-          disabled={this.props.game.isFinished}
-          primary={true}
-          onClick={this.handleScoreButtonClick(TEAM1_REAR_PLAYER)}
-          buttonStyle={buttonStyle}
-          style={{marginBottom: 15}}
-          label={game[TEAM1_REAR_PLAYER]}
-        />
-        <RaisedButton
-          disabled={this.props.game.isFinished}
-          secondary={true}
-          onClick={this.handleScoreButtonClick(TEAM2_FRONT_PLAYER)}
-          buttonStyle={buttonStyle}
-          style={{marginBottom: 15}}
-          label={game[TEAM2_FRONT_PLAYER]}
-        />
-        <RaisedButton
-          disabled={this.props.game.isFinished}
-          secondary={true}
-          onClick={this.handleScoreButtonClick(TEAM2_REAR_PLAYER)}
-          buttonStyle={buttonStyle}
-          style={{marginBottom: 15}}
-          label={game[TEAM2_REAR_PLAYER]}
-        />
+        <div style={containerStyle}>
+          <RaisedButton
+            className={team1Classes}
+            disabled={this.props.game.isFinished}
+            primary={true}
+            onClick={this.handleScoreButtonClick(TEAM1_FRONT_PLAYER)}
+            buttonStyle={buttonStyle}
+            style={outerStyle}
+            label={game[TEAM1_FRONT_PLAYER]}
+          />
+          <RaisedButton
+            className={team1Classes}
+            disabled={this.props.game.isFinished}
+            primary={true}
+            onClick={this.handleScoreButtonClick(TEAM1_REAR_PLAYER)}
+            buttonStyle={buttonStyle}
+            style={outerStyle}
+            label={game[TEAM1_REAR_PLAYER]}
+          />
+          <RaisedButton
+            className={team2Classes}
+            disabled={this.props.game.isFinished}
+            secondary={true}
+            onClick={this.handleScoreButtonClick(TEAM2_FRONT_PLAYER)}
+            buttonStyle={buttonStyle}
+            style={outerStyle}
+            label={game[TEAM2_FRONT_PLAYER]}
+          />
+          <RaisedButton
+            className={team2Classes}
+            disabled={this.props.game.isFinished}
+            secondary={true}
+            onClick={this.handleScoreButtonClick(TEAM2_REAR_PLAYER)}
+            buttonStyle={buttonStyle}
+            style={outerStyle}
+            label={game[TEAM2_REAR_PLAYER]}
+          />
+        </div>
       </div>
     );
   }
