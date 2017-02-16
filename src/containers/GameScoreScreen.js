@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 import { TEAM1_FRONT_PLAYER, TEAM1_REAR_PLAYER, TEAM2_FRONT_PLAYER, TEAM2_REAR_PLAYER, FRONT_PLAYER, REAR_PLAYER } from '../constants';
 import RaisedButton from 'material-ui/RaisedButton';
-import { addGoal, saveGame, endGame, undoLastGoal } from '../actions';
+import { addGoal, saveGame, endGame, undoLastGoal, cancelGame } from '../actions';
 import { getScoreByPosition, getPlayerByName, applyFnForPositions } from '../helper';
 import { browserHistory } from 'react-router'
 import Snackbar from 'material-ui/Snackbar';
@@ -35,7 +35,7 @@ class GameScoreScreen extends Component {
       losers
     }));
 
-    dispatch(endGame());
+    dispatch(cancelGame());
     browserHistory.push('/');
   };
 
