@@ -39,7 +39,15 @@ export default (state = getInitState(), action) => {
         id: action.playerId
       });
       return Object.assign({}, state, {
-        newGame: Object.assign({}, state.newGame, {scoreTimeline})
+        newGame: Object.assign({}, state.newGame, {scoreTimeline, snackBarOpen: true})
+      });
+
+    case actions.UNDO_LAST_GOAL:
+      return Object.assign({}, state, {
+        newGame: Object.assign({}, state.newGame, {
+          scoreTimeline: state.newGame.scoreTimeline.slice(0, -1),
+          snackBarOpen: false
+        })
       });
 
     case actions.ADD_GAME:

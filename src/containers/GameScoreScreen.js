@@ -2,9 +2,11 @@ import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 import { TEAM1_FRONT_PLAYER, TEAM1_REAR_PLAYER, TEAM2_FRONT_PLAYER, TEAM2_REAR_PLAYER, FRONT_PLAYER, REAR_PLAYER } from '../constants';
 import RaisedButton from 'material-ui/RaisedButton';
-import { addGoal, saveGame, endGame } from '../actions';
+import { addGoal, saveGame, endGame, undoLastGoal } from '../actions';
 import { getScoreByPosition, getPlayerByName, applyFnForPositions } from '../helper';
 import { browserHistory } from 'react-router'
+import Snackbar from 'material-ui/Snackbar';
+import { getPlayerByPosition } from '../helper';
 
 class GameScoreScreen extends Component {
   componentDidUpdate = () => {
@@ -33,11 +35,13 @@ class GameScoreScreen extends Component {
       losers
     }));
 
+    dispatch(endGame());
     browserHistory.push('/');
   };
 
   render() {
     const { game } = this.props;
+    const snackBarOpen = game.snackBarOpen;
     const [t1RearScore, t1FrontScore, t2FrontScore, t2RearScore] = applyFnForPositions(getScoreByPosition);
     const buttonStyle = {height: 180};
     const labelStyle = {fontSize: 20};
@@ -95,8 +99,32 @@ class GameScoreScreen extends Component {
             label={game[TEAM2_REAR_PLAYER]}
           />
         </div>
+        <Snackbar
+          open={snackBarOpen}
+          message={this.getGoalScorerText()}
+          action="undo"
+          autoHideDuration={5000}
+          onActionTouchTap={this.handleUndo}
+        />
       </div>
     );
+  }
+
+  getGoalScorerText = () => {
+    const { game } = this.props;
+
+    if (game.scoreTimeline.length === 0) {
+      return '';
+    }
+
+    const lastGoal = game.scoreTimeline[game.scoreTimeline.length - 1];
+    const goalScorer = getPlayerByPosition(lastGoal.position);
+
+    return `${goalScorer.name} scored a goal!`;
+  }
+
+  handleUndo = () => {
+    this.props.dispatch(undoLastGoal());
   }
 
   handleScoreButtonClick = position => () => {

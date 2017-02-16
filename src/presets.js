@@ -8,5 +8,6 @@ export const NEW_GAME = {
   isFinished: false,
   scoreTimeline: [],
   activeStep: SELECT_PLAYERS_STEP,
-  orderReversed: false
+  orderReversed: false,
+  snackBarOpen: false
 };

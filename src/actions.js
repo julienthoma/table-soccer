@@ -8,6 +8,7 @@ export const ADD_GOAL = 'ADD_GOAL';
 export const SELECT_PLAYER = 'SELECT_PLAYER';
 export const ADD_GAME = 'ADD_GAME';
 export const REVERSE_ORDER = 'REVERSE_ORDER';
+export const UNDO_LAST_GOAL = 'UNDO_LAST_GOAL';
 
 export const updateData = data => ({type: UPDATE_DATA, data});
 export const startGame = () => ({type: START_GAME});
@@ -16,6 +17,7 @@ export const endGame = () => ({type: END_GAME});
 export const reverseOrder = () => ({type: REVERSE_ORDER})
 
 export const addGoal = (playerId, position) => ({type: ADD_GOAL, playerId, position});
+export const undoLastGoal = () => ({type: UNDO_LAST_GOAL});
 export const addGame = game => ({type: ADD_GAME, game});
 
 export const selectPlayer = (player, position) => ({
