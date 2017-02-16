@@ -100,6 +100,9 @@ class GameScoreScreen extends Component {
           />
         </div>
         <Snackbar
+          className='undoContainer'
+          bodyStyle={{height: '100%'}}
+          style={{height: '100%'}}
           open={snackBarOpen}
           message={this.getGoalScorerText()}
           action="undo"
@@ -120,7 +123,7 @@ class GameScoreScreen extends Component {
     const lastGoal = game.scoreTimeline[game.scoreTimeline.length - 1];
     const goalScorer = getPlayerByPosition(lastGoal.position);
 
-    return `${goalScorer.name} scored a goal!`;
+    return (<div style={{marginBottom: 200, fontSize: 24}}>{`${goalScorer.name} scored a goal!`}</div>);
   }
 
   handleUndo = () => {

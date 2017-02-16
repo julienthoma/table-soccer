@@ -36,3 +36,12 @@ body {
 .botitems {
     order: 2;
 }
+
+
+.undoContainer button span {
+    font-size: 40px !important;
+}
+
+.undoContainer button {
+    margin-right: 60px !important;
+}
