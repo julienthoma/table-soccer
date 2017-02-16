@@ -40,6 +40,7 @@ class GameScoreScreen extends Component {
     const { game } = this.props;
     const [t1RearScore, t1FrontScore, t2FrontScore, t2RearScore] = applyFnForPositions(getScoreByPosition);
     const buttonStyle = {height: 180};
+    const labelStyle = {fontSize: 20};
     const outerStyle = {width: 'calc(50% - 5px)', marginBottom: 10};
     const containerStyle = {display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'};
     const reverseOrder = game.reverseOrder;
@@ -60,6 +61,7 @@ class GameScoreScreen extends Component {
             onClick={this.handleScoreButtonClick(TEAM1_FRONT_PLAYER)}
             buttonStyle={buttonStyle}
             style={outerStyle}
+            labelStyle={labelStyle}
             label={game[TEAM1_FRONT_PLAYER]}
           />
           <RaisedButton
@@ -69,6 +71,7 @@ class GameScoreScreen extends Component {
             onClick={this.handleScoreButtonClick(TEAM1_REAR_PLAYER)}
             buttonStyle={buttonStyle}
             style={outerStyle}
+            labelStyle={labelStyle}
             label={game[TEAM1_REAR_PLAYER]}
           />
           <RaisedButton
@@ -78,6 +81,7 @@ class GameScoreScreen extends Component {
             onClick={this.handleScoreButtonClick(TEAM2_FRONT_PLAYER)}
             buttonStyle={buttonStyle}
             style={outerStyle}
+            labelStyle={labelStyle}
             label={game[TEAM2_FRONT_PLAYER]}
           />
           <RaisedButton
@@ -87,6 +91,7 @@ class GameScoreScreen extends Component {
             onClick={this.handleScoreButtonClick(TEAM2_REAR_PLAYER)}
             buttonStyle={buttonStyle}
             style={outerStyle}
+            labelStyle={labelStyle}
             label={game[TEAM2_REAR_PLAYER]}
           />
         </div>
