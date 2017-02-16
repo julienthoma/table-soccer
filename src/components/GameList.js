@@ -23,7 +23,7 @@ const GameList = ({ games, players, handleRowClick }) => {
       </TableHeader>
       <TableBody>
         {
-          games.map((game, index) =>
+          games.slice(0).reverse().map((game, index) =>
           <GameListItem key={index} game={game} handleClick={handleRowClick} players={players}/>
         )}
       </TableBody>
