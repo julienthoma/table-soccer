@@ -1,42 +1,23 @@
 import React from 'react';
-import { FormattedDate } from 'react-intl';
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
-import { POSITIONS } from '../constants';
+import ScoreTimelineSubheadline from './ScoreTimelineSubheadline';
+import ScoreTimelineGoalScorer from './ScoreTimelineGoalScorer';
+import { getTempScoreByGame } from '../helper';
 
 const ScoreTimeline = ({ game }) => {
-  const tableColumnStyle = {padding: '3px', textAlign: 'center'};
-
   return (
-    <Table allRowsSelected={false}>
-      <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
-        <TableRow>
-          <TableHeaderColumn style={tableColumnStyle}>Time</TableHeaderColumn>
-          <TableHeaderColumn style={tableColumnStyle}>Player</TableHeaderColumn>
-          <TableHeaderColumn style={tableColumnStyle}>Position</TableHeaderColumn>
-        </TableRow>
-      </TableHeader>
-      <TableBody displayRowCheckbox={false}>
-        {game.scoreTimeline.map((entry, index) =>
-          <TableRow key={index}>
-            <TableRowColumn style={tableColumnStyle}>
-              <FormattedDate
-                value={entry.timestamp}
-                hour='numeric'
-                minute='numeric'
-                second='numeric'
-              />
-            </TableRowColumn>
-            <TableRowColumn style={tableColumnStyle}>
-              {entry.id}
-            </TableRowColumn>
+    <div>
+      {game.scoreTimeline.map((item, index) => {
+        const score = getTempScoreByGame(game, index);
 
-            <TableRowColumn style={tableColumnStyle}>
-              {POSITIONS[entry.position]}
-            </TableRowColumn>
-          </TableRow>
-        )}
-      </TableBody>
-    </Table>
+        return <div key={index}>
+          <ScoreTimelineSubheadline
+            time={item.timestamp}
+            score={score}
+          />
+          <ScoreTimelineGoalScorer goalScorer={item}/>
+        </div>
+      })}
+    </div>
   );
 };
 

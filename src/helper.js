@@ -22,10 +22,27 @@ export const getScoreByGame = game => [
   game.losers[0].score + game.losers[1].score
 ];
 
+export const getTempScoreByGame = (game, index) => {
+  const subTimeline = game.scoreTimeline.slice(0, index + 1);
+
+  return subTimeline.reduce((score, scorer) => {
+    if (scorer.position === TEAM1_FRONT_PLAYER || scorer.position === TEAM1_REAR_PLAYER) {
+      score[0]++;
+    } else {
+      score[1]++;
+    }
+
+    return score;
+  }, [0, 0]);
+}
+
 // newGame
 export const getPlayerByPosition = position => {
   return getPlayerByName(getState().newGame[position]);
 }
+
+export const getPlayerById = id => getState().players.filter(p => p.id === id)[0];
+
 
 export const getCurrentScore = () => getScoreByGame(getState().newGame);
 
@@ -38,3 +55,12 @@ export const applyFnForPositions = (fn) => [
   fn(TEAM2_FRONT_PLAYER),
   fn(TEAM2_REAR_PLAYER),
 ];
+
+export const isTeam1Goal = goalScorer => {
+  return goalScorer.position === TEAM1_FRONT_PLAYER || goalScorer.position === TEAM1_REAR_PLAYER;
+}
+
+export const isOffensive = goalScorer => {
+  return goalScorer.position === TEAM1_FRONT_PLAYER || goalScorer.position === TEAM2_FRONT_PLAYER;
+}
+
