@@ -7,7 +7,8 @@ export default (state = getInitState(), action) => {
     case actions.UPDATE_DATA:
       return Object.assign({}, state, {
         games: action.data.games,
-        players: action.data.players
+        players: action.data.players,
+        loaded: true
       });
 
     case actions.START_GAME:

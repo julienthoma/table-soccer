@@ -5,10 +5,6 @@ import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'materi
 const GameList = ({ games, players, handleRowClick }) => {
   const tableColumnStyle = {padding: '3px', textAlign: 'center'};
 
-  if (!games || !players || games.length === 0 || players.lenght === 0) {
-    return false;
-  }
-
   return (
     <Table allRowsSelected={false}>
       <TableHeader adjustForCheckbox={false} displaySelectAll={false}>

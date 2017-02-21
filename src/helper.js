@@ -1,4 +1,6 @@
 import { TEAM1_FRONT_PLAYER, TEAM1_REAR_PLAYER, TEAM2_FRONT_PLAYER, TEAM2_REAR_PLAYER, REAR_PLAYER, FRONT_PLAYER} from './constants';
+import Player from './entities/Player';
+import GameCollection from './collections/GameCollection';
 let getState;
 
 export const setGetState = (_getState) => {
@@ -41,10 +43,15 @@ export const getPlayerByPosition = position => {
   return getPlayerByName(getState().newGame[position]);
 }
 
-export const getPlayerById = id => getState().players.filter(p => p.id === id)[0];
+export const getPlayerById = id => {
+  const rawPlayer = getState().players.filter(p => p.id === id)[0];
 
+  if (!rawPlayer) {
+    return null;
+  }
 
-export const getCurrentScore = () => getScoreByGame(getState().newGame);
+  return new Player(rawPlayer, getGamesByPlayerId(id));
+}
 
 // Timeline
 export const getScoreByPosition = pos => getState().newGame.scoreTimeline.filter(e => e.position === pos).length;
@@ -64,3 +71,22 @@ export const isOffensive = goalScorer => {
   return goalScorer.position === TEAM1_FRONT_PLAYER || goalScorer.position === TEAM2_FRONT_PLAYER;
 }
 
+export const getPlayersOfGame = game => game.winners.concat(game.losers);
+
+export const getGamesByPlayerId = id => {
+  return new GameCollection(getState().games.filter(game => {
+    return getPlayersOfGame(game).filter(player => player.id === id).length > 0;
+  }), id);
+}
+
+export const getWinsByPlayerId = id => {
+  return getState().games.filter(game => {
+    return game.winners.filter(player => player.id === id).length > 0;
+  });
+}
+
+export const getLossesByPlayerId = id => {
+  return getState().games.filter(game => {
+    return game.losers.filter(player => player.id === id).length > 0;
+  });
+}

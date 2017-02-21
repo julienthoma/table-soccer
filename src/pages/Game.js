@@ -6,11 +6,6 @@ class Game extends Component {
 
   render() {
     const { games, players } = this.props;
-
-    if (games.length === 0) {
-      return false;
-    }
-
     const id = this.props.params.id;
     const [ game ] = games.filter(game => game.id === id);
 

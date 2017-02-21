@@ -11,7 +11,6 @@ class Games extends Component {
   render() {
     const { games, players } = this.props;
 
-
     return (
       <GameList games={games} handleRowClick={this.handleRowClick} players={players}/>
     );

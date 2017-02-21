@@ -12,6 +12,12 @@ class App extends Component {
   }
 
   render() {
+    const { loaded } = this.props;
+
+    if (!loaded) {
+      return false;
+    }
+
     return (
       <div>
         <CustomToolbar />
@@ -22,15 +28,10 @@ class App extends Component {
       </div>
     );
   }
-
-  handleAddClick = () => {
-    console.log('addclick');
-  }
 }
 
 const mapStateToProps = state => ({
-  games: state.games,
-  players: state.players
+  loaded: state.loaded
 });
 
 const _App = connect(mapStateToProps)(App);

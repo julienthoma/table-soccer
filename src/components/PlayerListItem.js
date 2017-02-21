@@ -3,12 +3,6 @@ import {TableRow, TableRowColumn} from 'material-ui/Table';
 
 const PlayerListItem = ({player, handleClick}) => {
   const tableColumnStyle = {padding: '3px', textAlign: 'center'};
-
-  const lossCount = player.losses.length;
-  const winCount = player.wins.length;
-  const gameCount = lossCount + winCount;
-  const winPercentage = Math.round(winCount / gameCount * 100);
-
   return (
       <TableRow
         onClick={handleClick ? handleClick : ''}
@@ -17,16 +11,16 @@ const PlayerListItem = ({player, handleClick}) => {
           {player.id}
         </TableRowColumn>
         <TableRowColumn style={tableColumnStyle}>
-        {gameCount}
+          {player.games.count()}
         </TableRowColumn>
         <TableRowColumn style={tableColumnStyle}>
-          {winCount}
+          {player.games.getWinPercent()}
         </TableRowColumn>
         <TableRowColumn style={tableColumnStyle}>
-          {lossCount}
+          {player.games.getGoalsByPlayer()}
         </TableRowColumn>
         <TableRowColumn style={tableColumnStyle}>
-          {winPercentage ? winPercentage + '%' : '-'}
+          {player.games.getGpgByPlayer()}
         </TableRowColumn>
       </TableRow>
   );
