@@ -13,8 +13,8 @@ export const calcFactor = (ratingA, ratingB) => {
 export const calc2v2 = (ratingA1, ratingA2, ratingB1, ratingB2) => {
   const ratingB = Math.round((ratingB1 + ratingB2) / 2);
 
-  const chanceA2 = calcFactor(ratingA2, ratingB) * 0.5
-  const chanceA1 = calcFactor(ratingA1, ratingB) * 0.5;
+  const chanceA2 = calcFactor(ratingA2, ratingB) * 0.3;
+  const chanceA1 = calcFactor(ratingA1, ratingB) * 0.7;
 
   return chanceA1 + chanceA2;
 }
@@ -22,28 +22,23 @@ export const calc2v2 = (ratingA1, ratingA2, ratingB1, ratingB2) => {
 export const calcScore = (p1, p2, p3, p4, game) => {
   let chance = calc2v2(p1.elo, p2.elo, p3.elo, p4.elo);
 
-  if (!p1.isWinner) {
-    chance = -1 * (1 - chance);
-  }
-
   let multiplier = 50;
 
-  const position = game.getPlayerPosition(p1.id);
+  const goals = game.getGoalsByPlayer(p1.id).length;
+  let bonus = (1 + (goals / 30));
+  const score = game.getScore();
+  const goalAgainst = p1.isWinner ? score.loser : score.winner;
 
-  if (position === FRONT_PLAYER) {
-    const goals = game.getGoalsByPlayer(p1.id).length;
-    console.log(goals);
+  bonus *= (1 + ((6 - goalAgainst) / 30));
 
-    multiplier *= (1 + (goals / 20));
-  } else {
-    const score = game.getScore();
-    const goalAgainst = p1.isWinner ? score.loser : score.winner;
-    console.log(goalAgainst);
-
-    multiplier *= (1 + ((6 - goalAgainst) / 20));
+  if (!p1.isWinner) {
+    chance = -1 * (1 - chance);
+    bonus = 1 - (bonus - 1);
   }
 
-  return Math.round(chance * multiplier);
+  console.log(p1.id, p1.elo, p1.isWinner, game.getGoalsByPlayer(p1.id).length, chance, bonus, Math.round(chance * multiplier * bonus));
+
+  return Math.round(chance * multiplier * bonus);
 }
 
 export const calcPlayerElos = () => {
