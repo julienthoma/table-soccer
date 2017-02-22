@@ -7,12 +7,15 @@ export default class GameCollection extends Collection {
     this.owner = owner;
   }
 
-  filterByPlayer = id => this.items.filter(game => game.playerParticipates(id));
+  filterByPlayer = id => new GameCollection(this.items.filter(game => game.playerParticipates(id)), id);
+
   filterByPosition = (position, id = this.owner) => new GameCollection(this.items.filter(game => game.getPlayers().filter(player => {
     return player.position === position && player.id === id;
   }).length > 0), id);
+
   filterByPlayerWins = (id = this.owner) =>
     new GameCollection(this.items.filter(game => game.raw.winners.filter(winner => winner.id === id).length > 0), id);
+
   filterByPlayerLosses = (id = this.owner) =>
     new GameCollection(this.items.filter(game => game.raw.losers.filter(loser => loser.id === id).length > 0), id);
 

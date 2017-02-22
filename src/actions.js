@@ -1,4 +1,5 @@
 import { load, post } from './api';
+import { calcPlayerElos } from './services/elo';
 
 export const UPDATE_DATA = 'UPDATE_DATA';
 export const START_GAME = 'START_GAME';
@@ -9,8 +10,10 @@ export const SELECT_PLAYER = 'SELECT_PLAYER';
 export const ADD_GAME = 'ADD_GAME';
 export const REVERSE_ORDER = 'REVERSE_ORDER';
 export const UNDO_LAST_GOAL = 'UNDO_LAST_GOAL';
+export const SET_ELO = 'SET_ELO';
 
 export const updateData = data => ({type: UPDATE_DATA, data});
+export const setElo = elos => ({type: SET_ELO, elos});
 export const startGame = () => ({type: START_GAME});
 export const cancelGame = () => ({type: CANCEL_GAME});
 export const endGame = () => ({type: END_GAME});
@@ -32,6 +35,7 @@ export const getData = () => (dispatch, getState) => {
     data => {
       console.log(data);
       dispatch(updateData(data));
+      dispatch(setElo(calcPlayerElos()));
     },
     error => {
       console.log('Error')

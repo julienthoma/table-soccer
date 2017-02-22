@@ -12,7 +12,7 @@ class Player extends Component {
     const firstColumnStyle = {padding: '3px', textAlign: 'left', color: 'rgb(158, 158, 158)', fontSize: 12};
 
     return <div>
-      <h1>{player.name} ({player.id})</h1>
+      <h1>{player.name} ({player.id}) - {player.elo}</h1>
       <Table allRowsSelected={false}>
         <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
           <TableRow>
@@ -101,10 +101,10 @@ class Player extends Component {
               {player.games.getDurationString()}
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
-              {player.games.filterByPlayerLosses().filterByPosition(FRONT_PLAYER).getDurationString()}
+              {player.games.filterByPosition(FRONT_PLAYER).getDurationString()}
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
-              {player.games.filterByPlayerLosses().filterByPosition(REAR_PLAYER).getDurationString()}
+              {player.games.filterByPosition(REAR_PLAYER).getDurationString()}
             </TableRowColumn>
           </TableRow>
         </TableBody>

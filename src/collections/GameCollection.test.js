@@ -5,22 +5,22 @@ describe('Game Collection', () => {
   it('filterByPlayer', () => {
     const gameCollection = new GameCollection(testData.games);
 
-    expect(gameCollection.filterByPlayer('jth').length).toEqual(12);
-    expect(gameCollection.filterByPlayer('chr').length).toEqual(9);
+    expect(gameCollection.filterByPlayer('jth').count()).toEqual(12);
+    expect(gameCollection.filterByPlayer('chr').count()).toEqual(9);
   });
 
   it('filterByPlayerWins', () => {
     const gameCollection = new GameCollection(testData.games);
 
-    expect(gameCollection.filterByPlayerWins('jth').length).toEqual(5);
-    expect(gameCollection.filterByPlayerWins('chr').length).toEqual(7);
+    expect(gameCollection.filterByPlayerWins('jth').count()).toEqual(5);
+    expect(gameCollection.filterByPlayerWins('chr').count()).toEqual(7);
   });
 
   it('filterByPlayerLosses', () => {
     const gameCollection = new GameCollection(testData.games);
 
-    expect(gameCollection.filterByPlayerLosses('jth').length).toEqual(7);
-    expect(gameCollection.filterByPlayerLosses('chr').length).toEqual(2);
+    expect(gameCollection.filterByPlayerLosses('jth').count()).toEqual(7);
+    expect(gameCollection.filterByPlayerLosses('chr').count()).toEqual(2);
   });
 
   it('getDuration', () => {
@@ -32,8 +32,8 @@ describe('Game Collection', () => {
   it('filterPlayerByPosition', () => {
     const gameCollection = new GameCollection(testData.games);
 
-    expect(gameCollection.filterByPosition('jth', 'front').length).toEqual(6);
-    expect(gameCollection.filterByPosition('jth', 'rear').length).toEqual(6);
+    expect(gameCollection.filterByPosition('front', 'jth').count()).toEqual(6);
+    expect(gameCollection.filterByPosition('rear', 'chr').count()).toEqual(5);
   });
 
   it('getGoalsByPlayer', () => {

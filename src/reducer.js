@@ -62,6 +62,14 @@ export default (state = getInitState(), action) => {
         [action.position]: action.player
     })});
 
+    case actions.SET_ELO:
+      const players = state.players.slice(0);
+      players.forEach(player => {
+        player.elo = action.elos[player.id];
+      });
+
+      return {...state, players};
+
     default:
       return state;
   }

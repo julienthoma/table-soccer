@@ -19,6 +19,14 @@ export const getWinnerLoserPlayersByGame = game => {
   ];
 }
 
+export const getGames = () => {
+  return new GameCollection(getState().games);
+}
+
+export const getPlayers = () => {
+  return getState().players;
+}
+
 export const getScoreByGame = game => [
   game.winners[0].score + game.winners[1].score,
   game.losers[0].score + game.losers[1].score
@@ -80,13 +88,13 @@ export const getGamesByPlayerId = id => {
 }
 
 export const getWinsByPlayerId = id => {
-  return getState().games.filter(game => {
+  return new GameCollection(getState().games.filter(game => {
     return game.winners.filter(player => player.id === id).length > 0;
-  });
+  }), id);
 }
 
 export const getLossesByPlayerId = id => {
-  return getState().games.filter(game => {
+  return new GameCollection(getState().games.filter(game => {
     return game.losers.filter(player => player.id === id).length > 0;
-  });
+  }), id);
 }

@@ -16,7 +16,7 @@ class Players extends Component {
     const tableColumnStyle = {padding: '3px', textAlign: 'center'};
 
     const playerWithGames = players.map(player => getPlayerById(player.id)).sort((a, b) => {
-      return b.games.getGpgByPlayer() - a.games.getGpgByPlayer()
+      return b.elo - a.elo
     });
 
     return <Table allRowsSelected={false}>
@@ -25,7 +25,7 @@ class Players extends Component {
           <TableHeaderColumn style={tableColumnStyle}>Name</TableHeaderColumn>
           <TableHeaderColumn style={tableColumnStyle}>Games</TableHeaderColumn>
           <TableHeaderColumn style={tableColumnStyle}>Wins%</TableHeaderColumn>
-          <TableHeaderColumn style={tableColumnStyle}>Goals</TableHeaderColumn>
+          <TableHeaderColumn style={tableColumnStyle}>MMR</TableHeaderColumn>
           <TableHeaderColumn style={tableColumnStyle}>GPG</TableHeaderColumn>
         </TableRow>
       </TableHeader>
