@@ -1,5 +1,5 @@
 import { load, post } from './api';
-import { calcPlayerElos } from './services/elo';
+import { calcGameElos } from './services/elo';
 
 export const UPDATE_DATA = 'UPDATE_DATA';
 export const START_GAME = 'START_GAME';
@@ -33,9 +33,8 @@ export const getData = () => (dispatch, getState) => {
   const url = '/data';
   load(url).then(
     data => {
-      console.log(data);
       dispatch(updateData(data));
-      dispatch(setElo(calcPlayerElos()));
+      dispatch(setElo(calcGameElos()));
     },
     error => {
       console.log('Error')

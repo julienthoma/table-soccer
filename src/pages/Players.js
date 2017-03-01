@@ -16,7 +16,7 @@ class Players extends Component {
     const tableColumnStyle = {padding: '3px', textAlign: 'center'};
 
     const playerWithGames = players.map(player => getPlayerById(player.id)).sort((a, b) => {
-      return b.elo - a.elo
+      return b.getElo() - a.getElo()
     });
 
     return <Table allRowsSelected={false}>

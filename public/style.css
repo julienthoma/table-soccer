@@ -5,6 +5,24 @@ body {
     cursor: pointer;
 }
 
+.headline {
+    color: #6d6d6d;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.winstreak-icon {
+    position: relative;
+    font-size: 15px;
+}
+
+.hotnumber {
+    position: absolute;
+    color: black;
+    top: -8px;
+    font-weight: 600;
+    right: -2px;
+}
+
 .score h1 {
     padding: 0 30px;
     line-height: 90px;
@@ -91,4 +109,55 @@ body {
 
 .scoretimeline__goalscorer > div:last-of-type {
     border-left: 1px solid #979797;
+}
+
+.game-list-item {
+    color: #6d6d6d;
+    font-family: 'Roboto Condensed', serif;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px 0;
+}
+
+.game-list-item:nth-of-type(even) {
+    background: #f3f3f3;
+}
+
+.game-list-item__date {
+    text-align: right;
+    color: #BDBDBD;
+    padding: 0 5px;
+    font-style: italic;
+}
+
+.game-list-item__score {
+    font-size: 46px;
+    padding: 0 5px;
+    margin-top: 15px;
+    color: #BDBDBD;
+}
+
+.game-list-item__left,
+.game-list-item__right {
+    flex-basis: 100px;
+    flex-shrink: 0;
+}
+
+.game-list-item__bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-list-item__player {
+    text-align: center;
+    font-size: 20px;
+    padding: 5px;
+}
+
+.game-list-item__player-name {
+    display: flex;
+}
+
+.game-list-item__player-score {
+    font-size: 16px;
 }

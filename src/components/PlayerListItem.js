@@ -17,7 +17,7 @@ const PlayerListItem = ({player, handleClick}) => {
           {player.games.getWinPercent()}
         </TableRowColumn>
         <TableRowColumn style={tableColumnStyle}>
-          {player.elo}
+          {player.getElo()}
         </TableRowColumn>
         <TableRowColumn style={tableColumnStyle}>
           {player.games.getGpgByPlayer()}

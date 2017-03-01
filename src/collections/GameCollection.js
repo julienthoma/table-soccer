@@ -43,5 +43,16 @@ export default class GameCollection extends Collection {
 
     return ((wins / this.count()) * 100).toFixed(0) + '%';
   }
+
+  orderByDate() {
+    this.items = this.items.sort((a, b) => {
+      const dateA = new Date(a.startdate);
+      const dateB = new Date(b.startdate);
+
+      return dateB.getTime() - dateA.getTime();
+    });
+
+    return this;
+  }
 }
 

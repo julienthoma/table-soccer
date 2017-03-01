@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import GameDetail from '../components/GameDetail';
+import GameEntity from '../entities/Game';
 import { connect } from 'react-redux';
 
 class Game extends Component {
-
   render() {
     const { games, players } = this.props;
     const id = this.props.params.id;
     const [ game ] = games.filter(game => game.id === id);
 
-    return (<GameDetail game={game} players={players}/>);
+    return (<GameDetail game={new GameEntity(game)} players={players}/>);
   }
 }
 

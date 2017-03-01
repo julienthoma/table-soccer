@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GameList from '../components/GameList';
 import { browserHistory } from 'react-router'
+import GameCollection from '../collections/GameCollection';
 
 class Games extends Component {
   handleRowClick = game => () => {
@@ -9,10 +10,10 @@ class Games extends Component {
   };
 
   render() {
-    const { games, players } = this.props;
+    const { games } = this.props;
 
     return (
-      <GameList games={games} handleRowClick={this.handleRowClick} players={players}/>
+      <GameList games={new GameCollection(games)} handleRowClick={this.handleRowClick} />
     );
   };
 }

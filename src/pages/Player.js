@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import WinStreakIcon from '../components/WinStreakIcon';
 import {Table, TableBody, TableRow, TableRowColumn, TableHeader, TableHeaderColumn} from 'material-ui/Table';
-import { getPlayerById } from '../helper';
+import { getPlayerById, getGamesByPlayerId } from '../helper';
 import { REAR_PLAYER, FRONT_PLAYER } from '../constants';
+import { browserHistory } from 'react-router'
+import GameList from '../components/GameList';
 
 class Player extends Component {
+  handleRowClick = game => () => {
+    browserHistory.push('/game/' + game.id);
+  }
   render() {
     const id = this.props.params.id;
     const player = getPlayerById(id);
     const tableColumnStyle = {padding: '3px', textAlign: 'left'};
     const firstColumnStyle = {padding: '3px', textAlign: 'left', color: 'rgb(158, 158, 158)', fontSize: 12};
 
-    return <div>
-      <h1>{player.name} ({player.id}) - {player.elo}</h1>
+    return <div className="headline">
+      <h1 className="headline">{player.name} - {player.getElo() }<WinStreakIcon count={player.getWinStreak()}/></h1>
       <Table allRowsSelected={false}>
         <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
           <TableRow>
@@ -109,6 +115,8 @@ class Player extends Component {
           </TableRow>
         </TableBody>
       </Table>
+      <h2>Games</h2>
+      <GameList games={getGamesByPlayerId(id)} handleRowClick={this.handleRowClick} />
     </div>
   }
 }

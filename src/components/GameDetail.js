@@ -1,5 +1,6 @@
 import React from 'react';
 import ScoreTimeline from '../components/ScoreTimeline';
+import GameListItem from '../components/GameListItem';
 
 const GameDetail = ({ game, players }) => {
 
@@ -8,7 +9,8 @@ const GameDetail = ({ game, players }) => {
 
   return (
     <div>
-      <ScoreTimeline game={game} players={players}/>
+      <GameListItem game={game} handleClick={() => false} />
+      <ScoreTimeline game={game} players={players} />
     </div>
   );
 };

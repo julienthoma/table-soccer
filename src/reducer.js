@@ -7,8 +7,7 @@ export default (state = getInitState(), action) => {
     case actions.UPDATE_DATA:
       return Object.assign({}, state, {
         games: action.data.games,
-        players: action.data.players,
-        loaded: true
+        players: action.data.players
       });
 
     case actions.START_GAME:
@@ -63,12 +62,14 @@ export default (state = getInitState(), action) => {
     })});
 
     case actions.SET_ELO:
-      const players = state.players.slice(0);
-      players.forEach(player => {
-        player.elo = action.elos[player.id];
-      });
-
-      return {...state, players};
+      return {
+        ...state,
+        loaded: true,
+        games: state.games.map(game => ({
+          ...game,
+          elo: action.elos[game.id]
+        }))
+      };
 
     default:
       return state;
