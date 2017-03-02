@@ -26,7 +26,7 @@ class Players extends Component {
           <TableHeaderColumn style={tableColumnStyle}>Games</TableHeaderColumn>
           <TableHeaderColumn style={tableColumnStyle}>Wins%</TableHeaderColumn>
           <TableHeaderColumn style={tableColumnStyle}>MMR</TableHeaderColumn>
-          <TableHeaderColumn style={tableColumnStyle}>GPG</TableHeaderColumn>
+          <TableHeaderColumn style={tableColumnStyle}>GPW</TableHeaderColumn>
         </TableRow>
       </TableHeader>
       <TableBody>

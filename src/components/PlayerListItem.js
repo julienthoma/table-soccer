@@ -20,7 +20,7 @@ const PlayerListItem = ({player, handleClick}) => {
           {player.getElo()}
         </TableRowColumn>
         <TableRowColumn style={tableColumnStyle}>
-          {player.games.getGpgByPlayer()}
+          {player.games.getGpwByPlayer()}
         </TableRowColumn>
       </TableRow>
   );

@@ -34,6 +34,16 @@ export default class GameCollection extends Collection {
     return (goals / this.count()).toFixed(2);
   }
 
+  getGpwByPlayer = () => {
+    const goals = this.filterByPlayerWins().getGoalsByPlayer();
+
+    if (goals === 0) {
+      return 0
+    }
+
+    return (goals / this.filterByPlayerWins().count()).toFixed(2);
+  }
+
   getWinPercent = () => {
     const wins = this.filterByPlayerWins().count();
 

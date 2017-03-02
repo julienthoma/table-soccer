@@ -45,6 +45,20 @@ class Player extends Component {
           </TableRow>
           <TableRow>
             <TableRowColumn style={firstColumnStyle}>
+              Gpw
+            </TableRowColumn>
+            <TableRowColumn style={tableColumnStyle}>
+              {player.games.getGpwByPlayer()}
+            </TableRowColumn>
+            <TableRowColumn style={tableColumnStyle}>
+              {player.games.filterByPosition(FRONT_PLAYER).getGpwByPlayer()}
+            </TableRowColumn>
+            <TableRowColumn style={tableColumnStyle}>
+              {player.games.filterByPosition(REAR_PLAYER).getGpwByPlayer()}
+            </TableRowColumn>
+          </TableRow>
+          <TableRow>
+            <TableRowColumn style={firstColumnStyle}>
               Goals
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
@@ -87,7 +101,7 @@ class Player extends Component {
           </TableRow>
           <TableRow>
             <TableRowColumn style={firstColumnStyle}>
-              Goals
+              Losses
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
               {player.games.filterByPlayerLosses().count()}
