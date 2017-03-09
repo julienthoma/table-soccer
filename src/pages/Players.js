@@ -4,7 +4,6 @@ import PlayerListItem from '../components/PlayerListItem';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
 import { getPlayerById } from '../helper';
 import { browserHistory } from 'react-router'
-import Player from '../entities/Player';
 
 class Players extends Component {
   handleRowClick = player => () => {

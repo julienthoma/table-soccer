@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
 import Home from 'material-ui/svg-icons/action/home';
+import ViewModule from 'material-ui/svg-icons/action/view-module';
 import AccountBox from 'material-ui/svg-icons/action/account-box';
 import {Link} from 'react-router'
 import {withRouter} from 'react-router'
@@ -31,6 +32,13 @@ class CustomToolbar extends Component {
           containerElement={<Link to="/players" />}
         >
           <AccountBox />
+        </IconButton>
+        <IconButton
+          iconStyle={iconStyle}
+          style={{padding: '5px'}}
+          containerElement={<Link to="/combos" />}
+        >
+          <ViewModule />
         </IconButton>
       </ToolbarGroup>
     </Toolbar>

@@ -15,6 +15,7 @@ import Players from './pages/Players';
 import Player from './pages/Player';
 import Game from './pages/Game';
 import NewGame from './pages/NewGame';
+import Combos from './pages/Combos';
 import de from 'react-intl/locale-data/de';
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -43,6 +44,7 @@ render(
                   <Route path="/players" component={Players} />
                   <Route path="/player/:id" component={Player} />
                   <Route path="/new" component={NewGame} />
+                  <Route path="/combos" component={Combos} />
               </Route>
           </Router>
       </MuiThemeProvider>

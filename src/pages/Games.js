@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import GameList from '../components/GameList';
 import { browserHistory } from 'react-router'
 import GameCollection from '../collections/GameCollection';
+import Combos from './Combos';
 
 class Games extends Component {
   handleRowClick = game => () => {
@@ -13,7 +14,7 @@ class Games extends Component {
     const { games } = this.props;
 
     return (
-      <GameList games={new GameCollection(games)} handleRowClick={this.handleRowClick} />
+        <GameList games={new GameCollection(games)} handleRowClick={this.handleRowClick} />
     );
   };
 }
