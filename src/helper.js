@@ -24,7 +24,7 @@ export const getGames = () => {
 }
 
 export const getPlayers = () => {
-  return getState().players;
+  return getState().players.filter(_player => _player.id !== 'guest');
 }
 
 export const getScoreByGame = game => [

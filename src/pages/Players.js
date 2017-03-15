@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PlayerListItem from '../components/PlayerListItem';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
-import { getPlayerById } from '../helper';
+import { getPlayerById, getPlayers } from '../helper';
 import { browserHistory } from 'react-router'
 
 class Players extends Component {
@@ -11,10 +11,9 @@ class Players extends Component {
   };
 
   render() {
-    const {games, players} = this.props;
     const tableColumnStyle = {padding: '3px', textAlign: 'center'};
 
-    const playerWithGames = players.map(player => getPlayerById(player.id)).sort((a, b) => {
+    const playerWithGames = getPlayers().map(player => getPlayerById(player.id)).sort((a, b) => {
       return b.getElo() - a.getElo()
     });
 
