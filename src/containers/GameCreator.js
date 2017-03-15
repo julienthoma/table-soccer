@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton';
-import { startGame, cancelGame, reverseOrder } from '../actions';
+import { startGame, cancelGame, rotatePlayers } from '../actions';
 import GameScoreScreen from './GameScoreScreen';
 import PlayerSelection from './PlayerSelection';
 import IconButton from 'material-ui/IconButton';
@@ -25,13 +25,14 @@ class GameCreator extends Component {
         content = this.renderActiveGame();
         break;
       case GAME_END_STEP:
+        content = this.renderGameEnd();
     }
 
     return <div>{ content }</div>;
   };
 
   handleRotateClick = () => {
-    this.props.dispatch(reverseOrder());
+    this.props.dispatch(rotatePlayers());
   }
 
   renderSelectPlayers = () => (
@@ -66,10 +67,6 @@ class GameCreator extends Component {
       />
     </div>
   );
-
-  renderGameEnd = () => {
-    return (<div>hello</div>)
-  }
 
   startNewGame = () => this.props.dispatch(startGame());
   cancelActiveGame = () => {

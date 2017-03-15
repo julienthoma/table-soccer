@@ -7,12 +7,21 @@ import { TEAM1_FRONT_PLAYER, TEAM1_REAR_PLAYER, TEAM2_FRONT_PLAYER, TEAM2_REAR_P
 
 class PlayerSelection extends Component {
   componentWillMount() {
-    const { players, dispatch } = this.props;
+    const { players, dispatch, game } = this.props;
 
-    dispatch(selectPlayer(players[0].name, TEAM1_FRONT_PLAYER));
-    dispatch(selectPlayer(players[1].name, TEAM1_REAR_PLAYER));
-    dispatch(selectPlayer(players[2].name, TEAM2_FRONT_PLAYER));
-    dispatch(selectPlayer(players[3].name, TEAM2_REAR_PLAYER));
+    if (!game[TEAM1_FRONT_PLAYER]) {
+      dispatch(selectPlayer(players[0].name, TEAM1_FRONT_PLAYER));
+      dispatch(selectPlayer(players[1].name, TEAM1_REAR_PLAYER));
+      dispatch(selectPlayer(players[2].name, TEAM2_FRONT_PLAYER));
+      dispatch(selectPlayer(players[3].name, TEAM2_REAR_PLAYER));
+
+      return;
+    }
+
+    dispatch(selectPlayer(game[TEAM1_FRONT_PLAYER], TEAM1_FRONT_PLAYER));
+    dispatch(selectPlayer(game[TEAM1_REAR_PLAYER], TEAM1_REAR_PLAYER));
+    dispatch(selectPlayer(game[TEAM2_FRONT_PLAYER], TEAM2_FRONT_PLAYER));
+    dispatch(selectPlayer(game[TEAM2_REAR_PLAYER], TEAM2_REAR_PLAYER));
   }
 
   render() {
@@ -24,18 +33,13 @@ class PlayerSelection extends Component {
     const team1RearPlayer = game[TEAM1_REAR_PLAYER];
     const team2FrontPlayer = game[TEAM2_FRONT_PLAYER];
     const team2RearPlayer = game[TEAM2_REAR_PLAYER];
-    const containerStyle = {display: 'flex', flexWrap: 'wrap', flexDirection: 'row-reverse', justifyContent: 'space-between'};
+    const containerStyle = {display: 'flex', flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-between'};
     const selectStyle = {width: 'calc(100% - 6px)', margin: '40px 3px 0 3px', color: 'white'}
     const labelStyle = {color: 'white', textTransform: 'uppercase', paddingRight: 45, fontSize: 14}
-    const reverseOrder = game.reverseOrder;
-
-    const team1Classes = 'team1 ' + (reverseOrder ? 'botitems' : 'topitems');
-    const team2Classes = 'team2 ' + (reverseOrder ? 'topitems' : 'botitems');
-
     return (
       <div>
         <div style={containerStyle}>
-          <div style={fieldStyle} className={team1Classes}>
+          <div style={fieldStyle}  className="team1 topitems">
             <SelectField
               value={team1FrontPlayer}
               floatingLabelText="STURM"
@@ -47,7 +51,7 @@ class PlayerSelection extends Component {
             </SelectField>
           </div>
 
-          <div style={fieldStyle} className={team1Classes}>
+          <div style={fieldStyle} className="team1 topitems">
             <SelectField
               value={team1RearPlayer}
               floatingLabelText="ABWEHR"
@@ -59,7 +63,7 @@ class PlayerSelection extends Component {
             </SelectField>
           </div>
 
-          <div style={fieldStyle} className={team2Classes}>
+          <div style={fieldStyle} className="team2 botitems">
             <SelectField
               value={team2RearPlayer}
               floatingLabelText="ABWEHR"
@@ -71,7 +75,7 @@ class PlayerSelection extends Component {
             </SelectField>
           </div>
 
-          <div style={fieldStyle} className={team2Classes}>
+          <div style={fieldStyle} className="team2 botitems">
             <SelectField
               value={team2FrontPlayer}
               floatingLabelText="STURM"

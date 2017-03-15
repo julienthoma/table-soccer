@@ -33,10 +33,6 @@ export const post = (url, data) => {
 
     request.onload = function() {
       if (request.status === 200) {
-        if (!request.response) {
-          reject(new Error('Invalid Response'));
-        }
-
         resolve(request.response)
       }
 

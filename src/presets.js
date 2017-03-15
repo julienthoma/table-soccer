@@ -5,9 +5,7 @@ export const NEW_GAME = {
   enddate: null,
   winners: [],
   losers: [],
-  isFinished: false,
   scoreTimeline: [],
   activeStep: SELECT_PLAYERS_STEP,
-  orderReversed: false,
   snackBarOpen: false
 };

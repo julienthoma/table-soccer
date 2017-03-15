@@ -20,16 +20,23 @@ export default (state = getInitState(), action) => {
     case actions.CANCEL_GAME:
       return Object.assign({}, state, { newGame: NEW_GAME});
 
-    case actions.REVERSE_ORDER:
-      return Object.assign({}, state, { newGame: Object.assign({}, state.newGame, {
-        reverseOrder: !state.newGame.reverseOrder
-      })});
+    case actions.ROTATE_PLAYERS:
+      return { ...state, newGame: {
+        ...state.newGame,
+        team1RearPlayer: state.newGame.team1FrontPlayer,
+        team1FrontPlayer: state.newGame.team2RearPlayer,
+        team2RearPlayer: state.newGame.team2FrontPlayer,
+        team2FrontPlayer: state.newGame.team1RearPlayer
+      }}
 
     case actions.END_GAME:
-      return Object.assign({}, state, { newGame: Object.assign({}, state.newGame, {
-        activeStep: GAME_END_STEP,
-        isFinished: true
-      })});
+      return { ...state, newGame: {
+        ...NEW_GAME,
+        team1RearPlayer: state.newGame.team1FrontPlayer,
+        team1FrontPlayer: state.newGame.team2RearPlayer,
+        team2RearPlayer: state.newGame.team2FrontPlayer,
+        team2FrontPlayer: state.newGame.team1RearPlayer
+      }}
 
     case actions.ADD_GOAL:
       const scoreTimeline = state.newGame.scoreTimeline.slice(0);
@@ -39,7 +46,7 @@ export default (state = getInitState(), action) => {
         id: action.playerId
       });
       return Object.assign({}, state, {
-        newGame: Object.assign({}, state.newGame, {scoreTimeline, snackBarOpen: true})
+        newGame: Object.assign({}, state.newGame, {scoreTimeline, snackBarOpen: false})
       });
 
     case actions.UNDO_LAST_GOAL:

@@ -12,7 +12,7 @@ class GameScoreScreen extends Component {
   componentDidUpdate = () => {
     const { dispatch, game } = this.props;
 
-    if (!this.isGameFinished() || game.isFinished) {
+    if (!this.isGameFinished()) {
       return;
     }
 
@@ -34,9 +34,6 @@ class GameScoreScreen extends Component {
       winners,
       losers
     }));
-
-    dispatch(cancelGame());
-    browserHistory.push('/');
   };
 
   render() {
@@ -82,21 +79,21 @@ class GameScoreScreen extends Component {
             className={team2Classes}
             disabled={this.props.game.isFinished}
             secondary={true}
-            onClick={this.handleScoreButtonClick(TEAM2_FRONT_PLAYER)}
-            buttonStyle={buttonStyle}
-            style={outerStyle}
-            labelStyle={labelStyle}
-            label={game[TEAM2_FRONT_PLAYER]}
-          />
-          <RaisedButton
-            className={team2Classes}
-            disabled={this.props.game.isFinished}
-            secondary={true}
             onClick={this.handleScoreButtonClick(TEAM2_REAR_PLAYER)}
             buttonStyle={buttonStyle}
             style={outerStyle}
             labelStyle={labelStyle}
             label={game[TEAM2_REAR_PLAYER]}
+          />
+          <RaisedButton
+            className={team2Classes}
+            disabled={this.props.game.isFinished}
+            secondary={true}
+            onClick={this.handleScoreButtonClick(TEAM2_FRONT_PLAYER)}
+            buttonStyle={buttonStyle}
+            style={outerStyle}
+            labelStyle={labelStyle}
+            label={game[TEAM2_FRONT_PLAYER]}
           />
         </div>
         <Snackbar
