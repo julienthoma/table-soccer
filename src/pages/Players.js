@@ -13,7 +13,7 @@ class Players extends Component {
   render() {
     const tableColumnStyle = {padding: '3px', textAlign: 'center'};
 
-    const playerWithGames = getPlayers().map(player => getPlayerById(player.id)).sort((a, b) => {
+    const playerWithGames = getPlayers().filter(_player => _player.id !== 'guest').map(player => getPlayerById(player.id)).sort((a, b) => {
       return b.getElo() - a.getElo()
     });
 
