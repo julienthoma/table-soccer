@@ -10,7 +10,7 @@
   "author": "Julien Thoma",
   "license": "ISC",
   "engines": {
-    "node": "7.3"
+    "node": ">= 7.6.0"
   },
   "dependencies": {
     "babel": "^6.5.2",
