@@ -13,6 +13,8 @@ body {
 .winstreak-icon {
     position: relative;
     font-size: 15px;
+    max-width: 24px;
+    display: inline-block;
 }
 
 .hotnumber {
@@ -55,6 +57,14 @@ body {
     order: 2;
 }
 
+.player-selection > div:nth-of-type(3) {
+    order: 2;
+    background: rgb(255, 64, 129);
+}
+
+.player-selection > div:nth-of-type(4) {
+    background: rgb(255, 64, 129);
+}
 
 .undoContainer button span {
     font-size: 40px !important;
@@ -198,3 +208,4 @@ body {
     font-size: 11px;
     font-style: italic;
 }
+

@@ -1,26 +1,27 @@
 import React from 'react';
-import {TableRow, TableRowColumn} from 'material-ui/Table';
+import { TableRow, TableRowColumn } from 'material-ui/Table';
 
-const PlayerListItem = ({player, handleClick}) => {
+/**
+ *
+ * @param {PlayerEntity} player
+ * @param handleClick
+ * @constructor
+ */
+const PlayerListItem = ({ player, handleClick }) => {
   const tableColumnStyle = {padding: '3px', textAlign: 'center'};
   return (
-      <TableRow
-        onClick={handleClick ? handleClick : ''}
-      >
+      <TableRow onClick={handleClick}>
         <TableRowColumn style={tableColumnStyle}>
           {player.id}
         </TableRowColumn>
         <TableRowColumn style={tableColumnStyle}>
-          {player.games.count()}
+          {player.games}
         </TableRowColumn>
         <TableRowColumn style={tableColumnStyle}>
-          {player.games.getWinPercent()}
+          {player.getWinPercent()}
         </TableRowColumn>
         <TableRowColumn style={tableColumnStyle}>
-          {player.getElo()}
-        </TableRowColumn>
-        <TableRowColumn style={tableColumnStyle}>
-          {player.games.getGpwByPlayer()}
+          {player.elo}
         </TableRowColumn>
       </TableRow>
   );

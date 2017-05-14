@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { getData } from '../actions';
-import { connect } from 'react-redux'
+import InfoSnackbar from './InfoSnackbar';
 import CustomToolbar from './CustomToolbar';
 import NewGameButton from './NewGameButton';
 
@@ -11,26 +12,33 @@ class App extends Component {
   }
 
   render() {
-    const { loaded } = this.props;
+    const { initialized } = this.props;
 
-    if (!loaded) {
+    if (!initialized) {
       return false;
     }
 
     return (
       <div>
         <CustomToolbar />
-        <div className="container" style={{maxWidth: 900, margin: 'auto'}}>
+        <div className="container" style={{ maxWidth: 900, margin: 'auto' }}>
           {this.props.children}
         </div>
         <NewGameButton />
+        <InfoSnackbar />
       </div>
     );
   }
 }
 
+App.propTypes = {
+  dispatch: React.PropTypes.func.isRequired,
+  initialized: React.PropTypes.bool.isRequired,
+  children: React.PropTypes.node.isRequired
+};
+
 const mapStateToProps = state => ({
-  loaded: state.loaded
+  initialized: state.app.initialized
 });
 
 const _App = connect(mapStateToProps)(App);

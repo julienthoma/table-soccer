@@ -1,47 +1,46 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow } from 'material-ui/Table';
+import { browserHistory } from 'react-router';
 import PlayerListItem from '../components/PlayerListItem';
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table';
-import { getPlayerById, getPlayers } from '../helper';
-import { browserHistory } from 'react-router'
+import { GUEST } from '../constants';
 
 class Players extends Component {
   handleRowClick = player => () => {
-    browserHistory.push('/player/' + player.id);
+    browserHistory.push(`/player/${player.id}`);
   };
 
   render() {
-    const tableColumnStyle = {padding: '3px', textAlign: 'center'};
+    const tableColumnStyle = { padding: '3px', textAlign: 'center' };
 
-    const playerWithGames = getPlayers().filter(_player => _player.id !== 'guest').map(player => getPlayerById(player.id)).sort((a, b) => {
-      return b.getElo() - a.getElo()
-    });
+    const { players } = this.props;
 
-    return <Table allRowsSelected={false}>
+    return (<Table allRowsSelected={false}>
       <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
         <TableRow>
           <TableHeaderColumn style={tableColumnStyle}>Name</TableHeaderColumn>
           <TableHeaderColumn style={tableColumnStyle}>Games</TableHeaderColumn>
           <TableHeaderColumn style={tableColumnStyle}>Wins%</TableHeaderColumn>
           <TableHeaderColumn style={tableColumnStyle}>MMR</TableHeaderColumn>
-          <TableHeaderColumn style={tableColumnStyle}>GPW</TableHeaderColumn>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {playerWithGames.map((_player, index) => {
-          const player = getPlayerById(_player.id);
-
-          return <PlayerListItem key={index} player={player} handleClick={this.handleRowClick(player)}/>
-        }
-        )}
+        {players.filter(p => p.id !== GUEST)
+          .sort((p1, p2) => p2.elo - p1.elo)
+          .map((player, index) =>
+            <PlayerListItem
+              key={player.id}
+              player={player}
+              handleClick={this.handleRowClick(player)}
+            />
+          )}
       </TableBody>
-    </Table>
+    </Table>);
   }
 }
 
 const mapStateToProps = state => ({
-  games: state.games,
-  players: state.players
+  players: state.app.players
 });
 
 const _Players = connect(mapStateToProps)(Players);

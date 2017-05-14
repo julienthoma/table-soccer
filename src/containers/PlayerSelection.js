@@ -1,109 +1,93 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import { selectPlayer } from '../actions';
-import { TEAM1_FRONT_PLAYER, TEAM1_REAR_PLAYER, TEAM2_FRONT_PLAYER, TEAM2_REAR_PLAYER } from '../constants';
+import { setPlayers } from '../actions';
 
-class PlayerSelection extends Component {
+class PlayerSelection extends React.Component {
   componentWillMount() {
-    const { players, dispatch, game } = this.props;
-
-    if (!game[TEAM1_FRONT_PLAYER]) {
-      dispatch(selectPlayer(players[0].name, TEAM1_FRONT_PLAYER));
-      dispatch(selectPlayer(players[1].name, TEAM1_REAR_PLAYER));
-      dispatch(selectPlayer(players[2].name, TEAM2_FRONT_PLAYER));
-      dispatch(selectPlayer(players[3].name, TEAM2_REAR_PLAYER));
-
-      return;
+    if (this.props.currentPlayers.length === 0) {
+      this.props.dispatch(setPlayers([
+        this.createSimplePlayer(0),
+        this.createSimplePlayer(1),
+        this.createSimplePlayer(2),
+        this.createSimplePlayer(3)
+      ]));
     }
-
-    dispatch(selectPlayer(game[TEAM1_FRONT_PLAYER], TEAM1_FRONT_PLAYER));
-    dispatch(selectPlayer(game[TEAM1_REAR_PLAYER], TEAM1_REAR_PLAYER));
-    dispatch(selectPlayer(game[TEAM2_FRONT_PLAYER], TEAM2_FRONT_PLAYER));
-    dispatch(selectPlayer(game[TEAM2_REAR_PLAYER], TEAM2_REAR_PLAYER));
   }
 
+  // TODO: fix redundant render
   render() {
-    const { players, game } = this.props;
-    const fieldStyle = {width: 'calc(50% - 5px)', marginBottom: 10, height: 180,
-      position: 'relative', borderRadius: 2};
+    const { players, currentPlayers } = this.props;
+    const fieldStyle = {
+      width: 'calc(50% - 5px)',
+      marginBottom: 10,
+      height: 180,
+      position: 'relative',
+      borderRadius: 2
+    };
 
-    const team1FrontPlayer = game[TEAM1_FRONT_PLAYER];
-    const team1RearPlayer = game[TEAM1_REAR_PLAYER];
-    const team2FrontPlayer = game[TEAM2_FRONT_PLAYER];
-    const team2RearPlayer = game[TEAM2_REAR_PLAYER];
-    const containerStyle = {display: 'flex', flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-between'};
-    const selectStyle = {width: 'calc(100% - 6px)', margin: '40px 3px 0 3px', color: 'white'}
-    const labelStyle = {color: 'white', textTransform: 'uppercase', paddingRight: 45, fontSize: 14}
+    const containerStyle = { display: 'flex', flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-between' };
+    const selectStyle = { width: 'calc(100% - 6px)', margin: '40px 3px 0 3px', color: 'white' };
+    const labelStyle = { color: 'white', textTransform: 'uppercase', paddingRight: 45, fontSize: 14 };
     return (
       <div>
-        <div style={containerStyle}>
-          <div style={fieldStyle}  className="team1 topitems">
-            <SelectField
-              value={team1FrontPlayer}
-              floatingLabelText="STURM"
-              onChange={this.selectPlayerPosition(TEAM1_FRONT_PLAYER)}
-              style={selectStyle}
-              labelStyle={labelStyle}
-            >
-              {this.renderPlayerItems(players)}
-            </SelectField>
-          </div>
-
-          <div style={fieldStyle} className="team1 topitems">
-            <SelectField
-              value={team1RearPlayer}
-              floatingLabelText="ABWEHR"
-              onChange={this.selectPlayerPosition(TEAM1_REAR_PLAYER)}
-              style={selectStyle}
-              labelStyle={labelStyle}
-            >
-              {this.renderPlayerItems(players)}
-            </SelectField>
-          </div>
-
-          <div style={fieldStyle} className="team2 botitems">
-            <SelectField
-              value={team2RearPlayer}
-              floatingLabelText="ABWEHR"
-              onChange={this.selectPlayerPosition(TEAM2_REAR_PLAYER)}
-              style={selectStyle}
-              labelStyle={labelStyle}
-            >
-              {this.renderPlayerItems(players)}
-            </SelectField>
-          </div>
-
-          <div style={fieldStyle} className="team2 botitems">
-            <SelectField
-              value={team2FrontPlayer}
-              floatingLabelText="STURM"
-              onChange={this.selectPlayerPosition(TEAM2_FRONT_PLAYER)}
-              style={selectStyle}
-              labelStyle={labelStyle}
-            >
-              {this.renderPlayerItems(players)}
-            </SelectField>
-          </div>
+        <div style={containerStyle} className="player-selection">
+          { currentPlayers.map((player, index) => (
+            <div style={fieldStyle} className="team1" key={index}>
+              <SelectField
+                floatingLabelText={index % 2 === 0 ? 'Attack' : 'Defense'}
+                value={player.index}
+                onChange={this.changePlayer(index)}
+                style={selectStyle}
+                labelStyle={labelStyle}
+              >
+                {
+                  players.map((_player, _index) =>
+                    <MenuItem
+                      value={_index}
+                      key={_player.id}
+                      primaryText={_player.name}
+                    />
+                  )
+                }
+              </SelectField>
+            </div>
+          ))}
         </div>
       </div>
     );
   }
 
-  renderPlayerItems = players => players.map((player, index) =>
-    <MenuItem value={player.name} key={index} primaryText={player.name} />
-  );
+  createSimplePlayer = index => {
+    const player = this.props.players[index];
 
-  selectPlayerPosition = position => (evt, playerIndex, value) => {
-    const { dispatch } = this.props;
-    dispatch(selectPlayer(value, position));
+    return {
+      name: player.name,
+      id: player.id,
+      index
+    };
+  }
+
+  changePlayer = index => (evt, playerIndex) => {
+    const { dispatch, currentPlayers } = this.props;
+    const newPlayers = [...currentPlayers];
+    newPlayers[index] = this.createSimplePlayer(playerIndex);
+    dispatch(setPlayers(newPlayers));
   };
 }
 
+PlayerSelection.defaultProps = {
+  currentPlayers: []
+};
+
+PlayerSelection.propTypes = {
+
+};
+
 const mapStateToProps = state => ({
-  players: state.players,
-  game: state.newGame
+  players: state.app.players,
+  currentPlayers: state.game.players
 });
 
 const _PlayerSelection = connect(mapStateToProps)(PlayerSelection);

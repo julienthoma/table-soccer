@@ -1,5 +1,5 @@
 import * as helper from './helper';
-import testData from './__mocks__/testData';
+import testData from '../__mocks__/testData';
 
 const getState = () => testData;
 helper.setGetState(getState);

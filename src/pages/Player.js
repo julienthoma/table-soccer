@@ -1,28 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
+import { Table, TableBody, TableRow, TableRowColumn, TableHeader, TableHeaderColumn } from 'material-ui/Table';
 import WinStreakIcon from '../components/WinStreakIcon';
-import {Table, TableBody, TableRow, TableRowColumn, TableHeader, TableHeaderColumn} from 'material-ui/Table';
-import { getPlayerById, getGamesByPlayerId } from '../helper';
-import { REAR_PLAYER, FRONT_PLAYER } from '../constants';
-import { browserHistory } from 'react-router'
-import GameList from '../components/GameList';
 
 class Player extends Component {
   handleRowClick = game => () => {
-    browserHistory.push('/game/' + game.id);
+    browserHistory.push(`/game/${game.id}`);
   }
   render() {
     const id = this.props.params.id;
-    const player = getPlayerById(id);
-    const tableColumnStyle = {padding: '3px', textAlign: 'left'};
-    const firstColumnStyle = {padding: '3px', textAlign: 'left', color: 'rgb(158, 158, 158)', fontSize: 12};
+    const player = this.props.players.filter(p => p.id === id)[0];
+    const tableColumnStyle = { padding: '3px', textAlign: 'left' };
+    const firstColumnStyle = { padding: '3px', textAlign: 'left', color: 'rgb(158, 158, 158)', fontSize: 12 };
 
-    return <div className="headline">
-      <h1 className="headline">{player.name} - {player.getElo() }<WinStreakIcon count={player.getWinStreak()}/></h1>
+    return (<div className="headline">
+      <h1 className="headline">{player.name} - {player.elo }<WinStreakIcon count={player.winStreak} /></h1>
       <Table allRowsSelected={false}>
         <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
           <TableRow>
-            <TableHeaderColumn style={tableColumnStyle} />
+            <TableHeaderColumn style={tableColumnStyle}/>
             <TableHeaderColumn style={tableColumnStyle}>Total</TableHeaderColumn>
             <TableHeaderColumn style={tableColumnStyle}>Attack</TableHeaderColumn>
             <TableHeaderColumn style={tableColumnStyle}>Defense</TableHeaderColumn>
@@ -31,44 +28,16 @@ class Player extends Component {
         <TableBody displayRowCheckbox={false}>
           <TableRow>
             <TableRowColumn style={firstColumnStyle}>
-              Gpg
-            </TableRowColumn>
-            <TableRowColumn style={tableColumnStyle}>
-              {player.games.getGpgByPlayer()}
-            </TableRowColumn>
-            <TableRowColumn style={tableColumnStyle}>
-              {player.games.filterByPosition(FRONT_PLAYER).getGpgByPlayer()}
-            </TableRowColumn>
-            <TableRowColumn style={tableColumnStyle}>
-              {player.games.filterByPosition(REAR_PLAYER).getGpgByPlayer()}
-            </TableRowColumn>
-          </TableRow>
-          <TableRow>
-            <TableRowColumn style={firstColumnStyle}>
-              Gpw
-            </TableRowColumn>
-            <TableRowColumn style={tableColumnStyle}>
-              {player.games.getGpwByPlayer()}
-            </TableRowColumn>
-            <TableRowColumn style={tableColumnStyle}>
-              {player.games.filterByPosition(FRONT_PLAYER).getGpwByPlayer()}
-            </TableRowColumn>
-            <TableRowColumn style={tableColumnStyle}>
-              {player.games.filterByPosition(REAR_PLAYER).getGpwByPlayer()}
-            </TableRowColumn>
-          </TableRow>
-          <TableRow>
-            <TableRowColumn style={firstColumnStyle}>
               Goals
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
-              {player.games.getGoalsByPlayer()}
+              {player.goals}
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
-              {player.games.filterByPosition(FRONT_PLAYER).getGoalsByPlayer()}
+              {player.goalsAttack}
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
-              {player.games.filterByPosition(REAR_PLAYER).getGoalsByPlayer()}
+              {player.goalsDefense}
             </TableRowColumn>
           </TableRow>
           <TableRow>
@@ -76,13 +45,13 @@ class Player extends Component {
               Games
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
-              {player.games.count()}
+              {player.games}
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
-              {player.games.filterByPosition(FRONT_PLAYER).count()}
+              {player.gamesAttack}
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
-              {player.games.filterByPosition(REAR_PLAYER).count()}
+              {player.gamesDefense}
             </TableRowColumn>
           </TableRow>
           <TableRow>
@@ -90,13 +59,13 @@ class Player extends Component {
               Wins
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
-              {player.games.filterByPlayerWins().count()}
+              {player.wins}
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
-              {player.games.filterByPlayerWins().filterByPosition(FRONT_PLAYER).count()}
+              {player.winsAttack}
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
-              {player.games.filterByPlayerWins().filterByPosition(REAR_PLAYER).count()}
+              {player.winsDefense}
             </TableRowColumn>
           </TableRow>
           <TableRow>
@@ -104,13 +73,13 @@ class Player extends Component {
               Losses
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
-              {player.games.filterByPlayerLosses().count()}
+              {player.losses}
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
-              {player.games.filterByPlayerLosses().filterByPosition(FRONT_PLAYER).count()}
+              {player.lossesAttack}
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
-              {player.games.filterByPlayerLosses().filterByPosition(REAR_PLAYER).count()}
+              {player.lossesDefense}
             </TableRowColumn>
           </TableRow>
           <TableRow>
@@ -118,26 +87,24 @@ class Player extends Component {
               Playtime
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
-              {player.games.getDurationString()}
+              {player.getPlayTime()}
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
-              {player.games.filterByPosition(FRONT_PLAYER).getDurationString()}
+              {player.getPlayTimeAttack()}
             </TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
-              {player.games.filterByPosition(REAR_PLAYER).getDurationString()}
+              {player.getPlayTimeDefense()}
             </TableRowColumn>
           </TableRow>
         </TableBody>
       </Table>
-      <h2>Games</h2>
-      <GameList games={getGamesByPlayerId(id)} handleRowClick={this.handleRowClick} />
-    </div>
+    </div>);
   }
 }
 
 const mapStateToProps = state => ({
-  games: state.games,
-  players: state.players
+  games: state.app.games,
+  players: state.app.players
 });
 
 const _Player = connect(mapStateToProps)(Player);

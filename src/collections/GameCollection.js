@@ -3,15 +3,13 @@ import Game from '../entities/Game';
 
 export default class GameCollection extends Collection {
   constructor(rawGames, owner) {
-    super(rawGames.map(rawGame => new Game(rawGame)))
+    super(rawGames.map(rawGame => new Game(rawGame)));
     this.owner = owner;
   }
 
   filterByPlayer = id => new GameCollection(this.items.filter(game => game.playerParticipates(id)), id);
 
-  filterByPosition = (position, id = this.owner) => new GameCollection(this.items.filter(game => game.getPlayers().filter(player => {
-    return player.position === position && player.id === id;
-  }).length > 0), id);
+  filterByPosition = (position, id = this.owner) => new GameCollection(this.items.filter(game => game.getPlayers().filter(player => player.position === position && player.id === id).length > 0), id);
 
   filterByPlayerWins = (id = this.owner) =>
     new GameCollection(this.items.filter(game => game.raw.winners.filter(winner => winner.id === id).length > 0), id);
@@ -21,14 +19,14 @@ export default class GameCollection extends Collection {
 
   getDuration = () => this.items.reduce((sum, item) => sum + item.getDuration(), 0);
 
-  getDurationString = () =>  (this.getDuration() / 60 / 60).toFixed(1) + 'h';
+  getDurationString = () => `${(this.getDuration() / 60 / 60).toFixed(1)}h`;
 
   getGoalsByPlayer = (id = this.owner) => this.items.reduce((sum, item) => sum + item.getGoalsByPlayer(id).length, 0);
   getGpgByPlayer = () => {
     const goals = this.getGoalsByPlayer();
 
     if (goals === 0) {
-      return 0
+      return 0;
     }
 
     return (goals / this.count()).toFixed(2);
@@ -38,7 +36,7 @@ export default class GameCollection extends Collection {
     const goals = this.filterByPlayerWins().getGoalsByPlayer();
 
     if (goals === 0) {
-      return 0
+      return 0;
     }
 
     return (goals / this.filterByPlayerWins().count()).toFixed(2);
@@ -51,7 +49,7 @@ export default class GameCollection extends Collection {
       return '0%';
     }
 
-    return ((wins / this.count()) * 100).toFixed(0) + '%';
+    return `${((wins / this.count()) * 100).toFixed(0)}%`;
   }
 
   orderByDate() {

@@ -1038,4 +1038,4 @@ export default {
     orderReversed: false,
     snackBarOpen: false
   }
-}
+};

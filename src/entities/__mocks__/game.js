@@ -74,4 +74,4 @@ export default {
     }
   ],
   id: '124c779022dd10bc37219c3e2f88edea3d17e5bd'
-}
+};

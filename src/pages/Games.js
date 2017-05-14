@@ -1,27 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import GameList from '../components/GameList';
-import { browserHistory } from 'react-router'
-import GameCollection from '../collections/GameCollection';
-import Combos from './Combos';
 
 class Games extends Component {
   handleRowClick = game => () => {
-    browserHistory.push('/game/' + game.id);
+    browserHistory.push(`/game/${game.id}`);
   };
 
   render() {
     const { games } = this.props;
 
     return (
-        <GameList games={new GameCollection(games)} handleRowClick={this.handleRowClick} />
+      <GameList
+        games={[...games].sort((a, b) => new Date(b.startdate).getTime() - new Date(a.startdate).getTime())}
+        handleRowClick={this.handleRowClick}
+      />
     );
-  };
+  }
 }
 
 const mapStateToProps = state => ({
-  games: state.games,
-  players: state.players
+  games: state.app.games,
+  players: state.app.players
 });
 
 const _Games = connect(mapStateToProps)(Games);

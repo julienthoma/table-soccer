@@ -1,18 +1,13 @@
 import React from 'react';
-import ScoreTimeline from '../components/ScoreTimeline';
 import GameListItem from '../components/GameListItem';
 
-const GameDetail = ({ game, players }) => {
+const GameDetail = ({ game }) => (
+  <div>
+    <GameListItem game={game} handleClick={() => false} />
+    <span>Score Timeline coming back soon</span>
+  </div>
+);
 
-  const startdate = new Date(game.startdate);
-  const enddate = new Date(game.enddate);
-
-  return (
-    <div>
-      <GameListItem game={game} handleClick={() => false} />
-      <ScoreTimeline game={game} players={players} />
-    </div>
-  );
-};
+GameDetail.propTypes = {};
 
 export default GameDetail;

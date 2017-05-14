@@ -7,20 +7,20 @@ const WinStreakIcon = ({ count }) => {
   }
 
   return (
-    <div className="winstreak-icon">
-      <Hot color={getColorByCount(count)} />
-      <div className="hotnumber">{count}</div>
-    </div>
+      <div className="winstreak-icon">
+          <Hot color={getColorByCount(count)} />
+          <div className="hotnumber">{count}</div>
+      </div>
   );
 };
 
 function getColorByCount(count) {
   if (count >= 10) {
-    return '#9C27B0'
+    return '#9C27B0';
   }
 
   if (count >= 7) {
-    return '#E91E63'
+    return '#E91E63';
   }
 
   if (count >= 5) {

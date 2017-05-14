@@ -18,9 +18,9 @@
         "sizes": "512x512",
         "type": "image/png"
     }],
-    "start_url": ".",
-    "display": "standalone",
+    "start_url": "/games",
+    "display": "fullscreen",
+    "orientation": "portrait",
     "background_color": "#00bcd4",
-    "theme_color": "rgb(0, 188, 212)",
-    "orientation": "portrait"
+    "theme_color": "rgb(0, 188, 212)"
 }

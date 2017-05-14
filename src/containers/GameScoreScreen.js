@@ -1,159 +1,108 @@
-import React, { PropTypes, Component } from 'react'
-import { connect } from 'react-redux'
-import { TEAM1_FRONT_PLAYER, TEAM1_REAR_PLAYER, TEAM2_FRONT_PLAYER, TEAM2_REAR_PLAYER, FRONT_PLAYER, REAR_PLAYER } from '../constants';
+import React from 'react';
+import { connect } from 'react-redux';
+import shortid from 'shortid';
 import RaisedButton from 'material-ui/RaisedButton';
-import { addGoal, saveGame, endGame, undoLastGoal, cancelGame } from '../actions';
-import { getScoreByPosition, getPlayerByName, applyFnForPositions } from '../helper';
-import { browserHistory } from 'react-router'
-import Snackbar from 'material-ui/Snackbar';
-import { getPlayerByPosition } from '../helper';
+import { addGoal, uploadGame, undoLastGoal, toggleSnackbar } from '../actions';
 
-class GameScoreScreen extends Component {
+class GameScoreScreen extends React.Component {
   componentDidUpdate = () => {
-    const { dispatch, game } = this.props;
+    const { dispatch, currentPlayers, scoreTimeline, score, isFinished } = this.props;
+    const [p1Score, p2Score, p3Score, p4Score] = score;
+    const team1Score = p1Score + p2Score;
+    const team2Score = p3Score + p4Score;
+    const [p1, p2, p3, p4] = currentPlayers;
 
-    if (!this.isGameFinished()) {
+    if (isFinished) {
       return;
     }
 
-    let winners;
-    let losers;
-
-    if (getScoreByPosition(TEAM1_FRONT_PLAYER) + getScoreByPosition(TEAM1_REAR_PLAYER) >= 6) {
-      winners = [this.createPlayer(TEAM1_FRONT_PLAYER), this.createPlayer(TEAM1_REAR_PLAYER)];
-      losers = [this.createPlayer(TEAM2_FRONT_PLAYER), this.createPlayer(TEAM2_REAR_PLAYER)];
-    } else {
-      winners = [this.createPlayer(TEAM2_FRONT_PLAYER), this.createPlayer(TEAM2_REAR_PLAYER)];
-      losers = [this.createPlayer(TEAM1_FRONT_PLAYER), this.createPlayer(TEAM1_REAR_PLAYER)];
+    if (team1Score < 6 && team2Score < 6) {
+      return;
     }
 
-    dispatch(saveGame({
-      startdate: game.startdate,
-      enddate: new Date(),
-      scoreTimeline: game.scoreTimeline,
-      winners,
-      losers
-    }));
+    let playerScores = [];
+    let playerIds = [];
+
+    if (team1Score >= 6) {
+      playerScores = [p1Score, p2Score, p3Score, p4Score];
+      playerIds = [p1.id, p2.id, p3.id, p4.id];
+    } else {
+      playerScores = [p3Score, p4Score, p1Score, p2Score];
+      playerIds = [p3.id, p4.id, p1.id, p2.id];
+    }
+
+    dispatch(uploadGame([
+      shortid.generate(),
+      new Date().getTime(),
+      scoreTimeline[scoreTimeline.length - 1].time,
+      playerIds,
+      playerScores,
+      scoreTimeline.map(item => [item.id, item.index, item.time])
+    ]));
   };
 
   render() {
-    const { game } = this.props;
-    const snackBarOpen = game.snackBarOpen;
-    const [t1RearScore, t1FrontScore, t2FrontScore, t2RearScore] = applyFnForPositions(getScoreByPosition);
-    const buttonStyle = {height: 180};
-    const labelStyle = {fontSize: 20};
-    const outerStyle = {width: 'calc(50% - 5px)', marginBottom: 10};
-    const containerStyle = {display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'};
-    const reverseOrder = game.reverseOrder;
-    const team1Classes = 'team1 ' + (reverseOrder ? 'botitems' : 'topitems');
-    const team2Classes = 'team2 ' + (reverseOrder ? 'topitems' : 'botitems');
+    const { currentPlayers, score} = this.props;
+    const containerStyle = { display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' };
+    const [p1Score, p2Score, p3Score, p4Score] = score;
+    const team1Score = p1Score + p2Score;
+    const team2Score = p3Score + p4Score;
 
     return (
-      <div style={{display: 'flex', flexDirection: 'column', marginBottom: 10}}>
-        <div className="score" style={{display: 'flex', marginBottom: 10, justifyContent: 'center', fontFamily: 'Roboto'}}>
-          <h1 className="team1score">{t1FrontScore + t1RearScore}</h1>
-          <h1 className="team2score">{t2RearScore + t2FrontScore}</h1>
+      <div style={{ display: 'flex', flexDirection: 'column', marginBottom: 10 }}>
+        <div
+          className="score"
+          style={{ display: 'flex', marginBottom: 10, justifyContent: 'center', fontFamily: 'Roboto' }}
+        >
+          <h1 className="team1score">{team1Score}</h1>
+          <h1 className="team2score">{team2Score}</h1>
         </div>
-        <div style={containerStyle}>
-          <RaisedButton
-            className={team1Classes}
-            disabled={this.props.game.isFinished}
-            primary={true}
-            onClick={this.handleScoreButtonClick(TEAM1_FRONT_PLAYER)}
-            buttonStyle={buttonStyle}
-            style={outerStyle}
-            labelStyle={labelStyle}
-            label={game[TEAM1_FRONT_PLAYER]}
-          />
-          <RaisedButton
-            className={team1Classes}
-            disabled={this.props.game.isFinished}
-            primary={true}
-            onClick={this.handleScoreButtonClick(TEAM1_REAR_PLAYER)}
-            buttonStyle={buttonStyle}
-            style={outerStyle}
-            labelStyle={labelStyle}
-            label={game[TEAM1_REAR_PLAYER]}
-          />
-          <RaisedButton
-            className={team2Classes}
-            disabled={this.props.game.isFinished}
-            secondary={true}
-            onClick={this.handleScoreButtonClick(TEAM2_REAR_PLAYER)}
-            buttonStyle={buttonStyle}
-            style={outerStyle}
-            labelStyle={labelStyle}
-            label={game[TEAM2_REAR_PLAYER]}
-          />
-          <RaisedButton
-            className={team2Classes}
-            disabled={this.props.game.isFinished}
-            secondary={true}
-            onClick={this.handleScoreButtonClick(TEAM2_FRONT_PLAYER)}
-            buttonStyle={buttonStyle}
-            style={outerStyle}
-            labelStyle={labelStyle}
-            label={game[TEAM2_FRONT_PLAYER]}
-          />
+        <div style={containerStyle} className="player-selection">
+          {
+            currentPlayers.map((player, index) => (
+              <RaisedButton
+                disabled={this.props.isFinished}
+                primary={index <= 1}
+                secondary={index > 1}
+                onClick={this.handleScoreButtonClick(index)}
+                buttonStyle={{ height: 180 }}
+                style={{ width: 'calc(50% - 5px)', marginBottom: 10 }}
+                labelStyle={{ fontSize: 20 }}
+                label={player.name}
+                key={player.id}
+              />
+            ))
+          }
         </div>
-        <Snackbar
-          className='undoContainer'
-          bodyStyle={{height: '100%'}}
-          style={{height: '100%'}}
-          open={snackBarOpen}
-          message={this.getGoalScorerText()}
-          action="undo"
-          autoHideDuration={5000}
-          onActionTouchTap={this.handleUndo}
-        />
       </div>
     );
   }
 
-  getGoalScorerText = () => {
-    const { game } = this.props;
-
-    if (game.scoreTimeline.length === 0) {
-      return '';
-    }
-
-    const lastGoal = game.scoreTimeline[game.scoreTimeline.length - 1];
-    const goalScorer = getPlayerByPosition(lastGoal.position);
-
-    return (<div style={{marginBottom: 200, fontSize: 24}}>{`${goalScorer.name} scored a goal!`}</div>);
+  handleUndo = index => () => {
+    this.props.dispatch(undoLastGoal(index));
   }
 
-  handleUndo = () => {
-    this.props.dispatch(undoLastGoal());
-  }
-
-  handleScoreButtonClick = position => () => {
-    const { dispatch, game } = this.props;
-    const player = getPlayerByName(game[position]);
-
-    dispatch(addGoal(player.id, position));
-  };
-
-  isGameFinished = () => {
-    const [t1RearScore, t1FrontScore, t2FrontScore, t2RearScore] = applyFnForPositions(getScoreByPosition);
-    return (t1RearScore + t1FrontScore) >= 6 || (t2FrontScore + t2RearScore) >= 6;
-  };
-
-  createPlayer = position => {
-    const generalPosition =
-      (position === TEAM1_FRONT_PLAYER || position === TEAM2_FRONT_PLAYER) ? FRONT_PLAYER : REAR_PLAYER;
-    const { game } = this.props;
-    const score = getScoreByPosition(position);
-    const name = game[position];
-    const player = getPlayerByName(name);
-
-    return {score, id: player.id, position: generalPosition};
+  handleScoreButtonClick = index => () => {
+    this.props.dispatch(addGoal(index));
+    this.props.dispatch(toggleSnackbar('GOOOOOAL!!!!!', 'UNDO', this.handleUndo(index)));
   };
 }
 
+GameScoreScreen.defaultProps = {
+  isSnackbarOpen: false
+};
+
+GameScoreScreen.propTypes = {
+  dispatch: React.PropTypes.func.isRequired
+};
+
 const mapStateToProps = state => ({
   players: state.players,
-  game: state.newGame
+  currentPlayers: state.game.players,
+  scoreTimeline: state.game.scoreTimeline,
+  isFinished: state.game.isFinished,
+  score: state.game.score,
+  isSnackbarOpen: state.game.isSnackbarOpen
 });
 
 const _GameScoreScreen = connect(mapStateToProps)(GameScoreScreen);
