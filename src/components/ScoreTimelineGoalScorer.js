@@ -22,7 +22,7 @@ const ScoreTimelineGoalScorer = ({ goalScorer }) => {
           <div>
             <div>{playerName}</div>
             {isOffensive(goalScorer) ? <Off /> : <Def />}
-            </div> :
+          </div> :
           ''
         }
       </div>

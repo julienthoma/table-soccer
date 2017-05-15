@@ -19,7 +19,7 @@ class Player extends Component {
       <Table allRowsSelected={false}>
         <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
           <TableRow>
-            <TableHeaderColumn style={tableColumnStyle}/>
+            <TableHeaderColumn style={tableColumnStyle} />
             <TableHeaderColumn style={tableColumnStyle}>Total</TableHeaderColumn>
             <TableHeaderColumn style={tableColumnStyle}>Attack</TableHeaderColumn>
             <TableHeaderColumn style={tableColumnStyle}>Defense</TableHeaderColumn>

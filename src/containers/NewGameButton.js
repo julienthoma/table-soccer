@@ -20,9 +20,9 @@ class NewGameButton extends React.Component {
     };
 
     return (
-        <FloatingActionButton style={buttonStyle} containerElement={<Link to="/new" />}>
-            <ContentAdd />
-        </FloatingActionButton>
+      <FloatingActionButton style={buttonStyle} containerElement={<Link to="/new" />}>
+        <ContentAdd />
+      </FloatingActionButton>
     );
   }
 }

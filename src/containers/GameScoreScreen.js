@@ -42,7 +42,7 @@ class GameScoreScreen extends React.Component {
   };
 
   render() {
-    const { currentPlayers, score} = this.props;
+    const { currentPlayers, score } = this.props;
     const containerStyle = { display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' };
     const [p1Score, p2Score, p3Score, p4Score] = score;
     const team1Score = p1Score + p2Score;

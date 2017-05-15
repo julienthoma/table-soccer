@@ -4,19 +4,19 @@ import ScoreTimelineGoalScorer from './ScoreTimelineGoalScorer';
 import { getTempScoreByGame } from '../services/helper';
 
 const ScoreTimeline = ({ game }) => (
-    <div>
-        {game.scoreTimeline.map((item, index) => {
-          const score = getTempScoreByGame(game, index);
+  <div>
+    {game.scoreTimeline.map((item, index) => {
+      const score = getTempScoreByGame(game, index);
 
-          return (<div key={index}>
-              <ScoreTimelineSubheadline
-                  time={item.timestamp}
-                  score={score}
-              />
-              <ScoreTimelineGoalScorer goalScorer={item} />
-          </div>);
-        })}
-    </div>
+      return (<div key={index}>
+        <ScoreTimelineSubheadline
+          time={item.timestamp}
+          score={score}
+        />
+        <ScoreTimelineGoalScorer goalScorer={item} />
+      </div>);
+    })}
+  </div>
   );
 
 export default ScoreTimeline;

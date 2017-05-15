@@ -7,10 +7,10 @@ const WinStreakIcon = ({ count }) => {
   }
 
   return (
-      <div className="winstreak-icon">
-          <Hot color={getColorByCount(count)} />
-          <div className="hotnumber">{count}</div>
-      </div>
+    <div className="winstreak-icon">
+      <Hot color={getColorByCount(count)} />
+      <div className="hotnumber">{count}</div>
+    </div>
   );
 };
 

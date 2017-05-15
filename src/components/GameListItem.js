@@ -19,11 +19,11 @@ const GameListItem = ({ game, handleClick }) => {
     <div className="game-list-item" onClick={handleClick(game)}>
       <div className="game-list-item__date">
         <FormattedDate
-            value={game.startdate}
-            month="long"
-            day="2-digit"
-            hour="numeric"
-            minute="numeric"
+          value={game.startdate}
+          month="long"
+          day="2-digit"
+          hour="numeric"
+          minute="numeric"
         />,&nbsp;
         ({Math.round(game.duration / 60)}min)
       </div>
@@ -32,13 +32,14 @@ const GameListItem = ({ game, handleClick }) => {
           <div className="game-list-item__player">
             <div className="game-list-item__player-name">
               <div>{winnerAttack.name}</div>
-              <WinStreakIcon count={winnerAttack.winStreak}/>
+              <WinStreakIcon count={winnerAttack.winStreak} />
             </div>
             <div className="game-list-item__player-score">
               { winnerAttack.elo }&nbsp;
               <span
-                  style={winnerGainStyle}
-                  className="game-list-item__player-score-gain">
+                style={winnerGainStyle}
+                className="game-list-item__player-score-gain"
+              >
                 (+{ winnerAttack.eloGain })
               </span>
             </div>
@@ -46,13 +47,13 @@ const GameListItem = ({ game, handleClick }) => {
           <div className="game-list-item__player">
             <div className="game-list-item__player-name">
               <div>{winnerDefense.name}</div>
-              <WinStreakIcon count={winnerDefense.winStreak}/>
-              </div>
+              <WinStreakIcon count={winnerDefense.winStreak} />
+            </div>
             <div className="game-list-item__player-score">
               { winnerDefense.elo }&nbsp;
               <span
-                  style={winnerGainStyle}
-                  className="game-list-item__player-score-gain"
+                style={winnerGainStyle}
+                className="game-list-item__player-score-gain"
               >
                 (+{ winnerDefense.eloGain })
               </span>
@@ -70,8 +71,8 @@ const GameListItem = ({ game, handleClick }) => {
             <div className="game-list-item__player-score">
               { loserAttack.elo }&nbsp;
               <span
-                  style={loserGainStyle}
-                  className="game-list-item__player-score-gain"
+                style={loserGainStyle}
+                className="game-list-item__player-score-gain"
               >
                 ({ loserAttack.eloGain })
               </span>
@@ -84,8 +85,8 @@ const GameListItem = ({ game, handleClick }) => {
             <div className="game-list-item__player-score">
               { loserDefense.elo }&nbsp;
               <span
-                  style={loserGainStyle}
-                  className="game-list-item__player-score-gain"
+                style={loserGainStyle}
+                className="game-list-item__player-score-gain"
               >
                 ({ loserDefense.eloGain })
               </span>

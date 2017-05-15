@@ -19,6 +19,15 @@ module.exports = {
         include: path.join(__dirname, 'src'),
         exclude: ['node_modules'],
         loaders: ['babel']
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: {
+          emitError: true,
+          emitWarning: true
+        }
       }
     ]
   },
