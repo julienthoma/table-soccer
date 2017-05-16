@@ -1,5 +1,4 @@
 import React from 'react';
-import { isTeam1Goal, getPlayerById, isOffensive } from '../services/helper';
 import Def from 'material-ui/svg-icons/action/accessibility';
 import Off from 'material-ui/svg-icons/maps/directions-run';
 

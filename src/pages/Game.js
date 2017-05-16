@@ -1,20 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import GameDetail from '../components/GameDetail';
+import { gameShape } from '../proptypes';
 
-class Game extends Component {
-  render() {
-    const { games, players } = this.props;
-    const id = this.props.params.id;
-    const [game] = games.filter(game => game.id === id);
+const Game = ({ games, params }) => {
+  const [game] = games.filter(_game => _game.id === params.id);
 
-    return (<GameDetail game={game} players={players} />);
-  }
-}
+  return <GameDetail game={game} />;
+};
+
+Game.propTypes = {
+  games: React.PropTypes.arrayOf(React.PropTypes.shape(gameShape)).isRequired,
+  params: React.PropTypes.shape({
+    id: React.PropTypes.string
+  }).isRequired
+};
 
 const mapStateToProps = state => ({
-  games: state.app.games,
-  players: state.app.players
+  games: state.app.games
 });
 
 const _Game = connect(mapStateToProps)(Game);

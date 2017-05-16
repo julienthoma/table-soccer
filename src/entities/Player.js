@@ -18,13 +18,11 @@ import Entity from './Entity';
  * @property {number} goalsAttack
  * @property {number} goalsDefense
  * @property {number} gpg
- * @property {GameEntity[]} gameEntites
  * @property {function} getWinPercent
  */
 export default class Player extends Entity {
   constructor(props) {
     super(props);
-    this.gameEntites = [];
     this.winStreak = 0;
     this.wins = 0;
     this.winsAttack = 0;

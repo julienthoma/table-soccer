@@ -16,7 +16,7 @@ export const transform = data => {
     const dateB = new Date(b[1]);
 
     return dateA.getTime() - dateB.getTime();
-  }).forEach(([id, startdate, duration, players, scores, timeline]) => {
+  }).forEach(([_id, startdate, duration, players, scores, timeline]) => {
     const [winnerAttackId, winnerDefenseId, loserAttackId, loserDefenseId] = players;
     const [winnerAttackScore, winnerDefenseScore, loserAttackScore, loserDefenseScore] = scores;
 
@@ -30,7 +30,11 @@ export const transform = data => {
       name: playerMap[winnerDefenseId].name,
       score: winnerDefenseScore
     };
-    const loserAttack = { id: playerMap[loserAttackId].id, name: playerMap[loserAttackId].name, score: loserAttackScore };
+    const loserAttack = {
+      id: playerMap[loserAttackId].id,
+      name: playerMap[loserAttackId].name,
+      score: loserAttackScore
+    };
     const loserDefense = {
       id: playerMap[loserDefenseId].id,
       name: playerMap[loserDefenseId].name,
@@ -55,7 +59,7 @@ export const transform = data => {
       const losses = !isWinner ? playerMap[id].losses + 1 : playerMap[id].losses;
       const lossesAttack = !isWinner && isAttack ? playerMap[id].lossesAttack + 1 : playerMap[id].lossesAttack;
       const lossesDefense = !isWinner && !isAttack ? playerMap[id].lossesDefense + 1 : playerMap[id].lossesDefense;
-      const games = wins + losses;
+      const _games = wins + losses;
       const gamesAttack = winsAttack + lossesAttack;
       const gamesDefense = winsDefense + lossesDefense;
       const currentGoals = currentPlayers[id].score;
@@ -81,8 +85,16 @@ export const transform = data => {
         enemy2Id = loserAttackId;
       }
 
-      const eloGain = calcScore(playerMap[id], playerMap[teamMateId], playerMap[enemy1Id], playerMap[enemy2Id], currentGoals, goalsAgainst, isWinner);
-      const newElo = playerMap[id].elo += eloGain;
+      const eloGain = calcScore(
+        playerMap[id],
+        playerMap[teamMateId],
+        playerMap[enemy1Id],
+        playerMap[enemy2Id],
+        currentGoals,
+        goalsAgainst,
+        isWinner
+      );
+      const newElo = playerMap[id].elo + eloGain;
 
       currentPlayers[id].winStreak = winStreak;
       currentPlayers[id].isWinner = isWinner;
@@ -90,7 +102,7 @@ export const transform = data => {
       currentPlayers[id].winStreak = winStreak;
       currentPlayers[id].wins = wins;
       currentPlayers[id].losses = losses;
-      currentPlayers[id].games = games;
+      currentPlayers[id].games = _games;
       currentPlayers[id].goals = goals;
       currentPlayers[id].elo = newElo;
       currentPlayers[id].eloGain = eloGain;
@@ -102,7 +114,7 @@ export const transform = data => {
       playerMap[id].losses = losses;
       playerMap[id].lossesAttack = lossesAttack;
       playerMap[id].lossesDefense = lossesDefense;
-      playerMap[id].games = games;
+      playerMap[id].games = _games;
       playerMap[id].gamesAttack = gamesAttack;
       playerMap[id].gamesDefense = gamesDefense;
       playerMap[id].goals = goals;
@@ -116,7 +128,7 @@ export const transform = data => {
     });
 
     games.push(new Game({
-      id,
+      id: _id,
       startdate: new Date(startdate),
       duration,
       timeline,
@@ -136,15 +148,15 @@ export const transform = data => {
   };
 };
 
-const calc2v2 = (ratingA1, ratingA2, ratingB1, ratingB2) => {
+function calc2v2(ratingA1, ratingA2, ratingB1, ratingB2) {
   const ratingB = Math.round((ratingB1 + ratingB2) / 2);
   const chanceA2 = calcFactor(ratingA2, ratingB) * 0.25;
   const chanceA1 = calcFactor(ratingA1, ratingB) * 0.85;
 
   return chanceA1 + chanceA2;
-};
+}
 
-const calcScore = (p1, p2, p3, p4, goals, goalsAgainst, isWinner) => {
+function calcScore(p1, p2, p3, p4, goals, goalsAgainst, isWinner) {
   let chance = calc2v2(p1.elo, p2.elo, p3.elo, p4.elo);
   const multiplier = 50;
   let bonus = (1 + (goals / 30));
@@ -159,13 +171,13 @@ const calcScore = (p1, p2, p3, p4, goals, goalsAgainst, isWinner) => {
   }
 
   return Math.round(chance * multiplier * bonus);
-};
+}
 
-const calcFactor = (ratingA, ratingB) => {
+function calcFactor(ratingA, ratingB) {
   const exponent = (ratingA - ratingB) / 500;
 
-  let factor = parseFloat((1 / (1 + Math.pow(10, exponent))).toFixed(2));
+  let factor = parseFloat((1 / (1 + (10 ** exponent))).toFixed(2));
   factor = Math.min(Math.max(0.25, factor), 0.75);
 
   return factor;
-};
+}

@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import GameList from '../components/GameList';
+import gameShape from '../proptypes';
 
-class Games extends Component {
+class Games extends React.Component {
   handleRowClick = game => () => {
     browserHistory.push(`/game/${game.id}`);
   };
@@ -20,9 +21,12 @@ class Games extends Component {
   }
 }
 
+Games.propTypes = {
+  games: React.PropTypes.arrayOf(React.PropTypes.shape(gameShape)).isRequired
+};
+
 const mapStateToProps = state => ({
-  games: state.app.games,
-  players: state.app.players
+  games: state.app.games
 });
 
 const _Games = connect(mapStateToProps)(Games);

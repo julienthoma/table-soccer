@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { getData } from '../actions';
 import InfoSnackbar from './InfoSnackbar';
 import CustomToolbar from './CustomToolbar';
 import NewGameButton from './NewGameButton';
 
-class App extends Component {
+class App extends React.Component {
   componentWillMount() {
-    const { dispatch } = this.props;
-    dispatch(getData());
+    this.props.dispatch(getData());
   }
 
   render() {

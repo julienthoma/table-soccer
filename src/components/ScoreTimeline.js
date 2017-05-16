@@ -1,7 +1,6 @@
 import React from 'react';
 import ScoreTimelineSubheadline from './ScoreTimelineSubheadline';
 import ScoreTimelineGoalScorer from './ScoreTimelineGoalScorer';
-import { getTempScoreByGame } from '../services/helper';
 
 const ScoreTimeline = ({ game }) => (
   <div>
