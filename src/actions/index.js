@@ -14,10 +14,8 @@ export const TOGGLE_SNACKBAR = 'TOGGLE_SNACKBAR';
 
 export const updateData = data => ({ type: UPDATE_DATA, data });
 export const startGame = () => ({ type: START_GAME });
-export const cancelGame = () => ({ type: CANCEL_GAME });
 export const endGame = game => ({ type: END_GAME, game });
 export const exitGame = () => ({ type: EXIT_GAME });
-export const rotatePlayers = () => ({ type: ROTATE_PLAYERS });
 
 export const addGoal = index => ({ type: ADD_GOAL, index });
 export const undoLastGoal = index => ({ type: UNDO_LAST_GOAL, index });
@@ -39,9 +37,6 @@ export const getData = () => dispatch => {
     data => {
       const transformedData = transform(data);
       dispatch(updateData(transformedData));
-    },
-    error => {
-      console.log('Error');
     }
   );
 };
@@ -55,9 +50,6 @@ export const uploadGame = game => dispatch => {
       const transformedData = transform(data);
       dispatch(updateData(transformedData));
       dispatch(toggleSnackbar('Game added successfully', 'Ok, I got it!'));
-    },
-    error => {
-      console.log(error);
     }
   );
 };

@@ -1,12 +1,7 @@
 import React from 'react';
 import { TableRow, TableRowColumn } from 'material-ui/Table';
+import { playerShape } from '../proptypes';
 
-/**
- *
- * @param {PlayerEntity} player
- * @param handleClick
- * @constructor
- */
 const PlayerListItem = ({ player, handleClick }) => {
   const tableColumnStyle = { padding: '3px', textAlign: 'center' };
   return (
@@ -25,6 +20,11 @@ const PlayerListItem = ({ player, handleClick }) => {
       </TableRowColumn>
     </TableRow>
   );
+};
+
+PlayerListItem.propTypes = {
+  handleClick: React.PropTypes.func.isRequired,
+  player: React.PropTypes.shape(playerShape).isRequired
 };
 
 export default PlayerListItem;

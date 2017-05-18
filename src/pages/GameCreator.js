@@ -6,27 +6,33 @@ import { startGame, exitGame, setPlayers } from '../actions';
 import GameScoreScreen from '../containers/GameScoreScreen';
 import PlayerSelection from '../containers/PlayerSelection';
 import * as consts from '../constants';
+import { gamePlayerShape } from '../proptypes';
 
 class GameCreator extends React.Component {
-  render() {
-    const { activeStep } = this.props;
-    let content;
-    switch (activeStep) {
-      case consts.SELECT_PLAYERS_STEP:
-        content = this.renderSelectPlayers();
-        break;
-      case consts.ACTIVE_GAME_STEP:
-        content = this.renderActiveGame();
-        break;
-      case consts.GAME_END_STEP:
-        content = this.renderGameEnd();
-        break;
+  isValidPlayerCombo = () => {
+    const set = new Set(this.props.players.map(player => player.index).filter(index => index !== -1));
+    return set.size === 4;
+  }
 
-      default:
-        return false;
-    }
+  rematchRotate = () => {
+    const players = this.props.players.slice(0);
+    players.unshift(players.pop());
+    this.props.dispatch(setPlayers(players));
+    this.props.dispatch(exitGame());
+  }
 
-    return <div>{ content }</div>;
+  rematchSwap = () => {
+    const [p1, p2, p3, p4] = this.props.players.slice(0);
+    const newPlayers = [p3, p1, p4, p2];
+    this.props.dispatch(setPlayers(newPlayers));
+    this.props.dispatch(exitGame());
+  }
+
+  startNewGame = () => this.props.dispatch(startGame())
+
+  exitGame = () => {
+    this.props.dispatch(exitGame());
+    browserHistory.push('/');
   }
 
   renderSelectPlayers = () => (
@@ -45,7 +51,7 @@ class GameCreator extends React.Component {
         style={{ marginLeft: 12 }}
       />
     </div>
-  );
+  )
 
   renderActiveGame = () => (
     <div>
@@ -55,7 +61,7 @@ class GameCreator extends React.Component {
         onClick={() => this.props.dispatch(exitGame())}
       />
     </div>
-  );
+  )
 
   renderGameEnd = () => {
     const buttonStyle = { height: 120 };
@@ -95,30 +101,25 @@ class GameCreator extends React.Component {
     );
   }
 
-  rematchRotate = () => {
-    const players = this.props.players.slice(0);
-    players.unshift(players.pop());
-    this.props.dispatch(setPlayers(players));
-    this.props.dispatch(exitGame());
-  }
+  render() {
+    const { activeStep } = this.props;
+    let content;
+    switch (activeStep) {
+      case consts.SELECT_PLAYERS_STEP:
+        content = this.renderSelectPlayers();
+        break;
+      case consts.ACTIVE_GAME_STEP:
+        content = this.renderActiveGame();
+        break;
+      case consts.GAME_END_STEP:
+        content = this.renderGameEnd();
+        break;
 
-  rematchSwap = () => {
-    const [p1, p2, p3, p4] = this.props.players.slice(0);
-    const newPlayers = [p3, p1, p4, p2];
-    this.props.dispatch(setPlayers(newPlayers));
-    this.props.dispatch(exitGame());
-  }
+      default:
+        return false;
+    }
 
-  startNewGame = () => this.props.dispatch(startGame())
-
-  exitGame = () => {
-    this.props.dispatch(exitGame());
-    browserHistory.push('/');
-  }
-
-  isValidPlayerCombo = () => {
-    const set = new Set(this.props.players.map(player => player.index).filter(index => index !== -1));
-    return set.size === 4;
+    return <div>{ content }</div>;
   }
 }
 
@@ -132,7 +133,9 @@ GameCreator.propTypes = {
     consts.SELECT_PLAYERS_STEP,
     consts.ACTIVE_GAME_STEP,
     consts.GAME_END_STEP
-  ])
+  ]),
+  players: React.PropTypes.arrayOf(React.PropTypes.shape(gamePlayerShape)).isRequired,
+  dispatch: React.PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

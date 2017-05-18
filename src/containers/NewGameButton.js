@@ -1,9 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import { withRouter } from 'react-router';
-import { Link } from 'react-router';
+import { Link, withRouter } from 'react-router';
 
 class NewGameButton extends React.Component {
   render() {
@@ -20,17 +18,20 @@ class NewGameButton extends React.Component {
     };
 
     return (
-      <FloatingActionButton style={buttonStyle} containerElement={<Link to="/new" />}>
+      <FloatingActionButton
+        style={buttonStyle}
+        containerElement={<Link to="/new" />}
+      >
         <ContentAdd />
       </FloatingActionButton>
     );
   }
 }
 
-const mapStateToProps = state => ({
-});
+NewGameButton.propTypes = {
+  router: React.PropTypes.instanceOf(Object).isRequired
+};
 
-
-const _NewGameButton = withRouter(connect(mapStateToProps)(NewGameButton));
+const _NewGameButton = withRouter(NewGameButton);
 
 export default _NewGameButton;

@@ -32,4 +32,8 @@ function getColorByCount(count) {
   }
 }
 
+WinStreakIcon.propTypes = {
+  count: React.PropTypes.number.isRequired
+};
+
 export default WinStreakIcon;

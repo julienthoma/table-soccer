@@ -1,5 +1,6 @@
 import React from 'react';
 import GameListItem from '../components/GameListItem';
+import { gameShape } from '../proptypes';
 
 const GameDetail = ({ game }) => (
   <div>
@@ -8,6 +9,8 @@ const GameDetail = ({ game }) => (
   </div>
 );
 
-GameDetail.propTypes = {};
+GameDetail.propTypes = {
+  game: React.PropTypes.shape(gameShape).isRequired
+};
 
 export default GameDetail;

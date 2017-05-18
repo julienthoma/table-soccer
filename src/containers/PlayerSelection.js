@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import { setPlayers } from '../actions';
+import { gamePlayerShape, playerShape } from '../proptypes';
 
 class PlayerSelection extends React.Component {
   componentWillMount() {
@@ -15,6 +16,23 @@ class PlayerSelection extends React.Component {
       ]));
     }
   }
+
+  createSimplePlayer = index => {
+    const player = this.props.players[index];
+
+    return {
+      name: player.name,
+      id: player.id,
+      index
+    };
+  }
+
+  changePlayer = index => (evt, playerIndex) => {
+    const { dispatch, currentPlayers } = this.props;
+    const newPlayers = [...currentPlayers];
+    newPlayers[index] = this.createSimplePlayer(playerIndex);
+    dispatch(setPlayers(newPlayers));
+  };
 
   // TODO: fix redundant render
   render() {
@@ -58,23 +76,6 @@ class PlayerSelection extends React.Component {
       </div>
     );
   }
-
-  createSimplePlayer = index => {
-    const player = this.props.players[index];
-
-    return {
-      name: player.name,
-      id: player.id,
-      index
-    };
-  }
-
-  changePlayer = index => (evt, playerIndex) => {
-    const { dispatch, currentPlayers } = this.props;
-    const newPlayers = [...currentPlayers];
-    newPlayers[index] = this.createSimplePlayer(playerIndex);
-    dispatch(setPlayers(newPlayers));
-  };
 }
 
 PlayerSelection.defaultProps = {
@@ -82,7 +83,9 @@ PlayerSelection.defaultProps = {
 };
 
 PlayerSelection.propTypes = {
-
+  dispatch: React.PropTypes.func.isRequired,
+  currentPlayers: React.PropTypes.arrayOf(React.PropTypes.shape(gamePlayerShape)).isRequired,
+  players: React.PropTypes.arrayOf(React.PropTypes.shape(playerShape)).isRequired
 };
 
 const mapStateToProps = state => ({

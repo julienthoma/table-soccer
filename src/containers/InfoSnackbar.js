@@ -31,6 +31,10 @@ InfoSnackbar.defaultProps = {
 };
 
 InfoSnackbar.propTypes = {
+  actionText: React.PropTypes.string,
+  infoText: React.PropTypes.string,
+  callbackFn: React.PropTypes.func,
+  dispatch: React.PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

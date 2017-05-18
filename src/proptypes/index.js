@@ -16,7 +16,7 @@ export const playerBase = {
   winStreak: React.PropTypes.number
 };
 
-export const gamePlayer = {
+export const gamePlayerShape = {
   ...playerBase,
   isWinner: React.PropTypes.bool,
   position: React.PropTypes.oneOf(['attack', 'defense']),
@@ -49,6 +49,11 @@ export const gameShape = {
   winnerDefense: React.PropTypes.shape(simplePlayerShape),
   loserAttack: React.PropTypes.shape(simplePlayerShape),
   loserDefense: React.PropTypes.shape(simplePlayerShape),
-  players: React.PropTypes.objectOf(React.PropTypes.shape(gamePlayer))
+  players: React.PropTypes.objectOf(React.PropTypes.shape(gamePlayerShape))
 };
 
+export const scoreTimelineItemShape = {
+  id: React.PropTypes.number.isRequired,
+  index: React.PropTypes.number.isRequired,
+  time: React.PropTypes.number.isRequired
+};

@@ -53,18 +53,18 @@ export default class Player extends Entity {
   }
 
   getPlayTime() {
-    return this.getHourString(this.playTime);
+    return Player.getHourString(this.playTime);
   }
 
   getPlayTimeAttack() {
-    return this.getHourString(this.playTimeAttack);
+    return Player.getHourString(this.playTimeAttack);
   }
 
   getPlayTimeDefense() {
-    return this.getHourString(this.playTimeDefense);
+    return Player.getHourString(this.playTimeDefense);
   }
 
-  getHourString(time) {
+  static getHourString(time) {
     if (time === 0) {
       return '-';
     }

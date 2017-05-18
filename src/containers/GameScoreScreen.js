@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import shortid from 'shortid';
 import RaisedButton from 'material-ui/RaisedButton';
 import { addGoal, uploadGame, undoLastGoal, toggleSnackbar } from '../actions';
+import { scoreTimelineItemShape, simplePlayerShape } from '../proptypes';
 
 class GameScoreScreen extends React.Component {
   componentDidUpdate = () => {
@@ -41,6 +42,15 @@ class GameScoreScreen extends React.Component {
     ]));
   };
 
+  handleUndo = index => () => {
+    this.props.dispatch(undoLastGoal(index));
+  }
+
+  handleScoreButtonClick = index => () => {
+    this.props.dispatch(addGoal(index));
+    this.props.dispatch(toggleSnackbar('GOOOOOAL!!!!!', 'UNDO', this.handleUndo(index)));
+  };
+
   render() {
     const { currentPlayers, score } = this.props;
     const containerStyle = { display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' };
@@ -77,32 +87,21 @@ class GameScoreScreen extends React.Component {
       </div>
     );
   }
-
-  handleUndo = index => () => {
-    this.props.dispatch(undoLastGoal(index));
-  }
-
-  handleScoreButtonClick = index => () => {
-    this.props.dispatch(addGoal(index));
-    this.props.dispatch(toggleSnackbar('GOOOOOAL!!!!!', 'UNDO', this.handleUndo(index)));
-  };
 }
 
-GameScoreScreen.defaultProps = {
-  isSnackbarOpen: false
-};
-
 GameScoreScreen.propTypes = {
-  dispatch: React.PropTypes.func.isRequired
+  dispatch: React.PropTypes.func.isRequired,
+  isFinished: React.PropTypes.bool.isRequired,
+  score: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
+  scoreTimeline: React.PropTypes.arrayOf(React.PropTypes.shape(scoreTimelineItemShape)).isRequired,
+  currentPlayers: React.PropTypes.arrayOf(React.PropTypes.shape(simplePlayerShape)).isRequired
 };
 
 const mapStateToProps = state => ({
-  players: state.players,
   currentPlayers: state.game.players,
   scoreTimeline: state.game.scoreTimeline,
   isFinished: state.game.isFinished,
-  score: state.game.score,
-  isSnackbarOpen: state.game.isSnackbarOpen
+  score: state.game.score
 });
 
 const _GameScoreScreen = connect(mapStateToProps)(GameScoreScreen);

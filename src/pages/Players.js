@@ -4,6 +4,7 @@ import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow } from 'mate
 import { browserHistory } from 'react-router';
 import PlayerListItem from '../components/PlayerListItem';
 import { GUEST } from '../constants';
+import { playerShape } from '../proptypes';
 
 class Players extends Component {
   handleRowClick = player => () => {
@@ -27,7 +28,7 @@ class Players extends Component {
       <TableBody>
         {players.filter(p => p.id !== GUEST)
           .sort((p1, p2) => p2.elo - p1.elo)
-          .map((player, index) =>
+          .map(player =>
             <PlayerListItem
               key={player.id}
               player={player}
@@ -38,6 +39,10 @@ class Players extends Component {
     </Table>);
   }
 }
+
+Players.propTypes = {
+  players: React.PropTypes.arrayOf(React.PropTypes.shape(playerShape)).isRequired
+};
 
 const mapStateToProps = state => ({
   players: state.app.players

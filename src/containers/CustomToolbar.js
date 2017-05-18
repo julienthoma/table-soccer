@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar';
 import { Link, withRouter } from 'react-router';
 import IconButton from 'material-ui/IconButton';
@@ -38,8 +37,10 @@ class CustomToolbar extends React.Component {
   }
 }
 
-CustomToolbar.propTypes = {};
+CustomToolbar.propTypes = {
+  router: React.PropTypes.instanceOf(Object).isRequired
+};
 
-const _CustomToolbar = withRouter(connect()(CustomToolbar));
+const _CustomToolbar = withRouter(CustomToolbar);
 
 export default _CustomToolbar;
