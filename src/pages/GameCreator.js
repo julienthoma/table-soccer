@@ -134,7 +134,7 @@ GameCreator.propTypes = {
     consts.ACTIVE_GAME_STEP,
     consts.GAME_END_STEP
   ]),
-  players: React.PropTypes.arrayOf(React.PropTypes.shape(gamePlayerShape)).isRequired,
+  players: React.PropTypes.arrayOf(gamePlayerShape).isRequired,
   dispatch: React.PropTypes.func.isRequired
 };
 

@@ -23,7 +23,7 @@ const GameList = ({ games, handleRowClick }) => (
 
 GameList.propTypes = {
   handleRowClick: React.PropTypes.func.isRequired,
-  games: React.PropTypes.arrayOf(React.PropTypes.shape(gameShape)).isRequired
+  games: React.PropTypes.arrayOf(gameShape).isRequired
 };
 
 export default GameList;

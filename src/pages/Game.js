@@ -10,7 +10,7 @@ const Game = ({ games, params }) => {
 };
 
 Game.propTypes = {
-  games: React.PropTypes.arrayOf(React.PropTypes.shape(gameShape)).isRequired,
+  games: React.PropTypes.arrayOf(gameShape).isRequired,
   params: React.PropTypes.shape({
     id: React.PropTypes.string
   }).isRequired

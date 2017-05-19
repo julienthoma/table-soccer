@@ -1,59 +1,63 @@
 import React from 'react';
 
-export const simplePlayerShape = {
-  id: React.PropTypes.string,
-  name: React.PropTypes.string,
-  score: React.PropTypes.oneOf([0, 1, 2, 3, 4, 5, 6])
+const { number, bool, string, shape, instanceOf, oneOf, objectOf } = React.PropTypes;
+
+export const simplePlayerShape = shape({
+  id: string,
+  name: string,
+  score: oneOf([0, 1, 2, 3, 4, 5, 6])
+});
+
+const playerBase = {
+  id: string,
+  name: string,
+  wins: number,
+  losses: number,
+  games: number,
+  goals: number,
+  elo: number,
+  winStreak: number
 };
 
-export const playerBase = {
-  ...simplePlayerShape,
-  wins: React.PropTypes.number,
-  losses: React.PropTypes.number,
-  games: React.PropTypes.number,
-  goals: React.PropTypes.number,
-  elo: React.PropTypes.number,
-  winStreak: React.PropTypes.number
-};
-
-export const gamePlayerShape = {
+export const gamePlayerShape = shape({
   ...playerBase,
-  isWinner: React.PropTypes.bool,
-  position: React.PropTypes.oneOf(['attack', 'defense']),
-  eloGain: React.PropTypes.number
-};
+  score: oneOf([0, 1, 2, 3, 4, 5, 6]),
+  isWinner: bool,
+  position: oneOf(['attack', 'defense']),
+  eloGain: number
+});
 
-export const playerShape = {
+export const playerShape = shape({
   ...playerBase,
-  winsAttack: React.PropTypes.number,
-  winsDefense: React.PropTypes.number,
-  lossesAttack: React.PropTypes.number,
-  lossesDefense: React.PropTypes.number,
-  gamesAttack: React.PropTypes.number,
-  gamesDefense: React.PropTypes.number,
-  goalsAttack: React.PropTypes.number,
-  goalsDefense: React.PropTypes.number,
-  gpg: React.PropTypes.number,
-  playTime: React.PropTypes.number,
-  playTimeAttack: React.PropTypes.number,
-  playTimeDefense: React.PropTypes.number
-};
+  winsAttack: number,
+  winsDefense: number,
+  lossesAttack: number,
+  lossesDefense: number,
+  gamesAttack: number,
+  gamesDefense: number,
+  goalsAttack: number,
+  goalsDefense: number,
+  gpg: number,
+  playTime: number,
+  playTimeAttack: number,
+  playTimeDefense: number
+});
 
-export const gameShape = {
-  id: React.PropTypes.string,
-  startdate: React.PropTypes.instanceOf(Date),
-  duration: React.PropTypes.number,
-  winnerScore: React.PropTypes.number,
-  loserScore: React.PropTypes.number,
-  winnerAttack: React.PropTypes.shape(simplePlayerShape),
-  winnerDefense: React.PropTypes.shape(simplePlayerShape),
-  loserAttack: React.PropTypes.shape(simplePlayerShape),
-  loserDefense: React.PropTypes.shape(simplePlayerShape),
-  players: React.PropTypes.objectOf(React.PropTypes.shape(gamePlayerShape))
-};
+export const gameShape = shape({
+  id: string,
+  startdate: instanceOf(Date),
+  duration: number,
+  winnerScore: number,
+  loserScore: number,
+  winnerAttack: simplePlayerShape,
+  winnerDefense: simplePlayerShape,
+  loserAttack: simplePlayerShape,
+  loserDefense: simplePlayerShape,
+  players: objectOf(gamePlayerShape)
+});
 
-export const scoreTimelineItemShape = {
-  id: React.PropTypes.number.isRequired,
-  index: React.PropTypes.number.isRequired,
-  time: React.PropTypes.number.isRequired
-};
+export const scoreTimelineItemShape = shape({
+  id: number.isRequired,
+  index: number.isRequired,
+  time: number.isRequired
+});

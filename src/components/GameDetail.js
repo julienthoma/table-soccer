@@ -10,7 +10,7 @@ const GameDetail = ({ game }) => (
 );
 
 GameDetail.propTypes = {
-  game: React.PropTypes.shape(gameShape).isRequired
+  game: gameShape.isRequired
 };
 
 export default GameDetail;

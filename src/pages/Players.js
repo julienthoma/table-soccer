@@ -41,7 +41,7 @@ class Players extends Component {
 }
 
 Players.propTypes = {
-  players: React.PropTypes.arrayOf(React.PropTypes.shape(playerShape)).isRequired
+  players: React.PropTypes.arrayOf(playerShape).isRequired
 };
 
 const mapStateToProps = state => ({

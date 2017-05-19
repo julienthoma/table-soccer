@@ -100,7 +100,7 @@ const GameListItem = ({ game, handleClick }) => {
 };
 
 GameListItem.propTypes = {
-  game: React.PropTypes.shape(gameShape).isRequired,
+  game: gameShape.isRequired,
   handleClick: React.PropTypes.func.isRequired
 };
 

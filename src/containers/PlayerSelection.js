@@ -84,8 +84,8 @@ PlayerSelection.defaultProps = {
 
 PlayerSelection.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
-  currentPlayers: React.PropTypes.arrayOf(React.PropTypes.shape(gamePlayerShape)).isRequired,
-  players: React.PropTypes.arrayOf(React.PropTypes.shape(playerShape)).isRequired
+  currentPlayers: React.PropTypes.arrayOf(gamePlayerShape).isRequired,
+  players: React.PropTypes.arrayOf(playerShape).isRequired
 };
 
 const mapStateToProps = state => ({

@@ -93,8 +93,8 @@ GameScoreScreen.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
   isFinished: React.PropTypes.bool.isRequired,
   score: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
-  scoreTimeline: React.PropTypes.arrayOf(React.PropTypes.shape(scoreTimelineItemShape)).isRequired,
-  currentPlayers: React.PropTypes.arrayOf(React.PropTypes.shape(simplePlayerShape)).isRequired
+  scoreTimeline: React.PropTypes.arrayOf(scoreTimelineItemShape).isRequired,
+  currentPlayers: React.PropTypes.arrayOf(simplePlayerShape).isRequired
 };
 
 const mapStateToProps = state => ({

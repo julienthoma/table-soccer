@@ -24,7 +24,7 @@ const PlayerListItem = ({ player, handleClick }) => {
 
 PlayerListItem.propTypes = {
   handleClick: React.PropTypes.func.isRequired,
-  player: React.PropTypes.shape(playerShape).isRequired
+  player: playerShape.isRequired
 };
 
 export default PlayerListItem;

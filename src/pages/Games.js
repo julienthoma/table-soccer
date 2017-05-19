@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import GameList from '../components/GameList';
-import gameShape from '../proptypes';
+import { gameShape } from '../proptypes';
 
 class Games extends React.Component {
   handleRowClick = game => () => {
@@ -22,7 +22,7 @@ class Games extends React.Component {
 }
 
 Games.propTypes = {
-  games: React.PropTypes.arrayOf(React.PropTypes.shape(gameShape)).isRequired
+  games: React.PropTypes.arrayOf(gameShape).isRequired
 };
 
 const mapStateToProps = state => ({

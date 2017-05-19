@@ -100,7 +100,7 @@ Player.propTypes = {
   params: React.PropTypes.shape({
     id: React.PropTypes.string
   }).isRequired,
-  players: React.PropTypes.arrayOf(React.PropTypes.shape(playerShape)).isRequired
+  players: React.PropTypes.arrayOf(playerShape).isRequired
 };
 
 const mapStateToProps = state => ({
