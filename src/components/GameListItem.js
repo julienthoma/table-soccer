@@ -10,7 +10,6 @@ import { gameShape } from '../proptypes';
 const GameListItem = ({ game, handleClick }) => {
   const winnerGainStyle = { color: '#AED581' };
   const loserGainStyle = { color: '#E57373' };
-
   const winnerAttack = game.players[game.winnerAttack.id];
   const winnerDefense = game.players[game.winnerDefense.id];
   const loserAttack = game.players[game.loserAttack.id];

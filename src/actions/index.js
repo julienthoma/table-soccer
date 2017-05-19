@@ -14,7 +14,6 @@ export const updateData = data => ({ type: UPDATE_DATA, data });
 export const startGame = () => ({ type: START_GAME });
 export const endGame = game => ({ type: END_GAME, game });
 export const exitGame = () => ({ type: EXIT_GAME });
-
 export const addGoal = index => ({ type: ADD_GOAL, index });
 export const undoLastGoal = index => ({ type: UNDO_LAST_GOAL, index });
 export const toggleSnackbar = (infoText, actionText, callbackFn) => ({
@@ -23,7 +22,6 @@ export const toggleSnackbar = (infoText, actionText, callbackFn) => ({
   actionText,
   callbackFn
 });
-
 export const setPlayers = players => ({
   type: SET_PLAYERS,
   players

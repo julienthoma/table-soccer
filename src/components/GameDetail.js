@@ -4,7 +4,10 @@ import { gameShape } from '../proptypes';
 
 const GameDetail = ({ game }) => (
   <div>
-    <GameListItem game={game} handleClick={() => false} />
+    <GameListItem
+      game={game}
+      handleClick={() => false}
+    />
     <span>Score Timeline coming back soon</span>
   </div>
 );
