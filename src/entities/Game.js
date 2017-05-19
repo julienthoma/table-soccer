@@ -19,5 +19,4 @@ import Entity from './Entity';
  * @property {SimplePlayer} loserAttack
  * @property {SimplePlayer} loserDefense
  */
-export default class Game extends Entity {
-}
+export default class Game extends Entity {}

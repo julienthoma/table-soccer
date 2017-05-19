@@ -3,12 +3,10 @@ import { transform } from '../services/transformer';
 
 export const UPDATE_DATA = 'UPDATE_DATA';
 export const START_GAME = 'START_GAME';
-export const CANCEL_GAME = 'CANCEL_GAME';
 export const END_GAME = 'END_GAME';
 export const EXIT_GAME = 'EXIT_GAME';
 export const ADD_GOAL = 'ADD_GOAL';
 export const UNDO_LAST_GOAL = 'UNDO_LAST_GOAL';
-export const ROTATE_PLAYERS = 'ROTATE_PLAYERS';
 export const SET_PLAYERS = 'SET_PLAYERS';
 export const TOGGLE_SNACKBAR = 'TOGGLE_SNACKBAR';
 

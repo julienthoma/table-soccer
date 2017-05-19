@@ -27,11 +27,6 @@ export default (state = {}, action) => {
         activeStep: consts.SELECT_PLAYERS_STEP
       };
 
-    case actions.ROTATE_PLAYERS:
-      return {
-        ...state
-      };
-
     case actions.ADD_GOAL:
       const score = state.score.slice(0);
       score[action.index]++;
