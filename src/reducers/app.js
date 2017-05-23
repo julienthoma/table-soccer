@@ -7,6 +7,7 @@ export default (state = {}, action) => {
         ...state,
         games: action.data.games,
         players: action.data.players,
+        properties: action.data.properties,
         initialized: true
       };
 

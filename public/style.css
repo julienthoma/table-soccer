@@ -209,3 +209,19 @@ body {
     font-style: italic;
 }
 
+.property-chart {
+    display: flex;
+    justify-content: center;
+    padding: 40px 10px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.property-chart > canvas {
+    max-width: 400px;
+}
+
+.property-chart__labels {
+    text-transform: uppercase;
+    color: #6d6d6d;
+}

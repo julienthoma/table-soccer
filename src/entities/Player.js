@@ -42,14 +42,15 @@ export default class Player extends Entity {
     this.playTime = 0;
     this.playTimeAttack = 0;
     this.playTimeDefense = 0;
+    this.winsAttackDuration = 0;
+    this.lossDefenseDuration = 0;
+    this.goalsWinnerAttack = 0;
+    this.goalsAgainstDefense = 0;
+    this.winRatio = 0;
   }
 
-  getWinPercent() {
-    if (this.wins === 0) {
-      return '-';
-    }
-
-    return `${Math.round((this.wins / this.games) * 100)}%`;
+  getWinPercentFormatted() {
+    return `${Math.round(this.winRatio * 100)}%`;
   }
 
   getPlayTime() {

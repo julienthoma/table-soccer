@@ -1,5 +1,15 @@
 import moment from 'moment';
 
+export const normalizeValue = (value, property, inverted) => {
+  const range = property.max.value - property.min.value;
+
+  const steps = range / 10;
+  const overMin = value - property.min.value;
+  const rating = Math.max(1, Math.ceil(overMin / steps));
+
+  return inverted ? 11 - rating : rating;
+};
+
 export const groupGamesByMonth = games => {
   const group = {};
 

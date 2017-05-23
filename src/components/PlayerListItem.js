@@ -13,7 +13,7 @@ const PlayerListItem = ({ player, handleClick }) => {
         {player.games}
       </TableRowColumn>
       <TableRowColumn style={tableColumnStyle}>
-        {player.getWinPercent()}
+        {player.getWinPercentFormatted()}
       </TableRowColumn>
       <TableRowColumn style={tableColumnStyle}>
         {player.elo}

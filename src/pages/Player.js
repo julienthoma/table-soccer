@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import { Table, TableBody, TableRow, TableRowColumn, TableHeader, TableHeaderColumn } from 'material-ui/Table';
 import { LineChart } from '../components/Charts';
 import WinStreakIcon from '../components/WinStreakIcon';
+import PropertyChart from '../containers/PropertyChart';
 import { playerShape } from '../proptypes';
 import { getMmmrOfWeeks } from '../services/graphData';
 
-const Player = ({ params, players, games }) => {
+const Player = ({ params, players, games, properties }) => {
   const player = players.filter(p => p.id === params.id)[0];
   const tableColumnStyle = { padding: '3px', textAlign: 'left' };
   const firstColumnStyle = { padding: '3px', textAlign: 'left', color: 'rgb(158, 158, 158)', fontSize: 12 };
@@ -24,7 +25,8 @@ const Player = ({ params, players, games }) => {
 
   return (<div className="headline">
     <h1 className="headline">{player.name} - {player.elo }<WinStreakIcon count={player.winStreak} /></h1>
-    <LineChart data={data} />
+    <LineChart data={data} options={{legend: { display: false }, title: { text: 'MMR', display: true}}} />
+    <PropertyChart player={player} />
     <Table allRowsSelected={false}>
       <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
         <TableRow>

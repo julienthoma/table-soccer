@@ -10,6 +10,7 @@ export const transform = data => {
   });
 
   const games = [];
+  const properties = {};
 
   data.games.sort((a, b) => {
     const dateA = new Date(a[1]);
@@ -64,12 +65,27 @@ export const transform = data => {
       const gamesDefense = winsDefense + lossesDefense;
       const currentGoals = currentPlayers[id].score;
       const goalsAgainst = isWinner ? loserAttackScore + loserDefenseScore : winnerAttackScore + winnerDefenseScore;
+      const goalsAgainstDefense = isWinner && !isAttack ?
+        playerMap[id].goalsAgainstDefense + goalsAgainst : playerMap[id].goalsAgainstDefense;
+      const avgGoalsAgainstDefense = goalsAgainstDefense / winsDefense;
       const goals = playerMap[id].goals + currentGoals;
       const goalsAttack = isAttack ? playerMap[id].goalsAttack + currentGoals : playerMap[id].goalsAttack;
+      const goalsWinnerAttack = isWinner && isAttack ?
+        playerMap[id].goalsWinnerAttack + currentGoals : playerMap[id].goalsWinnerAttack;
+      const avgGoalsWinnerAttack = goalsWinnerAttack / winsAttack;
       const goalsDefense = !isAttack ? playerMap[id].goalsDefense + currentGoals : playerMap[id].goalsDefense;
       const playTime = playerMap[id].playTime + duration;
       const playTimeAttack = isAttack ? playerMap[id].playTimeAttack + duration : playerMap[id].playTimeAttack;
       const playTimeDefense = !isAttack ? playerMap[id].playTimeDefense + duration : playerMap[id].playTimeDefense;
+      const winsAttackDuration = isWinner && isAttack ?
+        playerMap[id].winsAttackDuration + duration : playerMap[id].winsAttackDuration;
+      const avgWinsAttackDuration = winsAttackDuration / winsAttack;
+      const lossDefenseDuration = !isWinner && !isAttack ?
+        playerMap[id].lossDefenseDuration + duration : playerMap[id].lossDefenseDuration;
+      const avgLossDefenseDuration = lossDefenseDuration / lossesDefense;
+      const winRatio = wins > 0 ? wins / _games : 0;
+      const winRatioAttack = wins > 0 ? winsAttack / gamesAttack : 0;
+      const winRatioDefense = wins > 0 ? winsDefense / gamesDefense : 0;
 
       let teamMateId;
       let enemy1Id;
@@ -125,6 +141,17 @@ export const transform = data => {
       playerMap[id].playTime = playTime;
       playerMap[id].playTimeAttack = playTimeAttack;
       playerMap[id].playTimeDefense = playTimeDefense;
+      playerMap[id].winsAttackDuration = winsAttackDuration;
+      playerMap[id].avgWinsAttackDuration = avgWinsAttackDuration;
+      playerMap[id].lossDefenseDuration = lossDefenseDuration;
+      playerMap[id].avgLossDefenseDuration = avgLossDefenseDuration;
+      playerMap[id].winRatio = winRatio;
+      playerMap[id].winRatioAttack = winRatioAttack;
+      playerMap[id].winRatioDefense = winRatioDefense;
+      playerMap[id].goalsWinnerAttack = goalsWinnerAttack;
+      playerMap[id].avgGoalsWinnerAttack = avgGoalsWinnerAttack;
+      playerMap[id].goalsAgainstDefense = goalsAgainstDefense;
+      playerMap[id].avgGoalsAgainstDefense = avgGoalsAgainstDefense;
     });
 
     games.push(new Game({
@@ -142,10 +169,40 @@ export const transform = data => {
     }));
   });
 
-  return {
-    players: _players,
-    games
-  };
+  _players.forEach(_player => {
+    const checkedProps = [
+      'elo',
+      'avgWinsAttackDuration',
+      'avgGoalsWinnerAttack',
+      'winRatioAttack',
+      'winRatioDefense',
+      'avgLossDefenseDuration',
+      'avgGoalsAgainstDefense'
+    ];
+
+    if (_player.id === 'guest') {
+      return;
+    }
+
+    checkedProps.forEach(prop => {
+      if (!properties[prop]) {
+        properties[prop] = {
+          min: { value: 999999999999 },
+          max: { value: 0 }
+        };
+      }
+
+      if (_player[prop] <= properties[prop].min.value) {
+        properties[prop].min = { value: _player[prop], id: _player.id };
+      }
+
+      if (_player[prop] >= properties[prop].max.value) {
+        properties[prop].max = { value: _player[prop], id: _player.id };
+      }
+    });
+  });
+
+  return { players: _players, games, properties };
 };
 
 function calc2v2(ratingA1, ratingA2, ratingB1, ratingB2) {

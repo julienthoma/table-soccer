@@ -112,7 +112,7 @@ describe('transformer', () => {
     expect(p1.losses).toEqual(1);
     expect(p1.gamesAttack).toEqual(1);
     expect(p1.lossesAttack).toEqual(0);
-    expect(p1.getWinPercent()).toEqual('50%');
+    expect(p1.getWinPercentFormatted()).toEqual('50%');
   });
 
   it('elo gain', () => {
