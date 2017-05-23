@@ -14,6 +14,7 @@ import Players from './pages/Players';
 import Player from './pages/Player';
 import Game from './pages/Game';
 import GameCreator from './pages/GameCreator';
+import Comparinator from './pages/Comparinator';
 
 injectTapEventPlugin();
 addLocaleData(de);
@@ -30,6 +31,7 @@ render(
             <Route path="/players" component={Players} />
             <Route path="/player/:id" component={Player} />
             <Route path="/new" component={GameCreator} />
+            <Route path="/compare/:p1/:p2" component={Comparinator} />
           </Route>
         </Router>
       </MuiThemeProvider>

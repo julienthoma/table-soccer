@@ -26,7 +26,7 @@ const Player = ({ params, players, games, properties }) => {
   return (<div className="headline">
     <h1 className="headline">{player.name} - {player.elo }<WinStreakIcon count={player.winStreak} /></h1>
     <LineChart data={data} options={{legend: { display: false }, title: { text: 'MMR', display: true}}} />
-    <PropertyChart player={player} />
+    <PropertyChart players={[player]} />
     <Table allRowsSelected={false}>
       <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
         <TableRow>
