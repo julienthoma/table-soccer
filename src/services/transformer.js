@@ -3,16 +3,16 @@ import Player from '../entities/Player';
 import * as consts from '../constants';
 
 export const transform = data => {
-  const _players = data.players.map(([id, name]) => new Player({ id, name }));
+  const _players = Object.keys(data.players).map(key => new Player(data.players[key]));
   const playerMap = {};
   _players.forEach(player => {
     playerMap[player.id] = player;
   });
-
+  const rawGames = Object.keys(data.games).map(key => data.games[key]);
   const games = [];
   const properties = {};
 
-  data.games.sort((a, b) => {
+  rawGames.sort((a, b) => {
     const dateA = new Date(a[1]);
     const dateB = new Date(b[1]);
 

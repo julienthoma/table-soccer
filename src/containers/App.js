@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getData } from '../actions';
+import { getData, initializeFirebase } from '../actions';
 import InfoSnackbar from './InfoSnackbar';
 import CustomToolbar from './CustomToolbar';
 import NewGameButton from './NewGameButton';
 
 class App extends React.Component {
   componentWillMount() {
+    this.props.dispatch(initializeFirebase());
     this.props.dispatch(getData());
   }
 

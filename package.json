@@ -26,6 +26,7 @@
     "chart.js": "^2.5.0",
     "compression-webpack-plugin": "^0.3.2",
     "express": "^4.14.1",
+    "firebase": "^4.0.0",
     "material-ui": "^0.16.7",
     "moment": "^2.18.1",
     "mongodb": "^2.2.24",

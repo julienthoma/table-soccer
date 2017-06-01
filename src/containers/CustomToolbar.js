@@ -2,13 +2,14 @@ import React from 'react';
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar';
 import { Link, withRouter } from 'react-router';
 import IconButton from 'material-ui/IconButton';
-import Home from 'material-ui/svg-icons/action/home';
-import AccountBox from 'material-ui/svg-icons/action/account-box';
+import List from 'material-ui/svg-icons/action/view-list';
+import Group from 'material-ui/svg-icons/social/group';
+import Login from './Login';
 
 class CustomToolbar extends React.Component {
   render() {
     const currentPathName = this.props.router.getCurrentLocation().pathname;
-    const iconStyle = { width: 36, height: 36 };
+    const iconStyle = { width: 40, height: 40 };
 
     if (currentPathName === '/new') {
       return false;
@@ -22,16 +23,17 @@ class CustomToolbar extends React.Component {
             style={{ padding: '5px' }}
             containerElement={<Link to="/games" />}
           >
-            <Home />
+            <List />
           </IconButton>
           <IconButton
             iconStyle={iconStyle}
             style={{ padding: '5px' }}
             containerElement={<Link to="/players" />}
           >
-            <AccountBox />
+            <Group />
           </IconButton>
         </ToolbarGroup>
+        <Login />
       </Toolbar>
     );
   }

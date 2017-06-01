@@ -1,4 +1,5 @@
-import { get, post } from '../services/Ajax';
+import firebase from 'firebase';
+import { get } from '../services/Ajax';
 import { transform } from '../services/transformer';
 
 export const UPDATE_DATA = 'UPDATE_DATA';
@@ -9,7 +10,9 @@ export const ADD_GOAL = 'ADD_GOAL';
 export const UNDO_LAST_GOAL = 'UNDO_LAST_GOAL';
 export const SET_PLAYERS = 'SET_PLAYERS';
 export const TOGGLE_SNACKBAR = 'TOGGLE_SNACKBAR';
+export const SET_USER = 'SET_USER';
 
+export const setUser = user => ({ type: SET_USER, user });
 export const updateData = data => ({ type: UPDATE_DATA, data });
 export const startGame = () => ({ type: START_GAME });
 export const endGame = game => ({ type: END_GAME, game });
@@ -22,30 +25,36 @@ export const toggleSnackbar = (infoText, actionText, callbackFn) => ({
   actionText,
   callbackFn
 });
+
 export const setPlayers = players => ({
   type: SET_PLAYERS,
   players
 });
 
+export const initializeFirebase = () => (dispatch, getState) => {
+  firebase.initializeApp(getState().config.firebaseConfig);
+
+  firebase.auth().onAuthStateChanged(firebaseUser => {
+    dispatch(setUser(firebaseUser));
+  });
+};
+
+
 export const getData = () => dispatch => {
-  const url = '/data';
+  const url = 'https://react-tablesoccer.firebaseio.com/data.json';
+  // Make initial call as ajax for faster startup (socket needs around 2 sec initially)
   get(url).then(
     data => {
-      const transformedData = transform(data);
-      dispatch(updateData(transformedData));
+      dispatch(updateData(transform(data)));
+
+      firebase.database().ref('data').on('value', snapshot => {
+        dispatch(updateData(transform(snapshot.val())));
+      });
     }
   );
 };
 
 export const uploadGame = game => dispatch => {
-  const url = '/data/addgames';
   dispatch(endGame(game));
-
-  post(url, [game]).then(
-    (data) => {
-      const transformedData = transform(data);
-      dispatch(updateData(transformedData));
-      dispatch(toggleSnackbar('Game added successfully', 'Ok, I got it!'));
-    }
-  );
+  firebase.database().ref(`data/games/${game[0]}`).set(game);
 };

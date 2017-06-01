@@ -57,7 +57,7 @@ export const gameShape = shape({
 });
 
 export const scoreTimelineItemShape = shape({
-  id: number.isRequired,
+  id: string.isRequired,
   index: number.isRequired,
   time: number.isRequired
 });

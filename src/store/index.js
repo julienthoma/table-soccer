@@ -12,7 +12,10 @@ export const enhanceStore = (reducer, state) => {
   return createStore(reducer, state, enhancer);
 };
 
-export const getInitialState = () => ({
+export const getInitialState = config => ({
+  config: {
+    ...config
+  },
   app: {
     initialized: false,
     infoText: null

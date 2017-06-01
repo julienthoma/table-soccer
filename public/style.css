@@ -5,6 +5,28 @@ body {
     cursor: pointer;
 }
 
+.login {
+    align-self: center;
+}
+
+.login-avatar-container {
+    display: flex;
+    align-items: center;
+}
+
+.login-username {
+    color: #6d6d6d;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    margin-right: 5px;
+    text-align: right;
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .headline {
     color: #6d6d6d;
     font-family: 'Roboto Condensed', sans-serif;
