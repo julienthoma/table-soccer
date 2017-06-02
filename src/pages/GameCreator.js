@@ -5,6 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { startGame, exitGame, setPlayers } from '../actions';
 import GameScoreScreen from '../containers/GameScoreScreen';
 import PlayerSelection from '../containers/PlayerSelection';
+import { login } from '../services/Auth';
 import * as consts from '../constants';
 import { gamePlayerShape } from '../proptypes';
 
@@ -102,7 +103,22 @@ class GameCreator extends React.Component {
   }
 
   render() {
-    const { activeStep } = this.props;
+    const { activeStep, currentUser } = this.props;
+
+    if (!currentUser) {
+      return (
+        <div>
+          <p>
+            You need to sign in to create games
+          </p>
+          <RaisedButton
+            label="Google sign-in"
+            onClick={login}
+          />
+        </div>
+      );
+    }
+
     let content;
     switch (activeStep) {
       case consts.SELECT_PLAYERS_STEP:
@@ -140,7 +156,8 @@ GameCreator.propTypes = {
 
 const mapStateToProps = state => ({
   players: state.game.players,
-  activeStep: state.game.activeStep
+  activeStep: state.game.activeStep,
+  currentUser: state.user.currentUser
 });
 
 const _GameCreator = connect(mapStateToProps)(GameCreator);

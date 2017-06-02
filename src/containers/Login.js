@@ -1,21 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import firebase from 'firebase';
 import AccountCircle from 'material-ui/svg-icons/action/account-circle';
 import Avatar from 'material-ui/Avatar';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
+import { login, logout } from '../services/Auth';
 
 class Login extends React.Component {
-  handleLoginClick = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider);
-  }
-
-  handleLogoutClick = () => {
-    firebase.auth().signOut();
-  }
   render() {
     const { currentUser } = this.props;
     const iconStyle = { width: 40, height: 40 };
@@ -43,7 +35,7 @@ class Login extends React.Component {
             >
               <MenuItem
                 primaryText="Logout"
-                onClick={this.handleLogoutClick}
+                onClick={logout}
               />
             </IconMenu>
           </div>
@@ -62,7 +54,7 @@ class Login extends React.Component {
           >
             <MenuItem
               primaryText="Login"
-              onClick={this.handleLoginClick}
+              onClick={login}
             />
           </IconMenu>
         }

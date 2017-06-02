@@ -1,4 +1,5 @@
 body {
+    font-family: 'Roboto Condensed', sans-serif;
     margin: 10px;
 }
 .game-list-item:hover {
