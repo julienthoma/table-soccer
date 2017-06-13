@@ -5,34 +5,29 @@ const APP_DIR = path.resolve(__dirname, 'src');
 
 module.exports = {
   devtool: 'source-map',
-  entry: [
-    APP_DIR + '/index.js'
-  ],
+  entry: [`${APP_DIR}/index.js`],
   output: {
     path: BUILD_DIR,
     filename: 'app.js'
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.js$/,
-        include: path.join(__dirname, 'src'),
-        exclude: ['node_modules'],
-        loaders: ['babel']
+        include: APP_DIR,
+        loaders: [
+          'style-loader',
+          'css-loader?importLoader=1&modules&localIdentName=[name]__[local]___[hash:base64:5]',
+          'sass-loader'
+        ],
+        test: /\.scss$/
       },
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-        options: {
-          emitError: true,
-          emitWarning: true
-        }
+        include: APP_DIR,
+        loader: 'babel-loader',
+        test: /\.js$/
       }
     ]
   },
-  plugins: [
-  ],
   devServer: {
     hot: true,
     contentBase: '.'

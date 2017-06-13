@@ -15,6 +15,7 @@ import Player from './pages/Player';
 import Game from './pages/Game';
 import GameCreator from './pages/GameCreator';
 import Comparinator from './pages/Comparinator';
+import './index.scss';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDJVUqBi46xT4maZZWNwfmZJciW2-aWOVw',

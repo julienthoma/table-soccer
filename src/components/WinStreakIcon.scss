@@ -1,0 +1,14 @@
+.root {
+  position: relative;
+  font-size: 15px;
+  max-width: 24px;
+  display: inline-block;
+}
+
+.hotnumber {
+  position: absolute;
+  color: black;
+  top: -8px;
+  font-weight: 600;
+  right: -2px;
+}

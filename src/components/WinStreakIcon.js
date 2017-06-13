@@ -1,5 +1,6 @@
 import React from 'react';
 import Hot from 'material-ui/svg-icons/social/whatshot';
+import './WinStreakIcon.scss';
 
 const WinStreakIcon = ({ count }) => {
   if (count < 3) {
@@ -7,9 +8,9 @@ const WinStreakIcon = ({ count }) => {
   }
 
   return (
-    <div className="winstreak-icon">
+    <div styleName="root">
       <Hot color={getColorByCount(count)} />
-      <div className="hotnumber">{count}</div>
+      <div styleName="hotnumber">{count}</div>
     </div>
   );
 };
