@@ -1,0 +1,53 @@
+.root {
+  color: #6d6d6d;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px 0;
+
+  &:nth-last-of-type(even) {
+    background: #f3f3f3;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.date {
+  text-align: right;
+  color: #BDBDBD;
+  padding: 0 5px;
+  font-style: italic;
+}
+
+.score {
+  font-size: 46px;
+  padding: 0 5px;
+  margin-top: 15px;
+  color: #BDBDBD;
+}
+
+.left,
+.right {
+  flex-basis: 100px;
+  flex-shrink: 0;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.player {
+  text-align: center;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.playerName {
+  display: flex;
+}
+
+.playerScore {
+  font-size: 16px;
+}

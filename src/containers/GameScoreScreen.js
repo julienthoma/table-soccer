@@ -4,6 +4,7 @@ import shortid from 'shortid';
 import RaisedButton from 'material-ui/RaisedButton';
 import { addGoal, uploadGame, undoLastGoal, toggleSnackbar } from '../actions';
 import { scoreTimelineItemShape, simplePlayerShape } from '../proptypes';
+import './GameScoreScreen.scss';
 
 class GameScoreScreen extends React.Component {
   componentDidUpdate = () => {
@@ -61,11 +62,10 @@ class GameScoreScreen extends React.Component {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', marginBottom: 10 }}>
         <div
-          className="score"
           style={{ display: 'flex', marginBottom: 10, justifyContent: 'center', fontFamily: 'Roboto' }}
         >
-          <h1 className="team1score">{team1Score}</h1>
-          <h1 className="team2score">{team2Score}</h1>
+          <h1 styleName="score team1">{team1Score}</h1>
+          <h1 styleName="score team2">{team2Score}</h1>
         </div>
         <div style={containerStyle} className="player-selection">
           {

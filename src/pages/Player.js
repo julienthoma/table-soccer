@@ -6,6 +6,7 @@ import WinStreakIcon from '../components/WinStreakIcon';
 import PropertyChart from '../containers/PropertyChart';
 import { playerShape } from '../proptypes';
 import { getMmmrOfWeeks } from '../services/graphData';
+import '../scss/typography.scss';
 
 const Player = ({ params, players, games, properties }) => {
   const player = players.filter(p => p.id === params.id)[0];
@@ -23,8 +24,8 @@ const Player = ({ params, players, games, properties }) => {
     ]
   };
 
-  return (<div className="headline">
-    <h1 className="headline">{player.name} - {player.elo }<WinStreakIcon count={player.winStreak} /></h1>
+  return (<div>
+    <h1 styleName="headline">{player.name} - {player.elo }<WinStreakIcon count={player.winStreak} /></h1>
     <LineChart data={data} options={{legend: { display: false }, title: { text: 'MMR', display: true}}} />
     <PropertyChart players={[player]} />
     <Table allRowsSelected={false}>

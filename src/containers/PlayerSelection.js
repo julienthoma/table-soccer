@@ -4,6 +4,7 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import { setPlayers } from '../actions';
 import { gamePlayerShape, playerShape } from '../proptypes';
+import './PlayerSelection.scss';
 
 class PlayerSelection extends React.Component {
   componentWillMount() {
@@ -49,30 +50,28 @@ class PlayerSelection extends React.Component {
     const selectStyle = { width: 'calc(100% - 6px)', margin: '40px 3px 0 3px', color: 'white' };
     const labelStyle = { color: 'white', textTransform: 'uppercase', paddingRight: 45, fontSize: 14 };
     return (
-      <div>
-        <div style={containerStyle} className="player-selection">
-          { currentPlayers.map((player, index) => (
-            <div style={fieldStyle} className="team1" key={index}>
-              <SelectField
-                floatingLabelText={index % 2 === 0 ? 'Attack' : 'Defense'}
-                value={player.index}
-                onChange={this.changePlayer(index)}
-                style={selectStyle}
-                labelStyle={labelStyle}
-              >
-                {
-                  players.map((_player, _index) =>
-                    <MenuItem
-                      value={_index}
-                      key={_player.id}
-                      primaryText={_player.name}
-                    />
-                  )
-                }
-              </SelectField>
-            </div>
-          ))}
-        </div>
+      <div style={containerStyle} styleName="root">
+        { currentPlayers.map((player, index) => (
+          <div style={fieldStyle} key={index}>
+            <SelectField
+              floatingLabelText={index % 2 === 0 ? 'Attack' : 'Defense'}
+              value={player.index}
+              onChange={this.changePlayer(index)}
+              style={selectStyle}
+              labelStyle={labelStyle}
+            >
+              {
+                players.map((_player, _index) =>
+                  <MenuItem
+                    value={_index}
+                    key={_player.id}
+                    primaryText={_player.name}
+                  />
+                )
+              }
+            </SelectField>
+          </div>
+        ))}
       </div>
     );
   }

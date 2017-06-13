@@ -6,6 +6,7 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import { login, logout } from '../services/Auth';
+import './Login.scss';
 
 class Login extends React.Component {
   render() {
@@ -13,10 +14,10 @@ class Login extends React.Component {
     const iconStyle = { width: 40, height: 40 };
 
     return (
-      <div className="login">
+      <div styleName="root">
         { currentUser ?
-          <div className="login-avatar-container">
-            <div className="login-username">
+          <div styleName="avatarContainer">
+            <div styleName="userName">
               { currentUser.displayName.split(' ')[0] }
             </div>
             <IconMenu
