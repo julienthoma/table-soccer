@@ -9,8 +9,6 @@ import './GameListItem.scss';
  * @param handleClick
  */
 const GameListItem = ({ game, handleClick }) => {
-  const winnerGainStyle = { color: '#AED581' };
-  const loserGainStyle = { color: '#E57373' };
   const winnerAttack = game.players[game.winnerAttack.id];
   const winnerDefense = game.players[game.winnerDefense.id];
   const loserAttack = game.players[game.loserAttack.id];
@@ -37,9 +35,7 @@ const GameListItem = ({ game, handleClick }) => {
             </div>
             <div styleName="playerScore">
               { winnerAttack.elo }&nbsp;
-              <span
-                style={winnerGainStyle}
-              >
+              <span styleName="gainColor">
                 (+{ winnerAttack.eloGain })
               </span>
             </div>
@@ -51,9 +47,7 @@ const GameListItem = ({ game, handleClick }) => {
             </div>
             <div styleName="playerScore">
               { winnerDefense.elo }&nbsp;
-              <span
-                style={winnerGainStyle}
-              >
+              <span styleName="gainColor">
                 (+{ winnerDefense.eloGain })
               </span>
             </div>
@@ -69,9 +63,7 @@ const GameListItem = ({ game, handleClick }) => {
             </div>
             <div styleName="playerScore">
               { loserAttack.elo }&nbsp;
-              <span
-                style={loserGainStyle}
-              >
+              <span styleName="lostColor">
                 ({ loserAttack.eloGain })
               </span>
             </div>
@@ -82,9 +74,7 @@ const GameListItem = ({ game, handleClick }) => {
             </div>
             <div styleName="playerScore">
               { loserDefense.elo }&nbsp;
-              <span
-                style={loserGainStyle}
-              >
+              <span styleName="lostColor">
                 ({ loserDefense.eloGain })
               </span>
             </div>

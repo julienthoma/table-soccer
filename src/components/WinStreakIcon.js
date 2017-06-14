@@ -9,27 +9,27 @@ const WinStreakIcon = ({ count }) => {
 
   return (
     <div styleName="root">
-      <Hot color={getColorByCount(count)} />
+      <Hot styleName={`streak-${getClassNumberByCount(count)}`} />
       <div styleName="hotnumber">{count}</div>
     </div>
   );
 };
 
-function getColorByCount(count) {
+function getClassNumberByCount(count) {
   if (count >= 10) {
-    return '#9C27B0';
+    return 10;
   }
 
   if (count >= 7) {
-    return '#E91E63';
+    return 7;
   }
 
   if (count >= 5) {
-    return '#B71C1C';
+    return 5;
   }
 
   if (count >= 3) {
-    return '#F57C00';
+    return 3;
   }
 }
 
