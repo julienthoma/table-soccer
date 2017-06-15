@@ -1,5 +1,12 @@
-import { number, bool, string, shape, instanceOf, oneOf, objectOf } from 'prop-types';
-
+import {
+  number,
+  bool,
+  string,
+  shape,
+  instanceOf,
+  oneOf,
+  objectOf
+} from 'prop-types';
 
 export const simplePlayerShape = shape({
   id: string,

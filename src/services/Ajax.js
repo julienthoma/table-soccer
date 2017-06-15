@@ -1,44 +1,46 @@
-export const get = (url) => new Promise((resolve, reject) => {
-  const request = new XMLHttpRequest();
-  request.open('GET', url, true);
-  request.responseType = 'json';
+export const get = url =>
+  new Promise((resolve, reject) => {
+    const request = new XMLHttpRequest();
+    request.open('GET', url, true);
+    request.responseType = 'json';
 
-  request.onload = () => {
-    if (request.status === 200) {
-      if (!request.response) {
-        reject(new Error('Invalid Response'));
+    request.onload = () => {
+      if (request.status === 200) {
+        if (!request.response) {
+          reject(new Error('Invalid Response'));
+        }
+
+        resolve(request.response);
       }
 
-      resolve(request.response);
-    }
+      reject(new Error(request.statusText));
+    };
 
-    reject(new Error(request.statusText));
-  };
+    request.onerror = () => {
+      reject(new Error('Request Error'));
+    };
 
-  request.onerror = () => {
-    reject(new Error('Request Error'));
-  };
+    request.send();
+  });
 
-  request.send();
-});
+export const post = (url, data) =>
+  new Promise((resolve, reject) => {
+    const request = new XMLHttpRequest();
+    request.open('POST', url, true);
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.responseType = 'json';
 
-export const post = (url, data) => new Promise((resolve, reject) => {
-  const request = new XMLHttpRequest();
-  request.open('POST', url, true);
-  request.setRequestHeader('Content-Type', 'application/json');
-  request.responseType = 'json';
+    request.onload = () => {
+      if (request.status === 200) {
+        resolve(request.response);
+      }
 
-  request.onload = () => {
-    if (request.status === 200) {
-      resolve(request.response);
-    }
+      reject(new Error(request.statusText));
+    };
 
-    reject(new Error(request.statusText));
-  };
+    request.onerror = () => {
+      reject(new Error('Request Error'));
+    };
 
-  request.onerror = () => {
-    reject(new Error('Request Error'));
-  };
-
-  request.send(JSON.stringify(data));
-});
+    request.send(JSON.stringify(data));
+  });

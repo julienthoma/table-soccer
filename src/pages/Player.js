@@ -44,16 +44,25 @@ const Player = ({ params, players, games }) => {
       </h1>
       <LineChart
         data={data}
-        options={{ legend: { display: false }, title: { text: 'MMR', display: true } }}
+        options={{
+          legend: { display: false },
+          title: { text: 'MMR', display: true }
+        }}
       />
       <PropertyChart players={[player]} />
       <Table allRowsSelected={false}>
         <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
           <TableRow>
             <TableHeaderColumn style={tableColumnStyle} />
-            <TableHeaderColumn style={tableColumnStyle}>Total</TableHeaderColumn>
-            <TableHeaderColumn style={tableColumnStyle}>Attack</TableHeaderColumn>
-            <TableHeaderColumn style={tableColumnStyle}>Defense</TableHeaderColumn>
+            <TableHeaderColumn style={tableColumnStyle}>
+              Total
+            </TableHeaderColumn>
+            <TableHeaderColumn style={tableColumnStyle}>
+              Attack
+            </TableHeaderColumn>
+            <TableHeaderColumn style={tableColumnStyle}>
+              Defense
+            </TableHeaderColumn>
           </TableRow>
         </TableHeader>
         <TableBody displayRowCheckbox={false}>

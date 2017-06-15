@@ -9,7 +9,13 @@ import './GameScoreScreen.scss';
 
 class GameScoreScreen extends React.Component {
   componentDidUpdate = () => {
-    const { dispatch, currentPlayers, scoreTimeline, score, isFinished } = this.props;
+    const {
+      dispatch,
+      currentPlayers,
+      scoreTimeline,
+      score,
+      isFinished
+    } = this.props;
     const [p1Score, p2Score, p3Score, p4Score] = score;
     const team1Score = p1Score + p2Score;
     const team2Score = p3Score + p4Score;
@@ -34,56 +40,69 @@ class GameScoreScreen extends React.Component {
       playerIds = [p3.id, p4.id, p1.id, p2.id];
     }
 
-    dispatch(uploadGame([
-      shortid.generate(),
-      new Date().getTime(),
-      scoreTimeline[scoreTimeline.length - 1].time,
-      playerIds,
-      playerScores,
-      scoreTimeline.map(item => [item.id, item.index, item.time])
-    ]));
+    dispatch(
+      uploadGame([
+        shortid.generate(),
+        new Date().getTime(),
+        scoreTimeline[scoreTimeline.length - 1].time,
+        playerIds,
+        playerScores,
+        scoreTimeline.map(item => [item.id, item.index, item.time])
+      ])
+    );
   };
 
   handleUndo = index => () => {
     this.props.dispatch(undoLastGoal(index));
-  }
+  };
 
   handleScoreButtonClick = index => () => {
     this.props.dispatch(addGoal(index));
-    this.props.dispatch(toggleSnackbar('GOOOOOAL!!!!!', 'UNDO', this.handleUndo(index)));
+    this.props.dispatch(
+      toggleSnackbar('GOOOOOAL!!!!!', 'UNDO', this.handleUndo(index))
+    );
   };
 
   render() {
     const { currentPlayers, score } = this.props;
-    const containerStyle = { display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' };
+    const containerStyle = {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'space-between'
+    };
     const [p1Score, p2Score, p3Score, p4Score] = score;
     const team1Score = p1Score + p2Score;
     const team2Score = p3Score + p4Score;
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', marginBottom: 10 }}>
+      <div
+        style={{ display: 'flex', flexDirection: 'column', marginBottom: 10 }}
+      >
         <div
-          style={{ display: 'flex', marginBottom: 10, justifyContent: 'center', fontFamily: 'Roboto' }}
+          style={{
+            display: 'flex',
+            marginBottom: 10,
+            justifyContent: 'center',
+            fontFamily: 'Roboto'
+          }}
         >
           <h1 styleName="score team1">{team1Score}</h1>
           <h1 styleName="score team2">{team2Score}</h1>
         </div>
         <div style={containerStyle} className="player-selection">
-          {
-            currentPlayers.map((player, index) => (
-              <RaisedButton
-                disabled={this.props.isFinished}
-                primary={index <= 1}
-                secondary={index > 1}
-                onClick={this.handleScoreButtonClick(index)}
-                buttonStyle={{ height: 180 }}
-                style={{ width: 'calc(50% - 5px)', marginBottom: 10 }}
-                labelStyle={{ fontSize: 20 }}
-                label={player.name}
-                key={player.id}
-              />
-            ))
-          }
+          {currentPlayers.map((player, index) =>
+            <RaisedButton
+              disabled={this.props.isFinished}
+              primary={index <= 1}
+              secondary={index > 1}
+              onClick={this.handleScoreButtonClick(index)}
+              buttonStyle={{ height: 180 }}
+              style={{ width: 'calc(50% - 5px)', marginBottom: 10 }}
+              labelStyle={{ fontSize: 20 }}
+              label={player.name}
+              key={player.id}
+            />
+          )}
         </div>
       </div>
     );

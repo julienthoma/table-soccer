@@ -8,7 +8,7 @@ class InfoSnackbar extends React.Component {
   handleActionClick = () => {
     this.props.callbackFn();
     this.props.dispatch(toggleSnackbar(''));
-  }
+  };
 
   render() {
     const { infoText, actionText } = this.props;

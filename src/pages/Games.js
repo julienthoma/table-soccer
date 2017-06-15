@@ -15,7 +15,10 @@ class Games extends React.Component {
 
     return (
       <GameList
-        games={[...games].sort((a, b) => new Date(b.startdate).getTime() - new Date(a.startdate).getTime())}
+        games={[...games].sort(
+          (a, b) =>
+            new Date(b.startdate).getTime() - new Date(a.startdate).getTime()
+        )}
         handleRowClick={this.handleRowClick}
       />
     );

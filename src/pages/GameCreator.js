@@ -12,38 +12,39 @@ import { gamePlayerShape } from '../proptypes';
 
 class GameCreator extends React.Component {
   isValidPlayerCombo = () => {
-    const set = new Set(this.props.players.map(player => player.index).filter(index => index !== -1));
+    const set = new Set(
+      this.props.players
+        .map(player => player.index)
+        .filter(index => index !== -1)
+    );
     return set.size === 4;
-  }
+  };
 
   rematchRotate = () => {
     const players = this.props.players.slice(0);
     players.unshift(players.pop());
     this.props.dispatch(setPlayers(players));
     this.props.dispatch(exitGame());
-  }
+  };
 
   rematchSwap = () => {
     const [p1, p2, p3, p4] = this.props.players.slice(0);
     const newPlayers = [p3, p1, p4, p2];
     this.props.dispatch(setPlayers(newPlayers));
     this.props.dispatch(exitGame());
-  }
+  };
 
-  startNewGame = () => this.props.dispatch(startGame())
+  startNewGame = () => this.props.dispatch(startGame());
 
   exitGame = () => {
     this.props.dispatch(exitGame());
     browserHistory.push('/');
-  }
+  };
 
-  renderSelectPlayers = () => (
+  renderSelectPlayers = () =>
     <div>
       <PlayerSelection />
-      <RaisedButton
-        label="Exit"
-        onClick={this.exitGame}
-      />
+      <RaisedButton label="Exit" onClick={this.exitGame} />
 
       <RaisedButton
         label="Start Game"
@@ -52,18 +53,16 @@ class GameCreator extends React.Component {
         onClick={this.startNewGame}
         style={{ marginLeft: 12 }}
       />
-    </div>
-  )
+    </div>;
 
-  renderActiveGame = () => (
+  renderActiveGame = () =>
     <div>
       <GameScoreScreen />
       <RaisedButton
         label="Cancel"
         onClick={() => this.props.dispatch(exitGame())}
       />
-    </div>
-  )
+    </div>;
 
   renderGameEnd = () => {
     const buttonStyle = { height: 120 };
@@ -101,7 +100,7 @@ class GameCreator extends React.Component {
 
       </div>
     );
-  }
+  };
 
   render() {
     const { activeStep, currentUser } = this.props;
@@ -112,10 +111,7 @@ class GameCreator extends React.Component {
           <p>
             You need to sign in to create games
           </p>
-          <RaisedButton
-            label="Google sign-in"
-            onClick={login}
-          />
+          <RaisedButton label="Google sign-in" onClick={login} />
         </div>
       );
     }
@@ -136,7 +132,7 @@ class GameCreator extends React.Component {
         return false;
     }
 
-    return <div>{ content }</div>;
+    return <div>{content}</div>;
   }
 }
 

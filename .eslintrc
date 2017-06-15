@@ -9,13 +9,13 @@
     "max-len": [
       "error",
       {
-        "code": 120,
+        "code": 80,
         "ignoreTemplateLiterals": false
       }
     ],
     "indent": [
       "error",
-      4,
+      2,
       {
         "SwitchCase": 1
       }

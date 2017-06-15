@@ -8,39 +8,16 @@ import IconButton from 'material-ui/IconButton';
 import { login, logout } from '../services/Auth';
 import './Login.scss';
 
-class Login extends React.Component {
-  render() {
-    const { currentUser } = this.props;
-    const iconStyle = { width: 40, height: 40 };
+const Login = ({ currentUser }) => {
+  const iconStyle = { width: 40, height: 40 };
 
-    return (
-      <div styleName="root">
-        { currentUser ?
-          <div styleName="avatarContainer">
-            <div styleName="userName">
-              { currentUser.displayName.split(' ')[0] }
-            </div>
-            <IconMenu
-              iconButtonElement={
-                <IconButton
-                  touch
-                  iconStyle={iconStyle}
-                  style={{ padding: 0 }}
-                  tooltipPosition="bottom-left"
-                >
-                  <Avatar
-                    src={currentUser.photoURL}
-                  />
-                </IconButton>
-              }
-            >
-              <MenuItem
-                primaryText="Logout"
-                onClick={logout}
-              />
-            </IconMenu>
+  return (
+    <div styleName="root">
+      {currentUser
+        ? <div styleName="avatarContainer">
+          <div styleName="userName">
+            {currentUser.displayName.split(' ')[0]}
           </div>
-          :
           <IconMenu
             iconButtonElement={
               <IconButton
@@ -49,20 +26,30 @@ class Login extends React.Component {
                 style={{ padding: 0 }}
                 tooltipPosition="bottom-left"
               >
-                <AccountCircle />
+                <Avatar src={currentUser.photoURL} />
               </IconButton>
-            }
+              }
           >
-            <MenuItem
-              primaryText="Login"
-              onClick={login}
-            />
+            <MenuItem primaryText="Logout" onClick={logout} />
           </IconMenu>
-        }
-      </div>
-    );
-  }
-}
+        </div>
+        : <IconMenu
+          iconButtonElement={
+            <IconButton
+              touch
+              iconStyle={iconStyle}
+              style={{ padding: 0 }}
+              tooltipPosition="bottom-left"
+            >
+              <AccountCircle />
+            </IconButton>
+            }
+        >
+          <MenuItem primaryText="Login" onClick={login} />
+        </IconMenu>}
+    </div>
+  );
+};
 
 const mapStateToProps = state => ({
   currentUser: state.user.currentUser
