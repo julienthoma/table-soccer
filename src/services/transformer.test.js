@@ -1,12 +1,24 @@
 import { transform } from './transformer';
 
 const mockData = {
-  players: [
-    ['p1', 'Player 1'],
-    ['p2', 'Player 2'],
-    ['p3', 'Player 3'],
-    ['p4', 'Player 4']
-  ],
+  players: {
+    p1: {
+      name: 'Player 1',
+      id: 'p1'
+    },
+    p2: {
+      name: 'Player 2',
+      id: 'p2'
+    },
+    p3: {
+      name: 'Player 3',
+      id: 'p3'
+    },
+    p4: {
+      name: 'Player 4',
+      id: 'p4'
+    }
+  },
   games: [
     [
       'ryQblMZ8I8x-',
