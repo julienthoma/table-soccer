@@ -19,6 +19,10 @@ class BaseChart extends React.Component {
   }
 }
 
+const defaultProps = {
+  options: {}
+};
+
 const basePropTypes = {
   options: PropTypes.object,
   data: PropTypes.object.isRequired
@@ -96,6 +100,14 @@ _PolarArea.propTypes = basePropTypes;
 _PieChart.propTypes = basePropTypes;
 _Doughnut.propTypes = basePropTypes;
 _BubbleChart.propTypes = basePropTypes;
+
+_LineChart.defaultProps = defaultProps;
+_BarChart.defaultProps = defaultProps;
+_RadarChart.defaultProps = defaultProps;
+_PolarArea.defaultProps = defaultProps;
+_PieChart.defaultProps = defaultProps;
+_Doughnut.defaultProps = defaultProps;
+_BubbleChart.defaultProps = defaultProps;
 
 export const BarChart = _BarChart;
 export const LineChart = _LineChart;

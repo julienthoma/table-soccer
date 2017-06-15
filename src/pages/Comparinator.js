@@ -11,7 +11,8 @@ const Comparinator = ({ params, players }) => {
   return (
     <div>
       <PropertyChart players={[player1, player2]} />
-  </div>);
+    </div>
+  );
 };
 
 Comparinator.propTypes = {
