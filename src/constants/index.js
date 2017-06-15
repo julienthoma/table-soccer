@@ -7,4 +7,4 @@ export const GAME_END_STEP = 'GAME_END_STEP';
 
 export const GUEST = 'guest';
 
-export const FIREBASE_DATA_URL  = 'https://react-tablesoccer.firebaseio.com/data.json';
+export const FIREBASE_DATA_URL = 'https://react-tablesoccer.firebaseio.com/data.json';
