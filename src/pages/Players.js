@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow } from 'material-ui/Table';
 import { browserHistory } from 'react-router';
@@ -41,7 +42,7 @@ class Players extends Component {
 }
 
 Players.propTypes = {
-  players: React.PropTypes.arrayOf(playerShape).isRequired
+  players: PropTypes.arrayOf(playerShape).isRequired
 };
 
 const mapStateToProps = state => ({

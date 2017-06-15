@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
@@ -82,9 +83,9 @@ PlayerSelection.defaultProps = {
 };
 
 PlayerSelection.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  currentPlayers: React.PropTypes.arrayOf(gamePlayerShape).isRequired,
-  players: React.PropTypes.arrayOf(playerShape).isRequired
+  dispatch: PropTypes.func.isRequired,
+  currentPlayers: PropTypes.arrayOf(gamePlayerShape).isRequired,
+  players: PropTypes.arrayOf(playerShape).isRequired
 };
 
 const mapStateToProps = state => ({

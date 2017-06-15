@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import GameList from '../components/GameList';
@@ -22,7 +23,7 @@ class Games extends React.Component {
 }
 
 Games.propTypes = {
-  games: React.PropTypes.arrayOf(gameShape).isRequired
+  games: PropTypes.arrayOf(gameShape).isRequired
 };
 
 const mapStateToProps = state => ({

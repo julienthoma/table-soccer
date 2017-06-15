@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import shortid from 'shortid';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -90,11 +91,11 @@ class GameScoreScreen extends React.Component {
 }
 
 GameScoreScreen.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  isFinished: React.PropTypes.bool.isRequired,
-  score: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
-  scoreTimeline: React.PropTypes.arrayOf(scoreTimelineItemShape).isRequired,
-  currentPlayers: React.PropTypes.arrayOf(simplePlayerShape).isRequired
+  dispatch: PropTypes.func.isRequired,
+  isFinished: PropTypes.bool.isRequired,
+  score: PropTypes.arrayOf(PropTypes.number).isRequired,
+  scoreTimeline: PropTypes.arrayOf(scoreTimelineItemShape).isRequired,
+  currentPlayers: PropTypes.arrayOf(simplePlayerShape).isRequired
 };
 
 const mapStateToProps = state => ({

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { playerShape } from '../proptypes';
 import PropertyChart from '../containers/PropertyChart';
@@ -14,10 +15,10 @@ const Comparinator = ({ params, players }) => {
 };
 
 Comparinator.propTypes = {
-  params: React.PropTypes.shape({
-    id: React.PropTypes.string
+  params: PropTypes.shape({
+    id: PropTypes.string
   }).isRequired,
-  players: React.PropTypes.arrayOf(playerShape).isRequired
+  players: PropTypes.arrayOf(playerShape).isRequired
 };
 
 const mapStateToProps = state => ({

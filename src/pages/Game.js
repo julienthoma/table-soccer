@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import GameDetail from '../components/GameDetail';
 import { gameShape } from '../proptypes';
@@ -10,9 +11,9 @@ const Game = ({ games, params }) => {
 };
 
 Game.propTypes = {
-  games: React.PropTypes.arrayOf(gameShape).isRequired,
-  params: React.PropTypes.shape({
-    id: React.PropTypes.string
+  games: PropTypes.arrayOf(gameShape).isRequired,
+  params: PropTypes.shape({
+    id: PropTypes.string
   }).isRequired
 };
 

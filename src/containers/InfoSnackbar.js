@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Snackbar from 'material-ui/Snackbar';
 import { toggleSnackbar } from '../actions';
@@ -31,10 +32,10 @@ InfoSnackbar.defaultProps = {
 };
 
 InfoSnackbar.propTypes = {
-  actionText: React.PropTypes.string,
-  infoText: React.PropTypes.string,
-  callbackFn: React.PropTypes.func,
-  dispatch: React.PropTypes.func.isRequired
+  actionText: PropTypes.string,
+  infoText: PropTypes.string,
+  callbackFn: PropTypes.func,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

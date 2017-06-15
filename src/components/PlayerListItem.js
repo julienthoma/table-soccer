@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { TableRow, TableRowColumn } from 'material-ui/Table';
 import { playerShape } from '../proptypes';
 
@@ -23,7 +24,7 @@ const PlayerListItem = ({ player, handleClick }) => {
 };
 
 PlayerListItem.propTypes = {
-  handleClick: React.PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
   player: playerShape.isRequired
 };
 

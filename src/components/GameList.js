@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Infinite from 'react-infinite';
 import GameListItem from '../components/GameListItem';
 import { gameShape } from '../proptypes';
@@ -22,8 +23,8 @@ const GameList = ({ games, handleRowClick }) => (
 );
 
 GameList.propTypes = {
-  handleRowClick: React.PropTypes.func.isRequired,
-  games: React.PropTypes.arrayOf(gameShape).isRequired
+  handleRowClick: PropTypes.func.isRequired,
+  games: PropTypes.arrayOf(gameShape).isRequired
 };
 
 export default GameList;

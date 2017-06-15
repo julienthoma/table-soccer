@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getData, initializeFirebase } from '../actions';
 import InfoSnackbar from './InfoSnackbar';
@@ -35,9 +36,9 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  initialized: React.PropTypes.bool.isRequired,
-  children: React.PropTypes.node.isRequired
+  dispatch: PropTypes.func.isRequired,
+  initialized: PropTypes.bool.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 const mapStateToProps = state => ({

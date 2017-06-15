@@ -1,5 +1,6 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
+import PropTypes from 'prop-types';
 import Chart from 'chart.js';
 
 class BaseChart extends React.Component {
@@ -19,13 +20,13 @@ class BaseChart extends React.Component {
 }
 
 const basePropTypes = {
-  options: React.PropTypes.object,
-  data: React.PropTypes.object.isRequired
+  options: PropTypes.object,
+  data: PropTypes.object.isRequired
 };
 
 BaseChart.propTypes = {
   ...basePropTypes,
-  type: React.PropTypes.oneOf(['line', 'bar', 'radar', 'polarArea', 'pie', 'doughnut', 'bubble']).isRequired
+  type: PropTypes.oneOf(['line', 'bar', 'radar', 'polarArea', 'pie', 'doughnut', 'bubble']).isRequired
 };
 
 BaseChart.defaultProps = {

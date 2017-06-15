@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -145,13 +146,13 @@ GameCreator.defaultProps = {
 };
 
 GameCreator.propTypes = {
-  activeStep: React.PropTypes.oneOf([
+  activeStep: PropTypes.oneOf([
     consts.SELECT_PLAYERS_STEP,
     consts.ACTIVE_GAME_STEP,
     consts.GAME_END_STEP
   ]),
-  players: React.PropTypes.arrayOf(gamePlayerShape).isRequired,
-  dispatch: React.PropTypes.func.isRequired
+  players: PropTypes.arrayOf(gamePlayerShape).isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

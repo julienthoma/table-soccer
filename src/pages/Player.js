@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Table, TableBody, TableRow, TableRowColumn, TableHeader, TableHeaderColumn } from 'material-ui/Table';
 import { LineChart } from '../components/Charts';
@@ -114,10 +115,10 @@ const Player = ({ params, players, games, properties }) => {
 };
 
 Player.propTypes = {
-  params: React.PropTypes.shape({
-    id: React.PropTypes.string
+  params: PropTypes.shape({
+    id: PropTypes.string
   }).isRequired,
-  players: React.PropTypes.arrayOf(playerShape).isRequired
+  players: PropTypes.arrayOf(playerShape).isRequired
 };
 
 const mapStateToProps = state => ({

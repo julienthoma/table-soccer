@@ -1,6 +1,5 @@
-import React from 'react';
+import { number, bool, string, shape, instanceOf, oneOf, objectOf } from 'prop-types';
 
-const { number, bool, string, shape, instanceOf, oneOf, objectOf } = React.PropTypes;
 
 export const simplePlayerShape = shape({
   id: string,

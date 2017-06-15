@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FormattedDate } from 'react-intl';
 import WinStreakIcon from './WinStreakIcon';
 import { gameShape } from '../proptypes';
@@ -87,7 +88,7 @@ const GameListItem = ({ game, handleClick }) => {
 
 GameListItem.propTypes = {
   game: gameShape.isRequired,
-  handleClick: React.PropTypes.func.isRequired
+  handleClick: PropTypes.func.isRequired
 };
 
 export default GameListItem;

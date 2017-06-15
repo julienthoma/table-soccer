@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Hot from 'material-ui/svg-icons/social/whatshot';
 import './WinStreakIcon.scss';
 
@@ -34,7 +35,7 @@ function getClassNumberByCount(count) {
 }
 
 WinStreakIcon.propTypes = {
-  count: React.PropTypes.number.isRequired
+  count: PropTypes.number.isRequired
 };
 
 export default WinStreakIcon;
