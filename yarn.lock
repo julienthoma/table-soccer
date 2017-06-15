@@ -1666,13 +1666,13 @@ debug@2.2.0, debug@~2.2.0:
   dependencies:
     ms "0.7.1"
 
-debug@2.6.7, debug@^2.1.1, debug@^2.2.0:
+debug@2.6.7:
   version "2.6.7"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.7.tgz#92bad1f6d05bbb6bba22cca88bcd0ec894c2861e"
   dependencies:
     ms "2.0.0"
 
-debug@2.6.8, debug@^2.6.8:
+debug@2.6.8, debug@^2.1.1, debug@^2.2.0, debug@^2.6.8:
   version "2.6.8"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.8.tgz#e731531ca2ede27d188222427da17821d68ff4fc"
   dependencies:
@@ -2023,8 +2023,8 @@ eslint-plugin-import@^2.2.0:
     read-pkg-up "^2.0.0"
 
 eslint-plugin-jasmine@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jasmine/-/eslint-plugin-jasmine-2.2.0.tgz#7135879383c39a667c721d302b9f20f0389543de"
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jasmine/-/eslint-plugin-jasmine-2.3.0.tgz#3b3658b7d898912faf312adb133c581057fa9e71"
 
 eslint-plugin-jsx-a11y@^4.0.0:
   version "4.0.0"

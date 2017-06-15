@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": "airbnb",
+  "extends": ["airbnb"],
   "plugins": [
     "jasmine"
   ],
@@ -15,7 +15,7 @@
     ],
     "indent": [
       "error",
-      2,
+      4,
       {
         "SwitchCase": 1
       }
@@ -24,6 +24,7 @@
       "error",
       "never"
     ],
+    "no-mixed-operators": 0,
     "no-use-before-define": [
       "error",
       {
