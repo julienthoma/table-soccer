@@ -5,7 +5,10 @@ const APP_DIR = path.resolve(__dirname, 'src');
 
 module.exports = {
   devtool: 'source-map',
-  entry: [`${APP_DIR}/index.js`],
+  entry: [
+    'react-hot-loader/patch',
+    `${APP_DIR}/index.js`
+  ],
   output: {
     path: BUILD_DIR,
     filename: 'app.js'
@@ -30,6 +33,6 @@ module.exports = {
   },
   devServer: {
     hot: true,
-    contentBase: '.'
+    contentBase: './public'
   }
 };
