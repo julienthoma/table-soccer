@@ -9,7 +9,9 @@
         "generateScopedName": "[name]__[local]",
         "filetypes": {
           ".scss": "postcss-scss"
-        }
+        },
+        "exclude": "node_modules",
+        "webpackHotModuleReloading": true
       }
     ]
   ]
