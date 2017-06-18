@@ -1,0 +1,142 @@
+@import '../scss/colors.scss';
+
+$team1Color: $blue;
+$team2Color: $pink;
+
+$team1ColorLower : lighten($team1Color, 3%);
+$team2ColorLower : lighten($team2Color, 5%);
+
+.root {
+  position: relative;
+  font-family: sans-serif;
+  color: white;
+  overflow: hidden;
+  margin-bottom: 6px;
+  width: calc(50% - 3px);
+}
+
+// Auto scales the height of the parent depending of the width to stay squared.
+.heightHack {
+  margin-top: 100%;
+}
+
+.upperClick,
+.upperColor {
+  position: absolute;
+  height: 141.2%;
+  width: 141.2%;
+  left: -70.5%;
+  top: -70.5%;
+  transform: rotate(45deg);
+}
+
+.upperColor {
+  .team1 & {
+    background: $team1Color;
+  }
+
+  .team2 & {
+    background: $team2Color;
+  }
+}
+
+.upperClick {
+  cursor: pointer;
+  z-index: 2;
+
+  &:hover+div {
+    .team1 & {
+      background: lighten($team1Color, 5%);
+    }
+
+    .team2 & {
+      background: lighten($team2Color, 8%)
+    }
+  }
+
+  &:active+div {
+    .team1 & {
+      background: lighten($team1Color, 10%);
+    }
+
+    .team2 & {
+      background: lighten($team2Color, 15%)
+    }
+  }
+}
+
+.lowerClick,
+.lowerColor {
+  position: absolute;
+  height: 141.2%;
+  width: 141.2%;
+  bottom: -70.5%;
+  right: -70.5%;
+  transform: rotate(-45deg);
+}
+
+.lowerColor {
+   .team1 & {
+    background: $team1ColorLower;
+  }
+
+  .team2 & {
+    background: $team2ColorLower;
+  }
+}
+
+.lowerClick {
+  cursor: pointer;
+  z-index: 2;
+
+  &:hover+div {
+    .team1 & {
+      background: lighten($team1ColorLower, 3%);
+    }
+
+    .team2 & {
+      background: lighten($team2ColorLower, 5%)
+    }
+  }
+
+  &:active+div {
+    .team1 & {
+      background: lighten($team1ColorLower, 5%);
+    }
+
+    .team2 & {
+      background: lighten($team2ColorLower, 10%)
+    }
+  }
+}
+
+.text {
+  z-index: 1;
+  line-height: 24px;
+  font-size: 18px;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  top: calc(50% - 12px);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.upperText,
+.lowerText {
+  z-index: 1;
+  text-transform: uppercase;
+  font-size: 11px;
+  position: absolute;
+}
+
+.upperText {
+  left: 5px;
+  top: 5px;
+}
+
+.lowerText {
+  bottom: 5px;
+  right: 5px;
+}

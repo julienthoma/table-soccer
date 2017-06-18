@@ -15,6 +15,7 @@ module.exports = {
     rules: [
       {
         include: APP_DIR,
+        exclude: [/node_modules/],
         loaders: [
           'style-loader',
           'css-loader?importLoader=1&modules&localIdentName=[name]__[local]',
@@ -25,9 +26,35 @@ module.exports = {
       {
         include: APP_DIR,
         loader: 'babel-loader',
+        exclude: [/node_modules/],
         test: /\.js$/
       }
     ]
   },
-  plugins: []
+  devServer: {
+    hot: true,
+    contentBase: BUILD_DIR,
+    filename: 'app.js',
+    proxy: {
+      '/**': {
+        // catch all requests
+        target: '/index.html', // default target
+        secure: false,
+        bypass(req, res, opt) {
+          // your custom code to check for any exceptions
+          // console.log('bypass check', {req: req, res:res, opt: opt});
+          if (
+            req.path.indexOf('/img/') !== -1 ||
+            req.path.indexOf('/public/') !== -1
+          ) {
+            return '/';
+          }
+
+          if (req.headers.accept.indexOf('html') !== -1) {
+            return '/index.html';
+          }
+        }
+      }
+    }
+  }
 };

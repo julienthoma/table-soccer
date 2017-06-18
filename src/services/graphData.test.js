@@ -10,14 +10,6 @@ describe('Graph Data', () => {
     });
   });
 
-  it('groupGamesByMonth', () => {
-    const games = gameMock.slice(0);
-    const groupedGames = graphData.groupGamesByMonth(games);
-    expect(Object.keys(groupedGames).length).toEqual(5);
-    expect(groupedGames['2017-02'].date).toEqual('2017-02-03T16:02:17.608Z');
-    expect(groupedGames['2017-02'].games.length).toEqual(2);
-  });
-
   it('normalize data', () => {
     const property = {
       max: { value: 2500 },

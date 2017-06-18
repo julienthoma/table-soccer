@@ -1,6 +1,28 @@
 
 @import '../scss/colors';
 
+body {
+  margin: 6px !important;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.scoreContainer {
+  display: flex;
+  margin-bottom: 10;
+  justify-content: center;
+}
+
+.players {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .score {
   padding: 0 30px;
   line-height: 90px;

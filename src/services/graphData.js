@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 export const normalizeValue = (value, property, inverted) => {
   const range = property.max.value - property.min.value;
 
@@ -10,39 +8,29 @@ export const normalizeValue = (value, property, inverted) => {
   return inverted ? 11 - rating : rating;
 };
 
-export const groupGamesByMonth = games => {
-  const group = {};
-
-  games.forEach(game => {
-    const date = moment(game.startdate);
-    const monthYearKey = date.format('YYYY-MM');
-
-    if (!group[monthYearKey]) {
-      group[monthYearKey] = {
-        month: monthYearKey,
-        label: date.format('MMM'),
-        date: game.startdate,
-        games: []
-      };
-    }
-
-    group[monthYearKey].games.push(game);
-  });
-
-  return group;
-};
+function getWeek(dt) {
+  const tdt = new Date(dt.valueOf());
+  const dayn = (dt.getDay() + 6) % 7;
+  tdt.setDate(tdt.getDate() - dayn + 3);
+  const firstThursday = tdt.valueOf();
+  tdt.setMonth(0, 1);
+  if (tdt.getDay() !== 4) {
+    tdt.setMonth(0, 1 + (4 - tdt.getDay() + 7) % 7);
+  }
+  return 1 + Math.ceil((firstThursday - tdt) / 604800000);
+}
 
 export const groupGamesByWeek = games => {
   const group = {};
+  console.log('bax');
 
   games.forEach(game => {
-    const date = moment(game.startdate);
-    const _key = date.format('W');
+    const _key = getWeek(game.startdate);
 
     if (!group[_key]) {
       group[_key] = {
         month: _key,
-        label: date.format('W'),
+        label: _key,
         date: game.startdate,
         games: []
       };
@@ -54,11 +42,10 @@ export const groupGamesByWeek = games => {
   return group;
 };
 
-
 export const getMmmrOfWeeks = (games, playerId) => {
   const gamesOfPlayer = games
     .filter(game => game.players[playerId])
-    .sort((a, b) => (new Date(a[1]).getTime()) - (new Date(b[1]).getTime()));
+    .sort((a, b) => new Date(a[1]).getTime() - new Date(b[1]).getTime());
 
   const groupedGames = groupGamesByWeek(gamesOfPlayer);
 

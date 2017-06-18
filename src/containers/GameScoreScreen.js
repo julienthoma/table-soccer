@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import shortid from 'shortid';
 import RaisedButton from 'material-ui/RaisedButton';
+import PlayerButton from '../components/PlayerButton';
 import { addGoal, uploadGame, undoLastGoal, toggleSnackbar } from '../actions';
 import { scoreTimelineItemShape, simplePlayerShape } from '../proptypes';
 import './GameScoreScreen.scss';
@@ -65,42 +66,33 @@ class GameScoreScreen extends React.Component {
 
   render() {
     const { currentPlayers, score } = this.props;
-    const containerStyle = {
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'space-between'
-    };
     const [p1Score, p2Score, p3Score, p4Score] = score;
     const team1Score = p1Score + p2Score;
     const team2Score = p3Score + p4Score;
+    const playerIconCount = [
+      [3, 5],
+      [2, 1],
+      [1, 2],
+      [5, 3]
+    ];
 
     return (
-      <div
-        style={{ display: 'flex', flexDirection: 'column', marginBottom: 10 }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            marginBottom: 10,
-            justifyContent: 'center',
-            fontFamily: 'Roboto'
-          }}
-        >
+      <div styleName="root">
+        <div styleName="scoreContainer">
           <h1 styleName="score team1">{team1Score}</h1>
           <h1 styleName="score team2">{team2Score}</h1>
         </div>
-        <div style={containerStyle} className="player-selection">
+        <div styleName="players">
           {currentPlayers.map((player, index) =>
-            <RaisedButton
-              disabled={this.props.isFinished}
-              primary={index <= 1}
-              secondary={index > 1}
-              onClick={this.handleScoreButtonClick(index)}
-              buttonStyle={{ height: 180 }}
-              style={{ width: 'calc(50% - 5px)', marginBottom: 10 }}
-              labelStyle={{ fontSize: 20 }}
-              label={player.name}
+            <PlayerButton
               key={player.id}
+              name={player.name}
+              team={index <= 1 ? 'team1' : 'team2'}
+              upperCount={playerIconCount[index][0]}
+              lowerCount={playerIconCount[index][1]}
+              disabled={this.props.isFinished}
+              handleUpperClick={() => console.log('upperclick')}
+              handleLowerClick={() => console.log('lowerlick')}
             />
           )}
         </div>
