@@ -10,7 +10,7 @@ export default (state = {}, action) => {
         activeStep: consts.ACTIVE_GAME_STEP,
         scoreTimeline: [],
         isFinished: false,
-        score: [0, 0, 0, 0]
+        score: [0, 0, 0, 0, 0, 0, 0, 0]
       };
 
     case actions.END_GAME:
@@ -38,19 +38,42 @@ export default (state = {}, action) => {
           {
             id: state.players[action.index].id,
             index: action.index,
+            position: action.position,
             time: parseInt((new Date().getTime() - state.startdate) / 1000, 10)
           }
         ],
         score
       };
 
-    case actions.UNDO_LAST_GOAL:
-      const newScore = state.score.slice(0);
-      newScore[action.index]--;
+    case actions.ADD_OWN_GOAL:
+      const _score = state.score.slice(0);
+      _score[action.index + 4]++;
 
       return {
         ...state,
-        scoreTimeline: state.scoreTimeline.slice(0, -1),
+        scoreTimeline: [
+          ...state.scoreTimeline,
+          {
+            id: state.players[action.index].id,
+            index: action.index,
+            time: parseInt((new Date().getTime() - state.startdate) / 1000, 10),
+            ownGoal: true
+          }
+        ],
+        score: _score
+      };
+
+    case actions.UNDO_LAST_GOAL:
+      const newScore = state.score.slice(0);
+      const timeline = state.scoreTimeline.slice(0);
+      const lastItem = timeline.pop();
+      const index = lastItem.ownGoal ? action.index + 4 : action.index;
+
+      newScore[index]--;
+
+      return {
+        ...state,
+        scoreTimeline: timeline,
         score: newScore
       };
 

@@ -1,14 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import RaisedButton from 'material-ui/RaisedButton';
+import Popover from 'material-ui/Popover';
+import Menu from 'material-ui/Menu';
+import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux';
 import shortid from 'shortid';
-import RaisedButton from 'material-ui/RaisedButton';
 import PlayerButton from '../components/PlayerButton';
-import { addGoal, uploadGame, undoLastGoal, toggleSnackbar } from '../actions';
+import {
+  addGoal,
+  addOwnGoal,
+  uploadGame,
+  undoLastGoal,
+  toggleSnackbar,
+  exitGame
+} from '../actions';
 import { scoreTimelineItemShape, simplePlayerShape } from '../proptypes';
 import './GameScoreScreen.scss';
+import * as consts from '../constants';
 
 class GameScoreScreen extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      ownGoalsOpen: false
+    };
+  }
+
   componentDidUpdate = () => {
     const {
       dispatch,
@@ -17,9 +36,8 @@ class GameScoreScreen extends React.Component {
       score,
       isFinished
     } = this.props;
-    const [p1Score, p2Score, p3Score, p4Score] = score;
-    const team1Score = p1Score + p2Score;
-    const team2Score = p3Score + p4Score;
+    const [p1S, p2S, p3S, p4S, p1Own, p2Own, p3Own, p4Own] = score;
+    const [team1Score, team2Score] = this.getScore();
     const [p1, p2, p3, p4] = currentPlayers;
 
     if (isFinished) {
@@ -34,10 +52,10 @@ class GameScoreScreen extends React.Component {
     let playerIds = [];
 
     if (team1Score >= 6) {
-      playerScores = [p1Score, p2Score, p3Score, p4Score];
+      playerScores = [p1S, p2S, p3S, p4S, p1Own, p2Own, p3Own, p4Own];
       playerIds = [p1.id, p2.id, p3.id, p4.id];
     } else {
-      playerScores = [p3Score, p4Score, p1Score, p2Score];
+      playerScores = [p3S, p4S, p1S, p2S, p3Own, p4Own, p1Own, p2Own];
       playerIds = [p3.id, p4.id, p1.id, p2.id];
     }
 
@@ -53,49 +71,161 @@ class GameScoreScreen extends React.Component {
     );
   };
 
+  getScore = () => {
+    const [p1, p2, p3, p4, p1Own, p2Own, p3Own, p4Own] = this.props.score;
+
+    return [p1 + p2 + p3Own + p4Own, p3 + p4 + p1Own + p2Own];
+  }
+
   handleUndo = index => () => {
     this.props.dispatch(undoLastGoal(index));
   };
 
-  handleScoreButtonClick = index => () => {
-    this.props.dispatch(addGoal(index));
+  handleOwnGoalOpen = event => {
+    this.setState({
+      ownGoalsOpen: true,
+      anchorEl: event.currentTarget
+    });
+  };
+
+  handleOwnGoalClose = () => {
+    this.setState({
+      ownGoalsOpen: false
+    });
+  };
+
+  handleOwnGoalClick = index => () => {
+    const { currentPlayers } = this.props;
+    const currentPlayer = currentPlayers[index];
+    this.props.dispatch(addOwnGoal(index));
     this.props.dispatch(
-      toggleSnackbar('GOOOOOAL!!!!!', 'UNDO', this.handleUndo(index))
+      toggleSnackbar(
+        `OWN GOAL from ${currentPlayer.name} LOOL!!!`,
+        'UNDO',
+        this.handleUndo(index)
+      )
+    );
+    this.handleOwnGoalClose();
+  };
+
+  handleScoreButtonClick = (index, position) => () => {
+    const { currentPlayers } = this.props;
+    const currentPlayer = currentPlayers[index];
+    this.props.dispatch(addGoal(index, position));
+    this.props.dispatch(
+      toggleSnackbar(
+        `GOAL from ${currentPlayer.name} - pos ${position}`,
+        'UNDO',
+        this.handleUndo(index)
+      )
     );
   };
 
   render() {
-    const { currentPlayers, score } = this.props;
-    const [p1Score, p2Score, p3Score, p4Score] = score;
-    const team1Score = p1Score + p2Score;
-    const team2Score = p3Score + p4Score;
-    const playerIconCount = [
-      [3, 5],
-      [2, 1],
-      [1, 2],
-      [5, 3]
-    ];
+    const { currentPlayers } = this.props;
+    const [team1Score, team2Score] = this.getScore();
+    const [p1, p2, p3, p4] = currentPlayers;
 
     return (
-      <div styleName="root">
-        <div styleName="scoreContainer">
-          <h1 styleName="score team1">{team1Score}</h1>
-          <h1 styleName="score team2">{team2Score}</h1>
-        </div>
-        <div styleName="players">
-          {currentPlayers.map((player, index) =>
+      <div>
+        <div styleName="game">
+          <div styleName="scoreContainer">
+            <h1 styleName="score team1">{team1Score}</h1>
+            <h1 styleName="score team2">{team2Score}</h1>
+          </div>
+          <div styleName="players">
             <PlayerButton
-              key={player.id}
-              name={player.name}
-              team={index <= 1 ? 'team1' : 'team2'}
-              upperCount={playerIconCount[index][0]}
-              lowerCount={playerIconCount[index][1]}
+              name={p1.name}
+              team={'team1'}
+              upperCount={3}
+              lowerCount={5}
               disabled={this.props.isFinished}
-              handleUpperClick={() => console.log('upperclick')}
-              handleLowerClick={() => console.log('lowerlick')}
+              handleUpperClick={this.handleScoreButtonClick(
+                0,
+                consts.POSITION_STRIKER
+              )}
+              handleLowerClick={this.handleScoreButtonClick(
+                0,
+                consts.POSITION_MIDFILED
+              )}
             />
-          )}
+
+            <PlayerButton
+              name={p2.name}
+              team={'team1'}
+              upperCount={1}
+              lowerCount={2}
+              disabled={this.props.isFinished}
+              handleUpperClick={this.handleScoreButtonClick(
+                1,
+                consts.POSITION_KEEPER
+              )}
+              handleLowerClick={this.handleScoreButtonClick(
+                1,
+                consts.POSITION_DEFENSE
+              )}
+              className="rotate--topLeft"
+            />
+
+            <PlayerButton
+              name={p3.name}
+              team={'team2'}
+              upperCount={2}
+              lowerCount={1}
+              disabled={this.props.isFinished}
+              handleUpperClick={this.handleScoreButtonClick(
+                2,
+                consts.POSITION_DEFENSE
+              )}
+              handleLowerClick={this.handleScoreButtonClick(
+                2,
+                consts.POSITION_KEEPER
+              )}
+              className="rotate--topLeft"
+            />
+
+            <PlayerButton
+              name={p4.name}
+              team={'team2'}
+              upperCount={5}
+              lowerCount={3}
+              disabled={this.props.isFinished}
+              handleUpperClick={this.handleScoreButtonClick(
+                3,
+                consts.POSITION_MIDFILED
+              )}
+              handleLowerClick={this.handleScoreButtonClick(
+                3,
+                consts.POSITION_STRIKER
+              )}
+            />
+
+          </div>
         </div>
+
+        <div styleName="footer">
+          <RaisedButton
+            label="Cancel"
+            onClick={() => this.props.dispatch(exitGame())}
+          />
+
+          <RaisedButton onTouchTap={this.handleOwnGoalOpen} label="own goal" />
+          <Popover
+            open={this.state.ownGoalsOpen}
+            anchorEl={this.state.anchorEl}
+            onRequestClose={this.handleOwnGoalClose}
+          >
+            <Menu>
+              {currentPlayers.map((player, index) =>
+                <MenuItem
+                  primaryText={player.name}
+                  onClick={this.handleOwnGoalClick(index)}
+                />
+              )}
+            </Menu>
+          </Popover>
+        </div>
+
       </div>
     );
   }

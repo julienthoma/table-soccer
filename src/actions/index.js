@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import { initializeApp, database, auth } from 'firebase';
 import { get } from '../services/Ajax';
 import { transform } from '../services/transformer';
 
@@ -7,6 +7,7 @@ export const START_GAME = 'START_GAME';
 export const END_GAME = 'END_GAME';
 export const EXIT_GAME = 'EXIT_GAME';
 export const ADD_GOAL = 'ADD_GOAL';
+export const ADD_OWN_GOAL = 'ADD_OWN_GOAL';
 export const UNDO_LAST_GOAL = 'UNDO_LAST_GOAL';
 export const SET_PLAYERS = 'SET_PLAYERS';
 export const TOGGLE_SNACKBAR = 'TOGGLE_SNACKBAR';
@@ -17,7 +18,17 @@ export const updateData = data => ({ type: UPDATE_DATA, data });
 export const startGame = () => ({ type: START_GAME });
 export const endGame = game => ({ type: END_GAME, game });
 export const exitGame = () => ({ type: EXIT_GAME });
-export const addGoal = index => ({ type: ADD_GOAL, index });
+export const addGoal = (index, position) => ({
+  type: ADD_GOAL,
+  index,
+  position
+});
+
+export const addOwnGoal = index => ({
+  type: ADD_OWN_GOAL,
+  index
+});
+
 export const undoLastGoal = index => ({ type: UNDO_LAST_GOAL, index });
 export const toggleSnackbar = (infoText, actionText, callbackFn) => ({
   type: TOGGLE_SNACKBAR,
@@ -32,13 +43,12 @@ export const setPlayers = players => ({
 });
 
 export const initializeFirebase = () => (dispatch, getState) => {
-  firebase.initializeApp(getState().config.firebaseConfig);
+  initializeApp(getState().config.firebaseConfig);
 
-  firebase.auth().onAuthStateChanged(firebaseUser => {
+  auth().onAuthStateChanged(firebaseUser => {
     dispatch(setUser(firebaseUser));
   });
 };
-
 
 export const getData = () => dispatch => {
   const url = 'https://react-tablesoccer.firebaseio.com/data.json';
@@ -56,5 +66,5 @@ export const getData = () => dispatch => {
 
 export const uploadGame = game => dispatch => {
   dispatch(endGame(game));
-  firebase.database().ref(`data/games/${game[0]}`).set(game);
+  database().ref(`data/games/${game[0]}`).set(game);
 };

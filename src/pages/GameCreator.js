@@ -58,10 +58,6 @@ class GameCreator extends React.Component {
   renderActiveGame = () =>
     <div>
       <GameScoreScreen />
-      <RaisedButton
-        label="Cancel"
-        onClick={() => this.props.dispatch(exitGame())}
-      />
     </div>;
 
   renderGameEnd = () => {

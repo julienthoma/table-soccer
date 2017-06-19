@@ -10,9 +10,10 @@ const PlayerButton = ({
   lowerCount,
   disabled,
   handleUpperClick,
-  handleLowerClick
+  handleLowerClick,
+  className
 }) =>
-  <div styleName={`root ${team} ${disabled ? 'disabled' : ''}`}>
+  <div styleName={`root ${className} ${team} ${disabled ? 'disabled' : ''}`}>
     <div styleName="heightHack" />
     <span styleName="upperText">
       <PositionIcon count={upperCount} />
@@ -30,6 +31,10 @@ const PlayerButton = ({
     <div styleName="lowerColor" />
   </div>;
 
+PlayerButton.defaultProps = {
+  className: ''
+};
+
 PlayerButton.propTypes = {
   name: PropTypes.string.isRequired,
   team: PropTypes.oneOf(['team1', 'team2']).isRequired,
@@ -37,7 +42,8 @@ PlayerButton.propTypes = {
   lowerCount: PropTypes.number.isRequired,
   disabled: PropTypes.bool.isRequired,
   handleUpperClick: PropTypes.func.isRequired,
-  handleLowerClick: PropTypes.func.isRequired
+  handleLowerClick: PropTypes.func.isRequired,
+  className: PropTypes.string
 };
 
 export default PlayerButton;

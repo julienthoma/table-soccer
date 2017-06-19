@@ -4,7 +4,7 @@ $team1Color: $blue;
 $team2Color: $pink;
 
 $team1ColorLower : lighten($team1Color, 3%);
-$team2ColorLower : lighten($team2Color, 5%);
+$team2ColorUpper : lighten($team2Color, 5%);
 
 .root {
   position: relative;
@@ -28,6 +28,12 @@ $team2ColorLower : lighten($team2Color, 5%);
   left: -70.5%;
   top: -70.5%;
   transform: rotate(45deg);
+
+  .rotate--topLeft & {
+    top: -70.5%;
+    right: -70.5%;
+    left: auto;
+  }
 }
 
 .upperColor {
@@ -36,7 +42,7 @@ $team2ColorLower : lighten($team2Color, 5%);
   }
 
   .team2 & {
-    background: $team2Color;
+    background: $team2ColorUpper;
   }
 }
 
@@ -50,7 +56,7 @@ $team2ColorLower : lighten($team2Color, 5%);
     }
 
     .team2 & {
-      background: lighten($team2Color, 8%)
+      background: lighten($team2ColorUpper, 5%)
     }
   }
 
@@ -60,7 +66,7 @@ $team2ColorLower : lighten($team2Color, 5%);
     }
 
     .team2 & {
-      background: lighten($team2Color, 15%)
+      background: lighten($team2ColorUpper, 10%)
     }
   }
 }
@@ -73,6 +79,12 @@ $team2ColorLower : lighten($team2Color, 5%);
   bottom: -70.5%;
   right: -70.5%;
   transform: rotate(-45deg);
+
+  .rotate--topLeft & {
+    vottom: -70.5%;
+    left: -70.5%;
+    right: auto;
+  }
 }
 
 .lowerColor {
@@ -81,7 +93,7 @@ $team2ColorLower : lighten($team2Color, 5%);
   }
 
   .team2 & {
-    background: $team2ColorLower;
+    background: $team2Color;
   }
 }
 
@@ -95,7 +107,7 @@ $team2ColorLower : lighten($team2Color, 5%);
     }
 
     .team2 & {
-      background: lighten($team2ColorLower, 5%)
+      background: lighten($team2Color, 8%)
     }
   }
 
@@ -105,7 +117,7 @@ $team2ColorLower : lighten($team2Color, 5%);
     }
 
     .team2 & {
-      background: lighten($team2ColorLower, 10%)
+      background: lighten($team2Color, 15%)
     }
   }
 }
@@ -134,9 +146,19 @@ $team2ColorLower : lighten($team2Color, 5%);
 .upperText {
   left: 5px;
   top: 5px;
+
+  .rotate--topLeft & {
+    left: auto;
+    right: 5px;
+  }
 }
 
 .lowerText {
   bottom: 5px;
   right: 5px;
+
+  .rotate--topLeft & {
+    right: auto;
+    left: 5px;
+  }
 }
