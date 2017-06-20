@@ -18,10 +18,10 @@ import Comparinator from './pages/Comparinator';
 import './index.scss';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDJVUqBi46xT4maZZWNwfmZJciW2-aWOVw',
-  databaseURL: 'https://react-tablesoccer.firebaseio.com',
-  authDomain: 'react-tablesoccer.firebaseapp.com',
-  projectId: 'react-tablesoccer'
+  apiKey: 'AIzaSyCF98sNc4RLtZfStagGDJVJxXLLA_rp-is',
+  authDomain: 'react-tablesoccer-v.firebaseapp.com',
+  databaseURL: 'https://react-tablesoccer-v.firebaseio.com',
+  projectId: 'react-tablesoccer-v'
 };
 
 injectTapEventPlugin();

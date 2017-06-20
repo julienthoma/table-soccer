@@ -22,35 +22,7 @@ export const getInitialState = config => ({
   },
   app: {
     initialized: false,
-    infoText: null
-  },
-  game: {
-    players: [
-      {
-        name: 'Alex',
-        id: 'aku',
-        index: 0
-      },
-      {
-        name: 'Christian',
-        id: 'chr',
-        index: 1
-      },
-      {
-        name: ' Christopher',
-        id: 'cku',
-        index: 2
-      },
-      {
-        name: 'Eugen',
-        id: 'ema',
-        index: 3
-      }
-    ],
-    startdate: 1497778699457,
-    activeStep: 'ACTIVE_GAME_STEP',
-    scoreTimeline: [],
-    isFinished: false,
-    score: [0, 0, 0, 0, 0, 0, 0, 0]
+    infoText: null,
+    prefetchDone: false
   }
 });

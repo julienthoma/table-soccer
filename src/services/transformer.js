@@ -11,8 +11,8 @@ export const transform = data => {
     playerMap[player.id] = player;
   });
 
-  const rawGames = Object.keys(data.games).map(key => data.games[key]);
-  const games = [];
+  const rawGames = Object.keys(data.games || {}).map(key => data.games[key]);
+  const _games = [];
   const properties = {};
 
   rawGames
@@ -34,28 +34,47 @@ export const transform = data => {
         winnerAttackScore,
         winnerDefenseScore,
         loserAttackScore,
-        loserDefenseScore
+        loserDefenseScore,
+        winnerAttackOwnGoals,
+        winnerDefenseOwnGoals,
+        loserAttackOwnGoals,
+        loserDefenseOwnGoals
       ] = scores;
+
+      const positionGoals = {
+        [consts.POSITION_STRIKER]: 0,
+        [consts.POSITION_MIDFILED]: 0,
+        [consts.POSITION_DEFENSE]: 0,
+        [consts.POSITION_KEEPER]: 0
+      };
 
       const winnerAttack = {
         id: playerMap[winnerAttackId].id,
         name: playerMap[winnerAttackId].name,
-        score: winnerAttackScore
+        score: winnerAttackScore,
+        ownGoals: winnerAttackOwnGoals,
+        ...positionGoals
       };
       const winnerDefense = {
         id: playerMap[winnerDefenseId].id,
         name: playerMap[winnerDefenseId].name,
-        score: winnerDefenseScore
+        score: winnerDefenseScore,
+        ownGoals: winnerDefenseOwnGoals,
+        ...positionGoals
       };
       const loserAttack = {
         id: playerMap[loserAttackId].id,
         name: playerMap[loserAttackId].name,
-        score: loserAttackScore
+        score: loserAttackScore,
+        ownGoals: loserAttackOwnGoals,
+        ...positionGoals
       };
       const loserDefense = {
         id: playerMap[loserDefenseId].id,
         name: playerMap[loserDefenseId].name,
-        score: loserDefenseScore
+        score: loserDefenseScore,
+        ownGoals: loserDefenseOwnGoals,
+        ...positionGoals
       };
 
       const currentPlayers = {
@@ -73,13 +92,34 @@ export const transform = data => {
         }
       };
 
+      timeline.forEach(({ id, position, ownGoal }) => {
+        if (!ownGoal) {
+          currentPlayers[id][position]++;
+        }
+      });
+
       players.forEach((id, i) => {
+        const goalsPosStriker =
+          playerMap[id].goalsPosStriker +
+          currentPlayers[id][consts.POSITION_STRIKER];
+        const goalsPosMidfield =
+          playerMap[id].goalsPosMidfield +
+          currentPlayers[id][consts.POSITION_MIDFILED];
+        const goalsPosDefense =
+          playerMap[id].goalsPosDefense +
+          currentPlayers[id][consts.POSITION_DEFENSE];
+        const goalsPosKeeper =
+          playerMap[id].goalsPosKeeper +
+          currentPlayers[id][consts.POSITION_KEEPER];
+        const ownGoals = (playerMap[id].ownGoals +
+          currentPlayers[id].ownGoals);
         const position = i % 2 === 0
           ? consts.ATTACK_PLAYER
           : consts.DEFENSE_PLAYER;
         const isAttack = position === consts.ATTACK_PLAYER;
         const isWinner = i <= 1;
         const winStreak = isWinner ? playerMap[id].winStreak + 1 : 0;
+        const longestWinStreak = winStreak > playerMap[id].longestWinStreak ? winStreak : playerMap[id].longestWinStreak;
         const wins = isWinner ? playerMap[id].wins + 1 : playerMap[id].wins;
         const winsAttack = isWinner && isAttack
           ? playerMap[id].winsAttack + 1
@@ -96,9 +136,13 @@ export const transform = data => {
         const lossesDefense = !isWinner && !isAttack
           ? playerMap[id].lossesDefense + 1
           : playerMap[id].lossesDefense;
-        const _games = wins + losses;
+        const games = wins + losses;
         const gamesAttack = winsAttack + lossesAttack;
         const gamesDefense = winsDefense + lossesDefense;
+        const avgGoalsPosStriker = goalsPosStriker / gamesAttack;
+        const avgGoalsPosMidfield = goalsPosMidfield / gamesAttack;
+        const avgGoalsPosDefense = goalsPosDefense / gamesDefense;
+        const avgGoalsPosKeeper = goalsPosKeeper / gamesDefense;
         const currentGoals = currentPlayers[id].score;
         const goalsAgainst = isWinner
           ? loserAttackScore + loserDefenseScore
@@ -133,9 +177,10 @@ export const transform = data => {
           ? playerMap[id].lossDefenseDuration + duration
           : playerMap[id].lossDefenseDuration;
         const avgLossDefenseDuration = lossDefenseDuration / lossesDefense;
-        const winRatio = wins > 0 ? wins / _games : 0;
+        const winRatio = wins > 0 ? wins / games : 0;
         const winRatioAttack = wins > 0 ? winsAttack / gamesAttack : 0;
         const winRatioDefense = wins > 0 ? winsDefense / gamesDefense : 0;
+        const avgOwnGoals = ownGoals / games;
 
         let teamMateId;
         let enemy1Id;
@@ -168,11 +213,17 @@ export const transform = data => {
         currentPlayers[id].winStreak = winStreak;
         currentPlayers[id].wins = wins;
         currentPlayers[id].losses = losses;
-        currentPlayers[id].games = _games;
+        currentPlayers[id].games = games;
         currentPlayers[id].goals = goals;
         currentPlayers[id].elo = newElo;
         currentPlayers[id].eloGain = eloGain;
 
+        playerMap[id].ownGoals = ownGoals;
+        playerMap[id].goalsPosStriker = goalsPosStriker;
+        playerMap[id].goalsPosMidfield = goalsPosMidfield;
+        playerMap[id].goalsPosDefense = goalsPosDefense;
+        playerMap[id].goalsPosKeeper = goalsPosKeeper;
+        playerMap[id].winStreak = winStreak;
         playerMap[id].winStreak = winStreak;
         playerMap[id].wins = wins;
         playerMap[id].winsAttack = winsAttack;
@@ -180,7 +231,7 @@ export const transform = data => {
         playerMap[id].losses = losses;
         playerMap[id].lossesAttack = lossesAttack;
         playerMap[id].lossesDefense = lossesDefense;
-        playerMap[id].games = _games;
+        playerMap[id].games = games;
         playerMap[id].gamesAttack = gamesAttack;
         playerMap[id].gamesDefense = gamesDefense;
         playerMap[id].goals = goals;
@@ -202,16 +253,30 @@ export const transform = data => {
         playerMap[id].avgGoalsWinnerAttack = avgGoalsWinnerAttack;
         playerMap[id].goalsAgainstDefense = goalsAgainstDefense;
         playerMap[id].avgGoalsAgainstDefense = avgGoalsAgainstDefense;
+        playerMap[id].avgGoalsPosStriker = avgGoalsPosStriker;
+        playerMap[id].avgGoalsPosMidfield = avgGoalsPosMidfield;
+        playerMap[id].avgGoalsPosDefense = avgGoalsPosDefense;
+        playerMap[id].avgGoalsPosKeeper = avgGoalsPosKeeper;
+        playerMap[id].avgOwnGoals = avgOwnGoals;
+        playerMap[id].longestWinStreak = longestWinStreak;
       });
 
-      games.push(
+      _games.push(
         new Game({
           id: _id,
           startdate: new Date(startdate),
           duration,
           timeline,
-          winnerScore: winnerAttackScore + winnerDefenseScore,
-          loserScore: loserAttackScore + loserDefenseScore,
+          winnerScore:
+            winnerAttackScore +
+              winnerDefenseScore +
+              loserAttackOwnGoals +
+              loserDefenseOwnGoals,
+          loserScore:
+            loserAttackScore +
+              loserDefenseScore +
+              winnerAttackOwnGoals +
+              winnerDefenseOwnGoals,
           winnerAttack,
           winnerDefense,
           loserAttack,
@@ -223,13 +288,16 @@ export const transform = data => {
 
   _players.forEach(_player => {
     const checkedProps = [
-      'elo',
+      'avgGoalsPosStriker',
+      'avgGoalsPosMidfield',
+      'avgGoalsPosDefense',
+      'avgGoalsPosKeeper',
       'avgWinsAttackDuration',
-      'avgGoalsWinnerAttack',
       'winRatioAttack',
       'winRatioDefense',
-      'avgLossDefenseDuration',
-      'avgGoalsAgainstDefense'
+      'avgGoalsAgainstDefense',
+      'avgOwnGoals',
+      'longestWinStreak'
     ];
 
     if (_player.id === 'guest') {
@@ -266,7 +334,7 @@ export const transform = data => {
 
   return {
     players: _players,
-    games,
+    games: _games,
     properties
   };
 };

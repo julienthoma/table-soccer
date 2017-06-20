@@ -5,6 +5,48 @@ import { RadarChart } from '../components/Charts';
 import { normalizeValue } from '../services/graphData';
 import { playerShape } from '../proptypes';
 
+const PROPERTIES = [
+  {
+    key: 'winRatioAttack',
+    label: 'Attack Win %'
+  },
+  {
+    key: 'avgGoalsPosStriker',
+    label: 'Goals Striker'
+  },
+  {
+    key: 'avgGoalsAgainstDefense',
+    label: 'Goals Against',
+    inverse: true
+  },
+  {
+    key: 'winRatioDefense',
+    label: 'Defense Win %'
+  },
+  {
+    key: 'avgGoalsPosKeeper',
+    label: 'Goals Keeper'
+  },
+  {
+    key: 'avgGoalsPosDefense',
+    label: 'Goals Defense'
+  },
+  {
+    key: 'avgWinsAttackDuration',
+    label: 'Fast Wins Attack',
+    inverse: true
+  },
+  {
+    key: 'avgOwnGoals',
+    label: 'Own Goals',
+    inverse: true
+  },
+  {
+    key: 'longestWinStreak',
+    label: 'Longest Winstreak'
+  }
+];
+
 const PropertyChart = ({ players, properties }) => {
   const blue = 'rgba(0, 188, 212,1)';
   const blueLight = 'rgba(0, 188, 212,0.2)';
@@ -30,39 +72,13 @@ const PropertyChart = ({ players, properties }) => {
     label: player.name,
     pointBorderColor: '#fff',
     pointHoverBackgroundColor: '#fff',
-    data: [
-      normalizeValue(player.winRatioAttack, properties.winRatioAttack),
-      normalizeValue(
-        player.avgGoalsWinnerAttack,
-        properties.avgGoalsWinnerAttack
-      ),
-      normalizeValue(
-        player.avgGoalsAgainstDefense,
-        properties.avgGoalsAgainstDefense,
-        true
-      ),
-      normalizeValue(player.winRatioDefense, properties.winRatioDefense),
-      normalizeValue(
-        player.avgLossDefenseDuration,
-        properties.avgLossDefenseDuration
-      ),
-      normalizeValue(
-        player.avgWinsAttackDuration,
-        properties.avgWinsAttackDuration,
-        true
-      )
-    ]
+    data: PROPERTIES.map(({ key, inverse }) =>
+      normalizeValue(player[key], properties[key], inverse)
+    )
   }));
 
   const data = {
-    labels: [
-      'Attack Win Ratio',
-      'Goals Attack',
-      'Goals Against',
-      'Defense Win Ratio',
-      'Defense duration',
-      'Fast Wins Attack'
-    ],
+    labels: PROPERTIES.map(({ label }) => label),
     datasets: dataSets
   };
 

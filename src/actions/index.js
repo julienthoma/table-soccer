@@ -12,7 +12,9 @@ export const UNDO_LAST_GOAL = 'UNDO_LAST_GOAL';
 export const SET_PLAYERS = 'SET_PLAYERS';
 export const TOGGLE_SNACKBAR = 'TOGGLE_SNACKBAR';
 export const SET_USER = 'SET_USER';
+export const PREFETCH_DONE = 'PREFETCH_DONE';
 
+export const prefetchDone = () => ({ type: PREFETCH_DONE });
 export const setUser = user => ({ type: SET_USER, user });
 export const updateData = data => ({ type: UPDATE_DATA, data });
 export const startGame = () => ({ type: START_GAME });
@@ -50,18 +52,21 @@ export const initializeFirebase = () => (dispatch, getState) => {
   });
 };
 
-export const getData = () => dispatch => {
-  const url = 'https://react-tablesoccer.firebaseio.com/data.json';
-  // Make initial call as ajax for faster startup (socket needs around 2 sec initially)
-  get(url).then(
-    data => {
-      dispatch(updateData(transform(data)));
+export const getData = () => (dispatch, getState) => {
+  const url = 'https://react-tablesoccer-v.firebaseio.com/data.json';
+  // Make initial call as ajax for faster startup (socket startup is slow)
+  get(url).then(data => {
+    dispatch(updateData(transform(data)));
 
-      firebase.database().ref('data').on('value', snapshot => {
+    database().ref('data').on('value', snapshot => {
+      // Done update twice after intial call.
+      if (getState().app.prefetchDone) {
         dispatch(updateData(transform(snapshot.val())));
-      });
-    }
-  );
+      } else {
+        dispatch(prefetchDone());
+      }
+    });
+  });
 };
 
 export const uploadGame = game => dispatch => {

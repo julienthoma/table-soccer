@@ -50,9 +50,7 @@ module.exports = {
             return '/';
           }
 
-          if (req.headers.accept.indexOf('html') !== -1) {
-            return '/index.html';
-          }
+          return '/index.html';
         }
       }
     }

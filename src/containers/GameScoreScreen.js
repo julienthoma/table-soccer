@@ -66,7 +66,7 @@ class GameScoreScreen extends React.Component {
         scoreTimeline[scoreTimeline.length - 1].time,
         playerIds,
         playerScores,
-        scoreTimeline.map(item => [item.id, item.index, item.time])
+        scoreTimeline
       ])
     );
   };
@@ -75,7 +75,7 @@ class GameScoreScreen extends React.Component {
     const [p1, p2, p3, p4, p1Own, p2Own, p3Own, p4Own] = this.props.score;
 
     return [p1 + p2 + p3Own + p4Own, p3 + p4 + p1Own + p2Own];
-  }
+  };
 
   handleUndo = index => () => {
     this.props.dispatch(undoLastGoal(index));
@@ -218,6 +218,7 @@ class GameScoreScreen extends React.Component {
             <Menu>
               {currentPlayers.map((player, index) =>
                 <MenuItem
+                  key={index}
                   primaryText={player.name}
                   onClick={this.handleOwnGoalClick(index)}
                 />

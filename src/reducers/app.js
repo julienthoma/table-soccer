@@ -11,6 +11,12 @@ export default (state = {}, action) => {
         initialized: true
       };
 
+    case actions.PREFETCH_DONE:
+      return {
+        ...state,
+        prefetchDone: true
+      };
+
     default:
       return state;
   }

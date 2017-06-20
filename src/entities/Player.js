@@ -23,7 +23,13 @@ import Entity from './Entity';
 export default class Player extends Entity {
   constructor(props) {
     super(props);
+    this.goalsPosStriker = 0;
+    this.goalsPosMidfield = 0;
+    this.goalsPosDefense = 0;
+    this.goalsPosKeeper = 0;
+    this.ownGoals = 0;
     this.winStreak = 0;
+    this.longestWinStreak = 0;
     this.wins = 0;
     this.winsAttack = 0;
     this.winsDefense = 0;
