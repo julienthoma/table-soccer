@@ -4,6 +4,10 @@
     "ignore": [
       "app.js",
       "dev-index.html"
-    ]
+    ],
+    "rewrites": [{
+      "source": "**",
+      "destination": "/index.html"
+    }]
   }
 }

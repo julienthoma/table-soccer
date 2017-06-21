@@ -94,7 +94,8 @@ class GameScoreScreen extends React.Component {
     });
   };
 
-  handleOwnGoalClick = index => () => {
+  handleOwnGoalClick = index => e => {
+    e.preventDefault();
     const { currentPlayers } = this.props;
     const currentPlayer = currentPlayers[index];
     this.props.dispatch(addOwnGoal(index));
@@ -214,13 +215,15 @@ class GameScoreScreen extends React.Component {
             open={this.state.ownGoalsOpen}
             anchorEl={this.state.anchorEl}
             onRequestClose={this.handleOwnGoalClose}
+            anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
+            targetOrigin={{ horizontal: 'left', vertical: 'top' }}
           >
             <Menu>
               {currentPlayers.map((player, index) =>
                 <MenuItem
                   key={index}
                   primaryText={player.name}
-                  onClick={this.handleOwnGoalClick(index)}
+                  onTouchTap={this.handleOwnGoalClick(index)}
                 />
               )}
             </Menu>
