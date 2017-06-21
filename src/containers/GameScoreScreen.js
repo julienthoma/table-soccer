@@ -82,6 +82,7 @@ class GameScoreScreen extends React.Component {
   };
 
   handleOwnGoalOpen = event => {
+    event.preventDefault();
     this.setState({
       ownGoalsOpen: true,
       anchorEl: event.currentTarget
@@ -94,8 +95,7 @@ class GameScoreScreen extends React.Component {
     });
   };
 
-  handleOwnGoalClick = index => e => {
-    e.preventDefault();
+  handleOwnGoalClick = index => () => {
     const { currentPlayers } = this.props;
     const currentPlayer = currentPlayers[index];
     this.props.dispatch(addOwnGoal(index));
