@@ -67,9 +67,13 @@ class PlayerSelection extends React.Component {
       fontSize: 14
     };
     return (
-      <div style={containerStyle} styleName="root">
+      <div style={containerStyle}>
         {currentPlayers.map((player, index) =>
-          <div style={fieldStyle} key={index}>
+          <div
+            styleName={index < 2 ? 'team1' : 'team2'}
+            style={fieldStyle}
+            key={index}
+          >
             <SelectField
               floatingLabelText={index % 2 === 0 ? 'Attack' : 'Defense'}
               value={player.index}

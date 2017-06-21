@@ -1,18 +1,10 @@
 
 @import '../scss/colors.scss';
 
-.root {
-  > div {
-    background: $blue;
-    
-    &:nth-last-of-type(3) {
-      order: 2;
-      background: $pink;
-    }
+.team1 {
+  background: $blue;
+}
 
-    &:nth-last-of-type(4) {
-      background: $pink;
-    }
-
-  }
+.team2 {
+  background: $pink;
 }
