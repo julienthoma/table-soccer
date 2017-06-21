@@ -67,7 +67,7 @@ class PlayerSelection extends React.Component {
       fontSize: 14
     };
     return (
-      <div style={containerStyle}>
+      <div style={containerStyle} styleName="root">
         {currentPlayers.map((player, index) =>
           <div
             styleName={index < 2 ? 'team1' : 'team2'}

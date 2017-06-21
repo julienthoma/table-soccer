@@ -1,6 +1,12 @@
 
 @import '../scss/colors.scss';
 
+.root {
+  > div:nth-of-type(3) {
+    order: 2;
+  }
+}
+
 .team1 {
   background: $blue;
 }

@@ -169,34 +169,34 @@ class GameScoreScreen extends React.Component {
             />
 
             <PlayerButton
-              name={p3.name}
+              name={p4.name}
               team={'team2'}
               upperCount={2}
               lowerCount={1}
               disabled={this.props.isFinished}
               handleUpperClick={this.handleScoreButtonClick(
-                2,
+                3,
                 consts.POSITION_DEFENSE
               )}
               handleLowerClick={this.handleScoreButtonClick(
-                2,
+                3,
                 consts.POSITION_KEEPER
               )}
               className="rotate--topLeft"
             />
 
             <PlayerButton
-              name={p4.name}
+              name={p3.name}
               team={'team2'}
               upperCount={5}
               lowerCount={3}
               disabled={this.props.isFinished}
               handleUpperClick={this.handleScoreButtonClick(
-                3,
+                2,
                 consts.POSITION_MIDFILED
               )}
               handleLowerClick={this.handleScoreButtonClick(
-                3,
+                2,
                 consts.POSITION_STRIKER
               )}
             />
