@@ -38,7 +38,7 @@ module.exports = {
     proxy: {
       '/**': {
         // catch all requests
-        target: '/index.html', // default target
+        target: '/dev-index.html', // default target
         secure: false,
         bypass(req, res, opt) {
           // your custom code to check for any exceptions
@@ -50,7 +50,7 @@ module.exports = {
             return '/';
           }
 
-          return '/index.html';
+          return '/dev-index.html';
         }
       }
     }

@@ -2,11 +2,16 @@ const webpack = require('webpack');
 const path = require('path');
 const config = require('./webpack.base.config');
 const APP_DIR = path.resolve(__dirname, '../src');
+const BUILD_DIR = path.resolve(__dirname, '../public');
 
 module.exports = Object.assign({}, config, {
   devtool: false,
   entry: {
     app: [`${APP_DIR}/index.js`]
+  },
+  output: {
+    path: BUILD_DIR,
+    filename: '[name].min.js'
   },
   plugins: [
     new webpack.DefinePlugin({
