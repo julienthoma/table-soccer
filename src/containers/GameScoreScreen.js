@@ -101,7 +101,7 @@ class GameScoreScreen extends React.Component {
     this.props.dispatch(addOwnGoal(index));
     this.props.dispatch(
       toggleSnackbar(
-        `OWN GOAL from ${currentPlayer.name} LOOL!!!`,
+        `OWN GOAL ${currentPlayer.name}`,
         'UNDO',
         this.handleUndo(index)
       )
@@ -115,7 +115,7 @@ class GameScoreScreen extends React.Component {
     this.props.dispatch(addGoal(index, position));
     this.props.dispatch(
       toggleSnackbar(
-        `GOAL from ${currentPlayer.name} - pos ${position}`,
+        `${currentPlayer.name} - ${position}`,
         'UNDO',
         this.handleUndo(index)
       )
