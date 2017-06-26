@@ -48,33 +48,46 @@ export const transform = data => {
         [consts.POSITION_KEEPER]: 0
       };
 
+      const goalTimings = {
+        goalAgainstTimings: [],
+        goalTimings: []
+      };
+
       const winnerAttack = {
         id: playerMap[winnerAttackId].id,
         name: playerMap[winnerAttackId].name,
         score: winnerAttackScore,
         ownGoals: winnerAttackOwnGoals,
-        ...positionGoals
+        ...positionGoals,
+        goalAgainstTimings: [],
+        goalTimings: []
       };
       const winnerDefense = {
         id: playerMap[winnerDefenseId].id,
         name: playerMap[winnerDefenseId].name,
         score: winnerDefenseScore,
         ownGoals: winnerDefenseOwnGoals,
-        ...positionGoals
+        ...positionGoals,
+        goalAgainstTimings: [],
+        goalTimings: []
       };
       const loserAttack = {
         id: playerMap[loserAttackId].id,
         name: playerMap[loserAttackId].name,
         score: loserAttackScore,
         ownGoals: loserAttackOwnGoals,
-        ...positionGoals
+        ...positionGoals,
+        goalAgainstTimings: [],
+        goalTimings: []
       };
       const loserDefense = {
         id: playerMap[loserDefenseId].id,
         name: playerMap[loserDefenseId].name,
         score: loserDefenseScore,
         ownGoals: loserDefenseOwnGoals,
-        ...positionGoals
+        ...positionGoals,
+        goalAgainstTimings: [],
+        goalTimings: []
       };
 
       const currentPlayers = {
@@ -92,9 +105,20 @@ export const transform = data => {
         }
       };
 
-      timeline.forEach(({ id, position, ownGoal }) => {
+      timeline.forEach(({ id, index, position, ownGoal, time }) => {
+        const currentKeeper = index > 1
+          ? currentPlayers[winnerDefenseId]
+          : currentPlayers[loserDefenseId];
+
         if (!ownGoal) {
           currentPlayers[id][position]++;
+          currentKeeper.goalAgainstTimings.push(time);
+
+          if (index % 2 === 0) {
+            currentPlayers[id].goalTimings.push(time);
+          }
+        } else {
+          currentPlayers[id].goalAgainstTimings.push(time);
         }
       });
 
@@ -111,15 +135,16 @@ export const transform = data => {
         const goalsPosKeeper =
           playerMap[id].goalsPosKeeper +
           currentPlayers[id][consts.POSITION_KEEPER];
-        const ownGoals = (playerMap[id].ownGoals +
-          currentPlayers[id].ownGoals);
+        const ownGoals = playerMap[id].ownGoals + currentPlayers[id].ownGoals;
         const position = i % 2 === 0
           ? consts.ATTACK_PLAYER
           : consts.DEFENSE_PLAYER;
         const isAttack = position === consts.ATTACK_PLAYER;
         const isWinner = i <= 1;
         const winStreak = isWinner ? playerMap[id].winStreak + 1 : 0;
-        const longestWinStreak = winStreak > playerMap[id].longestWinStreak ? winStreak : playerMap[id].longestWinStreak;
+        const longestWinStreak = winStreak > playerMap[id].longestWinStreak
+          ? winStreak
+          : playerMap[id].longestWinStreak;
         const wins = isWinner ? playerMap[id].wins + 1 : playerMap[id].wins;
         const winsAttack = isWinner && isAttack
           ? playerMap[id].winsAttack + 1

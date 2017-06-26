@@ -6,7 +6,7 @@ describe('Graph Data', () => {
     const games = gameMock.slice(0);
     expect(graphData.getMmmrOfWeeks(games, 'jth')).toEqual({
       data: [1511, 1471, 1487, 1450, 1492],
-      labels: ['5', '9', '15', '20', '24']
+      labels: [5, 9, 15, 20, 24]
     });
   });
 

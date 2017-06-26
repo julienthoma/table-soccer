@@ -10,7 +10,7 @@ export const normalizeValue = (value, property, inverted) => {
 
 function getWeek(dt) {
   const tdt = new Date(dt.valueOf());
-  const dayn = (dt.getDay() + 6) % 7;
+  const dayn = (tdt.getDay() + 6) % 7;
   tdt.setDate(tdt.getDate() - dayn + 3);
   const firstThursday = tdt.valueOf();
   tdt.setMonth(0, 1);
@@ -22,7 +22,6 @@ function getWeek(dt) {
 
 export const groupGamesByWeek = games => {
   const group = {};
-  console.log('bax');
 
   games.forEach(game => {
     const _key = getWeek(game.startdate);

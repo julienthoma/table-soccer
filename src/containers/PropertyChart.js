@@ -15,8 +15,13 @@ const PROPERTIES = [
     label: 'Goals Striker'
   },
   {
-    key: 'avgGoalsAgainstDefense',
-    label: 'Goals Against',
+    key: 'avgGoalsPosMidfield',
+    label: 'Goals Midfield'
+  },
+
+  {
+    key: 'avgWinsAttackDuration',
+    label: 'Fast Wins Attack',
     inverse: true
   },
   {
@@ -24,26 +29,12 @@ const PROPERTIES = [
     label: 'Defense Win %'
   },
   {
-    key: 'avgGoalsPosKeeper',
-    label: 'Goals Keeper'
-  },
-  {
     key: 'avgGoalsPosDefense',
     label: 'Goals Defense'
   },
   {
-    key: 'avgWinsAttackDuration',
-    label: 'Fast Wins Attack',
-    inverse: true
-  },
-  {
-    key: 'avgOwnGoals',
-    label: 'Own Goals',
-    inverse: true
-  },
-  {
-    key: 'longestWinStreak',
-    label: 'Longest Winstreak'
+    key: 'avgGoalsPosKeeper',
+    label: 'Goals Keeper'
   }
 ];
 
