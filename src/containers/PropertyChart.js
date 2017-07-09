@@ -7,34 +7,29 @@ import { playerShape } from '../proptypes';
 
 const PROPERTIES = [
   {
-    key: 'winRatioAttack',
-    label: 'Attack Win %'
-  },
-  {
-    key: 'avgGoalsPosStriker',
-    label: 'Goals Striker'
+    key: 'avgTimeBetweenGoals',
+    label: 'Fast Goals',
+    inverse: true
   },
   {
     key: 'avgGoalsPosMidfield',
     label: 'Goals Midfield'
-  },
-
-  {
-    key: 'avgWinsAttackDuration',
-    label: 'Fast Wins Attack',
-    inverse: true
-  },
-  {
-    key: 'winRatioDefense',
-    label: 'Defense Win %'
   },
   {
     key: 'avgGoalsPosDefense',
     label: 'Goals Defense'
   },
   {
+    key: 'avgTimeBetweenGoalsAgainst',
+    label: 'Strong Defense'
+  },
+  {
     key: 'avgGoalsPosKeeper',
     label: 'Goals Keeper'
+  },
+  {
+    key: 'avgGoalsPosStriker',
+    label: 'Goals Striker'
   }
 ];
 

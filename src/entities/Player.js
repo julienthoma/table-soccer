@@ -53,6 +53,8 @@ export default class Player extends Entity {
     this.goalsWinnerAttack = 0;
     this.goalsAgainstDefense = 0;
     this.winRatio = 0;
+    this.totalAvgTimeBetweenGoals = 0;
+    this.totalAvgTimeBetweenGoalsAgainst = 0;
   }
 
   getWinPercentFormatted() {

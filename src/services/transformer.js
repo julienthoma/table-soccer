@@ -48,11 +48,6 @@ export const transform = data => {
         [consts.POSITION_KEEPER]: 0
       };
 
-      const goalTimings = {
-        goalAgainstTimings: [],
-        goalTimings: []
-      };
-
       const winnerAttack = {
         id: playerMap[winnerAttackId].id,
         name: playerMap[winnerAttackId].name,
@@ -106,7 +101,7 @@ export const transform = data => {
       };
 
       timeline.forEach(({ id, index, position, ownGoal, time }) => {
-        const currentKeeper = index > 1
+        const currentKeeper = index <= 1
           ? currentPlayers[winnerDefenseId]
           : currentPlayers[loserDefenseId];
 
@@ -207,6 +202,25 @@ export const transform = data => {
         const winRatioDefense = wins > 0 ? winsDefense / gamesDefense : 0;
         const avgOwnGoals = ownGoals / games;
 
+        const currentAvgTimeBetweenGoals = isAttack
+          ? avgTimeBetween(duration, currentPlayers[id].goalTimings)
+          : null;
+        const totalAvgTimeBetweenGoals = isAttack
+          ? playerMap[id].totalAvgTimeBetweenGoals + currentAvgTimeBetweenGoals
+          : playerMap[id].totalAvgTimeBetweenGoals;
+
+        const avgTimeBetweenGoals = totalAvgTimeBetweenGoals / gamesAttack || 0;
+
+        const currentAvgTimeBetweenGoalsAgainst = !isAttack
+          ? avgTimeBetween(duration, currentPlayers[id].goalAgainstTimings)
+          : null;
+        const totalAvgTimeBetweenGoalsAgainst = !isAttack
+          ? playerMap[id].totalAvgTimeBetweenGoalsAgainst +
+              currentAvgTimeBetweenGoalsAgainst
+          : playerMap[id].totalAvgTimeBetweenGoalsAgainst;
+        const avgTimeBetweenGoalsAgainst =
+          totalAvgTimeBetweenGoalsAgainst / gamesDefense || 0;
+
         let teamMateId;
         let enemy1Id;
         let enemy2Id;
@@ -242,6 +256,10 @@ export const transform = data => {
         currentPlayers[id].goals = goals;
         currentPlayers[id].elo = newElo;
         currentPlayers[id].eloGain = eloGain;
+        currentPlayers[id].avgTimeBetweenGoals = avgTimeBetweenGoals;
+        currentPlayers[
+          id
+        ].avgTimeBetweenGoalsAgainst = avgTimeBetweenGoalsAgainst;
 
         playerMap[id].ownGoals = ownGoals;
         playerMap[id].goalsPosStriker = goalsPosStriker;
@@ -284,6 +302,12 @@ export const transform = data => {
         playerMap[id].avgGoalsPosKeeper = avgGoalsPosKeeper;
         playerMap[id].avgOwnGoals = avgOwnGoals;
         playerMap[id].longestWinStreak = longestWinStreak;
+        playerMap[id].totalAvgTimeBetweenGoals = totalAvgTimeBetweenGoals;
+        playerMap[id].avgTimeBetweenGoals = avgTimeBetweenGoals;
+        playerMap[
+          id
+        ].totalAvgTimeBetweenGoalsAgainst = totalAvgTimeBetweenGoalsAgainst;
+        playerMap[id].avgTimeBetweenGoalsAgainst = avgTimeBetweenGoalsAgainst;
       });
 
       _games.push(
@@ -317,12 +341,8 @@ export const transform = data => {
       'avgGoalsPosMidfield',
       'avgGoalsPosDefense',
       'avgGoalsPosKeeper',
-      'avgWinsAttackDuration',
-      'winRatioAttack',
-      'winRatioDefense',
-      'avgGoalsAgainstDefense',
-      'avgOwnGoals',
-      'longestWinStreak'
+      'avgTimeBetweenGoals',
+      'avgTimeBetweenGoalsAgainst'
     ];
 
     if (_player.id === 'guest') {
@@ -333,7 +353,7 @@ export const transform = data => {
       if (!properties[prop]) {
         properties[prop] = {
           min: {
-            value: 999999999999
+            value: Infinity
           },
           max: {
             value: 0
@@ -363,6 +383,24 @@ export const transform = data => {
     properties
   };
 };
+
+function avgTimeBetween(end, _timings) {
+  const timings = [..._timings];
+  const timeBetween = [];
+  if (timings.lengtht === 0 || timings[timings.length - 1] !== end) {
+    timings.push(end);
+  }
+
+  timings.forEach((time, i) => {
+    if (i === 0) {
+      return timeBetween.push(time);
+    }
+
+    timeBetween.push(time - timings[i - 1]);
+  });
+
+  return timeBetween.reduce((sum, curr) => sum + curr, 0) / timings.length;
+}
 
 function calc2v2(ratingA1, ratingA2, ratingB1, ratingB2) {
   const ratingB = Math.round((ratingB1 + ratingB2) / 2);
@@ -397,3 +435,5 @@ function calcFactor(ratingA, ratingB) {
 
   return factor;
 }
+
+export const _avgTimeBetween = avgTimeBetween;
