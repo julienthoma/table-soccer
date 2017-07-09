@@ -1,4 +1,5 @@
 import Entity from './Entity';
+import { getFormattedPercent } from '../services/formatter';
 
 /**
  * @class PlayerEntity
@@ -58,7 +59,7 @@ export default class Player extends Entity {
   }
 
   getWinPercentFormatted() {
-    return `${Math.round(this.winRatio * 100)}%`;
+    return getFormattedPercent(this.winRatio);
   }
 
   getPlayTime() {

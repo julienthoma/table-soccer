@@ -9,7 +9,9 @@ import {
   TableHeader,
   TableHeaderColumn
 } from 'material-ui/Table';
+import { getFormattedPercent } from '../services/formatter';
 import { LineChart } from '../components/Charts';
+import CompareBar from '../components/CompareBar';
 import WinStreakIcon from '../components/WinStreakIcon';
 import PropertyChart from '../containers/PropertyChart';
 import { playerShape, gameShape } from '../proptypes';
@@ -49,6 +51,46 @@ const Player = ({ params, players, games }) => {
           title: { text: 'MMR', display: true }
         }}
       />
+      <CompareBar
+        leftHeadline="Attack Win %"
+        rightHeadline="Defense Win %"
+        factorLeft={player.winRatioAttack / player.winRatioDefense}
+        leftValue={getFormattedPercent(player.winRatioAttack)}
+        rightValue={getFormattedPercent(player.winRatioDefense)}
+      />
+
+      <CompareBar
+        leftHeadline="Games Attack"
+        rightHeadline="Games Defense"
+        factorLeft={player.gamesAttack / player.gamesDefense}
+        leftValue={player.gamesAttack}
+        rightValue={player.gamesDefense}
+      />
+
+      <CompareBar
+        leftHeadline="Goals Attack"
+        rightHeadline="Goals Defense"
+        factorLeft={player.goalsAttack / player.goalsDefense}
+        leftValue={player.goalsAttack}
+        rightValue={player.goalsDefense}
+      />
+
+      <CompareBar
+        leftHeadline="Goals Striker"
+        rightHeadline="Goals Midfield"
+        factorLeft={player.goalsPosStriker / player.goalsPosMidfield}
+        leftValue={player.goalsPosStriker}
+        rightValue={player.goalsPosMidfield}
+      />
+
+      <CompareBar
+        leftHeadline="Goals Defense"
+        rightHeadline="Goals Keeper"
+        factorLeft={player.goalsPosDefense / player.goalsPosKeeper}
+        leftValue={player.goalsPosDefense}
+        rightValue={player.goalsPosKeeper}
+      />
+
       <PropertyChart players={[player]} />
       <Table allRowsSelected={false}>
         <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
