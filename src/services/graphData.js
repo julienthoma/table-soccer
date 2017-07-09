@@ -8,6 +8,14 @@ export const normalizeValue = (value, property, inverted) => {
   return inverted ? 11 - rating : rating;
 };
 
+export const getFactor = (value, min, max, inverse) => {
+  const range = max - min;
+  const overMin = value - min;
+  const factor = overMin / range;
+
+  return inverse ? 1 - factor : factor;
+};
+
 function getWeek(dt) {
   const tdt = new Date(dt.valueOf());
   const dayn = (tdt.getDay() + 6) % 7;

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { PROPERTIES } from '../containers/PropertyChart';
 import {
   Table,
   TableBody,
@@ -12,13 +13,14 @@ import {
 import { getFormattedPercent } from '../services/formatter';
 import { LineChart } from '../components/Charts';
 import CompareBar from '../components/CompareBar';
+import SkillBar from '../components/SkillBar';
 import WinStreakIcon from '../components/WinStreakIcon';
 import PropertyChart from '../containers/PropertyChart';
 import { playerShape, gameShape } from '../proptypes';
-import { getMmmrOfWeeks } from '../services/graphData';
+import { getMmmrOfWeeks, getFactor } from '../services/graphData';
 import '../scss/typography.scss';
 
-const Player = ({ params, players, games }) => {
+const Player = ({ params, players, games, properties }) => {
   const player = players.filter(p => p.id === params.id)[0];
   const tableColumnStyle = { padding: '3px', textAlign: 'left' };
   const firstColumnStyle = {
@@ -51,6 +53,8 @@ const Player = ({ params, players, games }) => {
           title: { text: 'MMR', display: true }
         }}
       />
+      <h3>Attack vs Defense</h3>
+
       <CompareBar
         leftHeadline="Attack Win %"
         rightHeadline="Defense Win %"
@@ -90,6 +94,32 @@ const Player = ({ params, players, games }) => {
         leftValue={player.goalsPosDefense}
         rightValue={player.goalsPosKeeper}
       />
+
+      <h3>Performance Comparision</h3>
+
+      <div>
+        {PROPERTIES.map(({ key, label, inverse }) =>
+          <SkillBar
+            leftHeadline={label}
+            value={player[key].toFixed(2)}
+            best={
+              inverse
+                ? properties[key].min.value.toFixed(2)
+                : properties[key].max.value.toFixed(2)
+            }
+            maxPlayerId={
+              inverse ? properties[key].min.id : properties[key].max.id
+            }
+            playerId={player.id}
+            factor={getFactor(
+              player[key],
+              properties[key].min.value,
+              properties[key].max.value,
+              inverse
+            )}
+          />
+        )}
+      </div>
 
       <PropertyChart players={[player]} />
       <Table allRowsSelected={false}>
@@ -194,7 +224,8 @@ Player.propTypes = {
 
 const mapStateToProps = state => ({
   games: state.app.games,
-  players: state.app.players
+  players: state.app.players,
+  properties: state.app.properties
 });
 
 const _Player = connect(mapStateToProps)(Player);

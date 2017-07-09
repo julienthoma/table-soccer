@@ -5,7 +5,7 @@ import { RadarChart } from '../components/Charts';
 import { normalizeValue } from '../services/graphData';
 import { playerShape } from '../proptypes';
 
-const PROPERTIES = [
+export const PROPERTIES = [
   {
     key: 'avgTimeBetweenGoals',
     label: 'Fast Goals',
