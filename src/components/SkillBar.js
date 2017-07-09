@@ -8,7 +8,7 @@ const SkillBar = ({
   leftHeadline,
   value,
   best,
-  maxPlayerId
+  bestPlayerId
 }) =>
   <div styleName="root">
     <div styleName="headlineContainer">
@@ -21,7 +21,7 @@ const SkillBar = ({
       <div styleName="leftText">{value}</div>
       <div styleName="right" />
       <div styleName="rightText">
-        {best} ({playerId})
+        {best} ({bestPlayerId})
       </div>
     </div>
   </div>;
