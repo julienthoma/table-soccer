@@ -1,7 +1,8 @@
 import { initializeApp, database, auth } from 'firebase';
-import { get } from '../services/Ajax';
+import { get, post } from '../services/Ajax';
 import { transform } from '../services/transformer';
 import { emailToSlug } from '../services/formatter';
+import { createStartGameMessage } from '../services/slack';
 
 export const UPDATE_DATA = 'UPDATE_DATA';
 export const START_GAME = 'START_GAME';
@@ -26,6 +27,12 @@ export const addGoal = (index, position) => ({
   index,
   position
 });
+
+export const startNewGame = () => (dispatch, getState) => {
+  dispatch(startGame());
+
+  post(getState().config.slackUrl, createStartGameMessage());
+};
 
 export const addOwnGoal = index => ({
   type: ADD_OWN_GOAL,

@@ -15,20 +15,14 @@ import Player from './pages/Player';
 import Game from './pages/Game';
 import GameCreator from './pages/GameCreator';
 import Comparinator from './pages/Comparinator';
+import config from '../config';
 import './index.scss';
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyCF98sNc4RLtZfStagGDJVJxXLLA_rp-is',
-  authDomain: 'react-tablesoccer-v.firebaseapp.com',
-  databaseURL: 'https://react-tablesoccer-v.firebaseio.com',
-  projectId: 'react-tablesoccer-v'
-};
 
 injectTapEventPlugin();
 addLocaleData(de);
 
 render(
-  <Provider store={enhanceStore(reducer, getInitialState({ firebaseConfig }))}>
+  <Provider store={enhanceStore(reducer, getInitialState({ ...config }))}>
     <IntlProvider locale={'de'}>
       <MuiThemeProvider>
         <Router history={browserHistory}>

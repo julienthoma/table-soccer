@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
-import { Link } from 'react-router';
-import { startGame, exitGame, setPlayers } from '../actions';
+import { startNewGame, exitGame, setPlayers } from '../actions';
 import GameScoreScreen from '../containers/GameScoreScreen';
 import PlayerSelection from '../containers/PlayerSelection';
 import { login } from '../services/Auth';
@@ -35,7 +34,7 @@ class GameCreator extends React.Component {
     this.props.dispatch(exitGame());
   };
 
-  startNewGame = () => this.props.dispatch(startGame());
+  startNewGame = () => this.props.dispatch(startNewGame());
 
   exitGame = () => {
     this.props.dispatch(exitGame());
