@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
+import { Link } from 'react-router';
 import { startGame, exitGame, setPlayers } from '../actions';
 import GameScoreScreen from '../containers/GameScoreScreen';
 import PlayerSelection from '../containers/PlayerSelection';
@@ -93,7 +94,6 @@ class GameCreator extends React.Component {
           labelStyle={labelStyle}
           label="Cross Swap and Rematch!"
         />
-
       </div>
     );
   };
@@ -104,10 +104,20 @@ class GameCreator extends React.Component {
     if (!currentUser) {
       return (
         <div>
-          <p>
-            You need to sign in to create games
-          </p>
+          <p>You need to sign in to create games</p>
           <RaisedButton label="Google sign-in" onClick={login} />
+        </div>
+      );
+    }
+
+    if (!currentUser.verified) {
+      return (
+        <div>
+          <p>
+            You need to ask an admin for verification of your account in order
+            to create games
+          </p>
+          <Link to="/" >Back Home</Link>
         </div>
       );
     }
@@ -128,7 +138,11 @@ class GameCreator extends React.Component {
         return false;
     }
 
-    return <div>{content}</div>;
+    return (
+      <div>
+        {content}
+      </div>
+    );
   }
 }
 

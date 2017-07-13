@@ -16,7 +16,7 @@ const Login = ({ currentUser }) => {
       {currentUser
         ? <div styleName="avatarContainer">
           <div styleName="userName">
-            {currentUser.displayName.split(' ')[0]}
+            {currentUser.name.split(' ')[0]}
           </div>
           <IconMenu
             iconButtonElement={

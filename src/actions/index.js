@@ -1,6 +1,7 @@
 import { initializeApp, database, auth } from 'firebase';
 import { get } from '../services/Ajax';
 import { transform } from '../services/transformer';
+import { emailToSlug } from '../services/formatter';
 
 export const UPDATE_DATA = 'UPDATE_DATA';
 export const START_GAME = 'START_GAME';
@@ -48,7 +49,37 @@ export const initializeFirebase = () => (dispatch, getState) => {
   initializeApp(getState().config.firebaseConfig);
 
   auth().onAuthStateChanged(firebaseUser => {
-    dispatch(setUser(firebaseUser));
+    console.log(firebaseUser);
+    if (firebaseUser) {
+      const { uid, photoURL, email, displayName } = firebaseUser;
+      const slug = emailToSlug(email);
+      const userRef = database()
+        .ref(`data/players/${slug}`);
+
+      userRef
+        .once('value')
+        .then(snapshot => {
+          if (!snapshot.val()) {
+            userRef.set({
+              id: slug,
+              uid,
+              photoURL,
+              email,
+              name: displayName,
+              verified: false
+            }).then(() => {
+              dispatch(setUser(snapshot.val()));
+            });
+          } else {
+            userRef.update({
+              photoURL,
+              name: displayName
+            }).then(() => {
+              dispatch(setUser(snapshot.val()));
+            });
+          }
+        });
+    }
   });
 };
 
