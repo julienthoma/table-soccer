@@ -1,35 +1,42 @@
-export const createStartGameMessage = () => ({
+export const createStartGameMessage = ({
+  creator,
+  creatorUrl,
+  team1Attack,
+  team1Defense,
+  team2Attack,
+  team2Defense
+}) => ({
   username: 'Kicker Bot',
   attachments: [
     {
       author_icon: 'http://flickr.com/icons/bobby.jpg',
-      author_name: 'Marius started a new game',
-      author_link: 'http://www.hongkiat.com/blog/author/preethi/',
+      author_name: `${creator} started a new game`,
+      author_link: creatorUrl,
       fields: [
         {
           title: 'Team 1',
-          value: 'ø 2300',
+          value: `ø ${Math.round((team1Attack.elo + team1Defense.elo) / 2)}`,
           short: true
         },
         {
           title: 'Team 2',
-          value: 'ø 1900',
+          value: `ø ${Math.round((team2Attack.elo + team2Defense.elo) / 2)}`,
           short: true
         },
         {
-          value: '_Attack_ \n *<http://example.com|Marius>* \n _2500_',
+          value: createPlayerTitle(team1Attack, 'Attack'),
           short: true
         },
         {
-          value: '_Attack_ \n *<http://example.com|Alex>* \n _3000_',
+          value: createPlayerTitle(team2Attack, 'Attack'),
           short: true
         },
         {
-          value: '_Defense_ \n *<http://example.com|Christian>* \n _1900_',
+          value: createPlayerTitle(team1Defense, 'Defense'),
           short: true
         },
         {
-          value: '_Defense_ \n *<http://example.com|Julien>* \n _2200_',
+          value: createPlayerTitle(team2Defense, 'Defense'),
           short: true
         }
       ],
@@ -37,3 +44,8 @@ export const createStartGameMessage = () => ({
     }
   ]
 });
+
+function createPlayerTitle({ name, elo, id }, position) {
+  const playerUrl = 'http://example.com';
+  return `_${position}_ \n *<${playerUrl}|${name}>* \n _${elo}_`;
+}
