@@ -72,7 +72,63 @@ export const createGoalMessage = ({
   ]
 });
 
-function createPlayerTitle({ name, elo, id }, position) {
+export const createEndMessage = ({
+  color,
+  gameId,
+  winnerTeam,
+  team1Score,
+  team2Score,
+  team1Attack,
+  team1Defense,
+  team2Attack,
+  team2Defense
+}) => ({
+  username: 'Kicker Bot',
+
+  attachments: [
+    {
+      color,
+      author_name: 'Game Details',
+      pretext: `${winnerTeam} has won the game`,
+      author_link: 'http://www.hongkiat.com/blog/author/preethi/',
+      // footer: TODO: MVP feature',
+      fields: [
+        {
+          title: 'Team 1',
+          value: `*${team1Score}*`,
+          short: true
+        },
+        {
+          title: 'Team 2',
+          value: `*${team1Score}*`,
+          short: true
+        },
+        {
+          value: createPlayerTitle(team1Attack, 'Attack'),
+          short: true
+        },
+        {
+          value: createPlayerTitle(team2Attack, 'Attack'),
+          short: true
+        },
+        {
+          value:
+            createPlayerTitle(team1Defense, 'Defense'),
+          short: true
+        },
+        {
+          value: createPlayerTitle(team2Defense, 'Defense'),
+          short: true
+        }
+      ],
+      mrkdwn_in: ['author_name', 'fields']
+    }
+  ]
+});
+
+function createPlayerTitle({ name, elo, id }, position, gain = null) {
   const playerUrl = 'http://example.com';
-  return `_${position}_ \n *<${playerUrl}|${name}>* \n _${elo}_`;
+  const eloGain = gain ? ` (${gain > 0 ? '+' : ''}${gain})` : '';
+
+  return `_${position}_ \n *<${playerUrl}|${name}>* \n _${elo}_${eloGain}`;
 }
