@@ -107,7 +107,7 @@ const Player = ({ params, players, games, properties }) => {
                 ? properties[key].min.value.toFixed(2)
                 : properties[key].max.value.toFixed(2)
             }
-            maxPlayerId={
+            bestPlayerId={
               inverse ? properties[key].min.id : properties[key].max.id
             }
             playerId={player.id}
