@@ -123,7 +123,7 @@ export const initializeFirebase = () => (dispatch, getState) => {
 
 export const getData = () => (dispatch, getState) => {
   // Make initial call as ajax for faster startup (socket startup is slow)
-  get(getState().config.dbUurl).then(data => {
+  get(getState().config.dbUrl).then(data => {
     dispatch(updateData(transform(data)));
 
     database().ref('data').on('value', snapshot => {
