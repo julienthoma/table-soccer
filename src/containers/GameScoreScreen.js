@@ -5,6 +5,7 @@ import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux';
+import { getScore } from '../services/formatter';
 import shortid from 'shortid';
 import PlayerButton from '../components/PlayerButton';
 import {
@@ -13,7 +14,8 @@ import {
   uploadGame,
   undoLastGoal,
   toggleSnackbar,
-  exitGame
+  exitGame,
+  sendGoalMessage
 } from '../actions';
 import { scoreTimelineItemShape, simplePlayerShape } from '../proptypes';
 import './GameScoreScreen.scss';
@@ -37,7 +39,7 @@ class GameScoreScreen extends React.Component {
       isFinished
     } = this.props;
     const [p1S, p2S, p3S, p4S, p1Own, p2Own, p3Own, p4Own] = score;
-    const [team1Score, team2Score] = this.getScore();
+    const [team1Score, team2Score] = getScore(score);
     const [p1, p2, p3, p4] = currentPlayers;
 
     if (isFinished) {
@@ -71,13 +73,8 @@ class GameScoreScreen extends React.Component {
     );
   };
 
-  getScore = () => {
-    const [p1, p2, p3, p4, p1Own, p2Own, p3Own, p4Own] = this.props.score;
-
-    return [p1 + p2 + p3Own + p4Own, p3 + p4 + p1Own + p2Own];
-  };
-
-  handleUndo = index => () => {
+  handleUndo = (index, timeout) => () => {
+    clearTimeout(timeout);
     this.props.dispatch(undoLastGoal(index));
   };
 
@@ -96,43 +93,55 @@ class GameScoreScreen extends React.Component {
   };
 
   handleOwnGoalClick = index => () => {
-    const { currentPlayers } = this.props;
+    const { currentPlayers, dispatch } = this.props;
     const currentPlayer = currentPlayers[index];
-    this.props.dispatch(addOwnGoal(index));
-    this.props.dispatch(
+    const timeout = setTimeout(
+      () => dispatch(sendGoalMessage(currentPlayer, true)),
+      consts.GOAL_TIMEOUT
+    );
+    dispatch(addOwnGoal(index));
+    dispatch(
       toggleSnackbar(
         `OWN GOAL ${currentPlayer.name}`,
         'UNDO',
-        this.handleUndo(index)
+        this.handleUndo(index, timeout)
       )
     );
     this.handleOwnGoalClose();
   };
 
   handleScoreButtonClick = (index, position) => () => {
-    const { currentPlayers } = this.props;
+    const { currentPlayers, dispatch } = this.props;
     const currentPlayer = currentPlayers[index];
-    this.props.dispatch(addGoal(index, position));
-    this.props.dispatch(
+    const timeout = setTimeout(
+      () => dispatch(sendGoalMessage(currentPlayer)),
+      consts.GOAL_TIMEOUT
+    );
+    dispatch(addGoal(index, position));
+    dispatch(
       toggleSnackbar(
         `${currentPlayer.name} - ${position}`,
         'UNDO',
-        this.handleUndo(index)
+        this.handleUndo(index, timeout)
       )
     );
   };
 
   render() {
-    const { currentPlayers } = this.props;
-    const [team1Score, team2Score] = this.getScore();
+    const { currentPlayers, score } = this.props;
+    const [team1Score, team2Score] = getScore(score);
     const [p1, p2, p3, p4] = currentPlayers;
 
     return (
       <div>
         <div styleName="game">
           <div styleName="scoreContainer">
-            <h1 styleName="score team1">{team1Score}</h1>
-            <h1 styleName="score team2">{team2Score}</h1>
+            <h1 styleName="score team1">
+              {team1Score}
+            </h1>
+            <h1 styleName="score team2">
+              {team2Score}
+            </h1>
           </div>
           <div styleName="players">
             <PlayerButton
@@ -200,7 +209,6 @@ class GameScoreScreen extends React.Component {
                 consts.POSITION_STRIKER
               )}
             />
-
           </div>
         </div>
 
@@ -229,7 +237,6 @@ class GameScoreScreen extends React.Component {
             </Menu>
           </Popover>
         </div>
-
       </div>
     );
   }

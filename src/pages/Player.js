@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { PROPERTIES } from '../containers/PropertyChart';
 import {
   Table,
   TableBody,
@@ -15,7 +14,7 @@ import { LineChart } from '../components/Charts';
 import CompareBar from '../components/CompareBar';
 import SkillBar from '../components/SkillBar';
 import WinStreakIcon from '../components/WinStreakIcon';
-import PropertyChart from '../containers/PropertyChart';
+import PropertyChart, { PROPERTIES } from '../containers/PropertyChart';
 import { playerShape, gameShape } from '../proptypes';
 import { getMmmrOfWeeks, getFactor } from '../services/graphData';
 import '../scss/typography.scss';
@@ -41,10 +40,23 @@ const Player = ({ params, players, games, properties }) => {
     ]
   };
 
+  if (player.games === 0) {
+    return (
+      <div>
+        <h1 styleName="headline">
+          {player.name} - {player.elo}
+          <WinStreakIcon count={player.winStreak} />
+        </h1>
+        <p>No Games played yet</p>
+      </div>
+    );
+  }
+
   return (
     <div>
       <h1 styleName="headline">
-        {player.name} - {player.elo}<WinStreakIcon count={player.winStreak} />
+        {player.name} - {player.elo}
+        <WinStreakIcon count={player.winStreak} />
       </h1>
       <LineChart
         data={data}
@@ -139,9 +151,7 @@ const Player = ({ params, players, games, properties }) => {
         </TableHeader>
         <TableBody displayRowCheckbox={false}>
           <TableRow>
-            <TableRowColumn style={firstColumnStyle}>
-              Goals
-            </TableRowColumn>
+            <TableRowColumn style={firstColumnStyle}>Goals</TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
               {player.goals}
             </TableRowColumn>
@@ -153,9 +163,7 @@ const Player = ({ params, players, games, properties }) => {
             </TableRowColumn>
           </TableRow>
           <TableRow>
-            <TableRowColumn style={firstColumnStyle}>
-              Games
-            </TableRowColumn>
+            <TableRowColumn style={firstColumnStyle}>Games</TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
               {player.games}
             </TableRowColumn>
@@ -167,9 +175,7 @@ const Player = ({ params, players, games, properties }) => {
             </TableRowColumn>
           </TableRow>
           <TableRow>
-            <TableRowColumn style={firstColumnStyle}>
-              Wins
-            </TableRowColumn>
+            <TableRowColumn style={firstColumnStyle}>Wins</TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
               {player.wins}
             </TableRowColumn>
@@ -181,9 +187,7 @@ const Player = ({ params, players, games, properties }) => {
             </TableRowColumn>
           </TableRow>
           <TableRow>
-            <TableRowColumn style={firstColumnStyle}>
-              Losses
-            </TableRowColumn>
+            <TableRowColumn style={firstColumnStyle}>Losses</TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
               {player.losses}
             </TableRowColumn>
@@ -195,9 +199,7 @@ const Player = ({ params, players, games, properties }) => {
             </TableRowColumn>
           </TableRow>
           <TableRow>
-            <TableRowColumn style={firstColumnStyle}>
-              Playtime
-            </TableRowColumn>
+            <TableRowColumn style={firstColumnStyle}>Playtime</TableRowColumn>
             <TableRowColumn style={tableColumnStyle}>
               {player.getPlayTime()}
             </TableRowColumn>

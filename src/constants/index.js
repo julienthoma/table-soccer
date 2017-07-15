@@ -8,3 +8,6 @@ export const POSITION_KEEPER = 'KEEPER';
 export const POSITION_DEFENSE = 'DEFENSE';
 export const POSITION_MIDFILED = 'MIDFIELD';
 export const POSITION_STRIKER = 'STRIKER';
+export const GOAL_TIMEOUT = 5000;
+export const TEAM1_COLOR = '#00bcd4';
+export const TEAM2_COLOR = '#ff4081';

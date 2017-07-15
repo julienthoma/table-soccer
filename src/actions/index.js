@@ -1,8 +1,13 @@
 import { initializeApp, database, auth } from 'firebase';
 import { get, post } from '../services/Ajax';
 import { transform } from '../services/transformer';
-import { emailToSlug } from '../services/formatter';
-import { createStartGameMessage } from '../services/slack';
+import { emailToSlug, getScore } from '../services/formatter';
+import { GOAL_TIMEOUT } from '../constants/';
+import {
+  createStartGameMessage,
+  createGoalMessage,
+  createEndMessage
+} from '../services/slack';
 
 export const UPDATE_DATA = 'UPDATE_DATA';
 export const START_GAME = 'START_GAME';
@@ -30,8 +35,22 @@ export const addGoal = (index, position) => ({
 
 export const startNewGame = () => (dispatch, getState) => {
   dispatch(startGame());
-
-  post(getState().config.slackUrl, createStartGameMessage());
+  const game = getState().game.players;
+  const players = getState().app.players;
+  const team1Attack = players.filter(p => p.id === game[0].id)[0];
+  const team1Defense = players.filter(p => p.id === game[1].id)[0];
+  const team2Attack = players.filter(p => p.id === game[2].id)[0];
+  const team2Defense = players.filter(p => p.id === game[3].id)[0];
+  post(getState().config.slackProxyUrl, {
+    body: createStartGameMessage(
+      getState().user.currentUser,
+      team1Attack,
+      team1Defense,
+      team2Attack,
+      team2Defense
+    ),
+    target: getState().config.slackUrl
+  });
 };
 
 export const addOwnGoal = index => ({
@@ -52,48 +71,59 @@ export const setPlayers = players => ({
   players
 });
 
+export const sendGoalMessage = (player, isOwngoal = false) => (
+  dispatch,
+  getState
+) => {
+  const [team1Score, team2Score] = getScore(getState().game.score);
+
+  post(getState().config.slackProxyUrl, {
+    body: createGoalMessage(player, team1Score, team2Score, isOwngoal),
+    target: getState().config.slackUrl
+  });
+};
+
 export const initializeFirebase = () => (dispatch, getState) => {
   initializeApp(getState().config.firebaseConfig);
 
   auth().onAuthStateChanged(firebaseUser => {
-    console.log(firebaseUser);
     if (firebaseUser) {
       const { uid, photoURL, email, displayName } = firebaseUser;
       const slug = emailToSlug(email);
-      const userRef = database()
-        .ref(`data/players/${slug}`);
+      const userRef = database().ref(`data/players/${slug}`);
 
-      userRef
-        .once('value')
-        .then(snapshot => {
-          if (!snapshot.val()) {
-            userRef.set({
+      userRef.once('value').then(snapshot => {
+        if (!snapshot.val()) {
+          userRef
+            .set({
               id: slug,
               uid,
               photoURL,
               email,
               name: displayName,
               verified: false
-            }).then(() => {
+            })
+            .then(() => {
               dispatch(setUser(snapshot.val()));
             });
-          } else {
-            userRef.update({
+        } else {
+          userRef
+            .update({
               photoURL,
               name: displayName
-            }).then(() => {
+            })
+            .then(() => {
               dispatch(setUser(snapshot.val()));
             });
-          }
-        });
+        }
+      });
     }
   });
 };
 
 export const getData = () => (dispatch, getState) => {
-  const url = 'https://react-tablesoccer-v.firebaseio.com/data.json';
   // Make initial call as ajax for faster startup (socket startup is slow)
-  get(url).then(data => {
+  get(getState().config.dbUurl).then(data => {
     dispatch(updateData(transform(data)));
 
     database().ref('data').on('value', snapshot => {
@@ -107,7 +137,30 @@ export const getData = () => (dispatch, getState) => {
   });
 };
 
-export const uploadGame = game => dispatch => {
+export const uploadGame = game => (dispatch, getState) => {
+  const [team1Score, team2Score] = getScore(getState().game.score);
+  const _game = getState().game.players;
+  const players = getState().app.players;
+  const gameId = game[0];
+  const team1Attack = players.filter(p => p.id === _game[0].id)[0];
+  const team1Defense = players.filter(p => p.id === _game[1].id)[0];
+  const team2Attack = players.filter(p => p.id === _game[2].id)[0];
+  const team2Defense = players.filter(p => p.id === _game[3].id)[0];
+  setTimeout(() => {
+    post(getState().config.slackProxyUrl, {
+      body: createEndMessage(
+        gameId,
+        team1Score,
+        team2Score,
+        team1Attack,
+        team1Defense,
+        team2Attack,
+        team2Defense
+      ),
+      target: getState().config.slackUrl
+    });
+  }, GOAL_TIMEOUT * 1.5);
+
   dispatch(endGame(game));
-  database().ref(`data/games/${game[0]}`).set(game);
+  database().ref(`data/games/${gameId}`).set(game);
 };
