@@ -11,3 +11,10 @@ export const POSITION_STRIKER = 'STRIKER';
 export const GOAL_TIMEOUT = 5000;
 export const TEAM1_COLOR = '#00bcd4';
 export const TEAM2_COLOR = '#ff4081';
+
+export const POSITION_COUNT = {
+  [POSITION_KEEPER]: 1,
+  [POSITION_DEFENSE]: 2,
+  [POSITION_MIDFILED]: 5,
+  [POSITION_STRIKER]: 3
+};

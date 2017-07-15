@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import PlayerIcon from './PlayerIcon';
 import './PositionIcon.scss';
 
-const PositionIcon = ({ count }) =>
+const PositionIcon = ({ count, dark }) =>
   <div styleName="root">
-    {[...Array(count)].map((e, i) => <PlayerIcon key={i} />)}
+    {[...Array(count)].map((e, i) => <PlayerIcon key={i} dark={dark} />)}
   </div>;
 
 PositionIcon.propTypes = {

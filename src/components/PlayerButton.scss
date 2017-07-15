@@ -130,7 +130,12 @@ $team2ColorUpper : lighten($team2Color, 5%);
   width: 100%;
   text-align: center;
   left: 0;
-  top: calc(50% - 12px);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.9);
 }

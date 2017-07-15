@@ -1,11 +1,12 @@
 import React from 'react';
 import GameListItem from '../components/GameListItem';
+import ScoreTimeline from '../components/ScoreTimeline';
 import { gameShape } from '../proptypes';
 
 const GameDetail = ({ game }) =>
   <div>
     <GameListItem game={game} handleClick={() => false} />
-    <span>Score Timeline coming back soon</span>
+    <ScoreTimeline game={game} />
   </div>;
 
 GameDetail.propTypes = {

@@ -8,7 +8,7 @@ const PlayerListItem = ({ player, handleClick }) => {
   return (
     <TableRow onClick={handleClick}>
       <TableRowColumn style={tableColumnStyle}>
-        {player.id}
+        {player.name}
       </TableRowColumn>
       <TableRowColumn style={tableColumnStyle}>
         {player.games}

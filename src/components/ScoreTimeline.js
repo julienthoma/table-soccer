@@ -1,19 +1,30 @@
 import React from 'react';
-import ScoreTimelineSubheadline from './ScoreTimelineSubheadline';
-import ScoreTimelineGoalScorer from './ScoreTimelineGoalScorer';
+import { FormattedDate } from 'react-intl';
+import ScoreTimelineItem from './ScoreTimelineItem';
+import './ScoreTimelineItem.scss';
 
 const ScoreTimeline = ({ game }) =>
   <div>
-    {game.scoreTimeline.map((item, index) => {
-      const score = getTempScoreByGame(game, index);
-
-      return (
-        <div key={index}>
-          <ScoreTimelineSubheadline time={item.timestamp} score={score} />
-          <ScoreTimelineGoalScorer goalScorer={item} />
-        </div>
-      );
-    })}
+    <br />
+    <br />
+    <div styleName="subheadline">
+      <div styleName="time">
+        <FormattedDate
+          value={game.startdate}
+          hour="2-digit"
+          minute="2-digit"
+        />
+      </div>
+      <div styleName="score">0 : 0</div>
+    </div>
+    {game.timeline.map((item, index) =>
+      <div key={index}>
+        <ScoreTimelineItem
+          goalScorer={item}
+          isWinner={game.players[item.id].isWinner}
+        />
+      </div>
+    )}
   </div>;
 
 export default ScoreTimeline;
