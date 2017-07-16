@@ -22,7 +22,7 @@ class App extends React.Component {
     return (
       <div>
         <CustomToolbar />
-        <div className="container" style={{ maxWidth: 900, margin: 'auto' }}>
+        <div className="container" style={{ maxWidth: 1300, margin: 'auto' }}>
           {this.props.children}
         </div>
         <NewGameButton />

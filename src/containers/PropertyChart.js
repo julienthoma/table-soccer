@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { RadarChart } from '../components/Charts';
 import { normalizeValue } from '../services/graphData';
 import { playerShape } from '../proptypes';
+import './PropertyChart.scss';
 
 export const PROPERTIES = [
   {
@@ -33,7 +34,7 @@ export const PROPERTIES = [
   }
 ];
 
-const PropertyChart = ({ players, properties }) => {
+const PropertyChart = ({ players, properties, showLabel }) => {
   const blue = 'rgba(0, 188, 212,1)';
   const blueLight = 'rgba(0, 188, 212,0.2)';
   const pink = 'rgba(255, 64, 129,1)';
@@ -69,11 +70,12 @@ const PropertyChart = ({ players, properties }) => {
   };
 
   return (
-    <div className="property-chart">
-      <h3 className="property-chart__labels">Attack</h3>
+    <div styleName="root">
+      <div styleName="label-attack">Attack</div>
       <RadarChart
         data={data}
         options={{
+          legend: { display: showLabel },
           scale: {
             ticks: {
               min: 0,
@@ -83,14 +85,18 @@ const PropertyChart = ({ players, properties }) => {
           }
         }}
       />
-      <h3 className="property-chart__labels">Defense</h3>
+      <div styleName="label-defense">Defense</div>
     </div>
   );
 };
 
+PropertyChart.defaultProps = {
+  showLabel: true
+};
+
 PropertyChart.propTypes = {
   players: PropTypes.arrayOf(playerShape).isRequired,
-  properties: PropTypes.objectOf(PropTypes.number).isRequired
+  properties: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

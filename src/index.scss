@@ -1,4 +1,10 @@
+@import './scss/colors.scss';
+
 body {
   font-family: 'Roboto Condensed', sans-serif;
-  margin: 10px;
+  margin: 0;
+}
+
+h3 {
+  color: $gray-75;
 }

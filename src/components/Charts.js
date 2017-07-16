@@ -13,7 +13,12 @@ class BaseChart extends React.Component {
   }
 
   render() {
-    return <canvas id={this.props.id} />;
+    return (
+      <canvas
+        id={this.props.id}
+        style={{ maxWidth: '100%', maxHeight: '100%' }}
+      />
+    );
   }
 }
 
