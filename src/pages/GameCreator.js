@@ -116,7 +116,7 @@ class GameCreator extends React.Component {
             You need to ask an admin for verification of your account in order
             to create games
           </p>
-          <Link to="/" >Back Home</Link>
+          <Link to="/">Back Home</Link>
         </div>
       );
     }
@@ -138,7 +138,7 @@ class GameCreator extends React.Component {
     }
 
     return (
-      <div>
+      <div style={{ padding: 8 }}>
         {content}
       </div>
     );

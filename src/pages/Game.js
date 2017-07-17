@@ -7,7 +7,11 @@ import { gameShape } from '../proptypes';
 const Game = ({ games, params }) => {
   const [game] = games.filter(_game => _game.id === params.id);
 
-  return <GameDetail game={game} />;
+  return (
+    <div style={{ padding: 8 }}>
+      <GameDetail game={game} />
+    </div>
+  );
 };
 
 Game.propTypes = {

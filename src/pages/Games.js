@@ -14,13 +14,15 @@ class Games extends React.Component {
     const { games } = this.props;
 
     return (
-      <GameList
-        games={[...games].sort(
-          (a, b) =>
-            new Date(b.startdate).getTime() - new Date(a.startdate).getTime()
-        )}
-        handleRowClick={this.handleRowClick}
-      />
+      <div style={{ padding: 8 }}>
+        <GameList
+          games={[...games].sort(
+            (a, b) =>
+              new Date(b.startdate).getTime() - new Date(a.startdate).getTime()
+          )}
+          handleRowClick={this.handleRowClick}
+        />
+      </div>
     );
   }
 }

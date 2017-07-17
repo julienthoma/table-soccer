@@ -1,0 +1,36 @@
+@import '../scss/flex.scss';
+
+.root {
+  @extend .flex-container;
+}
+
+.attackDefense {
+  @extend .flex-item-small;
+}
+
+.mmr {
+  @extend .flex-item-large;
+}
+
+.mmrchart {
+    height: 240px;
+}
+
+.performance {
+  @extend .flex-item-small;
+}
+
+.propchart {
+  @extend .flex-item-small;
+}
+
+.stats {
+    @extend .flex-item-small;
+}
+
+.headline {
+  padding: 0 8px;
+  width: 100%;
+  color: #6d6d6d;
+  font-family: 'Roboto Condensed', sans-serif;
+}

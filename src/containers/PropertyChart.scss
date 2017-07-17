@@ -1,0 +1,24 @@
+@import '../scss/colors.scss';
+
+.root {
+  max-width: 400px;
+  position: relative;
+  margin: -20px auto;
+}
+
+.label-attack, .label-defense {
+  position: absolute;
+  color: $gray-55;
+  font-size: 20px;
+}
+
+.label-attack {
+  left: 30px;
+  top: 30px;
+
+}
+
+.label-defense {
+  bottom: 30px;
+  right: 30px;
+}
