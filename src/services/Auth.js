@@ -2,7 +2,7 @@ import { auth } from 'firebase';
 
 export const login = () => {
   const provider = new auth.GoogleAuthProvider();
-  auth().signInWithPopup(provider);
+  auth().signInWithRedirect(provider);
 };
 
 export const logout = () => {
