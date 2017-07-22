@@ -31,6 +31,10 @@ export const updateData = data => ({ type: UPDATE_DATA, data });
 export const startGame = () => ({ type: START_GAME });
 export const endGame = game => ({ type: END_GAME, game });
 export const exitGame = () => ({ type: EXIT_GAME });
+export const undoLastGoal = index => ({ type: UNDO_LAST_GOAL, index });
+export const addOwnGoal = index => ({ type: ADD_OWN_GOAL, index });
+export const setPlayers = players => ({ type: SET_PLAYERS, players });
+
 export const addGoal = (index, position) => ({
   type: ADD_GOAL,
   index,
@@ -57,22 +61,11 @@ export const startNewGame = () => (dispatch, getState) => {
   });
 };
 
-export const addOwnGoal = index => ({
-  type: ADD_OWN_GOAL,
-  index
-});
-
-export const undoLastGoal = index => ({ type: UNDO_LAST_GOAL, index });
 export const toggleSnackbar = (infoText, actionText, callbackFn) => ({
   type: TOGGLE_SNACKBAR,
   infoText,
   actionText,
   callbackFn
-});
-
-export const setPlayers = players => ({
-  type: SET_PLAYERS,
-  players
 });
 
 export const sendGoalMessage = (player, isOwngoal = false) => (
@@ -97,41 +90,26 @@ export const startLogin = () => dispatch => {
 export const initializeFirebase = () => (dispatch, getState) => {
   dispatch(login());
   initializeApp(getState().config.firebaseConfig);
-
   auth().onAuthStateChanged(firebaseUser => {
-    if (firebaseUser) {
-      const { uid, photoURL, email, displayName } = firebaseUser;
-      const slug = emailToSlug(email);
-      const userRef = database().ref(`data/players/${slug}`);
-
-      userRef.once('value').then(snapshot => {
-        if (!snapshot.val()) {
-          userRef
-            .set({
-              id: slug,
-              uid,
-              photoURL,
-              email,
-              name: displayName,
-              verified: false
-            })
-            .then(() => {
-              dispatch(setUser(snapshot.val()));
-            });
-        } else {
-          userRef
-            .update({
-              photoURL,
-              name: displayName
-            })
-            .then(() => {
-              dispatch(setUser(snapshot.val()));
-            });
-        }
-      });
-    } else {
-      dispatch(setUser(null));
+    if (!firebaseUser) {
+      return dispatch(setUser(null));
     }
+
+    const { uid, photoURL, email, displayName } = firebaseUser;
+    const id = emailToSlug(email);
+    const userRef = database().ref(`data/players/${id}`);
+
+    userRef.once('value').then(snapshot => {
+      if (!snapshot.val()) {
+        userRef
+          .set({ id, uid, photoURL, email, name: displayName, verified: false })
+          .then(() => dispatch(setUser(snapshot.val())));
+      } else {
+        userRef
+          .update({ photoURL, name: displayName })
+          .then(() => dispatch(setUser(snapshot.val())));
+      }
+    });
   });
 };
 
@@ -139,9 +117,8 @@ export const getData = () => (dispatch, getState) => {
   // Make initial call as ajax for faster startup (socket startup is slow)
   get(getState().config.dbUrl).then(data => {
     dispatch(updateData(transform(data)));
-
     database().ref('data').on('value', snapshot => {
-      // Done update twice after intial call.
+      // Don't update twice after intial call.
       if (getState().app.prefetchDone) {
         dispatch(updateData(transform(snapshot.val())));
       } else {
@@ -173,8 +150,7 @@ export const uploadGame = game => (dispatch, getState) => {
       ),
       target: getState().config.slackUrl
     });
-  }, GOAL_TIMEOUT * 1.5);
-
+  }, GOAL_TIMEOUT * 2.5);
   dispatch(endGame(game));
   database().ref(`data/games/${gameId}`).set(game);
 };
