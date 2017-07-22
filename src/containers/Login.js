@@ -55,10 +55,8 @@ const Login = ({ currentUser, dispatch }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser
 });
 
-const _Login = connect(mapStateToProps)(Login);
-
-export default _Login;
+export default connect(mapStateToProps)(Login);

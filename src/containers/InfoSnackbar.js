@@ -39,12 +39,10 @@ InfoSnackbar.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => ({
-  infoText: state.snackbar.infoText,
-  actionText: state.snackbar.actionText,
-  callbackFn: state.snackbar.callbackFn
+const mapStateToProps = ({ snackbar }) => ({
+  infoText: snackbar.infoText,
+  actionText: snackbar.actionText,
+  callbackFn: snackbar.callbackFn
 });
 
-const _InfoSnackbar = connect(mapStateToProps)(InfoSnackbar);
-
-export default _InfoSnackbar;
+export default connect(mapStateToProps)(InfoSnackbar);

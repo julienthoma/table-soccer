@@ -99,10 +99,8 @@ PropertyChart.propTypes = {
   properties: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-  properties: state.app.properties
+const mapStateToProps = ({ app }) => ({
+  properties: app.properties
 });
 
-const _PropertyChart = connect(mapStateToProps)(PropertyChart);
-
-export default _PropertyChart;
+export default connect(mapStateToProps)(PropertyChart);

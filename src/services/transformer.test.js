@@ -39,15 +39,4 @@ describe('Transformer', () => {
     expect(p2.goalAgainstTimings[0]).toEqual(91);
     expect(p4.goalAgainstTimings[0]).toEqual(206);
   });
-
-  it('avgTimeBetween', () => {
-    const end = 600;
-    const timings1 = [100, 300, 500, 600];
-    const timings2 = [100, 300, 500];
-    const timings3 = [];
-
-    expect(_avgTimeBetween(end, timings1)).toEqual(150);
-    expect(_avgTimeBetween(end, timings2)).toEqual(150);
-    expect(_avgTimeBetween(end, timings3)).toEqual(600);
-  });
 });

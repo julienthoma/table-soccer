@@ -36,4 +36,15 @@ describe('Helper', () => {
     expect(Helper.normalizeValue(0.89, property2)).toEqual(10);
     expect(Helper.normalizeValue(0.9, property2)).toEqual(10);
   });
+
+  it('avgTimeBetween', () => {
+    const end = 600;
+    const timings1 = [100, 300, 500, 600];
+    const timings2 = [100, 300, 500];
+    const timings3 = [];
+
+    expect(Helper.avgTimeBetween(end, timings1)).toEqual(150);
+    expect(Helper.avgTimeBetween(end, timings2)).toEqual(150);
+    expect(Helper.avgTimeBetween(end, timings3)).toEqual(600);
+  });
 });

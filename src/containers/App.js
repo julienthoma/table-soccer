@@ -45,11 +45,9 @@ App.propTypes = {
   isAuthorizing: PropTypes.bool.isRequired
 };
 
-const mapStateToProps = state => ({
-  initialized: state.app.initialized,
-  isAuthorizing: state.user.isAuthorizing
+const mapStateToProps = ({ app, user }) => ({
+  initialized: app.initialized,
+  isAuthorizing: user.isAuthorizing
 });
 
-const _App = connect(mapStateToProps)(App);
-
-export default _App;
+export default connect(mapStateToProps)(App);

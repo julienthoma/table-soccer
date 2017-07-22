@@ -5,8 +5,8 @@ import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux';
-import { getScore } from '../services/Helper';
 import shortid from 'shortid';
+import { getScore } from '../services/Helper';
 import PlayerButton from '../components/PlayerButton';
 import {
   addGoal,
@@ -250,13 +250,11 @@ GameScoreScreen.propTypes = {
   currentPlayers: PropTypes.arrayOf(simplePlayerShape).isRequired
 };
 
-const mapStateToProps = state => ({
-  currentPlayers: state.game.players,
-  scoreTimeline: state.game.scoreTimeline,
-  isFinished: state.game.isFinished,
-  score: state.game.score
+const mapStateToProps = ({ game }) => ({
+  currentPlayers: game.players,
+  scoreTimeline: game.scoreTimeline,
+  isFinished: game.isFinished,
+  score: game.score
 });
 
-const _GameScoreScreen = connect(mapStateToProps)(GameScoreScreen);
-
-export default _GameScoreScreen;
+export default connect(mapStateToProps)(GameScoreScreen);

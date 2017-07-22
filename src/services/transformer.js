@@ -1,27 +1,21 @@
 import Game from '../entities/Game';
 import Player from '../entities/Player';
+import { avgTimeBetween, calcScore } from './Helper';
 import * as consts from '../constants';
 
-export const transform = data => {
+export const transform = (data) => {
   const _players = Object.keys(data.players).map(
     key => new Player(data.players[key])
   );
   const playerMap = {};
-  _players.forEach(player => {
-    playerMap[player.id] = player;
-  });
+  _players.forEach(player => playerMap[player.id] = player);
 
   const rawGames = Object.keys(data.games || {}).map(key => data.games[key]);
   const _games = [];
   const properties = {};
 
   rawGames
-    .sort((a, b) => {
-      const dateA = new Date(a[1]);
-      const dateB = new Date(b[1]);
-
-      return dateA.getTime() - dateB.getTime();
-    })
+    .sort((a, b) => new Date(a[1]).getTime() - new Date(b[1]).getTime())
     .forEach(([_id, startdate, duration, players, scores, timeline]) => {
       const [
         winnerAttackId,
@@ -413,57 +407,3 @@ export const transform = data => {
     properties
   };
 };
-
-function avgTimeBetween(end, _timings) {
-  const timings = [..._timings];
-  const timeBetween = [];
-  if (timings.lengtht === 0 || timings[timings.length - 1] !== end) {
-    timings.push(end);
-  }
-
-  timings.forEach((time, i) => {
-    if (i === 0) {
-      return timeBetween.push(time);
-    }
-
-    timeBetween.push(time - timings[i - 1]);
-  });
-
-  return timeBetween.reduce((sum, curr) => sum + curr, 0) / timings.length;
-}
-
-function calc2v2(ratingA1, ratingA2, ratingB1, ratingB2) {
-  const ratingB = Math.round((ratingB1 + ratingB2) / 2);
-  const chanceA2 = calcFactor(ratingA2, ratingB) * 0.25;
-  const chanceA1 = calcFactor(ratingA1, ratingB) * 0.85;
-
-  return chanceA1 + chanceA2;
-}
-
-function calcScore(p1, p2, p3, p4, goals, goalsAgainst, isWinner) {
-  let chance = calc2v2(p1.elo, p2.elo, p3.elo, p4.elo);
-  const multiplier = 50;
-  let bonus = 1 + goals / 30;
-  const winStreakBonus = p1.winStreak >= 3 ? 1.3 : 1;
-
-  bonus *= 1 + (6 - goalsAgainst) / 25;
-  bonus *= winStreakBonus;
-
-  if (!isWinner) {
-    chance = -1 * (1 - chance);
-    bonus = 1 - (bonus - 1);
-  }
-
-  return Math.round(chance * multiplier * bonus);
-}
-
-function calcFactor(ratingA, ratingB) {
-  const exponent = (ratingA - ratingB) / 500;
-
-  let factor = parseFloat((1 / (1 + 10 ** exponent)).toFixed(2));
-  factor = Math.min(Math.max(0.25, factor), 0.75);
-
-  return factor;
-}
-
-export const _avgTimeBetween = avgTimeBetween;

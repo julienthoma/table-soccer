@@ -106,11 +106,9 @@ PlayerSelection.propTypes = {
   players: PropTypes.arrayOf(playerShape).isRequired
 };
 
-const mapStateToProps = state => ({
-  players: state.app.players,
-  currentPlayers: state.game.players
+const mapStateToProps = ({ app, game }) => ({
+  players: app.players,
+  currentPlayers: game.players
 });
 
-const _PlayerSelection = connect(mapStateToProps)(PlayerSelection);
-
-export default _PlayerSelection;
+export default connect(mapStateToProps)(PlayerSelection);

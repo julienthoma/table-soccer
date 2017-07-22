@@ -86,9 +86,14 @@ const GameListItem = ({ game, handleClick }) => {
   );
 };
 
+
+GameListItem.defaultProps = {
+  handleClick: () => false
+};
+
 GameListItem.propTypes = {
   game: gameShape.isRequired,
-  handleClick: PropTypes.func.isRequired
+  handleClick: PropTypes.func
 };
 
 export default GameListItem;

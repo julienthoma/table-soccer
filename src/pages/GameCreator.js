@@ -160,12 +160,10 @@ GameCreator.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => ({
-  players: state.game.players,
-  activeStep: state.game.activeStep,
-  currentUser: state.user.currentUser
+const mapStateToProps = ({ game, user }) => ({
+  players: game.players,
+  activeStep: game.activeStep,
+  currentUser: user.currentUser
 });
 
-const _GameCreator = connect(mapStateToProps)(GameCreator);
-
-export default _GameCreator;
+export default connect(mapStateToProps)(GameCreator);

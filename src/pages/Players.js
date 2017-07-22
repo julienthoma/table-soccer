@@ -58,10 +58,8 @@ Players.propTypes = {
   players: PropTypes.arrayOf(playerShape).isRequired
 };
 
-const mapStateToProps = state => ({
-  players: state.app.players
+const mapStateToProps = ({ app }) => ({
+  players: app.players
 });
 
-const _Players = connect(mapStateToProps)(Players);
-
-export default _Players;
+export default connect(mapStateToProps)(Players);

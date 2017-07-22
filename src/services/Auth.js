@@ -5,6 +5,4 @@ export const login = () => {
   auth().signInWithRedirect(provider);
 };
 
-export const logout = () => {
-  auth().signOut();
-};
+export const logout = () => auth().signOut();

@@ -16,10 +16,7 @@ export const get = url =>
       reject(new Error(request.statusText));
     };
 
-    request.onerror = () => {
-      reject(new Error('Request Error'));
-    };
-
+    request.onerror = () => reject(new Error('Request Error'));
     request.send();
   });
 
@@ -38,9 +35,6 @@ export const post = (url, data) =>
       reject(new Error(request.statusText));
     };
 
-    request.onerror = () => {
-      reject(new Error('Request Error'));
-    };
-
+    request.onerror = () => reject(new Error('Request Error'));
     request.send(JSON.stringify(data));
   });

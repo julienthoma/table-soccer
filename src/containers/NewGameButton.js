@@ -33,6 +33,4 @@ NewGameButton.propTypes = {
   router: PropTypes.instanceOf(Object).isRequired
 };
 
-const _NewGameButton = withRouter(NewGameButton);
-
-export default _NewGameButton;
+export default withRouter(NewGameButton);

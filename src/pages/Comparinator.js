@@ -22,10 +22,8 @@ Comparinator.propTypes = {
   players: PropTypes.arrayOf(playerShape).isRequired
 };
 
-const mapStateToProps = state => ({
-  players: state.app.players
+const mapStateToProps = ({ app }) => ({
+  players: app.players
 });
 
-const _Comparinator = connect(mapStateToProps)(Comparinator);
-
-export default _Comparinator;
+export default connect(mapStateToProps)(Comparinator);

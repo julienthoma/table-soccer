@@ -46,23 +46,18 @@ export const createStartGameMessage = (
   ]
 });
 
-export const createGoalMessage = (
-  goalScorer,
-  team1Score,
-  team2Score,
-  isOwngoal
-) => {
-  const message = isOwngoal
-    ? `${goalScorer.name} just scored a own goal :joy::joy::joy:`
-    : `${goalScorer.name} just scored a Goal`;
+export const createGoalMessage = (scorer, team1Score, team2Score, ownGoal) => {
+  const message = ownGoal
+    ? `${scorer.name} just scored a own goal :joy::joy::joy:`
+    : `${scorer.name} just scored a Goal`;
 
   return {
     username: 'Kicker Bot',
     attachments: [
       {
         author_name: message,
-        color: goalScorer.index <= 1 ? TEAM1_COLOR : TEAM2_COLOR,
-        author_link: createPlayerUrl(goalScorer.id),
+        color: scorer.index <= 1 ? TEAM1_COLOR : TEAM2_COLOR,
+        author_link: createPlayerUrl(scorer.id),
         fields: [
           {
             value: `_Team 1_ \n *${team1Score}*`,

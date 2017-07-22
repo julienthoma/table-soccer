@@ -44,6 +44,4 @@ CustomToolbar.propTypes = {
   router: PropTypes.instanceOf(Object).isRequired
 };
 
-const _CustomToolbar = withRouter(CustomToolbar);
-
-export default _CustomToolbar;
+export default withRouter(CustomToolbar);

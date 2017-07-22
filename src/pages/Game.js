@@ -21,10 +21,8 @@ Game.propTypes = {
   }).isRequired
 };
 
-const mapStateToProps = state => ({
-  games: state.app.games
+const mapStateToProps = ({ app }) => ({
+  games: app.games
 });
 
-const _Game = connect(mapStateToProps)(Game);
-
-export default _Game;
+export default connect(mapStateToProps)(Game);
