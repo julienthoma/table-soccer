@@ -5,7 +5,7 @@ import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux';
-import { getScore } from '../services/formatter';
+import { getScore } from '../services/Helper';
 import shortid from 'shortid';
 import PlayerButton from '../components/PlayerButton';
 import {

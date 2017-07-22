@@ -1,5 +1,5 @@
 import Entity from './Entity';
-import { getFormattedPercent } from '../services/formatter';
+import { getFormattedPercent } from '../services/Formatter';
 
 /**
  * @class PlayerEntity

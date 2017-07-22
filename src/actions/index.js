@@ -1,14 +1,16 @@
 import { initializeApp, database, auth } from 'firebase';
 import { get, post } from '../services/Ajax';
-import { transform } from '../services/transformer';
-import { emailToSlug, getScore } from '../services/formatter';
 import * as customAuth from '../services/Auth';
+
+import { transform } from '../services/Transformer';
+import { emailToSlug } from '../services/Formatter';
+import { getScore } from '../services/Helper';
 import { GOAL_TIMEOUT } from '../constants/';
 import {
   createStartGameMessage,
   createGoalMessage,
   createEndMessage
-} from '../services/slack';
+} from '../services/Slack';
 
 export const UPDATE_DATA = 'UPDATE_DATA';
 export const START_GAME = 'START_GAME';

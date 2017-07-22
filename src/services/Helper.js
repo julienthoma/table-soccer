@@ -69,3 +69,9 @@ export const getMmmrOfWeeks = (games, playerId) => {
     data
   };
 };
+
+export const getScore = score => {
+  const [p1, p2, p3, p4, p1Own, p2Own, p3Own, p4Own] = score;
+
+  return [p1 + p2 + p3Own + p4Own, p3 + p4 + p1Own + p2Own];
+};

@@ -1,7 +1,7 @@
-import { transform, _avgTimeBetween } from './transformer';
+import { transform, _avgTimeBetween } from './Transformer';
 import gameMock from './__mocks__/dataMock.json';
 
-describe('transformer', () => {
+describe('Transformer', () => {
   const transformedData = transform(gameMock);
 
   it('game transform', () => {
