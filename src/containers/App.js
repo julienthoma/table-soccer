@@ -13,10 +13,16 @@ class App extends React.Component {
   }
 
   render() {
-    const { initialized } = this.props;
+    const { initialized, isAuthorizing } = this.props;
 
     if (!initialized) {
       return false;
+    }
+
+    if (isAuthorizing) {
+      return (<div>
+        <p>Authorizing...</p>
+      </div>);
     }
 
     return (
@@ -35,11 +41,13 @@ class App extends React.Component {
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
   initialized: PropTypes.bool.isRequired,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  isAuthorizing: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
-  initialized: state.app.initialized
+  initialized: state.app.initialized,
+  isAuthorizing: state.user.isAuthorizing
 });
 
 const _App = connect(mapStateToProps)(App);

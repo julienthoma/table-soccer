@@ -5,10 +5,11 @@ import Avatar from 'material-ui/Avatar';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
-import { login, logout } from '../services/Auth';
+import { startLogin } from '../actions';
+import { logout } from '../services/Auth';
 import './Login.scss';
 
-const Login = ({ currentUser }) => {
+const Login = ({ currentUser, dispatch }) => {
   const iconStyle = { width: 40, height: 40 };
 
   return (
@@ -45,7 +46,10 @@ const Login = ({ currentUser }) => {
             </IconButton>
             }
         >
-          <MenuItem primaryText="Login" onClick={login} />
+          <MenuItem
+            primaryText="Login"
+            onClick={() => dispatch(startLogin())}
+          />
         </IconMenu>}
     </div>
   );

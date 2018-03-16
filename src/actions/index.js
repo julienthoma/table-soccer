@@ -2,6 +2,7 @@ import { initializeApp, database, auth } from 'firebase';
 import { get, post } from '../services/Ajax';
 import { transform } from '../services/transformer';
 import { emailToSlug, getScore } from '../services/formatter';
+import * as customAuth from '../services/Auth';
 import { GOAL_TIMEOUT } from '../constants/';
 import {
   createStartGameMessage,
@@ -20,6 +21,7 @@ export const SET_PLAYERS = 'SET_PLAYERS';
 export const TOGGLE_SNACKBAR = 'TOGGLE_SNACKBAR';
 export const SET_USER = 'SET_USER';
 export const PREFETCH_DONE = 'PREFETCH_DONE';
+export const LOGIN = 'LOGIN';
 
 export const prefetchDone = () => ({ type: PREFETCH_DONE });
 export const setUser = user => ({ type: SET_USER, user });
@@ -83,7 +85,15 @@ export const sendGoalMessage = (player, isOwngoal = false) => (
   });
 };
 
+export const login = () => ({ type: LOGIN });
+
+export const startLogin = () => dispatch => {
+  dispatch(login());
+  customAuth.login();
+};
+
 export const initializeFirebase = () => (dispatch, getState) => {
+  dispatch(login());
   initializeApp(getState().config.firebaseConfig);
 
   auth().onAuthStateChanged(firebaseUser => {
