@@ -9,14 +9,14 @@ import {
   TableHeader,
   TableHeaderColumn
 } from 'material-ui/Table';
-import { getFormattedPercent } from '../services/Formatter';
+import { getFormattedPercent } from '../services/formatter';
 import { LineChart } from '../components/Charts';
 import CompareBar from '../components/CompareBar';
 import SkillBar from '../components/SkillBar';
 import WinStreakIcon from '../components/WinStreakIcon';
 import PropertyChart, { PROPERTIES } from '../containers/PropertyChart';
 import { playerShape, gameShape } from '../proptypes';
-import { getMmmrOfWeeks, getFactor } from '../services/Helper';
+import { getMmmrOfWeeks, getFactor } from '../services/helper';
 import './Player.scss';
 
 const Player = ({ params, players, games, properties }) => {

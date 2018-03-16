@@ -1,6 +1,6 @@
 import React from 'react';
 import './SkillBar.scss';
-import { getFormattedPercent } from '../services/Formatter';
+import { getFormattedPercent } from '../services/formatter';
 
 const SkillBar = ({
   playerId,

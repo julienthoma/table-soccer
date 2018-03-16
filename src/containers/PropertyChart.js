@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { RadarChart } from '../components/Charts';
-import { normalizeValue } from '../services/Helper';
+import { normalizeValue } from '../services/helper';
 import { playerShape } from '../proptypes';
 import './PropertyChart.scss';
 

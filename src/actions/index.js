@@ -1,10 +1,10 @@
 import { initializeApp, database, auth } from 'firebase';
-import { get, post } from '../services/Ajax';
-import * as customAuth from '../services/Auth';
+import { get, post } from '../services/ajax';
+import * as customAuth from '../services/auth';
 
-import { transform } from '../services/Transformer';
-import { emailToSlug } from '../services/Formatter';
-import { getScore } from '../services/Helper';
+import { transform } from '../services/transformer';
+import { emailToSlug } from '../services/formatter';
+import { getScore } from '../services/helper';
 import { GOAL_TIMEOUT } from '../constants/';
 import {
   createStartGameMessage,

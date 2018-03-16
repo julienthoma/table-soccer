@@ -6,7 +6,7 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import { startLogin } from '../actions';
-import { logout } from '../services/Auth';
+import { logout } from '../services/auth';
 import './Login.scss';
 
 const Login = ({ currentUser, dispatch }) => {

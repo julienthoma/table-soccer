@@ -6,7 +6,7 @@ import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux';
 import shortid from 'shortid';
-import { getScore } from '../services/Helper';
+import { getScore } from '../services/helper';
 import PlayerButton from '../components/PlayerButton';
 import {
   addGoal,

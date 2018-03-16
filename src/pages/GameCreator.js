@@ -6,7 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { startNewGame, exitGame, setPlayers } from '../actions';
 import GameScoreScreen from '../containers/GameScoreScreen';
 import PlayerSelection from '../containers/PlayerSelection';
-import { login } from '../services/Auth';
+import { login } from '../services/auth';
 import * as consts from '../constants';
 import { gamePlayerShape } from '../proptypes';
 

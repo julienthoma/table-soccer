@@ -1,6 +1,6 @@
 import Game from '../entities/Game';
 import Player from '../entities/Player';
-import { avgTimeBetween, calcScore } from './Helper';
+import { avgTimeBetween, calcScore } from './helper';
 import * as consts from '../constants';
 
 export const transform = (data) => {
