@@ -34,6 +34,9 @@ export const getInitialState = () => {
       initialized: false,
       infoText: null,
       prefetchDone: false
+    },
+    user: {
+      isAuthorizing: true
     }
   };
 };
