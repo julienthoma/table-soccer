@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './CompareBar.scss';
 
 const CompareBar = ({
@@ -7,7 +8,7 @@ const CompareBar = ({
   factorLeft,
   leftValue,
   rightValue
-}) =>
+}) => (
   <div styleName="root">
     <div styleName="headlineContainer">
       <h4 styleName="leftHeadline">{leftHeadline}</h4>
@@ -20,6 +21,17 @@ const CompareBar = ({
       <div styleName="right" />
       <div styleName="rightText">{rightValue}</div>
     </div>
-  </div>;
+  </div>
+);
+
+CompareBar.propTypes = {
+  leftHeadline: PropTypes.string.isRequired,
+  rightHeadline: PropTypes.string.isRequired,
+  factorLeft: PropTypes.number.isRequired,
+  leftValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
+  rightValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired
+};
 
 export default CompareBar;

@@ -67,3 +67,8 @@ export const scoreTimelineItemShape = shape({
   index: number.isRequired,
   time: number.isRequired
 });
+
+export const userShape = shape({
+  name: string.isRequired,
+  photoUrl: string.isRequired
+});

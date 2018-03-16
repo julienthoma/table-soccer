@@ -218,7 +218,7 @@ class GameScoreScreen extends React.Component {
             onClick={() => this.props.dispatch(exitGame())}
           />
 
-          <RaisedButton onTouchTap={this.handleOwnGoalOpen} label="own goal" />
+          <RaisedButton onClick={this.handleOwnGoalOpen} label="own goal" />
           <Popover
             open={this.state.ownGoalsOpen}
             anchorEl={this.state.anchorEl}
@@ -231,7 +231,7 @@ class GameScoreScreen extends React.Component {
                 <MenuItem
                   key={index}
                   primaryText={player.name}
-                  onTouchTap={this.handleOwnGoalClick(index)}
+                  onClick={this.handleOwnGoalClick(index)}
                 />
               )}
             </Menu>

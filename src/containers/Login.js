@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AccountCircle from 'material-ui/svg-icons/action/account-circle';
 import Avatar from 'material-ui/Avatar';
@@ -7,6 +8,7 @@ import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import { startLogin } from '../actions';
 import { logout } from '../services/auth';
+import { userShape } from '../proptypes';
 import './Login.scss';
 
 const Login = ({ currentUser, dispatch }) => {
@@ -53,6 +55,15 @@ const Login = ({ currentUser, dispatch }) => {
         </IconMenu>}
     </div>
   );
+};
+
+Login.defaultProps = {
+  currentUser: null
+};
+
+Login.propTypes = {
+  currentUser: userShape,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = ({ user }) => ({

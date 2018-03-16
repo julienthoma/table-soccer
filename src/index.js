@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Router, Route, browserHistory } from 'react-router';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import de from 'react-intl/locale-data/de';
 import reducer from './reducers';
@@ -15,10 +14,8 @@ import Player from './pages/Player';
 import Game from './pages/Game';
 import GameCreator from './pages/GameCreator';
 import Comparinator from './pages/Comparinator';
-
 import './index.scss';
 
-injectTapEventPlugin();
 addLocaleData(de);
 
 render(

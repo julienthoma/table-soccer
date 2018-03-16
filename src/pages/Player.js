@@ -239,7 +239,8 @@ Player.propTypes = {
     id: PropTypes.string
   }).isRequired,
   players: PropTypes.arrayOf(playerShape).isRequired,
-  games: PropTypes.arrayOf(gameShape).isRequired
+  games: PropTypes.arrayOf(gameShape).isRequired,
+  properties: PropTypes.shape({}).isRequired
 };
 
 const mapStateToProps = ({ app }) => ({

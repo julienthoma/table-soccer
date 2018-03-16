@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FormattedDate } from 'react-intl';
+import { gameShape } from '../proptypes';
 import ScoreTimelineItem from './ScoreTimelineItem';
 import './ScoreTimelineItem.scss';
 
@@ -26,5 +28,9 @@ const ScoreTimeline = ({ game }) =>
       </div>
     )}
   </div>;
+
+ScoreTimeline.propTpes = {
+  game: gameShape
+};
 
 export default ScoreTimeline;

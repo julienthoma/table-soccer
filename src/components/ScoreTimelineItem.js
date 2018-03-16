@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './ScoreTimelineItem.scss';
 import PositionIcon from './PositionIcon';
-import { POSITION_COUNT } from '../constants/';
+import { POSITION_COUNT } from '../constants';
+import { scoreTimelineItemShape } from '../proptypes';
 
 const ScoreTimelineGoalScorer = ({ goalScorer, isWinner }) => (
   <div>
@@ -43,5 +45,10 @@ const ScoreTimelineGoalScorer = ({ goalScorer, isWinner }) => (
     </div>
   </div>
   );
+
+ScoreTimelineGoalScorer.propTypes = {
+  goalScorer: scoreTimelineItemShape.isRequired,
+  isWinner: PropTypes.bool.isRequired
+};
 
 export default ScoreTimelineGoalScorer;

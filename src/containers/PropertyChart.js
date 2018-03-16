@@ -96,7 +96,8 @@ PropertyChart.defaultProps = {
 
 PropertyChart.propTypes = {
   players: PropTypes.arrayOf(playerShape).isRequired,
-  properties: PropTypes.object.isRequired
+  properties: PropTypes.shape({}).isRequired,
+  showLabel: PropTypes.bool
 };
 
 const mapStateToProps = ({ app }) => ({

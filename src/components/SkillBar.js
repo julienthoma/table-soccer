@@ -1,9 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './SkillBar.scss';
 import { getFormattedPercent } from '../services/formatter';
 
 const SkillBar = ({
-  playerId,
   factor,
   leftHeadline,
   value,
@@ -25,5 +25,13 @@ const SkillBar = ({
       </div>
     </div>
   </div>;
+
+SkillBar.propTypes = {
+  factor: PropTypes.number.isRequired,
+  leftHeadline: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  best: PropTypes.string.isRequired,
+  bestPlayerId: PropTypes.string.isRequired
+};
 
 export default SkillBar;

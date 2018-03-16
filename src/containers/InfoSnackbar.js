@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Snackbar from 'material-ui/Snackbar';
 import { toggleSnackbar } from '../actions';
-import { GOAL_TIMEOUT } from '../constants/';
+import { GOAL_TIMEOUT } from '../constants';
 
 class InfoSnackbar extends React.Component {
   handleActionClick = () => {
@@ -20,7 +20,7 @@ class InfoSnackbar extends React.Component {
         message={infoText}
         action={actionText}
         autoHideDuration={GOAL_TIMEOUT}
-        onActionTouchTap={this.handleActionClick}
+        onActionClick={this.handleActionClick}
       />
     );
   }
