@@ -117,6 +117,8 @@ export const initializeFirebase = () => (dispatch, getState) => {
             });
         }
       });
+    } else {
+      dispatch(setUser(null));
     }
   });
 };
