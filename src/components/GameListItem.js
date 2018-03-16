@@ -88,7 +88,7 @@ const GameListItem = ({ game, handleClick }) => {
 
 
 GameListItem.defaultProps = {
-  handleClick: () => false
+  handleClick: () => () => false
 };
 
 GameListItem.propTypes = {

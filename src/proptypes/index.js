@@ -70,5 +70,5 @@ export const scoreTimelineItemShape = shape({
 
 export const userShape = shape({
   name: string.isRequired,
-  photoUrl: string.isRequired
+  photoUrl: string
 });
