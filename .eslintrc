@@ -5,6 +5,7 @@
     "jasmine"
   ],
   "rules": {
+    "linebreak-style": "off",
     "eol-last": 1,
     "max-len": [
       "error",

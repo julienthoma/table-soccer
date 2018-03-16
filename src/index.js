@@ -15,14 +15,14 @@ import Player from './pages/Player';
 import Game from './pages/Game';
 import GameCreator from './pages/GameCreator';
 import Comparinator from './pages/Comparinator';
-import config from '../config';
+
 import './index.scss';
 
 injectTapEventPlugin();
 addLocaleData(de);
 
 render(
-  <Provider store={enhanceStore(reducer, getInitialState({ ...config }))}>
+  <Provider store={enhanceStore(reducer, getInitialState())}>
     <IntlProvider locale={'de'}>
       <MuiThemeProvider>
         <Router history={browserHistory}>

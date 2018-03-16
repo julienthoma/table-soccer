@@ -4,4 +4,5 @@ public/app.js
 public/app.js.map
 public/app.min.js
 config.json
+config-dev.json
 .firebaserc
