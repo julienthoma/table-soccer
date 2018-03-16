@@ -1,4 +1,6 @@
-const dev= require('./config/webpack.dev.config');
-const prod = require('./config/webpack.prod.config');
 
-module.exports = process.env.NODE_ENV === 'production' ? prod : dev;
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./config/webpack.prod.config');
+} else {
+  module.exports = require('./config/webpack.dev.config');;
+}

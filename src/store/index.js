@@ -23,6 +23,9 @@ export const enhanceStore = (reducer, state) => {
 export const getInitialState = () => {
   const config = env === 'production' ? prodConfig : devConfig;
 
+  console.log(process.env.NODE_ENV);
+  console.log(config);
+
   return {
     config: {
       ...config
