@@ -24,32 +24,71 @@ class Players extends Component {
     const { players } = this.props;
 
     return (
-      <Table allRowsSelected={false}>
-        <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
-          <TableRow>
-            <TableHeaderColumn style={tableColumnStyle}>Name</TableHeaderColumn>
-            <TableHeaderColumn style={tableColumnStyle}>
-              Games
-            </TableHeaderColumn>
-            <TableHeaderColumn style={tableColumnStyle}>
-              Wins%
-            </TableHeaderColumn>
-            <TableHeaderColumn style={tableColumnStyle}>MMR</TableHeaderColumn>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {players
-            .filter(p => p.id !== GUEST && p.placemnentFinished)
-            .sort((p1, p2) => p2.elo - p1.elo)
-            .map(player =>
-              <PlayerListItem
-                key={player.id}
-                player={player}
-                handleClick={this.handleRowClick(player)}
-              />
-            )}
-        </TableBody>
-      </Table>
+      <div>
+        <Table allRowsSelected={false}>
+          <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+            <TableRow>
+              <TableHeaderColumn style={tableColumnStyle}>
+                Name
+              </TableHeaderColumn>
+              <TableHeaderColumn style={tableColumnStyle}>
+                Games
+              </TableHeaderColumn>
+              <TableHeaderColumn style={tableColumnStyle}>
+                Wins%
+              </TableHeaderColumn>
+              <TableHeaderColumn style={tableColumnStyle}>
+                MMR
+              </TableHeaderColumn>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {players
+              .filter(p => p.id !== GUEST && p.placemnentFinished)
+              .sort((p1, p2) => p2.elo - p1.elo)
+              .map(player => (
+                <PlayerListItem
+                  key={player.id}
+                  player={player}
+                  handleClick={this.handleRowClick(player)}
+                />
+              ))}
+          </TableBody>
+        </Table>
+        <h2>
+          <center>Unranked</center>
+        </h2>
+        <Table allRowsSelected={false}>
+          <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+            <TableRow>
+              <TableHeaderColumn style={tableColumnStyle}>
+                Name
+              </TableHeaderColumn>
+              <TableHeaderColumn style={tableColumnStyle}>
+                Games
+              </TableHeaderColumn>
+              <TableHeaderColumn style={tableColumnStyle}>
+                Wins%
+              </TableHeaderColumn>
+              <TableHeaderColumn style={tableColumnStyle}>
+                MMR
+              </TableHeaderColumn>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {players
+              .filter(p => p.id !== GUEST && !p.placemnentFinished)
+              .sort((p1, p2) => p2.elo - p1.elo)
+              .map(player => (
+                <PlayerListItem
+                  key={player.id}
+                  player={player}
+                  handleClick={this.handleRowClick(player)}
+                />
+              ))}
+          </TableBody>
+        </Table>
+      </div>
     );
   }
 }
