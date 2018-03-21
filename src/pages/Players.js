@@ -25,9 +25,6 @@ class Players extends Component {
 
     return (
       <div>
-        <h2>
-          <center>Ranked</center>
-        </h2>
         <Table allRowsSelected={false}>
           <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
             <TableRow>
