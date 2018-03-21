@@ -39,7 +39,7 @@ class Players extends Component {
         </TableHeader>
         <TableBody>
           {players
-            .filter(p => p.id !== GUEST)
+            .filter(p => p.id !== GUEST && p.placemnentFinished)
             .sort((p1, p2) => p2.elo - p1.elo)
             .map(player =>
               <PlayerListItem

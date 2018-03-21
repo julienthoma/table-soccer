@@ -245,6 +245,8 @@ export const transform = (data) => {
         const avgTimeBetweenGoalsAgainst =
           totalAvgTimeBetweenGoalsAgainst / gamesDefense || 0;
 
+        const placemnentFinished = games >= 10;
+
         let teamMateId;
         let enemy1Id;
         let enemy2Id;
@@ -332,6 +334,7 @@ export const transform = (data) => {
           id
         ].totalAvgTimeBetweenGoalsAgainst = totalAvgTimeBetweenGoalsAgainst;
         playerMap[id].avgTimeBetweenGoalsAgainst = avgTimeBetweenGoalsAgainst;
+        playerMap[id].placemnentFinished = placemnentFinished;
       });
 
       _games.push(
@@ -369,7 +372,7 @@ export const transform = (data) => {
       'avgTimeBetweenGoalsAgainst'
     ];
 
-    if (_player.id === 'guest') {
+    if (_player.id === 'guest' || !_player.placemnentFinished) {
       return;
     }
 

@@ -40,14 +40,13 @@ const Player = ({ params, players, games, properties }) => {
     ]
   };
 
-  if (player.games === 0) {
+  if (!player.placemnentFinished) {
     return (
       <div>
         <h2 styleName="headline">
           {player.name} - {player.elo}
-          <WinStreakIcon count={player.winStreak} />
         </h2>
-        <p>No Games played yet</p>
+        <p>You need {10 - player.games} more games to get ranked.</p>
       </div>
     );
   }
