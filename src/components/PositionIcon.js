@@ -10,11 +10,12 @@ const PositionIcon = ({ count, dark }) => (
 );
 
 PositionIcon.defaultProps = {
-  dark: false
+  dark: false,
+  count: 1
 };
 
 PositionIcon.propTypes = {
-  count: PropTypes.number.isRequired,
+  count: PropTypes.number,
   dark: PropTypes.bool
 };
 
