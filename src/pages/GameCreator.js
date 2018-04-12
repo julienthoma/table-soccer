@@ -41,7 +41,7 @@ class GameCreator extends React.Component {
     browserHistory.push('/');
   };
 
-  renderSelectPlayers = () =>
+  renderSelectPlayers = () => (
     <div>
       <PlayerSelection />
       <RaisedButton label="Exit" onClick={this.exitGame} />
@@ -53,12 +53,14 @@ class GameCreator extends React.Component {
         onClick={this.startNewGame}
         style={{ marginLeft: 12 }}
       />
-    </div>;
+    </div>
+  );
 
-  renderActiveGame = () =>
+  renderActiveGame = () => (
     <div>
       <GameScoreScreen />
-    </div>;
+    </div>
+  );
 
   renderGameEnd = () => {
     const buttonStyle = { height: 120 };
@@ -98,9 +100,9 @@ class GameCreator extends React.Component {
   };
 
   render() {
-    const { activeStep, currentUser } = this.props;
+    const { activeStep, currentGoogleUser, allPlayers } = this.props;
 
-    if (!currentUser) {
+    if (!currentGoogleUser) {
       return (
         <div>
           <p>You need to sign in to create games</p>
@@ -109,12 +111,14 @@ class GameCreator extends React.Component {
       );
     }
 
-    if (!currentUser.verified) {
+    const user = allPlayers.filter(p => p.id === currentGoogleUser.id)[0];
+
+    if (!currentGoogleUser.verified && user.games < 10) {
       return (
         <div>
           <p>
-            You need to ask an admin for verification of your account in order
-            to create games
+            You need 10 games to create games yourself or ask the admin for
+            permission
           </p>
           <Link to="/">Back Home</Link>
         </div>
@@ -137,11 +141,7 @@ class GameCreator extends React.Component {
         return false;
     }
 
-    return (
-      <div style={{ padding: 8 }}>
-        {content}
-      </div>
-    );
+    return <div style={{ padding: 8 }}>{content}</div>;
   }
 }
 
@@ -160,10 +160,11 @@ GameCreator.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
-const mapStateToProps = ({ game, user }) => ({
+const mapStateToProps = ({ game, user, app }) => ({
   players: game.players,
+  allPlayers: app.players,
   activeStep: game.activeStep,
-  currentUser: user.currentUser
+  currentGoogleUser: user.currentUser
 });
 
 export default connect(mapStateToProps)(GameCreator);
