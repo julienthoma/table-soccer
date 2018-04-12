@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Avatar from 'material-ui/Avatar';
 import {
   Table,
   TableBody,
@@ -44,6 +45,7 @@ const Player = ({ params, players, games, properties }) => {
     return (
       <div>
         <h2 styleName="headline">
+          <Avatar src={player.photoURL} />&nbsp;
           {player.name} - {player.elo}
         </h2>
         <p>You need {10 - player.games} more games to get ranked.</p>
@@ -54,6 +56,7 @@ const Player = ({ params, players, games, properties }) => {
   return (
     <div styleName="root">
       <h2 styleName="headline">
+        <Avatar src={player.photoURL} />&nbsp;
         {player.name} - {player.elo}
         <WinStreakIcon count={player.winStreak} />
       </h2>
@@ -118,7 +121,7 @@ const Player = ({ params, players, games, properties }) => {
       <div styleName="performance">
         <h3>Performance Comparision</h3>
         <div>
-          {PROPERTIES.map(({ key, label, inverse }, i) =>
+          {PROPERTIES.map(({ key, label, inverse }, i) => (
             <SkillBar
               key={i}
               leftHeadline={label}
@@ -139,7 +142,7 @@ const Player = ({ params, players, games, properties }) => {
                 inverse
               )}
             />
-          )}
+          ))}
         </div>
       </div>
 
@@ -212,18 +215,6 @@ const Player = ({ params, players, games, properties }) => {
               </TableRowColumn>
               <TableRowColumn style={tableColumnStyle}>
                 {player.lossesDefense}
-              </TableRowColumn>
-            </TableRow>
-            <TableRow>
-              <TableRowColumn style={firstColumnStyle}>Playtime</TableRowColumn>
-              <TableRowColumn style={tableColumnStyle}>
-                {player.getPlayTime()}
-              </TableRowColumn>
-              <TableRowColumn style={tableColumnStyle}>
-                {player.getPlayTimeAttack()}
-              </TableRowColumn>
-              <TableRowColumn style={tableColumnStyle}>
-                {player.getPlayTimeDefense()}
               </TableRowColumn>
             </TableRow>
           </TableBody>

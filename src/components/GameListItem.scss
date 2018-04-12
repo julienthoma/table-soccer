@@ -32,6 +32,7 @@
 .left,
 .right {
   flex-basis: 100px;
+  flex-grow: 1;
   flex-shrink: 0;
 }
 
@@ -41,17 +42,18 @@
 }
 
 .player {
-  text-align: center;
   font-size: 20px;
   padding: 5px;
 }
 
 .playerName {
   display: flex;
+  justify-content: center;
 }
 
 .playerScore {
   font-size: 16px;
+  text-align: center;
 }
 
 .gainColor {

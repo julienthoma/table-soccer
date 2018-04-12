@@ -286,6 +286,7 @@ export const transform = (data) => {
         currentPlayers[
           id
         ].avgTimeBetweenGoalsAgainst = avgTimeBetweenGoalsAgainst;
+        currentPlayers[id].photoURL = playerMap[id].photoURL;
 
         playerMap[id].ownGoals = ownGoals;
         playerMap[id].goalsPosStriker = goalsPosStriker;

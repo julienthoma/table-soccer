@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TableRow, TableRowColumn } from 'material-ui/Table';
+import Avatar from 'material-ui/Avatar';
 import { playerShape } from '../proptypes';
 
 const PlayerListItem = ({ player, handleClick }) => {
@@ -8,17 +9,14 @@ const PlayerListItem = ({ player, handleClick }) => {
   return (
     <TableRow onClick={handleClick}>
       <TableRowColumn style={tableColumnStyle}>
-        {player.name}
+        <Avatar src={player.photoURL} />
       </TableRowColumn>
-      <TableRowColumn style={tableColumnStyle}>
-        {player.games}
-      </TableRowColumn>
+      <TableRowColumn style={tableColumnStyle}>{player.name}</TableRowColumn>
+      <TableRowColumn style={tableColumnStyle}>{player.games}</TableRowColumn>
       <TableRowColumn style={tableColumnStyle}>
         {player.getWinPercentFormatted()}
       </TableRowColumn>
-      <TableRowColumn style={tableColumnStyle}>
-        {player.elo}
-      </TableRowColumn>
+      <TableRowColumn style={tableColumnStyle}>{player.elo}</TableRowColumn>
     </TableRow>
   );
 };
