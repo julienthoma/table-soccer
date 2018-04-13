@@ -6,11 +6,7 @@ import { transform } from '../services/transformer';
 import { emailToSlug } from '../services/formatter';
 import { getScore } from '../services/helper';
 import { GOAL_TIMEOUT } from '../constants/';
-import {
-  createStartGameMessage,
-  createGoalMessage,
-  createEndMessage
-} from '../services/Slack';
+import { createEndMessage } from '../services/Slack';
 
 export const UPDATE_DATA = 'UPDATE_DATA';
 export const START_GAME = 'START_GAME';
@@ -41,24 +37,8 @@ export const addGoal = (index, position) => ({
   position
 });
 
-export const startNewGame = () => (dispatch, getState) => {
+export const startNewGame = () => dispatch => {
   dispatch(startGame());
-  const game = getState().game.players;
-  const players = getState().app.players;
-  const team1Attack = players.filter(p => p.id === game[0].id)[0];
-  const team1Defense = players.filter(p => p.id === game[1].id)[0];
-  const team2Attack = players.filter(p => p.id === game[2].id)[0];
-  const team2Defense = players.filter(p => p.id === game[3].id)[0];
-  post(getState().config.slackProxyUrl, {
-    body: createStartGameMessage(
-      getState().user.currentUser,
-      team1Attack,
-      team1Defense,
-      team2Attack,
-      team2Defense
-    ),
-    target: getState().config.slackUrl
-  });
 };
 
 export const toggleSnackbar = (infoText, actionText, callbackFn) => ({
@@ -67,18 +47,6 @@ export const toggleSnackbar = (infoText, actionText, callbackFn) => ({
   actionText,
   callbackFn
 });
-
-export const sendGoalMessage = (player, isOwngoal = false) => (
-  dispatch,
-  getState
-) => {
-  const [team1Score, team2Score] = getScore(getState().game.score);
-
-  post(getState().config.slackProxyUrl, {
-    body: createGoalMessage(player, team1Score, team2Score, isOwngoal),
-    target: getState().config.slackUrl
-  });
-};
 
 export const login = () => ({ type: LOGIN });
 
@@ -117,14 +85,16 @@ export const getData = () => (dispatch, getState) => {
   // Make initial call as ajax for faster startup (socket startup is slow)
   get(getState().config.dbUrl).then(data => {
     dispatch(updateData(transform(data)));
-    database().ref('data').on('value', snapshot => {
-      // Don't update twice after intial call.
-      if (getState().app.prefetchDone) {
-        dispatch(updateData(transform(snapshot.val())));
-      } else {
-        dispatch(prefetchDone());
-      }
-    });
+    database()
+      .ref('data')
+      .on('value', snapshot => {
+        // Don't update twice after intial call.
+        if (getState().app.prefetchDone) {
+          dispatch(updateData(transform(snapshot.val())));
+        } else {
+          dispatch(prefetchDone());
+        }
+      });
   });
 };
 
@@ -138,19 +108,18 @@ export const uploadGame = game => (dispatch, getState) => {
   const team2Attack = players.filter(p => p.id === _game[2].id)[0];
   const team2Defense = players.filter(p => p.id === _game[3].id)[0];
   setTimeout(() => {
-    post(getState().config.slackProxyUrl, {
-      body: createEndMessage(
-        gameId,
-        team1Score,
-        team2Score,
-        team1Attack,
-        team1Defense,
-        team2Attack,
-        team2Defense
-      ),
-      target: getState().config.slackUrl
-    });
-  }, GOAL_TIMEOUT * 2.5);
+    post(getState().config.slackUrl, createEndMessage(
+      gameId,
+      team1Score,
+      team2Score,
+      team1Attack,
+      team1Defense,
+      team2Attack,
+      team2Defense
+    ));
+  }, GOAL_TIMEOUT * 1.5);
   dispatch(endGame(game));
-  database().ref(`data/games/${gameId}`).set(game);
+  database()
+    .ref(`data/games/${gameId}`)
+    .set(game);
 };

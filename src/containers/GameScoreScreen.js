@@ -14,8 +14,7 @@ import {
   uploadGame,
   undoLastGoal,
   toggleSnackbar,
-  exitGame,
-  sendGoalMessage
+  exitGame
 } from '../actions';
 import { scoreTimelineItemShape, simplePlayerShape } from '../proptypes';
 import './GameScoreScreen.scss';
@@ -73,8 +72,7 @@ class GameScoreScreen extends React.Component {
     );
   };
 
-  handleUndo = (index, timeout) => () => {
-    clearTimeout(timeout);
+  handleUndo = index => () => {
     this.props.dispatch(undoLastGoal(index));
   };
 
@@ -95,16 +93,12 @@ class GameScoreScreen extends React.Component {
   handleOwnGoalClick = index => () => {
     const { currentPlayers, dispatch } = this.props;
     const currentPlayer = currentPlayers[index];
-    const timeout = setTimeout(
-      () => dispatch(sendGoalMessage(currentPlayer, true)),
-      consts.GOAL_TIMEOUT
-    );
     dispatch(addOwnGoal(index));
     dispatch(
       toggleSnackbar(
         `OWN GOAL ${currentPlayer.name}`,
         'UNDO',
-        this.handleUndo(index, timeout)
+        this.handleUndo(index)
       )
     );
     this.handleOwnGoalClose();
@@ -113,16 +107,12 @@ class GameScoreScreen extends React.Component {
   handleScoreButtonClick = (index, position) => () => {
     const { currentPlayers, dispatch } = this.props;
     const currentPlayer = currentPlayers[index];
-    const timeout = setTimeout(
-      () => dispatch(sendGoalMessage(currentPlayer)),
-      consts.GOAL_TIMEOUT
-    );
     dispatch(addGoal(index, position));
     dispatch(
       toggleSnackbar(
         `${currentPlayer.name} - ${position}`,
         'UNDO',
-        this.handleUndo(index, timeout)
+        this.handleUndo(index)
       )
     );
   };
@@ -136,12 +126,8 @@ class GameScoreScreen extends React.Component {
       <div>
         <div styleName="game">
           <div styleName="scoreContainer">
-            <h1 styleName="score team1">
-              {team1Score}
-            </h1>
-            <h1 styleName="score team2">
-              {team2Score}
-            </h1>
+            <h1 styleName="score team1">{team1Score}</h1>
+            <h1 styleName="score team2">{team2Score}</h1>
           </div>
           <div styleName="players">
             <PlayerButton
@@ -227,13 +213,13 @@ class GameScoreScreen extends React.Component {
             targetOrigin={{ horizontal: 'left', vertical: 'top' }}
           >
             <Menu>
-              {currentPlayers.map((player, index) =>
+              {currentPlayers.map((player, index) => (
                 <MenuItem
                   key={index}
                   primaryText={player.name}
                   onClick={this.handleOwnGoalClick(index)}
                 />
-              )}
+              ))}
             </Menu>
           </Popover>
         </div>

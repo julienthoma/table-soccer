@@ -24,7 +24,7 @@ export const post = (url, data) =>
   new Promise((resolve, reject) => {
     const request = new XMLHttpRequest();
     request.open('POST', url, true);
-    request.setRequestHeader('Content-Type', 'application/json');
+    request.setRequestHeader('Content-Type', 'text/plain');
     request.responseType = 'json';
 
     request.onload = () => {
