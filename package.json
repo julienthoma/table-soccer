@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --hot --progress --mode development",
-    "build": "webpack --mode production --progress"
+    "build": "NODE_ENV=production webpack --mode production --progress"
   },
   "author": "Julien Thoma",
   "license": "ISC",
@@ -25,7 +25,7 @@
     "chart.js": "^2.5.0",
     "css-loader": "^0.28.4",
     "express": "^4.14.1",
-    "firebase": "^4.11.0",
+    "firebase": "^4.13.1",
     "history": "^4.7.2",
     "material-ui": "^0.20.0",
     "node-sass": "^4.5.3",

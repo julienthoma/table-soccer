@@ -8,9 +8,6 @@ const PlayerListItem = ({ player, handleClick }) => {
   const tableColumnStyle = { padding: '3px', textAlign: 'center' };
   return (
     <TableRow onClick={handleClick}>
-      <TableRowColumn style={tableColumnStyle}>
-        <Avatar src={player.photoURL} />
-      </TableRowColumn>
       <TableRowColumn style={tableColumnStyle}>{player.name}</TableRowColumn>
       <TableRowColumn style={tableColumnStyle}>{player.games}</TableRowColumn>
       <TableRowColumn style={tableColumnStyle}>

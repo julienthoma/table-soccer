@@ -29,9 +29,6 @@ class Players extends Component {
           <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
             <TableRow>
               <TableHeaderColumn style={tableColumnStyle}>
-                Avatar
-              </TableHeaderColumn>
-              <TableHeaderColumn style={tableColumnStyle}>
                 Name
               </TableHeaderColumn>
               <TableHeaderColumn style={tableColumnStyle}>
@@ -64,9 +61,6 @@ class Players extends Component {
         <Table allRowsSelected={false}>
           <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
             <TableRow>
-              <TableHeaderColumn style={tableColumnStyle}>
-                Avatar
-              </TableHeaderColumn>
               <TableHeaderColumn style={tableColumnStyle}>
                 Name
               </TableHeaderColumn>

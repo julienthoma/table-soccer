@@ -45,7 +45,6 @@ const Player = ({ params, players, games, properties }) => {
     return (
       <div>
         <h2 styleName="headline">
-          <Avatar src={player.photoURL} />&nbsp;
           {player.name} - {player.elo}
         </h2>
         <p>You need {10 - player.games} more games to get ranked.</p>
@@ -56,7 +55,6 @@ const Player = ({ params, players, games, properties }) => {
   return (
     <div styleName="root">
       <h2 styleName="headline">
-        <Avatar src={player.photoURL} />&nbsp;
         {player.name} - {player.elo}
         <WinStreakIcon count={player.winStreak} />
       </h2>

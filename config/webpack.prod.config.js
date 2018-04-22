@@ -32,7 +32,6 @@ module.exports = Object.assign({}, config, {
         uglifyOptions: {
           compress: {
             warnings: false,
-            screw_ie8: true,
             conditionals: true,
             unused: true,
             comparisons: true,
