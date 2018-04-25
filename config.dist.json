@@ -1,6 +1,5 @@
 {
  "slackUrl": "Url for Slack webhook",
- "slackProxyUrl": "Slack proxy url",
  "firebaseConfig": {
    "apiKey": "",
    "authDomain": "",
