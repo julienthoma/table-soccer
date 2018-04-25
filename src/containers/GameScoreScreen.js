@@ -124,6 +124,11 @@ class GameScoreScreen extends React.Component {
 
     return (
       <div>
+        <div styleName="duration-wrapper">
+          <div styleName="duration">
+            02:30
+          </div>
+        </div>
         <div styleName="game">
           <div styleName="scoreContainer">
             <h1 styleName="score team1">{team1Score}</h1>

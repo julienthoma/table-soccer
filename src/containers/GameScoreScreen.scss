@@ -39,3 +39,19 @@
 .team2 {
   color: $pink;
 }
+
+.duration-wrapper {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.duration {
+  background: #f3f3f3;
+  font-size: 20px;
+  text-align: center;
+  font-weight: 500;
+  line-height: 36px;
+  height: 36px;
+  width: 200px;
+}

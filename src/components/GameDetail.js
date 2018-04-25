@@ -1,11 +1,11 @@
 import React from 'react';
-import GameListItem from '../components/GameListItem';
+import CompletedGameListItem from '../components/CompletedGameListItem';
 import ScoreTimeline from '../components/ScoreTimeline';
 import { gameShape } from '../proptypes';
 
 const GameDetail = ({ game }) =>
   <div>
-    <GameListItem game={game} />
+    <CompletedGameListItem game={game} />
     <ScoreTimeline game={game} />
   </div>;
 

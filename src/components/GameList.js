@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Infinite from 'react-infinite';
-import GameListItem from '../components/GameListItem';
+import CompletedGameListItem from '../components/CompletedGameListItem';
 import { gameShape } from '../proptypes';
 
 const GameList = ({ games, handleRowClick }) =>
@@ -12,7 +12,7 @@ const GameList = ({ games, handleRowClick }) =>
       preloadBatchSize={Infinite.containerHeightScaleFactor(3)}
     >
       {games.map(game =>
-        <GameListItem key={game.id} game={game} handleClick={handleRowClick} />
+        <CompletedGameListItem key={game.id} game={game} handleClick={handleRowClick} />
       )}
     </Infinite>
   </div>;
