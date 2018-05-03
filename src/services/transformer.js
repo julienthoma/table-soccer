@@ -247,23 +247,19 @@ export const transform = (data) => {
 
         const placemnentFinished = games >= 10;
 
-        let teamMateId;
         let enemy1Id;
         let enemy2Id;
 
         if (isWinner) {
-          teamMateId = isAttack ? winnerDefenseId : winnerAttackId;
           enemy1Id = loserAttackId;
           enemy2Id = loserDefenseId;
         } else {
-          teamMateId = isAttack ? loserDefenseId : loserAttackId;
           enemy1Id = winnerAttackId;
           enemy2Id = loserAttackId;
         }
 
         const eloGain = calcScore(
           playerMap[id],
-          playerMap[teamMateId],
           playerMap[enemy1Id],
           playerMap[enemy2Id],
           currentGoals,

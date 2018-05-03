@@ -88,26 +88,30 @@ export const avgTimeBetween = (end, _timings) => {
   return timeBetween.reduce((sum, curr) => sum + curr, 0) / timings.length;
 };
 
-
 export const calcFactor = (ratingA, ratingB) => {
   const exponent = (ratingA - ratingB) / 750;
 
   return parseFloat((1 / (1 + 10 ** exponent)).toFixed(2));
 };
 
-export const calc2v2 = (ratingA1, ratingA2, ratingB1, ratingB2) => {
+export const calc2v2 = (ratingA, ratingB1, ratingB2) => {
   const ratingB = Math.round((ratingB1 + ratingB2) / 2);
-  const chanceA2 = calcFactor(ratingA2, ratingB) * 0.2;
-  const chanceA1 = calcFactor(ratingA1, ratingB) * 0.8;
 
-  return chanceA1 + chanceA2;
+  return calcFactor(ratingA, ratingB);
 };
 
-export const calcScore = (p1, p2, p3, p4, goals, goalsAgainst, isWinner) => {
-  let chance = calc2v2(p1.elo, p2.elo, p3.elo, p4.elo);
+export const calcScore = (
+  player,
+  enemy1,
+  enemy2,
+  goals,
+  goalsAgainst,
+  isWinner
+) => {
+  let chance = calc2v2(player.elo, enemy1.elo, enemy2.elo);
   const multiplier = 50;
   let bonus = 1 + goals / 18;
-  const winStreakBonus = p1.winStreak >= 3 ? 1.3 : 1;
+  const winStreakBonus = player.winStreak >= 3 ? 1.3 : 1;
 
   bonus *= 1 + (6 - goalsAgainst) / 30;
   bonus *= winStreakBonus;
