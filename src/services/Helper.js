@@ -110,8 +110,8 @@ export const calcScore = (
 ) => {
   let chance = calc2v2(player.elo, enemy1.elo, enemy2.elo);
   const multiplier = 50;
-  let bonus = 1 + goals / 18;
-  const winStreakBonus = player.winStreak >= 3 ? 1.3 : 1;
+  let bonus = 1 + goals / 30;
+  const winStreakBonus = player.winStreak >= 3 ? 1.2 : 1;
 
   bonus *= 1 + (6 - goalsAgainst) / 30;
   bonus *= winStreakBonus;
@@ -121,5 +121,5 @@ export const calcScore = (
     bonus = 1 - (bonus - 1);
   }
 
-  return Math.round(chance * bonus * multiplier);
+  return Math.round(chance * Math.min(bonus, 1.5) * multiplier);
 };
