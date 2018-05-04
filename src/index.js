@@ -36,5 +36,5 @@ render(
       </MuiThemeProvider>
     </IntlProvider>
   </Provider>,
-  document.getElementById('react-container')
+  document.body
 );
