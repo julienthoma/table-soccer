@@ -2,7 +2,9 @@ node_modules
 .idea
 public/app.js
 public/app.js.map
-public/app.min.js
+public/index.html
 config.json
 config-dev.json
 .firebaserc
+public/COMMITHASH
+public/VERSION

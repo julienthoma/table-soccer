@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="with=device-with, initial-scale=1">
 <head>
-  <meta name="git-version" content="3696ac03bde42db95b2f010cdd7f562fc6169574" />
+  <meta name="git-version" content="<%= htmlWebpackPlugin.options.gitVersion %>" />
   <title>Table Soccer</title>
   <link rel="icon" type="image/png" href="/favicon.png" sizes="64x64">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
@@ -11,6 +11,6 @@
 </head>
 <body>
   <div id="react-container"></div>
-  <script src="/app.js?v=3696ac03bde42db95b2f010cdd7f562fc6169574"></script>
-<script type="text/javascript" src="app.js"></script></body>
+  <script src="/app.js?v=<%= htmlWebpackPlugin.options.gitVersion %>"></script>
+</body>
 </html>
