@@ -36,5 +36,5 @@ render(
       </MuiThemeProvider>
     </IntlProvider>
   </Provider>,
-  document.body
+  document.getElementById('app')
 );

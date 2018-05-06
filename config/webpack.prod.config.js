@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const path = require('path');
 const config = require('./webpack.base.config');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const APP_DIR = path.resolve(__dirname, '../src');
 const BUILD_DIR = path.resolve(__dirname, '../public');
 
@@ -13,16 +12,9 @@ module.exports = Object.assign({}, config, {
   },
   output: {
     path: BUILD_DIR,
-    publicPath: '/',
     filename: '[name].js'
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Table Soccer',
-      favicon: `${BUILD_DIR}/favicon.png`,
-      hash: true,
-      template: `${APP_DIR}/index.html`
-    }),
+  plugins: config.plugins.concat([
     new webpack.DefinePlugin({
       'process.env': { NODE_ENV: JSON.stringify('production') }
     }),
@@ -30,5 +22,5 @@ module.exports = Object.assign({}, config, {
       minimize: true,
       debug: false
     })
-  ]
+  ])
 });

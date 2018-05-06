@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BUILD_DIR = path.resolve(__dirname, '../public');
 const APP_DIR = path.resolve(__dirname, '../src');
 
@@ -9,8 +10,17 @@ module.exports = {
   },
   output: {
     path: BUILD_DIR,
-    filename: '[name].js'
+    filename: '[name].js',
+    publicPath: '/'
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Table Soccer',
+      favicon: `${BUILD_DIR}/favicon.png`,
+      hash: true,
+      template: `${APP_DIR}/index.html`
+    }),
+  ],
   module: {
     rules: [
       {
@@ -38,7 +48,7 @@ module.exports = {
     proxy: {
       '/**': {
         // catch all requests
-        target: '/dev-index.html', // default target
+        target: '/index.html', // default target
         secure: false,
         bypass(req, res, opt) {
           // your custom code to check for any exceptions
@@ -50,7 +60,7 @@ module.exports = {
             return '/';
           }
 
-          return '/dev-index.html';
+          return '/index.html';
         }
       }
     }
