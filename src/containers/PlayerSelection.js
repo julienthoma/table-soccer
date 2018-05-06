@@ -68,7 +68,7 @@ class PlayerSelection extends React.Component {
     };
     return (
       <div style={containerStyle} styleName="root">
-        {currentPlayers.map((player, index) =>
+        {currentPlayers.map((player, index) => (
           <div
             styleName={index < 2 ? 'team1' : 'team2'}
             style={fieldStyle}
@@ -81,16 +81,16 @@ class PlayerSelection extends React.Component {
               style={selectStyle}
               labelStyle={labelStyle}
             >
-              {players.map((_player, _index) =>
+              {players.map((_player, _index) => (
                 <MenuItem
                   value={_index}
                   key={_player.id}
                   primaryText={_player.name}
                 />
-              )}
+              ))}
             </SelectField>
           </div>
-        )}
+        ))}
       </div>
     );
   }

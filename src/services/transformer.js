@@ -402,7 +402,7 @@ export const transform = (data) => {
   });
 
   return {
-    players: _players,
+    players: _players.sort((p1, p2) => p2.games - p1.games),
     games: _games,
     properties
   };
