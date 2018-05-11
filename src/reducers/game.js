@@ -10,6 +10,7 @@ export default (state = {}, action) => {
         activeStep: consts.ACTIVE_GAME_STEP,
         scoreTimeline: [],
         isFinished: false,
+        isUpsideDown: false,
         score: [0, 0, 0, 0, 0, 0, 0, 0]
       };
 
@@ -81,6 +82,12 @@ export default (state = {}, action) => {
       return {
         ...state,
         players: action.players
+      };
+
+    case actions.ROTATE_SCREEN:
+      return {
+        ...state,
+        isUpsideDown: !state.isUpsideDown
       };
 
     default:

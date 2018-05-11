@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import Settings from 'material-ui/svg-icons/action/settings';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
+import Divider from 'material-ui/Divider';
 import { connect } from 'react-redux';
 import shortid from 'shortid';
 import { getScore } from '../services/helper';
@@ -14,7 +19,8 @@ import {
   uploadGame,
   undoLastGoal,
   toggleSnackbar,
-  exitGame
+  exitGame,
+  rotateScreen
 } from '../actions';
 import { scoreTimelineItemShape, simplePlayerShape } from '../proptypes';
 import './GameScoreScreen.scss';
@@ -25,7 +31,8 @@ class GameScoreScreen extends React.Component {
     super(props);
 
     this.state = {
-      ownGoalsOpen: false
+      settingsOpen: false,
+      dialogOpen: false
     };
   }
 
@@ -76,18 +83,26 @@ class GameScoreScreen extends React.Component {
     this.props.dispatch(undoLastGoal(index));
   };
 
-  handleOwnGoalOpen = event => {
+  handleSettingsOpen = event => {
     event.preventDefault();
     this.setState({
-      ownGoalsOpen: true,
+      settingsOpen: true,
       anchorEl: event.currentTarget
     });
   };
 
-  handleOwnGoalClose = () => {
+  handleSettingsClose = () => {
     this.setState({
-      ownGoalsOpen: false
+      settingsOpen: false
     });
+  };
+
+  handleDialogOpen = () => {
+    this.setState({ dialogOpen: true });
+  };
+
+  handleDialogClose = () => {
+    this.setState({ dialogOpen: false });
   };
 
   handleOwnGoalClick = index => () => {
@@ -101,7 +116,7 @@ class GameScoreScreen extends React.Component {
         this.handleUndo(index)
       )
     );
-    this.handleOwnGoalClose();
+    this.handleSettingsClose();
   };
 
   handleScoreButtonClick = (index, position) => () => {
@@ -117,10 +132,124 @@ class GameScoreScreen extends React.Component {
     );
   };
 
+  renderDialog = () => {
+    {
+      const actions = [
+        <FlatButton
+          label="No, Continue Game"
+          primary
+          onClick={this.handleDialogClose}
+        />,
+        <FlatButton
+          label="Exit"
+          secondary
+          onClick={() => {
+            this.handleDialogClose();
+            this.props.dispatch(exitGame());
+          }}
+        />
+      ];
+
+      return (
+        <div>
+          <Dialog
+            title="Exit Current Game"
+            actions={actions}
+            modal={false}
+            open={this.state.dialogOpen}
+            onRequestClose={this.handleDialogClose}
+          >
+            Do you really want to exit the game? All progress will be lost.
+          </Dialog>
+        </div>
+      );
+    }
+  };
+
   render() {
-    const { currentPlayers, score } = this.props;
+    const { currentPlayers, score, isUpsideDown } = this.props;
     const [team1Score, team2Score] = getScore(score);
     const [p1, p2, p3, p4] = currentPlayers;
+
+    const player1 = (
+      <PlayerButton
+        name={p1.name}
+        team={'team1'}
+        upperCount={3}
+        lowerCount={5}
+        disabled={this.props.isFinished}
+        handleUpperClick={this.handleScoreButtonClick(
+          0,
+          consts.POSITION_STRIKER
+        )}
+        handleLowerClick={this.handleScoreButtonClick(
+          0,
+          consts.POSITION_MIDFILED
+        )}
+      />
+    );
+
+    const player2 = (
+      <PlayerButton
+        name={p2.name}
+        team={'team1'}
+        upperCount={1}
+        lowerCount={2}
+        disabled={this.props.isFinished}
+        handleUpperClick={this.handleScoreButtonClick(
+          1,
+          consts.POSITION_KEEPER
+        )}
+        handleLowerClick={this.handleScoreButtonClick(
+          1,
+          consts.POSITION_DEFENSE
+        )}
+        className="rotate--topLeft"
+      />
+    );
+
+    const player3 = (
+      <PlayerButton
+        name={p3.name}
+        team={'team2'}
+        upperCount={5}
+        lowerCount={3}
+        disabled={this.props.isFinished}
+        handleUpperClick={this.handleScoreButtonClick(
+          2,
+          consts.POSITION_MIDFILED
+        )}
+        handleLowerClick={this.handleScoreButtonClick(
+          2,
+          consts.POSITION_STRIKER
+        )}
+      />
+    );
+
+    const player4 = (
+      <PlayerButton
+        name={p4.name}
+        team={'team2'}
+        upperCount={2}
+        lowerCount={1}
+        disabled={this.props.isFinished}
+        handleUpperClick={this.handleScoreButtonClick(
+          3,
+          consts.POSITION_DEFENSE
+        )}
+        handleLowerClick={this.handleScoreButtonClick(
+          3,
+          consts.POSITION_KEEPER
+        )}
+        className="rotate--topLeft"
+      />
+    );
+
+    const buttonStyle = {
+      position: 'fixed',
+      bottom: 20,
+      right: 20
+    };
 
     return (
       <div>
@@ -129,86 +258,36 @@ class GameScoreScreen extends React.Component {
             <h1 styleName="score team1">{team1Score}</h1>
             <h1 styleName="score team2">{team2Score}</h1>
           </div>
-          <div styleName="players">
-            <PlayerButton
-              name={p1.name}
-              team={'team1'}
-              upperCount={3}
-              lowerCount={5}
-              disabled={this.props.isFinished}
-              handleUpperClick={this.handleScoreButtonClick(
-                0,
-                consts.POSITION_STRIKER
-              )}
-              handleLowerClick={this.handleScoreButtonClick(
-                0,
-                consts.POSITION_MIDFILED
-              )}
-            />
-
-            <PlayerButton
-              name={p2.name}
-              team={'team1'}
-              upperCount={1}
-              lowerCount={2}
-              disabled={this.props.isFinished}
-              handleUpperClick={this.handleScoreButtonClick(
-                1,
-                consts.POSITION_KEEPER
-              )}
-              handleLowerClick={this.handleScoreButtonClick(
-                1,
-                consts.POSITION_DEFENSE
-              )}
-              className="rotate--topLeft"
-            />
-
-            <PlayerButton
-              name={p4.name}
-              team={'team2'}
-              upperCount={2}
-              lowerCount={1}
-              disabled={this.props.isFinished}
-              handleUpperClick={this.handleScoreButtonClick(
-                3,
-                consts.POSITION_DEFENSE
-              )}
-              handleLowerClick={this.handleScoreButtonClick(
-                3,
-                consts.POSITION_KEEPER
-              )}
-              className="rotate--topLeft"
-            />
-
-            <PlayerButton
-              name={p3.name}
-              team={'team2'}
-              upperCount={5}
-              lowerCount={3}
-              disabled={this.props.isFinished}
-              handleUpperClick={this.handleScoreButtonClick(
-                2,
-                consts.POSITION_MIDFILED
-              )}
-              handleLowerClick={this.handleScoreButtonClick(
-                2,
-                consts.POSITION_STRIKER
-              )}
-            />
+          <div>
+            {!isUpsideDown ? (
+              <div styleName="players">
+                {player3}
+                {player4}
+                {player2}
+                {player1}
+              </div>
+            ) : (
+              <div styleName="players">
+                {player1}
+                {player2}
+                {player4}
+                {player3}
+              </div>
+            )}
           </div>
         </div>
 
         <div styleName="footer">
-          <RaisedButton
-            label="Cancel"
-            onClick={() => this.props.dispatch(exitGame())}
-          />
-
-          <RaisedButton onClick={this.handleOwnGoalOpen} label="own goal" />
+          <FloatingActionButton
+            style={buttonStyle}
+            onClick={this.handleSettingsOpen}
+          >
+            <Settings />
+          </FloatingActionButton>
           <Popover
-            open={this.state.ownGoalsOpen}
+            open={this.state.settingsOpen}
             anchorEl={this.state.anchorEl}
-            onRequestClose={this.handleOwnGoalClose}
+            onRequestClose={this.handleSettingsClose}
             anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
             targetOrigin={{ horizontal: 'left', vertical: 'top' }}
           >
@@ -216,12 +295,31 @@ class GameScoreScreen extends React.Component {
               {currentPlayers.map((player, index) => (
                 <MenuItem
                   key={index}
-                  primaryText={player.name}
+                  primaryText={`Own goal: ${player.name}`}
                   onClick={this.handleOwnGoalClick(index)}
                 />
               ))}
+              <Divider />
+              <MenuItem
+                key={4}
+                primaryText="Rotate upside down"
+                onClick={() => {
+                  this.props.dispatch(rotateScreen());
+                  this.handleSettingsClose();
+                }}
+              />
+              <Divider />
+              <MenuItem
+                key={5}
+                primaryText="Exit Game"
+                onClick={() => {
+                  this.handleSettingsClose();
+                  this.handleDialogOpen();
+                }}
+              />
             </Menu>
           </Popover>
+          {this.renderDialog()}
         </div>
       </div>
     );
@@ -240,7 +338,8 @@ const mapStateToProps = ({ game }) => ({
   currentPlayers: game.players,
   scoreTimeline: game.scoreTimeline,
   isFinished: game.isFinished,
-  score: game.score
+  score: game.score,
+  isUpsideDown: game.isUpsideDown
 });
 
 export default connect(mapStateToProps)(GameScoreScreen);

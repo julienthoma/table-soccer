@@ -20,6 +20,7 @@ export const TOGGLE_SNACKBAR = 'TOGGLE_SNACKBAR';
 export const SET_USER = 'SET_USER';
 export const PREFETCH_DONE = 'PREFETCH_DONE';
 export const LOGIN = 'LOGIN';
+export const ROTATE_SCREEN = 'ROTATE_SCREEN';
 
 export const prefetchDone = () => ({ type: PREFETCH_DONE });
 export const setUser = user => ({ type: SET_USER, user });
@@ -30,6 +31,7 @@ export const exitGame = () => ({ type: EXIT_GAME });
 export const undoLastGoal = index => ({ type: UNDO_LAST_GOAL, index });
 export const addOwnGoal = index => ({ type: ADD_OWN_GOAL, index });
 export const setPlayers = players => ({ type: SET_PLAYERS, players });
+export const rotateScreen = () => ({ type: ROTATE_SCREEN });
 
 export const addGoal = (index, position) => ({
   type: ADD_GOAL,
