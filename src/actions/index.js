@@ -108,18 +108,42 @@ export const uploadGame = game => (dispatch, getState) => {
   const team2Attack = players.filter(p => p.id === _game[2].id)[0];
   const team2Defense = players.filter(p => p.id === _game[3].id)[0];
   setTimeout(() => {
-    post(getState().config.slackUrl, createEndMessage(
-      gameId,
-      team1Score,
-      team2Score,
-      team1Attack,
-      team1Defense,
-      team2Attack,
-      team2Defense
-    ));
+    post(
+      getState().config.slackUrl,
+      createEndMessage(
+        gameId,
+        team1Score,
+        team2Score,
+        team1Attack,
+        team1Defense,
+        team2Attack,
+        team2Defense
+      )
+    );
   }, GOAL_TIMEOUT * 1.5);
   dispatch(endGame(game));
   database()
     .ref(`data/games/${gameId}`)
     .set(game);
+};
+
+export const getPlayersFromSlack = () => (dispatch, getState) => {
+  // Make initial call as ajax for faster startup (socket startup is slow)
+  get('getState().config.slackBotUrl').then(data => {
+    dispatch(
+      setPlayers(
+        data.map(email => {
+          const player =
+            getState().app.players.filter(p => p.email === email)[0] ||
+            getState().app.players.filter(p => p.id === 'guest')[0];
+
+          return {
+            name: player.name,
+            id: player.id,
+            index: player.selectionIndex
+          };
+        })
+      )
+    );
+  });
 };

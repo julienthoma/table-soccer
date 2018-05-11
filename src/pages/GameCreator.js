@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
-import { startNewGame, exitGame, setPlayers } from '../actions';
+import {
+  startNewGame,
+  exitGame,
+  setPlayers,
+  getPlayersFromSlack
+} from '../actions';
 import GameScoreScreen from '../containers/GameScoreScreen';
 import PlayerSelection from '../containers/PlayerSelection';
 import { login } from '../services/auth';
@@ -47,11 +52,17 @@ class GameCreator extends React.Component {
       <RaisedButton label="Exit" onClick={this.exitGame} />
 
       <RaisedButton
+        label="Slackbot"
+        onClick={() => this.props.dispatch(getPlayersFromSlack())}
+        style={{ marginLeft: 10 }}
+      />
+
+      <RaisedButton
         label="Start Game"
         primary
         disabled={!this.isValidPlayerCombo()}
         onClick={this.startNewGame}
-        style={{ marginLeft: 12 }}
+        style={{ marginLeft: 10 }}
       />
     </div>
   );

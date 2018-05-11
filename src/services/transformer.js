@@ -3,12 +3,12 @@ import Player from '../entities/Player';
 import { avgTimeBetween, calcScore } from './helper';
 import * as consts from '../constants';
 
-export const transform = (data) => {
+export const transform = data => {
   const _players = Object.keys(data.players).map(
     key => new Player(data.players[key])
   );
   const playerMap = {};
-  _players.forEach(player => playerMap[player.id] = player);
+  _players.forEach(player => (playerMap[player.id] = player));
 
   const rawGames = Object.keys(data.games || {}).map(key => data.games[key]);
   const _games = [];
@@ -359,7 +359,7 @@ export const transform = (data) => {
       );
     });
 
-  _players.forEach(_player => {
+  _players.forEach((_player, index) => {
     const checkedProps = [
       'avgGoalsPosStriker',
       'avgGoalsPosMidfield',
@@ -402,7 +402,10 @@ export const transform = (data) => {
   });
 
   return {
-    players: _players.sort((p1, p2) => p2.games - p1.games),
+    players: _players.map((_player, index) => ({
+      ..._player,
+      selectionIndex: index
+    })),
     games: _games,
     properties
   };

@@ -66,6 +66,7 @@ class PlayerSelection extends React.Component {
       paddingRight: 45,
       fontSize: 14
     };
+
     return (
       <div style={containerStyle} styleName="root">
         {currentPlayers.map((player, index) => (
