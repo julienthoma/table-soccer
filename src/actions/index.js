@@ -103,6 +103,7 @@ export const uploadGame = game => (dispatch, getState) => {
   const _game = getState().game.players;
   const players = getState().app.players;
   const gameId = game[0];
+  const duration = game[2];
   const team1Attack = players.filter(p => p.id === _game[0].id)[0];
   const team1Defense = players.filter(p => p.id === _game[1].id)[0];
   const team2Attack = players.filter(p => p.id === _game[2].id)[0];
@@ -117,7 +118,8 @@ export const uploadGame = game => (dispatch, getState) => {
         team1Attack,
         team1Defense,
         team2Attack,
-        team2Defense
+        team2Defense,
+        duration
       )
     );
   }, GOAL_TIMEOUT * 1.5);

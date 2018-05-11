@@ -8,6 +8,7 @@ export const createEndMessage = (
   team1Defense,
   team2Attack,
   team2Defense,
+  duration
 ) => ({
   username: 'Kicker Bot',
 
@@ -17,7 +18,7 @@ export const createEndMessage = (
       author_name: 'Game Details',
       pretext: `${team1Score > team2Score
         ? 'Team 1'
-        : 'Team 2'} has won the game`,
+        : 'Team 2'} has won the game after ${Math.round(duration / 60)} min`,
       author_link: createGameUrl(gameId),
       // footer: TODO: MVP feature',
       fields: [
