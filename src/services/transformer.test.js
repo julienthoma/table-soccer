@@ -1,4 +1,4 @@
-import { transform, _avgTimeBetween } from './transformer';
+import { transform } from './transformer';
 import gameMock from './__mocks__/dataMock.json';
 
 describe('Transformer', () => {

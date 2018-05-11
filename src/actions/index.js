@@ -6,7 +6,7 @@ import { transform } from '../services/transformer';
 import { emailToSlug } from '../services/formatter';
 import { getScore } from '../services/helper';
 import { GOAL_TIMEOUT } from '../constants/';
-import { createEndMessage } from '../services/Slack';
+import { createEndMessage } from '../services/slack';
 
 export const UPDATE_DATA = 'UPDATE_DATA';
 export const START_GAME = 'START_GAME';
