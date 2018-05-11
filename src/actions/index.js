@@ -129,7 +129,7 @@ export const uploadGame = game => (dispatch, getState) => {
 
 export const getPlayersFromSlack = () => (dispatch, getState) => {
   // Make initial call as ajax for faster startup (socket startup is slow)
-  get('getState().config.slackBotUrl').then(data => {
+  get(getState().config.slackBotUrl).then(data => {
     dispatch(
       setPlayers(
         data.map(email => {
