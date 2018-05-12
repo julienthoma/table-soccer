@@ -13,7 +13,7 @@ import GameScoreScreen from '../containers/GameScoreScreen';
 import PlayerSelection from '../containers/PlayerSelection';
 import { login } from '../services/auth';
 import * as consts from '../constants';
-import { gamePlayerShape } from '../proptypes';
+import { gamePlayerShape, currentUserShape } from '../proptypes';
 
 class GameCreator extends React.Component {
   isValidPlayerCombo = () => {
@@ -168,7 +168,8 @@ GameCreator.propTypes = {
     consts.GAME_END_STEP
   ]),
   players: PropTypes.arrayOf(gamePlayerShape).isRequired,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  currentGoogleUser: currentUserShape.isRequired
 };
 
 const mapStateToProps = ({ game, user, app }) => ({

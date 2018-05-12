@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import Settings from 'material-ui/svg-icons/action/settings';
 import Popover from 'material-ui/Popover';
@@ -331,7 +330,8 @@ GameScoreScreen.propTypes = {
   isFinished: PropTypes.bool.isRequired,
   score: PropTypes.arrayOf(PropTypes.number).isRequired,
   scoreTimeline: PropTypes.arrayOf(scoreTimelineItemShape).isRequired,
-  currentPlayers: PropTypes.arrayOf(simplePlayerShape).isRequired
+  currentPlayers: PropTypes.arrayOf(simplePlayerShape).isRequired,
+  isUpsideDown: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = ({ game }) => ({

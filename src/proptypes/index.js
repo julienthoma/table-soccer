@@ -72,3 +72,8 @@ export const userShape = shape({
   name: string.isRequired,
   photoUrl: string
 });
+
+export const currentUserShape = shape({
+  verified: bool.isRequired,
+  id: string.isRequired
+});
