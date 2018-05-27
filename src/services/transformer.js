@@ -1,3 +1,4 @@
+/* eslint no-param-reassign: 0 */
 import Game from '../entities/Game';
 import Player from '../entities/Player';
 import { avgTimeBetween, calcScore } from './helper';
@@ -359,7 +360,7 @@ export const transform = data => {
       );
     });
 
-  _players.forEach((_player, index) => {
+  _players.forEach(_player => {
     const checkedProps = [
       'avgGoalsPosStriker',
       'avgGoalsPosMidfield',
@@ -402,7 +403,8 @@ export const transform = data => {
   });
 
   return {
-    players: _players.map((_player, index) => ({
+    // TODO: find better way to do that.
+    players: _players.map((_player, index) => new Player({
       ..._player,
       selectionIndex: index
     })),
