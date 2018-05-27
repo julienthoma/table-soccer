@@ -169,81 +169,6 @@ class GameScoreScreen extends React.Component {
     const { currentPlayers, score, isUpsideDown } = this.props;
     const [team1Score, team2Score] = getScore(score);
     const [p1, p2, p3, p4] = currentPlayers;
-
-    const player1 = (
-      <PlayerButton
-        name={p1.name}
-        team={'team1'}
-        upperCount={3}
-        lowerCount={5}
-        disabled={this.props.isFinished}
-        handleUpperClick={this.handleScoreButtonClick(
-          0,
-          consts.POSITION_STRIKER
-        )}
-        handleLowerClick={this.handleScoreButtonClick(
-          0,
-          consts.POSITION_MIDFILED
-        )}
-      />
-    );
-
-    const player2 = (
-      <PlayerButton
-        name={p2.name}
-        team={'team1'}
-        upperCount={1}
-        lowerCount={2}
-        disabled={this.props.isFinished}
-        handleUpperClick={this.handleScoreButtonClick(
-          1,
-          consts.POSITION_KEEPER
-        )}
-        handleLowerClick={this.handleScoreButtonClick(
-          1,
-          consts.POSITION_DEFENSE
-        )}
-        className="rotate--topLeft"
-      />
-    );
-
-    const player3 = (
-      <PlayerButton
-        name={p3.name}
-        team={'team2'}
-        upperCount={5}
-        lowerCount={3}
-        disabled={this.props.isFinished}
-        handleUpperClick={this.handleScoreButtonClick(
-          2,
-          consts.POSITION_MIDFILED
-        )}
-        handleLowerClick={this.handleScoreButtonClick(
-          2,
-          consts.POSITION_STRIKER
-        )}
-      />
-    );
-
-    const player4 = (
-      <PlayerButton
-        name={p4.name}
-        team={'team2'}
-        upperCount={2}
-        lowerCount={1}
-        disabled={this.props.isFinished}
-        handleUpperClick={this.handleScoreButtonClick(
-          3,
-          consts.POSITION_DEFENSE
-        )}
-        handleLowerClick={this.handleScoreButtonClick(
-          3,
-          consts.POSITION_KEEPER
-        )}
-        className="rotate--topLeft"
-      />
-    );
-
     const buttonStyle = {
       position: 'fixed',
       bottom: 20,
@@ -258,19 +183,135 @@ class GameScoreScreen extends React.Component {
             <h1 styleName="score team2">{team2Score}</h1>
           </div>
           <div>
-            {!isUpsideDown ? (
+            {isUpsideDown ? (
               <div styleName="players">
-                {player3}
-                {player4}
-                {player2}
-                {player1}
+                <PlayerButton
+                  name={p3.name}
+                  team={'team2'}
+                  upperCount={3}
+                  lowerCount={5}
+                  disabled={this.props.isFinished}
+                  handleLowerClick={this.handleScoreButtonClick(
+                    2,
+                    consts.POSITION_MIDFILED
+                  )}
+                  handleUpperClick={this.handleScoreButtonClick(
+                    2,
+                    consts.POSITION_STRIKER
+                  )}
+                />
+                <PlayerButton
+                  name={p4.name}
+                  team={'team2'}
+                  upperCount={1}
+                  lowerCount={2}
+                  disabled={this.props.isFinished}
+                  handleLowerClick={this.handleScoreButtonClick(
+                    3,
+                    consts.POSITION_DEFENSE
+                  )}
+                  handleUpperClick={this.handleScoreButtonClick(
+                    3,
+                    consts.POSITION_KEEPER
+                  )}
+                  className="rotate--topLeft"
+                />
+                <PlayerButton
+                  name={p2.name}
+                  team={'team1'}
+                  upperCount={2}
+                  lowerCount={1}
+                  disabled={this.props.isFinished}
+                  handleLowerClick={this.handleScoreButtonClick(
+                    1,
+                    consts.POSITION_KEEPER
+                  )}
+                  handleUpperClick={this.handleScoreButtonClick(
+                    1,
+                    consts.POSITION_DEFENSE
+                  )}
+                  className="rotate--topLeft"
+                />
+                <PlayerButton
+                  name={p1.name}
+                  team={'team1'}
+                  upperCount={5}
+                  lowerCount={3}
+                  disabled={this.props.isFinished}
+                  handleLowerClick={this.handleScoreButtonClick(
+                    0,
+                    consts.POSITION_STRIKER
+                  )}
+                  handleUpperClick={this.handleScoreButtonClick(
+                    0,
+                    consts.POSITION_MIDFILED
+                  )}
+                />
               </div>
             ) : (
               <div styleName="players">
-                {player1}
-                {player2}
-                {player4}
-                {player3}
+                <PlayerButton
+                  name={p1.name}
+                  team={'team1'}
+                  upperCount={3}
+                  lowerCount={5}
+                  disabled={this.props.isFinished}
+                  handleUpperClick={this.handleScoreButtonClick(
+                    0,
+                    consts.POSITION_STRIKER
+                  )}
+                  handleLowerClick={this.handleScoreButtonClick(
+                    0,
+                    consts.POSITION_MIDFILED
+                  )}
+                />
+                <PlayerButton
+                  name={p2.name}
+                  team={'team1'}
+                  upperCount={1}
+                  lowerCount={2}
+                  disabled={this.props.isFinished}
+                  handleUpperClick={this.handleScoreButtonClick(
+                    1,
+                    consts.POSITION_KEEPER
+                  )}
+                  handleLowerClick={this.handleScoreButtonClick(
+                    1,
+                    consts.POSITION_DEFENSE
+                  )}
+                  className="rotate--topLeft"
+                />
+                <PlayerButton
+                  name={p4.name}
+                  team={'team2'}
+                  upperCount={2}
+                  lowerCount={1}
+                  disabled={this.props.isFinished}
+                  handleUpperClick={this.handleScoreButtonClick(
+                    3,
+                    consts.POSITION_DEFENSE
+                  )}
+                  handleLowerClick={this.handleScoreButtonClick(
+                    3,
+                    consts.POSITION_KEEPER
+                  )}
+                  className="rotate--topLeft"
+                />
+                <PlayerButton
+                  name={p3.name}
+                  team={'team2'}
+                  upperCount={5}
+                  lowerCount={3}
+                  disabled={this.props.isFinished}
+                  handleUpperClick={this.handleScoreButtonClick(
+                    2,
+                    consts.POSITION_MIDFILED
+                  )}
+                  handleLowerClick={this.handleScoreButtonClick(
+                    2,
+                    consts.POSITION_STRIKER
+                  )}
+                />
               </div>
             )}
           </div>
