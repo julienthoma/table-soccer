@@ -402,12 +402,12 @@ export const transform = data => {
     });
   });
 
+  for (let i = 0, len = _players.length; i < len; i++) {
+    _players[i].selectionIndex = i;
+  }
+
   return {
-    // TODO: find better way to do that.
-    players: _players.map((_player, index) => new Player({
-      ..._player,
-      selectionIndex: index
-    })),
+    players: _players,
     games: _games,
     properties
   };
