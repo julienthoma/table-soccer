@@ -149,5 +149,5 @@ export const getPlayersFromSlack = () => (dispatch, getState) => {
         })
       )
     );
-  });
+  }, () => alert('Could not create game from slack'));
 };
