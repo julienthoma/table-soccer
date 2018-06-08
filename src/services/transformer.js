@@ -256,7 +256,7 @@ export const transform = data => {
           enemy2Id = loserDefenseId;
         } else {
           enemy1Id = winnerAttackId;
-          enemy2Id = loserAttackId;
+          enemy2Id = winnerDefenseId;
         }
 
         const eloGain = calcScore(
