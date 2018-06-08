@@ -4,9 +4,7 @@
    "apiKey": "",
    "authDomain": "",
    "databaseURL": "",
-   "projectId": "",
-   "storageBucket": "",
-   "messagingSenderId": ""
+   "projectId": ""
  },
  "dbUrl": "firebase dbUrl"
 }
