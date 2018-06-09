@@ -1,9 +1,11 @@
 # React Table Soccer
 > Web app for tracking your table soccer games
 
+![](assets/image6.png)
 
-![](public/icon-192x192.png)
 *Table Soccer aka foosball, Table Football or in german Tischkicker or Tischfußball*.
+
+![](assets/image2.png)
 
 ## Getting Started
 
@@ -130,6 +132,7 @@ For creating games from Slack you need to setup another project: `https://github
 ![](assets/image3.png)
 
 - Compare with other players
+
 ![](assets/image5.png)
 
 ### Slack Integration
