@@ -12,7 +12,7 @@ Create a new project: https://console.firebase.google.com/. You need following f
 
 1. Database: Enable the Firebase database and create following entries in the data tab:
 
-```json
+```js
 {
   data: {
     players: [],
