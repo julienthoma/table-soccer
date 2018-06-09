@@ -9,7 +9,7 @@ const Comparinator = ({ params, players }) => {
   const player2 = players.filter(p => p.id === params.p2)[0];
 
   return (
-    <div>
+    <div style={{ marginTop: 30 }}>
       <PropertyChart players={[player1, player2]} />
     </div>
   );
