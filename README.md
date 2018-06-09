@@ -12,7 +12,7 @@
 ### Firebase setup
 Create a new project: https://console.firebase.google.com/. You need following firebase products:
 
-1. Database: Enable the Firebase database and create following entries in the data tab:
+- Database: Enable the Firebase database and create following entries in the data tab:
 
 ```js
 {
@@ -22,7 +22,7 @@ Create a new project: https://console.firebase.google.com/. You need following f
   }
 } 
 ```
-You also need some database rules:
+- You also need some database rules:
 ```json
 {
   "rules": {
@@ -38,9 +38,9 @@ You also need some database rules:
   }
 }
 ```
-Authentication: Enable the method `Google`.
+- Authentication: Enable the method `Google`.
 
-Enable Hosting in your firebase console.
+- Enable Hosting in your firebase console.
 
 ### Project setup
 
