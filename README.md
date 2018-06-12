@@ -1,5 +1,5 @@
 # React Table Soccer
-> Web app for tracking your table soccer games
+> Web app for tracking your table soccer games. Die Tischkicker / Tischfußball App.
 
 ![](assets/image6.png)
 
