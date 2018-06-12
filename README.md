@@ -3,7 +3,6 @@
 
 ![](assets/image6.png)
 
-*Table Soccer aka foosball, Table Football or in german Tischkicker or Tischfußball*.
 
 ![](assets/image2.png)
 
