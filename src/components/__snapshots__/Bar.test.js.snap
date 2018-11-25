@@ -12,14 +12,14 @@ exports[`renders correctly 1`] = `
 
 .c1 {
   position: relative;
-  background: #00bcd4;
+  background: red;
   height: 20px;
   width: 50%;
 }
 
 .c3 {
   position: relative;
-  background: #dddddd;
+  background: green;
   height: 20px;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -48,7 +48,7 @@ exports[`renders correctly 1`] = `
 >
   <div
     className="c1"
-    color="#00bcd4"
+    color="red"
     width="50%"
   />
   <div
@@ -58,7 +58,7 @@ exports[`renders correctly 1`] = `
   </div>
   <div
     className="c3"
-    color="#dddddd"
+    color="green"
   />
   <div
     className="c4"
