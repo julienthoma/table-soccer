@@ -1,7 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Hot from 'material-ui/svg-icons/social/whatshot';
-import './WinStreakIcon.scss';
+
+const HotNumber = styled.div`
+  position: absolute;
+  color: black;
+  top: -8px;
+  font-weight: 600;
+  right: -2px;
+`;
+
+const Wrapper = styled.div`
+  position: relative;
+  font-size: 15px;
+  max-width: 24px;
+  display: inline-block;
+`;
 
 const WinStreakIcon = ({ count }) => {
   if (count < 3) {
@@ -9,28 +24,28 @@ const WinStreakIcon = ({ count }) => {
   }
 
   return (
-    <div styleName="root">
-      <Hot styleName={`streak-${getClassNumberByCount(count)}`} />
-      <div styleName="hotnumber">{count}</div>
-    </div>
+    <Wrapper>
+      <Hot color={getColorByCount(count)} />
+      <HotNumber>{count}</HotNumber>
+    </Wrapper>
   );
 };
 
-function getClassNumberByCount(count) {
+function getColorByCount(count) {
   if (count >= 10) {
-    return 10;
+    return '#9C27B0';
   }
 
   if (count >= 7) {
-    return 7;
+    return '#B71C1C';
   }
 
   if (count >= 5) {
-    return 5;
+    return '#E91E63';
   }
 
   if (count >= 3) {
-    return 3;
+    return '#F57C00';
   }
 }
 

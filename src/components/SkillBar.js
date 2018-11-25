@@ -1,30 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './SkillBar.scss';
+import styled from 'styled-components';
+import { Headline4 } from './Typography';
+import Bar from './Bar';
 import { getFormattedPercent } from '../services/formatter';
 
-const SkillBar = ({
-  factor,
-  leftHeadline,
-  value,
-  best,
-  bestPlayerId
-}) =>
-  <div styleName="root">
-    <div styleName="headlineContainer">
-      <h4 styleName="leftHeadline">{leftHeadline}</h4>
-      <h4 styleName="rightHeadline">Best</h4>
-    </div>
+const Container = styled.div`
+  width: 100%;
+  padding: 5px 0;
+  overflow: hidden;
+`;
 
-    <div styleName="bar">
-      <div styleName="left" style={{ width: getFormattedPercent(factor) }} />
-      <div styleName="leftText">{value}</div>
-      <div styleName="right" />
-      <div styleName="rightText">
-        {best} ({bestPlayerId})
-      </div>
-    </div>
-  </div>;
+const FlexContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const SkillBar = ({ factor, leftHeadline, value, best, bestPlayerId }) => (
+  <Container>
+    <FlexContainer>
+      <Headline4>{leftHeadline}</Headline4>
+      <Headline4>Best</Headline4>
+    </FlexContainer>
+
+    <Bar
+      leftText={value}
+      rightText={`${best} (${bestPlayerId})`}
+      widthInPercent={getFormattedPercent(factor)}
+    />
+  </Container>
+);
 
 SkillBar.propTypes = {
   factor: PropTypes.number.isRequired,

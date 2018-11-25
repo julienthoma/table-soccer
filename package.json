@@ -4,7 +4,7 @@
   "description": "React Redux Table Soccer App",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --hot --progress --mode development",
+    "start": "webpack-dev-server --hot --progress --mode development",
     "build": "NODE_ENV=production webpack --mode production --progress"
   },
   "author": "Julien Thoma",
@@ -27,6 +27,8 @@
     "express": "^4.14.1",
     "firebase": "^4.13.1",
     "history": "^4.7.2",
+    "jest": "^23.6.0",
+    "jest-styled-components": "^6.3.1",
     "material-ui": "^0.20.0",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.5",
@@ -39,6 +41,7 @@
     "react-intl": "^2.4.0",
     "react-redux": "^5.0.7",
     "react-router": "^3.2.0",
+    "react-test-renderer": "^16.6.3",
     "redux": "^3.6.0",
     "redux-devtools-extension": "^2.13.5",
     "redux-thunk": "^2.2.0",
@@ -47,6 +50,7 @@
     "sass-loader": "^6.0.5",
     "shortid": "^2.2.8",
     "style-loader": "^0.18.2",
+    "styled-components": "^4.1.1",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.12"
   },
