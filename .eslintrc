@@ -26,6 +26,7 @@
       "never"
     ],
     "no-mixed-operators": 0,
+    "no-confusing-arrow": 0,
     "no-use-before-define": [
       "error",
       {

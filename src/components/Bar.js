@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { BLUE, GREY } from './Colors';
 
 const Container = styled.div`
   position: relative;
@@ -55,13 +56,13 @@ const Bar = ({
 Bar.defaultProps = {
   leftText: '',
   rightText: '',
-  leftColor: '#00bcd4',
-  rightColor: '#dddddd'
+  leftColor: BLUE,
+  rightColor: GREY
 };
 
 Bar.propTypes = {
-  leftText: PropTypes.string,
-  rightText: PropTypes.string,
+  leftText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  rightText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   leftColor: PropTypes.string,
   rightColor: PropTypes.string,
   widthInPercent: PropTypes.string.isRequired

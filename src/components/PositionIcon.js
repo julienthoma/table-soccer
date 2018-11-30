@@ -1,12 +1,17 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import styled from 'styled-components';
 import PlayerIcon from './PlayerIcon';
-import './PositionIcon.scss';
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 const PositionIcon = ({ count, dark }) => (
-  <div styleName="root">
+  <Container>
     {[...Array(count)].map((e, i) => <PlayerIcon key={i} dark={dark} />)}
-  </div>
+  </Container>
 );
 
 PositionIcon.defaultProps = {

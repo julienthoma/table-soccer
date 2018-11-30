@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SkillBar renders correctly 1`] = `
+.c2 {
+  margin: 0;
+  font-size: 15px;
+  color: #6d6d6d;
+  font-weight: 400;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c3 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c4 {
+  position: relative;
+  background: #00bcd4;
+  height: 20px;
+  width: 30%;
+}
+
+.c6 {
+  position: relative;
+  background: #dddddd;
+  height: 20px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c5 {
+  position: absolute;
+  top: 3px;
+  text-transform: uppercase;
+  font-size: 13px;
+  left: 10px;
+}
+
+.c7 {
+  position: absolute;
+  top: 3px;
+  text-transform: uppercase;
+  font-size: 13px;
+  right: 10px;
+}
+
+.c0 {
+  width: 100%;
+  padding: 5px 0;
+  overflow: hidden;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <h4
+      className="c2"
+    >
+      Hello
+    </h4>
+    <h4
+      className="c2"
+    >
+      Best
+    </h4>
+  </div>
+  <div
+    className="c3"
+  >
+    <div
+      className="c4"
+      color="#00bcd4"
+      width="30%"
+    />
+    <div
+      className="c5"
+    >
+      20
+    </div>
+    <div
+      className="c6"
+      color="#dddddd"
+    />
+    <div
+      className="c7"
+    >
+      100 (fubar)
+    </div>
+  </div>
+</div>
+`;

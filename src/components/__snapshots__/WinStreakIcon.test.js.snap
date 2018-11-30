@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`WinStreakIcon renders correctly 1`] = `
 .c1 {
   position: absolute;
   color: black;

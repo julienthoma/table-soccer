@@ -1,33 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './CompareBar.scss';
+import styled from 'styled-components';
+import { getFormattedPercent } from '../services/formatter';
+import { Headline4 } from './Typography';
+import { FlexContainer } from './Layout';
+import { BLUE, PINK } from './Colors';
+import Bar from './Bar';
+
+const Container = styled.div`
+  width: 100%;
+  padding: 5px 0;
+  overflow: hidden;
+`;
 
 const CompareBar = ({
   leftHeadline,
   rightHeadline,
-  factorLeft,
+  factor,
   leftValue,
   rightValue
 }) => (
-  <div styleName="root">
-    <div styleName="headlineContainer">
-      <h4 styleName="leftHeadline">{leftHeadline}</h4>
-      <h4 styleName="rightHeadline">{rightHeadline}</h4>
-    </div>
+  <Container>
+    <FlexContainer>
+      <Headline4>{leftHeadline}</Headline4>
+      <Headline4>{rightHeadline}</Headline4>
+    </FlexContainer>
 
-    <div styleName="bar">
-      <div styleName="left" style={{ flexGrow: factorLeft }} />
-      <div styleName="leftText">{leftValue}</div>
-      <div styleName="right" />
-      <div styleName="rightText">{rightValue}</div>
-    </div>
-  </div>
+    <Bar
+      leftText={leftValue}
+      rightText={rightValue}
+      widthInPercent={getFormattedPercent(factor)}
+      leftColor={BLUE}
+      rightColor={PINK}
+    />
+  </Container>
 );
 
 CompareBar.propTypes = {
   leftHeadline: PropTypes.string.isRequired,
   rightHeadline: PropTypes.string.isRequired,
-  factorLeft: PropTypes.number.isRequired,
+  factor: PropTypes.number.isRequired,
   leftValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     .isRequired,
   rightValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number])

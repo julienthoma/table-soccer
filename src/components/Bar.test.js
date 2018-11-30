@@ -2,7 +2,7 @@ import React from 'react';
 import { renderWithMuiTheme } from '../test.utils';
 import Bar from './Bar';
 
-it('renders correctly', () => {
+it('Bar renders correctly', () => {
   const bar = (
     <Bar
       leftText="Hello"
