@@ -16,7 +16,7 @@ const Part = styled.div`
 `;
 
 const LeftPart = styled(Part)`
-  width: ${props => props.width};
+  flex-grow: ${props => props.grow};
 `;
 
 const RightPart = styled(Part)`
@@ -43,10 +43,10 @@ const Bar = ({
   rightText,
   leftColor,
   rightColor,
-  widthInPercent
+  factor
 }) => (
   <Container>
-    <LeftPart width={widthInPercent} color={leftColor} />
+    <LeftPart grow={factor} color={leftColor} />
     <LeftText>{leftText}</LeftText>
     <RightPart color={rightColor} />
     <RightText>{rightText}</RightText>
@@ -65,7 +65,7 @@ Bar.propTypes = {
   rightText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   leftColor: PropTypes.string,
   rightColor: PropTypes.string,
-  widthInPercent: PropTypes.string.isRequired
+  factor: PropTypes.number.isRequired
 };
 
 export default Bar;

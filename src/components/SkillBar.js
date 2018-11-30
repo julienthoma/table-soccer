@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { Headline4 } from './Typography';
 import { FlexContainer } from './Layout';
 import Bar from './Bar';
-import { getFormattedPercent } from '../services/formatter';
 
 const Container = styled.div`
   width: 100%;
@@ -22,7 +21,7 @@ const SkillBar = ({ factor, leftHeadline, value, best, bestPlayerId }) => (
     <Bar
       leftText={value}
       rightText={`${best} (${bestPlayerId})`}
-      widthInPercent={getFormattedPercent(factor)}
+      factor={factor}
     />
   </Container>
 );

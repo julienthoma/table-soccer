@@ -2,7 +2,8 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Router, Route, browserHistory } from 'react-router';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Switch } from 'react-router';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import de from 'react-intl/locale-data/de';
 import reducer from './reducers';
@@ -20,19 +21,23 @@ addLocaleData(de);
 
 render(
   <Provider store={enhanceStore(reducer, getInitialState())}>
-    <IntlProvider locale={'de'}>
+    <IntlProvider locale="de">
       <MuiThemeProvider>
-        <Router history={browserHistory}>
-          <Route component={App}>
-            <Route path="/" component={Games} />
-            <Route path="/games" component={Games} />
-            <Route path="/game/:id" component={Game} />
-            <Route path="/players" component={Players} />
-            <Route path="/player/:id" component={Player} />
-            <Route path="/new" component={GameCreator} />
-            <Route path="/compare/:p1/:p2" component={Comparinator} />
-          </Route>
-        </Router>
+        <BrowserRouter>
+          <div>
+            <App>
+              <Switch>
+                <Route exact path="/" component={Games} />
+                <Route exact path="/games" component={Games} />
+                <Route path="/game/:id" component={Game} />
+                <Route exact path="/players" component={Players} />
+                <Route path="/player/:id" component={Player} />
+                <Route exact path="/new" component={GameCreator} />
+                <Route path="/compare/:p1/:p2" component={Comparinator} />
+              </Switch>
+            </App>
+          </div>
+        </BrowserRouter>
       </MuiThemeProvider>
     </IntlProvider>
   </Provider>,

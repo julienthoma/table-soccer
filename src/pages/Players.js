@@ -8,14 +8,13 @@ import {
   TableHeaderColumn,
   TableRow
 } from 'material-ui/Table';
-import { browserHistory } from 'react-router';
 import PlayerListItem from '../components/PlayerListItem';
 import { GUEST } from '../constants';
 import { playerShape } from '../proptypes';
 
 class Players extends Component {
   handleRowClick = player => () => {
-    browserHistory.push(`/player/${player.id}`);
+    this.props.history.push(`/player/${player.id}`);
   };
 
   render() {

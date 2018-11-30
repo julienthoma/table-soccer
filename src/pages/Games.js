@@ -7,10 +7,10 @@ import { gameShape } from '../proptypes';
 
 class Games extends React.Component {
   handleRowClick = game => () => {
-    browserHistory.push(`/game/${game.id}`);
+    this.props.history.push(`/game/${game.id}`);
   };
 
-  render() {
+render() {
     const { games } = this.props;
 
     return (

@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import { Link, withRouter } from 'react-router';
+import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class NewGameButton extends React.Component {
   render() {
-    const currentPathName = this.props.router.getCurrentLocation().pathname;
+    const currentPathName = this.props.location.pathname;
 
     if (currentPathName === '/new') {
       return false;
@@ -30,7 +31,7 @@ class NewGameButton extends React.Component {
 }
 
 NewGameButton.propTypes = {
-  router: PropTypes.instanceOf(Object).isRequired
+  location: PropTypes.object.isRequired
 };
 
 export default withRouter(NewGameButton);

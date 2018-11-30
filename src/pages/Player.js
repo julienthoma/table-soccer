@@ -19,8 +19,8 @@ import { playerShape, gameShape } from '../proptypes';
 import { getMmmrOfWeeks, getFactor } from '../services/helper';
 import './Player.scss';
 
-const Player = ({ params, players, games, properties }) => {
-  const player = players.filter(p => p.id === params.id)[0];
+const Player = ({ match, players, games, properties }) => {
+  const player = players.filter(p => p.id === match.params.id)[0];
   const tableColumnStyle = { padding: '3px', textAlign: 'left' };
   const firstColumnStyle = {
     padding: '3px',
@@ -77,7 +77,7 @@ const Player = ({ params, players, games, properties }) => {
         <CompareBar
           leftHeadline="Attack Win %"
           rightHeadline="Defense Win %"
-          factorLeft={player.winRatioAttack / player.winRatioDefense}
+          factor={player.winRatioAttack / player.winRatioDefense}
           leftValue={getFormattedPercent(player.winRatioAttack)}
           rightValue={getFormattedPercent(player.winRatioDefense)}
         />
@@ -85,7 +85,7 @@ const Player = ({ params, players, games, properties }) => {
         <CompareBar
           leftHeadline="Games Attack"
           rightHeadline="Games Defense"
-          factorLeft={player.gamesAttack / player.gamesDefense}
+          factor={player.gamesAttack / player.gamesDefense}
           leftValue={player.gamesAttack}
           rightValue={player.gamesDefense}
         />
@@ -93,7 +93,7 @@ const Player = ({ params, players, games, properties }) => {
         <CompareBar
           leftHeadline="Goals Attack"
           rightHeadline="Goals Defense"
-          factorLeft={player.goalsAttack / player.goalsDefense}
+          factor={player.goalsAttack / player.goalsDefense}
           leftValue={player.goalsAttack}
           rightValue={player.goalsDefense}
         />
@@ -101,7 +101,7 @@ const Player = ({ params, players, games, properties }) => {
         <CompareBar
           leftHeadline="Goals Striker"
           rightHeadline="Goals Midfield"
-          factorLeft={player.goalsPosStriker / player.goalsPosMidfield}
+          factor={player.goalsPosStriker / player.goalsPosMidfield}
           leftValue={player.goalsPosStriker}
           rightValue={player.goalsPosMidfield}
         />
@@ -109,7 +109,7 @@ const Player = ({ params, players, games, properties }) => {
         <CompareBar
           leftHeadline="Goals Defense"
           rightHeadline="Goals Keeper"
-          factorLeft={player.goalsPosDefense / player.goalsPosKeeper}
+          factor={player.goalsPosDefense / player.goalsPosKeeper}
           leftValue={player.goalsPosDefense}
           rightValue={player.goalsPosKeeper}
         />
@@ -222,9 +222,7 @@ const Player = ({ params, players, games, properties }) => {
 };
 
 Player.propTypes = {
-  params: PropTypes.shape({
-    id: PropTypes.string
-  }).isRequired,
+  match: PropTypes.object.isRequired,
   players: PropTypes.arrayOf(playerShape).isRequired,
   games: PropTypes.arrayOf(gameShape).isRequired,
   properties: PropTypes.shape({}).isRequired

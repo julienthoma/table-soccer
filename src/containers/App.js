@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { getData, initializeFirebase } from '../actions';
 import InfoSnackbar from './InfoSnackbar';
 import CustomToolbar from './CustomToolbar';
@@ -50,4 +51,4 @@ const mapStateToProps = ({ app, user }) => ({
   isAuthorizing: user.isAuthorizing
 });
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));

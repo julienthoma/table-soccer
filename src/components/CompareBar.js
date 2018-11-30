@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { getFormattedPercent } from '../services/formatter';
 import { Headline4 } from './Typography';
 import { FlexContainer } from './Layout';
 import { BLUE, PINK } from './Colors';
@@ -29,7 +28,7 @@ const CompareBar = ({
     <Bar
       leftText={leftValue}
       rightText={rightValue}
-      widthInPercent={getFormattedPercent(factor)}
+      factor={factor}
       leftColor={BLUE}
       rightColor={PINK}
     />
