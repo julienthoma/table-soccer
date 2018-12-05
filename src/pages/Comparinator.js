@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { playerShape } from '../proptypes';
 import PropertyChart from '../containers/PropertyChart';
 
-const Comparinator = ({ params, players }) => {
-  const player1 = players.filter(p => p.id === params.p1)[0];
-  const player2 = players.filter(p => p.id === params.p2)[0];
+const Comparinator = ({ match, players }) => {
+  const player1 = players.filter(p => p.id === match.params.p1)[0];
+  const player2 = players.filter(p => p.id === match.params.p2)[0];
 
   return (
     <div style={{ marginTop: 30 }}>
@@ -16,9 +16,7 @@ const Comparinator = ({ params, players }) => {
 };
 
 Comparinator.propTypes = {
-  params: PropTypes.shape({
-    id: PropTypes.string
-  }).isRequired,
+  match: PropTypes.object.isRequired,
   players: PropTypes.arrayOf(playerShape).isRequired
 };
 

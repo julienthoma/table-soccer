@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import GameDetail from '../components/GameDetail';
 import { gameShape } from '../proptypes';
 
-const Game = ({ games, params }) => {
-  const [game] = games.filter(_game => _game.id === params.id);
+const Game = ({ games, match }) => {
+  const [game] = games.filter(_game => _game.id === match.params.id);
 
   return (
     <div style={{ padding: 8 }}>
@@ -16,9 +16,7 @@ const Game = ({ games, params }) => {
 
 Game.propTypes = {
   games: PropTypes.arrayOf(gameShape).isRequired,
-  params: PropTypes.shape({
-    id: PropTypes.string
-  }).isRequired
+  match: PropTypes.object.isRequired
 };
 
 const mapStateToProps = ({ app }) => ({

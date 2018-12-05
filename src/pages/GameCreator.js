@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { browserHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
 import {
-  startNewGame,
+  startNewGame, 
   exitGame,
   setPlayers,
   getPlayersFromSlack
@@ -43,7 +43,7 @@ class GameCreator extends React.Component {
 
   exitGame = () => {
     this.props.dispatch(exitGame());
-    browserHistory.push('/');
+    this.props.history.push('/');
   };
 
   renderSelectPlayers = () => (
