@@ -214,6 +214,18 @@ const Player = ({ match, players, games, properties }) => {
                 {player.lossesDefense}
               </TableRowColumn>
             </TableRow>
+            <TableRow>
+              <TableRowColumn style={firstColumnStyle}>Own Goals</TableRowColumn>
+              <TableRowColumn style={tableColumnStyle}>
+                {player.ownGoals}
+              </TableRowColumn>
+              <TableRowColumn style={tableColumnStyle}>
+                {player.ownGoalsAttack}
+              </TableRowColumn>
+              <TableRowColumn style={tableColumnStyle}>
+                {player.ownGoalsDefense}
+              </TableRowColumn>
+            </TableRow>
           </TableBody>
         </Table>
       </div>

@@ -37,6 +37,8 @@ export default class Player extends Entity {
     this.losses = 0;
     this.lossesAttack = 0;
     this.lossesDefense = 0;
+    this.ownGoalsAttack = 0;
+    this.ownGoalsDefense = 0;
     this.games = 0;
     this.gamesAttack = 0;
     this.gamesDefense = 0;
