@@ -53,6 +53,29 @@ export const groupGamesByWeek = games => {
   return group;
 };
 
+export const groupGamesByDay = games => {
+  const group = {};
+
+  games.forEach(game => {
+    const d = game.startdate;
+    const _key = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+    const label = `${d.getDate()}.${d.getMonth() + 1}`;
+
+    if (!group[_key]) {
+      group[_key] = {
+        key: _key,
+        label: label,
+        date: game.startdate,
+        games: []
+      };
+    }
+
+    group[_key].games.push(game);
+  });
+
+  return group;
+};
+
 export const getMmmrOfWeeks = (games, playerId) => {
   const gamesOfPlayer = games
     .filter(game => game.players[playerId])
@@ -66,7 +89,41 @@ export const getMmmrOfWeeks = (games, playerId) => {
     return group.games[group.games.length - 1].players[playerId].elo;
   });
 
-  return { labels, data };
+  return {
+    labels: labels,
+    datasets: [
+      {
+        label: 'MMR Development',
+        borderWidth: 3,
+        data: data
+      }
+    ]
+  };
+};
+
+export const getMmmrOfDays = (games, playerId) => {
+  const gamesOfPlayer = games
+    .filter(game => game.players[playerId])
+    .sort((a, b) => new Date(a[1]).getTime() - new Date(b[1]).getTime());
+  const groupedGames = groupGamesByDay(gamesOfPlayer);
+  const keys = Object.keys(groupedGames).sort((a, b) => a - b);
+
+  const labels = keys.map(key => groupedGames[key].label);
+  const data = keys.map(key => {
+    const group = groupedGames[key];
+    return group.games[group.games.length - 1].players[playerId].elo;
+  });
+
+  return {
+    labels: labels,
+    datasets: [
+      {
+        label: 'MMR Development',
+        borderWidth: 3,
+        data: data
+      }
+    ]
+  };
 };
 
 export const getScore = score => {

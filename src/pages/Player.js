@@ -16,7 +16,7 @@ import SkillBar from '../components/SkillBar';
 import WinStreakIcon from '../components/WinStreakIcon';
 import PropertyChart, { PROPERTIES } from '../containers/PropertyChart';
 import { playerShape, gameShape } from '../proptypes';
-import { getMmmrOfWeeks } from '../services/Helper';
+import { getMmmrOfWeeks, getMmmrOfDays } from '../services/Helper';
 import './Player.scss';
 
 const Player = ({
@@ -30,29 +30,21 @@ const Player = ({
     color: 'rgb(158, 158, 158)',
     fontSize: 12
   };
-  const mmrData = getMmmrOfWeeks(games, player.id);
-  const data = {
-    labels: mmrData.labels,
-    datasets: [
-      {
-        label: 'MMR Development',
-        borderWidth: 3,
-        data: mmrData.data
-      }
-    ]
-  };
 
   if (!player.placemnentFinished) {
     return (
       <div>
         <h2 styleName="headline">
-          {player.name} - {player.elo}
+          {player.name}
+          {' '} - {player.elo}
         </h2>
-        <p>You need {10 - player.games} more games to get ranked.</p>
+        <p>
+          You need {10 - player.games}{' '}
+more games to get ranked.
+        </p>
       </div>
     );
   }
-
 
   return (
     <div styleName="root">
@@ -63,11 +55,12 @@ const Player = ({
         {player.elo}
         <WinStreakIcon count={player.winStreak} />
       </h2>
+
       <div styleName="mmr">
         <h3>MMR</h3>
         <div styleName="mmrchart">
           <LineChart
-            data={data}
+            data={getMmmrOfDays(games, player.id)}
             options={{
               legend: { display: false },
               title: { display: false },
