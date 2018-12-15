@@ -15,7 +15,6 @@ const Container = styled.div`
 const SkillBar = ({
   headline, value, property, inverse
 }) => {
-  console.log(headline);
   const bestValue = inverse
     ? property.min.value.toFixed(2)
     : property.max.value.toFixed(2);
