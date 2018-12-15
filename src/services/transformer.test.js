@@ -32,11 +32,11 @@ describe('Transformer', () => {
     expect(p3.goalTimings[0]).toEqual(416);
 
     expect(p1.goalAgainstTimings.length).toEqual(0);
-    expect(p2.goalAgainstTimings.length).toEqual(3);
+    expect(p2.goalAgainstTimings.length).toEqual(6);
     expect(p3.goalAgainstTimings.length).toEqual(0);
-    expect(p4.goalAgainstTimings.length).toEqual(6);
+    expect(p4.goalAgainstTimings.length).toEqual(3);
 
-    expect(p2.goalAgainstTimings[0]).toEqual(91);
-    expect(p4.goalAgainstTimings[0]).toEqual(206);
+    expect(p2.goalAgainstTimings[0]).toEqual(206);
+    expect(p4.goalAgainstTimings[0]).toEqual(91);
   });
 });

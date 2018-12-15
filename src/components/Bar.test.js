@@ -7,7 +7,8 @@ it('Bar renders correctly', () => {
     <Bar
       leftText="Hello"
       rightText="World"
-      widthInPercent="50%"
+      leftGrow={0.6}
+      rightGrow={0.5}
       leftColor="red"
       rightColor="green"
     />

@@ -5,11 +5,19 @@ import SkillBar from './SkillBar';
 it('SkillBar renders correctly', () => {
   const bar = (
     <SkillBar
-      leftHeadline="Hello"
-      factor={0.3}
+      headline="Hello"
       value={20}
-      best={100}
-      bestPlayerId="fubar"
+      property={{
+        min: {
+          value: 5,
+          id: 'Heinrich'
+        },
+        max: {
+          value: 20,
+          id: 'Gustav'
+        }
+      }}
+      inverse
     />
   );
   expect(renderWithMuiTheme(bar)).toMatchSnapshot();

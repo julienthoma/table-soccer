@@ -7,8 +7,7 @@ it('CompareBar renders correctly', () => {
     <CompareBar
       leftHeadline="Hello"
       rightHeadline="World"
-      factor={0.3}
-      leftValue="TestString"
+      leftValue={2}
       rightValue={3}
     />
   );

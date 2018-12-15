@@ -21,6 +21,11 @@ exports[`SkillBar renders correctly 1`] = `
 
 .c3 {
   position: relative;
+  width: 100%;
+}
+
+.c4 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -28,11 +33,14 @@ exports[`SkillBar renders correctly 1`] = `
   width: 100%;
 }
 
-.c4 {
+.c5 {
   position: relative;
   background: #00bcd4;
   height: 20px;
-  width: 30%;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
 }
 
 .c6 {
@@ -45,7 +53,7 @@ exports[`SkillBar renders correctly 1`] = `
   flex-grow: 1;
 }
 
-.c5 {
+.c7 {
   position: absolute;
   top: 3px;
   text-transform: uppercase;
@@ -53,7 +61,7 @@ exports[`SkillBar renders correctly 1`] = `
   left: 10px;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   top: 3px;
   text-transform: uppercase;
@@ -89,22 +97,25 @@ exports[`SkillBar renders correctly 1`] = `
   >
     <div
       className="c4"
-      color="#00bcd4"
-      width="30%"
-    />
+    >
+      <div
+        className="c5"
+        color="#00bcd4"
+      />
+      <div
+        className="c6"
+        color="#dddddd"
+      />
+    </div>
     <div
-      className="c5"
+      className="c7"
     >
       20
     </div>
     <div
-      className="c6"
-      color="#dddddd"
-    />
-    <div
-      className="c7"
+      className="c8"
     >
-      100 (fubar)
+      5.00 (Heinrich)
     </div>
   </div>
 </div>

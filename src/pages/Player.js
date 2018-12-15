@@ -16,8 +16,12 @@ import SkillBar from '../components/SkillBar';
 import WinStreakIcon from '../components/WinStreakIcon';
 import PropertyChart, { PROPERTIES } from '../containers/PropertyChart';
 import { playerShape, gameShape } from '../proptypes';
-import { getMmmrOfWeeks, getMmmrOfDays } from '../services/Helper';
+import {
+  getChartDataByKeyAndInterval,
+  combineChartData
+} from '../services/charts';
 import './Player.scss';
+import { PINK, BLUE} from '../components/Colors';
 
 const Player = ({
   match, players, games, properties
@@ -30,17 +34,28 @@ const Player = ({
     color: 'rgb(158, 158, 158)',
     fontSize: 12
   };
+  const defaultGraphStyles = {
+    legend: { display: false },
+    title: { display: false },
+    maintainAspectRatio: false
+  };
 
   if (!player.placemnentFinished) {
     return (
       <div>
         <h2 styleName="headline">
           {player.name}
-          {' '} - {player.elo}
+          {' '}
+          {' '}
+-
+          {player.elo}
         </h2>
         <p>
-          You need {10 - player.games}{' '}
-more games to get ranked.
+          You need
+          {' '}
+          {10 - player.games}
+          {' '}
+          more games to get ranked.
         </p>
       </div>
     );
@@ -56,13 +71,36 @@ more games to get ranked.
         <WinStreakIcon count={player.winStreak} />
       </h2>
 
-      <div styleName="mmr">
+      <div styleName="chart-outer">
         <h3>MMR</h3>
-        <div styleName="mmrchart">
+        <div styleName="chart">
           <LineChart
-            data={getMmmrOfDays(games, player.id)}
+            data={getChartDataByKeyAndInterval(games, player.id, 'elo', 'day')}
+            options={defaultGraphStyles}
+          />
+        </div>
+      </div>
+
+      <div styleName="chart-outer">
+        <h3>Games</h3>
+        <div styleName="chart">
+          <LineChart
+            data={combineChartData([
+              getChartDataByKeyAndInterval(games, player.id, 'wins', 'day', {
+                label: 'Wins',
+                borderColor: BLUE,
+                backgroundColor: 'transparent',
+                pointRadius: 0
+              }),
+              getChartDataByKeyAndInterval(games, player.id, 'losses', 'day', {
+                label: 'Losses',
+                borderColor: PINK,
+                backgroundColor: 'transparent',
+                pointRadius: 0
+              })
+            ])}
             options={{
-              legend: { display: false },
+              legend: { display: true },
               title: { display: false },
               maintainAspectRatio: false
             }}

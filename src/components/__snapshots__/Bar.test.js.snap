@@ -3,6 +3,11 @@
 exports[`Bar renders correctly 1`] = `
 .c0 {
   position: relative;
+  width: 100%;
+}
+
+.c1 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -10,24 +15,27 @@ exports[`Bar renders correctly 1`] = `
   width: 100%;
 }
 
-.c1 {
+.c2 {
   position: relative;
   background: red;
   height: 20px;
-  width: 50%;
+  -webkit-box-flex: 0.6;
+  -webkit-flex-grow: 0.6;
+  -ms-flex-positive: 0.6;
+  flex-grow: 0.6;
 }
 
 .c3 {
   position: relative;
   background: green;
   height: 20px;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+  -webkit-box-flex: 0.5;
+  -webkit-flex-grow: 0.5;
+  -ms-flex-positive: 0.5;
+  flex-grow: 0.5;
 }
 
-.c2 {
+.c4 {
   position: absolute;
   top: 3px;
   text-transform: uppercase;
@@ -35,7 +43,7 @@ exports[`Bar renders correctly 1`] = `
   left: 10px;
 }
 
-.c4 {
+.c5 {
   position: absolute;
   top: 3px;
   text-transform: uppercase;
@@ -48,20 +56,23 @@ exports[`Bar renders correctly 1`] = `
 >
   <div
     className="c1"
-    color="red"
-    width="50%"
-  />
+  >
+    <div
+      className="c2"
+      color="red"
+    />
+    <div
+      className="c3"
+      color="green"
+    />
+  </div>
   <div
-    className="c2"
+    className="c4"
   >
     Hello
   </div>
   <div
-    className="c3"
-    color="green"
-  />
-  <div
-    className="c4"
+    className="c5"
   >
     World
   </div>

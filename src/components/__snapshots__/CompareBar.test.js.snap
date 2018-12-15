@@ -21,6 +21,11 @@ exports[`CompareBar renders correctly 1`] = `
 
 .c3 {
   position: relative;
+  width: 100%;
+}
+
+.c4 {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -28,24 +33,27 @@ exports[`CompareBar renders correctly 1`] = `
   width: 100%;
 }
 
-.c4 {
+.c5 {
   position: relative;
   background: #00bcd4;
   height: 20px;
-  width: 30%;
+  -webkit-box-flex: 0.4;
+  -webkit-flex-grow: 0.4;
+  -ms-flex-positive: 0.4;
+  flex-grow: 0.4;
 }
 
 .c6 {
   position: relative;
   background: #ff4081;
   height: 20px;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+  -webkit-box-flex: 0.6000000000000001;
+  -webkit-flex-grow: 0.6000000000000001;
+  -ms-flex-positive: 0.6000000000000001;
+  flex-grow: 0.6000000000000001;
 }
 
-.c5 {
+.c7 {
   position: absolute;
   top: 3px;
   text-transform: uppercase;
@@ -53,7 +61,7 @@ exports[`CompareBar renders correctly 1`] = `
   left: 10px;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   top: 3px;
   text-transform: uppercase;
@@ -89,20 +97,23 @@ exports[`CompareBar renders correctly 1`] = `
   >
     <div
       className="c4"
-      color="#00bcd4"
-      width="30%"
-    />
-    <div
-      className="c5"
     >
-      TestString
+      <div
+        className="c5"
+        color="#00bcd4"
+      />
+      <div
+        className="c6"
+        color="#ff4081"
+      />
     </div>
     <div
-      className="c6"
-      color="#ff4081"
-    />
-    <div
       className="c7"
+    >
+      2
+    </div>
+    <div
+      className="c8"
     >
       3
     </div>
