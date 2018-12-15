@@ -17,7 +17,7 @@ const ScoreTimelineGoalScorer = ({ goalScorer, isWinner }) => (
               {goalScorer.name}
 
               {goalScorer.ownGoal ? (
-                <div styleName="owngoal">OWN GOAL</div>
+                <div styleName="owngoal">🐓🐓🐓OWN GOAL🐓🐓🐓</div>
               ) : (
                 <PositionIcon
                   dark
@@ -39,7 +39,7 @@ const ScoreTimelineGoalScorer = ({ goalScorer, isWinner }) => (
             {(goalScorer.position === 'KEEPER' || goalScorer.position === 'DEFENSE') ? <span>🛡</span> : <span>⚔️</span>}
 
               {goalScorer.ownGoal ? (
-                <div styleName="owngoal">OWN GOAL</div>
+                <div styleName="owngoal">🐓🐓🐓OWN GOAL🐓🐓🐓</div>
               ) : (
                 <PositionIcon
                   dark
