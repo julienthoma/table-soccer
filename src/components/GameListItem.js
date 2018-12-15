@@ -31,7 +31,7 @@ const GameListItem = ({ game, handleClick }) => {
         <div styleName="left">
           <div styleName="player">
             <div styleName="playerName">
-              <div>{winnerAttack.name}</div>
+              <div>⚔️ {winnerAttack.name}</div>
               <WinStreakIcon count={winnerAttack.winStreak} />
             </div>
             <div styleName="playerScore">
@@ -43,7 +43,7 @@ const GameListItem = ({ game, handleClick }) => {
           </div>
           <div styleName="player">
             <div styleName="playerName">
-              <div>{winnerDefense.name}</div>
+              <div>🛡 {winnerDefense.name}</div>
               <WinStreakIcon count={winnerDefense.winStreak} />
             </div>
             <div styleName="playerScore">
@@ -60,7 +60,7 @@ const GameListItem = ({ game, handleClick }) => {
         <div styleName="right">
           <div styleName="player">
             <div styleName="playerName">
-              <div>{loserAttack.name}</div>
+              <div>⚔️ {loserAttack.name}</div>
             </div>
             <div styleName="playerScore">
               { loserAttack.elo }&nbsp;
@@ -71,7 +71,7 @@ const GameListItem = ({ game, handleClick }) => {
           </div>
           <div styleName="player">
             <div styleName="playerName">
-              <div>{loserDefense.name}</div>
+              <div>🛡 {loserDefense.name}</div>
             </div>
             <div styleName="playerScore">
               { loserDefense.elo }&nbsp;

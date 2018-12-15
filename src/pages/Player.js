@@ -109,7 +109,7 @@ const Player = ({
       </div>
 
       <div styleName="attackDefense">
-        <h3>Attack vs Defense</h3>
+        <h3>⚔️ Attack vs 🛡 Defense</h3>
 
         <CompareBar
           leftHeadline="Attack Win %"
@@ -179,10 +179,10 @@ const Player = ({
                 Total
               </TableHeaderColumn>
               <TableHeaderColumn style={tableColumnStyle}>
-                Attack
+                ⚔️ Attack
               </TableHeaderColumn>
               <TableHeaderColumn style={tableColumnStyle}>
-                Defense
+                🛡 Defense
               </TableHeaderColumn>
             </TableRow>
           </TableHeader>
