@@ -6,3 +6,4 @@ public/index.html
 config.json
 config-dev.json
 .firebaserc
+yarn-error.log
