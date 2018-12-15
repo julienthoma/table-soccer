@@ -56,6 +56,16 @@ export const calc2v2 = (ratingA, ratingB1, ratingB2) => {
   return calcFactor(ratingA, ratingB);
 };
 
+export const calcTeamElo = (ratingA, ratingB) => {
+  let chance = calcFactor(ratingA, ratingB);
+  const multiplier = 50;
+
+  return [
+    Math.round(chance * multiplier),
+    Math.round(-1 * (1 - chance) * multiplier)
+  ];
+};
+
 export const calcScore = (
   player,
   enemy1,
@@ -81,7 +91,7 @@ export const calcScore = (
   return Math.round(chance * Math.min(bonus, 1.5) * multiplier);
 };
 
-export const avgOrFackback = (a, b, fallback = 0) => {
+export const avgOrFallback = (a, b, fallback = 0) => {
   if (b === 0 || !b) {
     return fallback;
   }
