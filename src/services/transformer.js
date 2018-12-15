@@ -151,7 +151,7 @@ export const transform = data => {
       });
 
       const [winnerTeam, loserTeam] = createOrGetTeams(
-        [winnerAttackId, winnerDefenseId, loserAttackId, loserDefenseId],
+        [winnerAttack, winnerDefense, loserAttack, loserDefense],
         teams
       );
 
@@ -459,14 +459,15 @@ export const transform = data => {
   return {
     players: _players,
     games: _games,
+    teams: teams,
     properties
   };
 };
 
-function createOrGetTeams(ids, _teams) {
-  const [winnerAttackId, winnerDefenseId, loserAttackId, loserDefenseId] = ids;
-  const winnerTeamKey = `${winnerAttackId}-${winnerDefenseId}`;
-  const loserTeamKey = `${loserAttackId}-${loserDefenseId}`;
+function createOrGetTeams(_players, _teams) {
+  const [winnerAttack, winnerDefense, loserAttack, loserDefense] = _players;
+  const winnerTeamKey = `${winnerAttack.id}-${winnerDefense.id}`;
+  const loserTeamKey = `${loserAttack.id}-${loserDefense.id}`;
 
   if (!_teams[winnerTeamKey]) {
     _teams[winnerTeamKey] = {
@@ -475,7 +476,9 @@ function createOrGetTeams(ids, _teams) {
       goals: 0,
       games: 0,
       wins: 0,
-      losses: 0
+      losses: 0,
+      attack: winnerAttack,
+      defense: winnerDefense
     };
   }
 
@@ -485,7 +488,9 @@ function createOrGetTeams(ids, _teams) {
       id: loserTeamKey,
       games: 0,
       wins: 0,
-      losses: 0
+      losses: 0,
+      attack: loserAttack,
+      defense: loserDefense
     };
   }
 
@@ -503,6 +508,6 @@ function createOrGetTeams(ids, _teams) {
   loserTeam.games++;
   loserTeam.losses++;
   loserTeam.winRatio = avgOrFallback(loserTeam.wins, loserTeam.games);
-  
+
   return [winnerTeam, loserTeam];
 }

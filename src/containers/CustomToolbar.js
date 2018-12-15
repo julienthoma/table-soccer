@@ -6,6 +6,7 @@ import { withRouter } from 'react-router';
 import IconButton from 'material-ui/IconButton';
 import List from 'material-ui/svg-icons/action/view-list';
 import Group from 'material-ui/svg-icons/social/group';
+import Person from 'material-ui/svg-icons/social/person';
 import Login from './Login';
 
 class CustomToolbar extends React.Component {
@@ -31,6 +32,14 @@ class CustomToolbar extends React.Component {
             iconStyle={iconStyle}
             style={{ padding: '5px' }}
             containerElement={<Link to="/players" />}
+          >
+            <Person />
+          </IconButton>
+
+          <IconButton
+            iconStyle={iconStyle}
+            style={{ padding: '5px' }}
+            containerElement={<Link to="/teams" />}
           >
             <Group />
           </IconButton>

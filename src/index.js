@@ -10,6 +10,7 @@ import reducer from './reducers';
 import { enhanceStore, getInitialState } from './store';
 import App from './containers/App';
 import Games from './pages/Games';
+import Teams from './pages/Teams';
 import Players from './pages/Players';
 import Player from './pages/Player';
 import Game from './pages/Game';
@@ -29,6 +30,7 @@ render(
               <Switch>
                 <Route exact path="/" component={Games} />
                 <Route exact path="/games" component={Games} />
+                <Route exact path="/teams" component={Teams} />
                 <Route path="/game/:id" component={Game} />
                 <Route exact path="/players" component={Players} />
                 <Route path="/player/:id" component={Player} />
