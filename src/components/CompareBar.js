@@ -15,30 +15,35 @@ const Container = styled.div`
 const CompareBar = ({
   leftHeadline,
   rightHeadline,
-  factor,
   leftValue,
-  rightValue
-}) => (
-  <Container>
-    <FlexContainer>
-      <Headline4>{leftHeadline}</Headline4>
-      <Headline4>{rightHeadline}</Headline4>
-    </FlexContainer>
+  rightValue,
+  leftText,
+  rightText
+}) => {
+  const normalizeFactor = 1 / (leftValue + rightValue);
 
-    <Bar
-      leftText={leftValue}
-      rightText={rightValue}
-      factor={factor}
-      leftColor={BLUE}
-      rightColor={PINK}
-    />
-  </Container>
-);
+  return (
+    <Container>
+      <FlexContainer>
+        <Headline4>{leftHeadline}</Headline4>
+        <Headline4>{rightHeadline}</Headline4>
+      </FlexContainer>
+
+      <Bar
+        leftText={leftText || leftValue}
+        rightText={rightText || rightValue}
+        leftGrow={leftValue * normalizeFactor}
+        rightGrow={rightValue * normalizeFactor}
+        leftColor={BLUE}
+        rightColor={PINK}
+      />
+    </Container>
+  );
+};
 
 CompareBar.propTypes = {
   leftHeadline: PropTypes.string.isRequired,
   rightHeadline: PropTypes.string.isRequired,
-  factor: PropTypes.number.isRequired,
   leftValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     .isRequired,
   rightValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number])

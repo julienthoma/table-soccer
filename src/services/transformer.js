@@ -1,7 +1,7 @@
 /* eslint no-param-reassign: 0 */
 import Game from '../entities/Game';
 import Player from '../entities/Player';
-import { avgTimeBetween, calcScore } from './helper';
+import { avgTimeBetween, calcScore, avgOrFackback } from './helper';
 import * as consts from '../constants';
 
 export const transform = data => {
@@ -50,7 +50,8 @@ export const transform = data => {
         ownGoals: winnerAttackOwnGoals,
         ...positionGoals,
         goalAgainstTimings: [],
-        goalTimings: []
+        goalTimings: [],
+        ownGoalTimings: []
       };
       const winnerDefense = {
         id: playerMap[winnerDefenseId].id,
@@ -59,7 +60,8 @@ export const transform = data => {
         ownGoals: winnerDefenseOwnGoals,
         ...positionGoals,
         goalAgainstTimings: [],
-        goalTimings: []
+        goalTimings: [],
+        ownGoalTimings: []
       };
       const loserAttack = {
         id: playerMap[loserAttackId].id,
@@ -68,7 +70,8 @@ export const transform = data => {
         ownGoals: loserAttackOwnGoals,
         ...positionGoals,
         goalAgainstTimings: [],
-        goalTimings: []
+        goalTimings: [],
+        ownGoalTimings: []
       };
       const loserDefense = {
         id: playerMap[loserDefenseId].id,
@@ -77,7 +80,8 @@ export const transform = data => {
         ownGoals: loserDefenseOwnGoals,
         ...positionGoals,
         goalAgainstTimings: [],
-        goalTimings: []
+        goalTimings: [],
+        ownGoalTimings: []
       };
 
       const currentPlayers = {
@@ -117,20 +121,23 @@ export const transform = data => {
         item.score = score;
         item.name = playerMap[id].name;
 
-        const currentKeeper = index <= 1
-          ? currentPlayers[winnerDefenseId]
-          : currentPlayers[loserDefenseId];
+        let currentKeeper;
+
+        if (index <= 1) {
+          currentKeeper = ownGoal ? currentPlayers[winnerDefenseId] : currentPlayers[loserDefenseId]
+        } else {
+          currentKeeper = ownGoal ? currentPlayers[loserDefenseId] : currentPlayers[winnerDefenseId]
+        }
 
         if (!ownGoal) {
           currentPlayers[id][position]++;
-          currentKeeper.goalAgainstTimings.push(time);
 
           if (index % 2 === 0) {
             currentPlayers[id].goalTimings.push(time);
           }
-        } else {
-          currentPlayers[id].goalAgainstTimings.push(time);
         }
+
+        currentKeeper.goalAgainstTimings.push(time);
 
         currentPlayers[id].index = index;
       });
@@ -180,10 +187,13 @@ export const transform = data => {
         const games = wins + losses;
         const gamesAttack = winsAttack + lossesAttack;
         const gamesDefense = winsDefense + lossesDefense;
-        const avgGoalsPosStriker = goalsPosStriker / gamesAttack;
-        const avgGoalsPosMidfield = goalsPosMidfield / gamesAttack;
-        const avgGoalsPosDefense = goalsPosDefense / gamesDefense;
-        const avgGoalsPosKeeper = goalsPosKeeper / gamesDefense;
+        const avgGoalsPosStriker = avgOrFackback(goalsPosStriker, gamesAttack);
+        const avgGoalsPosMidfield = avgOrFackback(
+          goalsPosMidfield,
+          gamesAttack
+        );
+        const avgGoalsPosDefense = avgOrFackback(goalsPosDefense, gamesDefense);
+        const avgGoalsPosKeeper = avgOrFackback(goalsPosKeeper, gamesDefense);
         const currentGoals = currentPlayers[id].score;
         const goalsAgainst = isWinner
           ? loserAttackScore + loserDefenseScore
@@ -191,7 +201,10 @@ export const transform = data => {
         const goalsAgainstDefense = isWinner && !isAttack
           ? playerMap[id].goalsAgainstDefense + goalsAgainst
           : playerMap[id].goalsAgainstDefense;
-        const avgGoalsAgainstDefense = goalsAgainstDefense / winsDefense;
+        const avgGoalsAgainstDefense = avgOrFackback(
+          goalsAgainstDefense,
+          winsDefense
+        );
         const goals = playerMap[id].goals + currentGoals;
         const goalsAttack = isAttack
           ? playerMap[id].goalsAttack + currentGoals
@@ -199,11 +212,15 @@ export const transform = data => {
         const goalsWinnerAttack = isWinner && isAttack
           ? playerMap[id].goalsWinnerAttack + currentGoals
           : playerMap[id].goalsWinnerAttack;
-        const avgGoalsWinnerAttack = goalsWinnerAttack / winsAttack;
+        const avgGoalsWinnerAttack = avgOrFackback(
+          goalsWinnerAttack,
+          winsAttack
+        );
         const goalsDefense = !isAttack
           ? playerMap[id].goalsDefense + currentGoals
           : playerMap[id].goalsDefense;
         const playTime = playerMap[id].playTime + duration;
+        const avgGameDuration = playTime / games;
         const playTimeAttack = isAttack
           ? playerMap[id].playTimeAttack + duration
           : playerMap[id].playTimeAttack;
@@ -213,15 +230,21 @@ export const transform = data => {
         const winsAttackDuration = isWinner && isAttack
           ? playerMap[id].winsAttackDuration + duration
           : playerMap[id].winsAttackDuration;
-        const avgWinsAttackDuration = winsAttackDuration / winsAttack;
+        const avgWinsAttackDuration = avgOrFackback(
+          winsAttackDuration,
+          winsAttack
+        );
         const lossDefenseDuration = !isWinner && !isAttack
           ? playerMap[id].lossDefenseDuration + duration
           : playerMap[id].lossDefenseDuration;
-        const avgLossDefenseDuration = lossDefenseDuration / lossesDefense;
-        const winRatio = wins > 0 ? wins / games : 0;
-        const winRatioAttack = wins > 0 ? winsAttack / gamesAttack : 0;
-        const winRatioDefense = wins > 0 ? winsDefense / gamesDefense : 0;
-        const avgOwnGoals = ownGoals / games;
+        const avgLossDefenseDuration = avgOrFackback(
+          lossDefenseDuration,
+          lossesDefense
+        );
+        const winRatio = avgOrFackback(wins, games);
+        const winRatioAttack = avgOrFackback(winsAttack, gamesAttack);
+        const winRatioDefense = avgOrFackback(winsDefense, gamesDefense);
+        const avgOwnGoals = avgOrFackback(ownGoals, games);
 
         const currentAvgTimeBetweenGoals = isAttack
           ? avgTimeBetween(duration, currentPlayers[id].goalTimings)
@@ -230,7 +253,7 @@ export const transform = data => {
           ? playerMap[id].totalAvgTimeBetweenGoals + currentAvgTimeBetweenGoals
           : playerMap[id].totalAvgTimeBetweenGoals;
 
-        const avgTimeBetweenGoals = totalAvgTimeBetweenGoals / gamesAttack || 0;
+        const avgTimeBetweenGoals = avgOrFackback(totalAvgTimeBetweenGoals, gamesAttack);
 
         const currentAvgTimeBetweenGoalsAgainst = !isAttack
           ? avgTimeBetween(duration, currentPlayers[id].goalAgainstTimings)
@@ -239,7 +262,10 @@ export const transform = data => {
           ? playerMap[id].totalAvgTimeBetweenGoalsAgainst
               + currentAvgTimeBetweenGoalsAgainst
           : playerMap[id].totalAvgTimeBetweenGoalsAgainst;
-        const avgTimeBetweenGoalsAgainst = totalAvgTimeBetweenGoalsAgainst / gamesDefense || 0;
+        const avgTimeBetweenGoalsAgainst = avgOrFackback(
+          totalAvgTimeBetweenGoalsAgainst,
+          gamesDefense
+        );
 
         const placemnentFinished = games >= 10;
 
@@ -330,6 +356,7 @@ export const transform = data => {
         ].totalAvgTimeBetweenGoalsAgainst = totalAvgTimeBetweenGoalsAgainst;
         playerMap[id].avgTimeBetweenGoalsAgainst = avgTimeBetweenGoalsAgainst;
         playerMap[id].placemnentFinished = placemnentFinished;
+        playerMap[id].avgGameDuration = avgGameDuration;
       });
 
       _games.push(

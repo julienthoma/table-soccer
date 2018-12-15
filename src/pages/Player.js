@@ -16,10 +16,12 @@ import SkillBar from '../components/SkillBar';
 import WinStreakIcon from '../components/WinStreakIcon';
 import PropertyChart, { PROPERTIES } from '../containers/PropertyChart';
 import { playerShape, gameShape } from '../proptypes';
-import { getMmmrOfWeeks, getFactor } from '../services/helper';
+import { getMmmrOfWeeks } from '../services/Helper';
 import './Player.scss';
 
-const Player = ({ match, players, games, properties }) => {
+const Player = ({
+  match, players, games, properties
+}) => {
   const player = players.filter(p => p.id === match.params.id)[0];
   const tableColumnStyle = { padding: '3px', textAlign: 'left' };
   const firstColumnStyle = {
@@ -51,10 +53,14 @@ const Player = ({ match, players, games, properties }) => {
     );
   }
 
+
   return (
     <div styleName="root">
       <h2 styleName="headline">
-        {player.name} - {player.elo}
+        {player.name}
+        {' '}
+        -
+        {player.elo}
         <WinStreakIcon count={player.winStreak} />
       </h2>
       <div styleName="mmr">
@@ -77,15 +83,15 @@ const Player = ({ match, players, games, properties }) => {
         <CompareBar
           leftHeadline="Attack Win %"
           rightHeadline="Defense Win %"
-          factor={player.winRatioAttack / player.winRatioDefense}
-          leftValue={getFormattedPercent(player.winRatioAttack)}
-          rightValue={getFormattedPercent(player.winRatioDefense)}
+          leftText={getFormattedPercent(player.winRatioAttack)}
+          rightText={getFormattedPercent(player.winRatioDefense)}
+          leftValue={player.winRatioAttack}
+          rightValue={player.winRatioDefense}
         />
 
         <CompareBar
           leftHeadline="Games Attack"
           rightHeadline="Games Defense"
-          factor={player.gamesAttack / player.gamesDefense}
           leftValue={player.gamesAttack}
           rightValue={player.gamesDefense}
         />
@@ -93,7 +99,6 @@ const Player = ({ match, players, games, properties }) => {
         <CompareBar
           leftHeadline="Goals Attack"
           rightHeadline="Goals Defense"
-          factor={player.goalsAttack / player.goalsDefense}
           leftValue={player.goalsAttack}
           rightValue={player.goalsDefense}
         />
@@ -101,7 +106,6 @@ const Player = ({ match, players, games, properties }) => {
         <CompareBar
           leftHeadline="Goals Striker"
           rightHeadline="Goals Midfield"
-          factor={player.goalsPosStriker / player.goalsPosMidfield}
           leftValue={player.goalsPosStriker}
           rightValue={player.goalsPosMidfield}
         />
@@ -109,7 +113,6 @@ const Player = ({ match, players, games, properties }) => {
         <CompareBar
           leftHeadline="Goals Defense"
           rightHeadline="Goals Keeper"
-          factor={player.goalsPosDefense / player.goalsPosKeeper}
           leftValue={player.goalsPosDefense}
           rightValue={player.goalsPosKeeper}
         />
@@ -121,23 +124,10 @@ const Player = ({ match, players, games, properties }) => {
           {PROPERTIES.map(({ key, label, inverse }, i) => (
             <SkillBar
               key={i}
-              leftHeadline={label}
+              headline={label}
               value={player[key].toFixed(2)}
-              best={
-                inverse
-                  ? properties[key].min.value.toFixed(2)
-                  : properties[key].max.value.toFixed(2)
-              }
-              bestPlayerId={
-                inverse ? properties[key].min.id : properties[key].max.id
-              }
-              playerId={player.id}
-              factor={getFactor(
-                player[key],
-                properties[key].min.value,
-                properties[key].max.value,
-                inverse
-              )}
+              property={properties[key]}
+              inverse={inverse}
             />
           ))}
         </div>
@@ -215,7 +205,9 @@ const Player = ({ match, players, games, properties }) => {
               </TableRowColumn>
             </TableRow>
             <TableRow>
-              <TableRowColumn style={firstColumnStyle}>Own Goals</TableRowColumn>
+              <TableRowColumn style={firstColumnStyle}>
+                Own Goals
+              </TableRowColumn>
               <TableRowColumn style={tableColumnStyle}>
                 {player.ownGoals}
               </TableRowColumn>

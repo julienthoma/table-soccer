@@ -5,6 +5,11 @@ import { BLUE, GREY } from './Colors';
 
 const Container = styled.div`
   position: relative;
+  width: 100%;
+`;
+
+const BarWrapper = styled.div`
+  position: relative;
   display: flex;
   width: 100%;
 `;
@@ -16,11 +21,11 @@ const Part = styled.div`
 `;
 
 const LeftPart = styled(Part)`
-  flex-grow: ${props => props.grow};
+  flex-grow: ${props => props.leftGrow};
 `;
 
 const RightPart = styled(Part)`
-  flex-grow: 1;
+  flex-grow: ${props => props.rightGrow};
 `;
 
 const Text = styled.div`
@@ -41,14 +46,17 @@ const RightText = styled(Text)`
 const Bar = ({
   leftText,
   rightText,
+  leftGrow,
+  rightGrow,
   leftColor,
-  rightColor,
-  factor
+  rightColor
 }) => (
   <Container>
-    <LeftPart grow={factor} color={leftColor} />
+    <BarWrapper>
+      <LeftPart leftGrow={leftGrow} color={leftColor} />
+      <RightPart rightGrow={rightGrow} color={rightColor} />
+    </BarWrapper>
     <LeftText>{leftText}</LeftText>
-    <RightPart color={rightColor} />
     <RightText>{rightText}</RightText>
   </Container>
 );
@@ -65,7 +73,8 @@ Bar.propTypes = {
   rightText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   leftColor: PropTypes.string,
   rightColor: PropTypes.string,
-  factor: PropTypes.number.isRequired
+  leftGrow: PropTypes.number.isRequired,
+  rightGrow: PropTypes.number.isRequired
 };
 
 export default Bar;

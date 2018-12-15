@@ -9,6 +9,11 @@ export const normalizeValue = (value, property, inverted) => {
 
 export const getFactor = (value, min, max, inverse) => {
   const range = max - min;
+
+  if (range === 0) {
+    return 0;
+  }
+
   const overMin = value - min;
   const factor = overMin / range;
 
@@ -73,16 +78,16 @@ export const getScore = score => {
 export const avgTimeBetween = (end, _timings) => {
   const timings = [..._timings];
   const timeBetween = [];
-  if (timings.lengtht === 0 || timings[timings.length - 1] !== end) {
+  if (timings.length === 0 || timings[timings.length - 1] !== end) {
     timings.push(end);
   }
 
   timings.forEach((time, i) => {
     if (i === 0) {
-      return timeBetween.push(time);
+      timeBetween.push(time);
+    } else {
+      timeBetween.push(time - timings[i - 1]);
     }
-
-    timeBetween.push(time - timings[i - 1]);
   });
 
   return timeBetween.reduce((sum, curr) => sum + curr, 0) / timings.length;
@@ -111,7 +116,7 @@ export const calcScore = (
   let chance = calc2v2(player.elo, enemy1.elo, enemy2.elo);
   const multiplier = 50;
   let bonus = 1 + goals / 30;
-  
+
   bonus *= 1 + (6 - goalsAgainst) / 30;
 
   if (!isWinner) {
@@ -123,4 +128,12 @@ export const calcScore = (
   }
 
   return Math.round(chance * Math.min(bonus, 1.5) * multiplier);
+};
+
+export const avgOrFackback = (a, b, fallback = 0) => {
+  if (b === 0 || !b) {
+    return fallback;
+  }
+
+  return a / b;
 };

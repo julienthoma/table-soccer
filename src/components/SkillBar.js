@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Headline4 } from './Typography';
 import { FlexContainer } from './Layout';
 import Bar from './Bar';
+import { getFactor } from '../services/Helper';
 
 const Container = styled.div`
   width: 100%;
@@ -11,27 +12,42 @@ const Container = styled.div`
   overflow: hidden;
 `;
 
-const SkillBar = ({ factor, leftHeadline, value, best, bestPlayerId }) => (
-  <Container>
-    <FlexContainer>
-      <Headline4>{leftHeadline}</Headline4>
-      <Headline4>Best</Headline4>
-    </FlexContainer>
+const SkillBar = ({
+  headline, value, property, inverse
+}) => {
+  console.log(headline);
+  const bestValue = inverse
+    ? property.min.value.toFixed(2)
+    : property.max.value.toFixed(2);
+  const bestPlayerId = inverse ? property.min.id : property.max.id;
 
-    <Bar
-      leftText={value}
-      rightText={`${best} (${bestPlayerId})`}
-      factor={factor}
-    />
-  </Container>
-);
+  const factor = getFactor(
+    value,
+    property.min.value,
+    property.max.value,
+    inverse
+  );
+
+  return (
+    <Container>
+      <FlexContainer>
+        <Headline4>{headline}</Headline4>
+        <Headline4>Best</Headline4>
+      </FlexContainer>
+
+      <Bar
+        leftText={value}
+        rightText={`${bestValue} (${bestPlayerId})`}
+        leftGrow={factor}
+        rightGrow={1 - factor}
+      />
+    </Container>
+  );
+};
 
 SkillBar.propTypes = {
-  factor: PropTypes.number.isRequired,
-  leftHeadline: PropTypes.string.isRequired,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  best: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  bestPlayerId: PropTypes.string.isRequired
+  headline: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
 };
 
 export default SkillBar;
