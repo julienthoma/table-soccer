@@ -1,4 +1,4 @@
-import * as Helper from './helper';
+import * as Helper from './Helper';
 import gameMock from './__mocks__/gameMock';
 
 describe('Helper', () => {

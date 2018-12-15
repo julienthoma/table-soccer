@@ -1,10 +1,10 @@
-import { initializeApp, database, auth } from 'firebase';
 import { get, post } from '../services/ajax';
 import * as customAuth from '../services/auth';
+import firebase from '../services/firebase';
 
 import { transform } from '../services/transformer';
 import { emailToSlug } from '../services/formatter';
-import { getScore } from '../services/helper';
+import { getScore } from '../services/Helper';
 import { GOAL_TIMEOUT } from '../constants/';
 import { createEndMessage } from '../services/slack';
 
@@ -59,15 +59,14 @@ export const startLogin = () => dispatch => {
 
 export const initializeFirebase = () => (dispatch, getState) => {
   dispatch(login());
-  initializeApp(getState().config.firebaseConfig);
-  auth().onAuthStateChanged(firebaseUser => {
+  firebase.auth().onAuthStateChanged(firebaseUser => {
     if (!firebaseUser) {
       return dispatch(setUser(null));
     }
 
     const { uid, photoURL, email, displayName } = firebaseUser;
     const id = emailToSlug(email);
-    const userRef = database().ref(`data/players/${id}`);
+    const userRef = firebase.database().ref(`data/players/${id}`);
 
     userRef.once('value').then(snapshot => {
       if (!snapshot.val()) {
@@ -87,7 +86,7 @@ export const getData = () => (dispatch, getState) => {
   // Make initial call as ajax for faster startup (socket startup is slow)
   get(getState().config.dbUrl).then(data => {
     dispatch(updateData(transform(data)));
-    database()
+    firebase.database()
       .ref('data')
       .on('value', snapshot => {
         // Don't update twice after intial call.

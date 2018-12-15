@@ -10,7 +10,7 @@ import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
 import { connect } from 'react-redux';
 import shortid from 'shortid';
-import { getScore } from '../services/helper';
+import { getScore } from '../services/Helper';
 import PlayerButton from '../components/PlayerButton';
 import {
   addGoal,

@@ -1,7 +1,7 @@
 /* eslint no-param-reassign: 0 */
 import Game from '../entities/Game';
 import Player from '../entities/Player';
-import { avgTimeBetween, calcScore, avgOrFackback } from './helper';
+import { avgTimeBetween, calcScore, avgOrFackback } from './Helper';
 import * as consts from '../constants';
 
 export const transform = data => {
