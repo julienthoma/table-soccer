@@ -6,4 +6,5 @@ public/index.html
 config.json
 config-dev.json
 .firebaserc
+.firebase
 yarn-error.log
