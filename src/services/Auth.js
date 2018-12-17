@@ -1,8 +1,9 @@
-import firebase from './firebase';
+import firebaseApp from './firebase';
+import firebase from 'firebase';
 
 export const login = () => {
-  const provider = new auth.GoogleAuthProvider();
-  firebase.auth().signInWithRedirect(provider);
+  const provider = new firebase.auth.GoogleAuthProvider();
+  firebaseApp.auth().signInWithRedirect(provider);
 };
 
-export const logout = () => firebase.auth().signOut();
+export const logout = () => firebaseApp.auth().signOut();

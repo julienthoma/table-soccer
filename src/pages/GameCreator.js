@@ -158,7 +158,8 @@ class GameCreator extends React.Component {
 
 GameCreator.defaultProps = {
   activeStep: consts.SELECT_PLAYERS_STEP,
-  players: []
+  players: [],
+  currentGoogleUser: null
 };
 
 GameCreator.propTypes = {
@@ -169,7 +170,7 @@ GameCreator.propTypes = {
   ]),
   players: PropTypes.arrayOf(gamePlayerShape).isRequired,
   dispatch: PropTypes.func.isRequired,
-  currentGoogleUser: currentUserShape.isRequired
+  currentGoogleUser: currentUserShape
 };
 
 const mapStateToProps = ({ game, user, app }) => ({

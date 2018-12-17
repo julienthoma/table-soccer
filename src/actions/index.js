@@ -125,7 +125,7 @@ export const uploadGame = game => (dispatch, getState) => {
     );
   }, GOAL_TIMEOUT * 1.5);
   dispatch(endGame(game));
-  database()
+  firebase.database()
     .ref(`data/games/${gameId}`)
     .set(game);
 };
