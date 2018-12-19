@@ -53,29 +53,5 @@ module.exports = {
         test: /\.js$/
       }
     ]
-  },
-  devServer: {
-    hot: true,
-    contentBase: BUILD_DIR,
-    filename: 'app.js',
-    proxy: {
-      '/**': {
-        // catch all requests
-        target: '/index-dev.html', // default target
-        secure: false,
-        bypass(req, res, opt) {
-          // your custom code to check for any exceptions
-          // console.log('bypass check', {req: req, res:res, opt: opt});
-          if (
-            req.path.indexOf('/img/') !== -1
-            || req.path.indexOf('/public/') !== -1
-          ) {
-            return '/';
-          }
-
-          return '/index.html';
-        }
-      }
-    }
   }
 };

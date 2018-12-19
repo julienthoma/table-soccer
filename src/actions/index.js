@@ -5,7 +5,7 @@ import firebase from '../services/firebase';
 import { transform } from '../services/transformer';
 import { emailToSlug } from '../services/formatter';
 import { getScore } from '../services/Helper';
-import { GOAL_TIMEOUT } from '../constants/';
+import { GOAL_TIMEOUT } from '../constants';
 import { createEndMessage } from '../services/slack';
 
 export const UPDATE_DATA = 'UPDATE_DATA';

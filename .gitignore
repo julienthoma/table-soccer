@@ -9,3 +9,4 @@ config-dev.json
 .firebaserc
 .firebase
 yarn-error.log
+stats.json

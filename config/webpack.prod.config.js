@@ -5,6 +5,7 @@ const APP_DIR = path.resolve(__dirname, '../src');
 const BUILD_DIR = path.resolve(__dirname, '../public');
 
 module.exports = Object.assign({}, config, {
+  mode: 'production',
   devtool: false,
   entry: {
     app: [`${APP_DIR}/index.js`]
