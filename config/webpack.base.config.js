@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const BUILD_DIR = path.resolve(__dirname, '../public');
 const APP_DIR = path.resolve(__dirname, '../src');
 
@@ -19,7 +20,7 @@ module.exports = {
       favicon: `${BUILD_DIR}/favicon.png`,
       hash: true,
       template: `${APP_DIR}/index.html`
-    }),
+    })
   ],
   module: {
     rules: [
@@ -32,6 +33,18 @@ module.exports = {
           'sass-loader'
         ],
         test: /\.scss$/
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
+        ]
       },
       {
         include: APP_DIR,
@@ -54,8 +67,8 @@ module.exports = {
           // your custom code to check for any exceptions
           // console.log('bypass check', {req: req, res:res, opt: opt});
           if (
-            req.path.indexOf('/img/') !== -1 ||
-            req.path.indexOf('/public/') !== -1
+            req.path.indexOf('/img/') !== -1
+            || req.path.indexOf('/public/') !== -1
           ) {
             return '/';
           }

@@ -8,3 +8,10 @@ body {
 h3 {
   color: $gray-75;
 }
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./roboto.woff2') format('woff2');
+}

@@ -5,12 +5,12 @@
             "source": "**",
             "destination": "/index.html"
         }],
-        "headers": {
-            "source": "/app.js",
+        "headers": [{
+            "source": "**/*.@(js|woff2)",
             "headers": [{
-                "key": "Cache-Control",
-                "value": "max-age=7200"
+                "key": "cache-control",
+                "value": "max-age=31556926"
             }]
-        }
+        }]
     }
 }

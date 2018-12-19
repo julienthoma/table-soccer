@@ -3,6 +3,7 @@ node_modules
 public/app.js
 public/app.js.map
 public/index.html
+public/fonts
 config.json
 config-dev.json
 .firebaserc
