@@ -211,7 +211,7 @@ export const transform = data => {
         const goalsAgainst = isWinner
           ? loserAttackScore + loserDefenseScore
           : winnerAttackScore + winnerDefenseScore;
-        const goalsAgainstDefense = isWinner && !isAttack
+        const goalsAgainstDefense = !isAttack
           ? playerMap[id].goalsAgainstDefense + goalsAgainst
           : playerMap[id].goalsAgainstDefense;
         const avgGoalsAgainstDefense = avgOrFallback(
@@ -260,28 +260,22 @@ export const transform = data => {
         const avgOwnGoals = avgOrFallback(ownGoals, games);
 
         const currentAvgTimeBetweenGoals = isAttack
-          ? avgTimeBetween(duration, currentPlayers[id].goalTimings)
+          ? duration / currentGoals
           : null;
         const totalAvgTimeBetweenGoals = isAttack
           ? playerMap[id].totalAvgTimeBetweenGoals + currentAvgTimeBetweenGoals
           : playerMap[id].totalAvgTimeBetweenGoals;
 
-        const avgTimeBetweenGoals = avgOrFallback(
-          totalAvgTimeBetweenGoals,
-          gamesAttack
-        );
+        const avgTimeBetweenGoals = playTimeAttack / goalsAttack;
 
         const currentAvgTimeBetweenGoalsAgainst = !isAttack
-          ? avgTimeBetween(duration, currentPlayers[id].goalAgainstTimings)
+          ? duration / goalsAgainst
           : null;
         const totalAvgTimeBetweenGoalsAgainst = !isAttack
           ? playerMap[id].totalAvgTimeBetweenGoalsAgainst
               + currentAvgTimeBetweenGoalsAgainst
           : playerMap[id].totalAvgTimeBetweenGoalsAgainst;
-        const avgTimeBetweenGoalsAgainst = avgOrFallback(
-          totalAvgTimeBetweenGoalsAgainst,
-          gamesDefense
-        );
+        const avgTimeBetweenGoalsAgainst = playTimeDefense / goalsAgainstDefense;
 
         const placemnentFinished = games >= 10;
 
