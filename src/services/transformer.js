@@ -1,12 +1,7 @@
 /* eslint no-param-reassign: 0 */
 import Game from '../entities/Game';
 import Player from '../entities/Player';
-import {
-  avgTimeBetween,
-  calcScore,
-  avgOrFallback,
-  calcTeamElo
-} from './Helper';
+import { calcScore, avgOrFallback, avgOrFirstParameter, calcTeamElo } from './Helper';
 import * as consts from '../constants';
 
 export const transform = data => {
@@ -260,22 +255,22 @@ export const transform = data => {
         const avgOwnGoals = avgOrFallback(ownGoals, games);
 
         const currentAvgTimeBetweenGoals = isAttack
-          ? duration / currentGoals
+          ? avgOrFirstParameter(duration, currentGoals)
           : null;
         const totalAvgTimeBetweenGoals = isAttack
           ? playerMap[id].totalAvgTimeBetweenGoals + currentAvgTimeBetweenGoals
           : playerMap[id].totalAvgTimeBetweenGoals;
 
-        const avgTimeBetweenGoals = playTimeAttack / goalsAttack;
+        const avgTimeBetweenGoals = avgOrFirstParameter(playTimeAttack, goalsAttack);
 
         const currentAvgTimeBetweenGoalsAgainst = !isAttack
-          ? duration / goalsAgainst
+          ? avgOrFirstParameter(duration, goalsAgainst)
           : null;
         const totalAvgTimeBetweenGoalsAgainst = !isAttack
           ? playerMap[id].totalAvgTimeBetweenGoalsAgainst
               + currentAvgTimeBetweenGoalsAgainst
           : playerMap[id].totalAvgTimeBetweenGoalsAgainst;
-        const avgTimeBetweenGoalsAgainst = playTimeDefense / goalsAgainstDefense;
+        const avgTimeBetweenGoalsAgainst = avgOrFirstParameter(playTimeDefense, goalsAgainstDefense);
 
         const placemnentFinished = games >= 10;
 
