@@ -145,7 +145,7 @@ export const getPlayersFromSlack = () => (dispatch, getState) => {
             id: player.id,
             index: player.selectionIndex
           };
-        })
+        }).sort(() => Math.random() - 0.5)
       )
     );
   }, () => alert('Could not create game from slack'));
