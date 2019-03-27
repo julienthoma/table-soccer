@@ -1,12 +1,7 @@
 /* eslint no-param-reassign: 0 */
 import Game from '../entities/Game';
 import Player from '../entities/Player';
-import {
-  avgTimeBetween,
-  calcScore,
-  avgOrFallback,
-  calcTeamElo
-} from './Helper';
+import { calcScore, avgOrFallback, avgOrFirstParameter, calcTeamElo } from './Helper';
 import * as consts from '../constants';
 
 export const transform = data => {
@@ -211,7 +206,7 @@ export const transform = data => {
         const goalsAgainst = isWinner
           ? loserAttackScore + loserDefenseScore
           : winnerAttackScore + winnerDefenseScore;
-        const goalsAgainstDefense = isWinner && !isAttack
+        const goalsAgainstDefense = !isAttack
           ? playerMap[id].goalsAgainstDefense + goalsAgainst
           : playerMap[id].goalsAgainstDefense;
         const avgGoalsAgainstDefense = avgOrFallback(
@@ -260,28 +255,22 @@ export const transform = data => {
         const avgOwnGoals = avgOrFallback(ownGoals, games);
 
         const currentAvgTimeBetweenGoals = isAttack
-          ? avgTimeBetween(duration, currentPlayers[id].goalTimings)
+          ? avgOrFirstParameter(duration, currentGoals)
           : null;
         const totalAvgTimeBetweenGoals = isAttack
           ? playerMap[id].totalAvgTimeBetweenGoals + currentAvgTimeBetweenGoals
           : playerMap[id].totalAvgTimeBetweenGoals;
 
-        const avgTimeBetweenGoals = avgOrFallback(
-          totalAvgTimeBetweenGoals,
-          gamesAttack
-        );
+        const avgTimeBetweenGoals = avgOrFirstParameter(playTimeAttack, goalsAttack);
 
         const currentAvgTimeBetweenGoalsAgainst = !isAttack
-          ? avgTimeBetween(duration, currentPlayers[id].goalAgainstTimings)
+          ? avgOrFirstParameter(duration, goalsAgainst)
           : null;
         const totalAvgTimeBetweenGoalsAgainst = !isAttack
           ? playerMap[id].totalAvgTimeBetweenGoalsAgainst
               + currentAvgTimeBetweenGoalsAgainst
           : playerMap[id].totalAvgTimeBetweenGoalsAgainst;
-        const avgTimeBetweenGoalsAgainst = avgOrFallback(
-          totalAvgTimeBetweenGoalsAgainst,
-          gamesDefense
-        );
+        const avgTimeBetweenGoalsAgainst = avgOrFirstParameter(playTimeDefense, goalsAgainstDefense);
 
         const placemnentFinished = games >= 10;
 
