@@ -8,6 +8,7 @@
     "build": "NODE_ENV=production webpack --mode production --progress",
     "analyze": "NODE_ENV=production webpack --mode production --profile --json > stats.json",
     "cloc": "cloc --vcs=git --exclude-ext=json,lock,md,snap --exclude-dir=__mocks__,config .",
+    "clocreport": "yarn run cloc > cloc_report",
     "lint": "eslint --format=pretty --ext .js",
     "format": "prettier --write \"./**/*\""
   },
