@@ -1,27 +1,5 @@
 @import '../scss/colors.scss';
 
-.root {
-  color: #6d6d6d;
-  box-sizing: border-box;
-  width: 100%;
-  padding: 5px 0;
-
-  &:nth-last-of-type(even) {
-    background: #f3f3f3;
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
-.date {
-  text-align: right;
-  color: #bdbdbd;
-  padding: 0 5px;
-  font-style: italic;
-}
-
 .score {
   font-size: 46px;
   padding: 0 5px;

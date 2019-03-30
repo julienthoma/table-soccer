@@ -1,14 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedDate } from 'react-intl';
+import styled from '@emotion/styled';
 import WinStreakIcon from './WinStreakIcon';
 import { gameShape } from '../proptypes';
 import './GameListItem.scss';
 
-/**
- * @param {GameEntity} game
- * @param handleClick
- */
+const Container = styled.div`
+  color: #6d6d6d;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px 0;
+
+  &:nth-last-of-type(even) {
+    background: #f3f3f3;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const Date = styled.div`
+  text-align: right;
+  color: #bdbdbd;
+  padding: 0 5px;
+  font-style: italic;
+`;
+
 const GameListItem = ({ game, handleClick }) => {
   const winnerAttack = game.players[game.winnerAttack.id];
   const winnerDefense = game.players[game.winnerDefense.id];
@@ -16,8 +35,8 @@ const GameListItem = ({ game, handleClick }) => {
   const loserDefense = game.players[game.loserDefense.id];
 
   return (
-    <div styleName="root" onClick={handleClick(game)}>
-      <div styleName="date">
+    <Container onClick={handleClick(game)}>
+      <Date>
         <FormattedDate
           value={game.startdate}
           month="long"
@@ -26,7 +45,7 @@ const GameListItem = ({ game, handleClick }) => {
           minute="numeric"
         />
         ,&nbsp; ({Math.round(game.duration / 60)}min)
-      </div>
+      </Date>
       <div styleName="bottom">
         <div styleName="left">
           <div styleName="player">
@@ -74,7 +93,7 @@ const GameListItem = ({ game, handleClick }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 

@@ -19,9 +19,12 @@
     "node": ">= 7.6.0"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.10",
+    "@emotion/styled": "^10.0.10",
     "babel-core": "^6.26.0",
     "babel-jest": "^18.0.0",
     "babel-loader": "^7.1.4",
+    "babel-plugin-emotion": "^10.0.9",
     "babel-plugin-react-css-modules": "^2.8.0",
     "babel-plugin-transform-class-properties": "^6.22.0",
     "babel-plugin-transform-runtime": "^6.22.0",
@@ -58,7 +61,6 @@
     "sass-loader": "^7.1.0",
     "shortid": "^2.2.8",
     "style-loader": "^0.23.1",
-    "styled-components": "^4.1.1",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2"
   },

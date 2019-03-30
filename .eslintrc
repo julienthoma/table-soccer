@@ -11,6 +11,9 @@
         "extensions": [".js", ".jsx"]
       }
     ],
+    "jsx-a11y/no-static-element-interactions": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/accessible-emoji": 0,
     "react/prop-types": 0,
     "no-underscore-dangle": 0,
     "import/imports-first": ["error", "absolute-first"],
@@ -18,12 +21,7 @@
   },
   "globals": {
     "window": true,
-    "document": true,
-    "localStorage": true,
-    "FormData": true,
-    "FileReader": true,
-    "Blob": true,
-    "navigator": true
+    "document": true
   },
   "parser": "babel-eslint"
 }

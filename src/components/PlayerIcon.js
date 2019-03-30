@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { GREY_DARK, GREY_LIGHT } from './Colors';
 
 const HEAD_SIZE = 8;
