@@ -13,3 +13,4 @@ assets
 config
 *.snap
 *.woff2
+cloc_report
