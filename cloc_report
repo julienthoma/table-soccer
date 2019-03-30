@@ -1,0 +1,17 @@
+yarn run v1.15.2
+$ cloc --vcs=git --exclude-ext=json,lock,md --exclude-dir=__mocks__,config .
+      99 text files.
+classified 99 files      99 unique files.                              
+      33 files ignored.
+
+github.com/AlDanial/cloc v 1.80  T=0.17 s (473.8 files/s, 27023.1 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+JavaScript                      67            436             52           3636
+Sass                            12             82              1            388
+HTML                             2              0              0             25
+-------------------------------------------------------------------------------
+SUM:                            81            518             53           4049
+-------------------------------------------------------------------------------
+Done in 0.43s.

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --hot --progress --mode development",
     "build": "NODE_ENV=production webpack --mode production --progress",
-    "analyze": "NODE_ENV=production webpack --mode production --profile --json > stats.json"
+    "analyze": "NODE_ENV=production webpack --mode production --profile --json > stats.json",
+    "cloc": "cloc --vcs=git --exclude-ext=json,lock,md,snap --exclude-dir=__mocks__,config ."
   },
   "author": "Julien Thoma",
   "license": "ISC",
