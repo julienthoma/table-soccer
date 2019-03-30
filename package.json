@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --hot --progress --mode development",
     "build": "NODE_ENV=production webpack --mode production --progress",
+    "test": "jest",
     "analyze": "NODE_ENV=production webpack --mode production --profile --json > stats.json",
     "cloc": "cloc --vcs=git --exclude-ext=json,lock,md,snap --exclude-dir=__mocks__,config .",
     "clocreport": "yarn run cloc > cloc_report",
