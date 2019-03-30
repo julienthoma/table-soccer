@@ -3,7 +3,8 @@
   "plugins": [
     "react-hot-loader/babel",
     "transform-class-properties",
-    "transform-runtime", [
+    "transform-runtime",
+    [
       "react-css-modules",
       {
         "generateScopedName": "[name]__[local]",

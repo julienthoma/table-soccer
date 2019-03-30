@@ -16,11 +16,9 @@ const Login = ({ currentUser, dispatch }) => {
 
   return (
     <div styleName="root">
-      {currentUser
-        ? <div styleName="avatarContainer">
-          <div styleName="userName">
-            {currentUser.name.split(' ')[0]}
-          </div>
+      {currentUser ? (
+        <div styleName="avatarContainer">
+          <div styleName="userName">{currentUser.name.split(' ')[0]}</div>
           <IconMenu
             iconButtonElement={
               <IconButton
@@ -31,12 +29,13 @@ const Login = ({ currentUser, dispatch }) => {
               >
                 <Avatar src={currentUser.photoURL} />
               </IconButton>
-              }
+            }
           >
             <MenuItem primaryText="Logout" onClick={logout} />
           </IconMenu>
         </div>
-        : <IconMenu
+      ) : (
+        <IconMenu
           iconButtonElement={
             <IconButton
               touch
@@ -46,13 +45,14 @@ const Login = ({ currentUser, dispatch }) => {
             >
               <AccountCircle />
             </IconButton>
-            }
+          }
         >
           <MenuItem
             primaryText="Login"
             onClick={() => dispatch(startLogin())}
           />
-        </IconMenu>}
+        </IconMenu>
+      )}
     </div>
   );
 };

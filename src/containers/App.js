@@ -21,9 +21,11 @@ class App extends React.Component {
     }
 
     if (isAuthorizing) {
-      return (<div>
-        <p>Authorizing...</p>
-      </div>);
+      return (
+        <div>
+          <p>Authorizing...</p>
+        </div>
+      );
     }
 
     return (

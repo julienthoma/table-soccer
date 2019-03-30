@@ -1,16 +1,22 @@
 {
-    "hosting": {
-        "public": "public",
-        "rewrites": [{
-            "source": "**",
-            "destination": "/index.html"
-        }],
-        "headers": [{
-            "source": "**/*.@(js|woff2)",
-            "headers": [{
-                "key": "cache-control",
-                "value": "max-age=31556926"
-            }]
-        }]
-    }
+  "hosting": {
+    "public": "public",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(js|woff2)",
+        "headers": [
+          {
+            "key": "cache-control",
+            "value": "max-age=31556926"
+          }
+        ]
+      }
+    ]
+  }
 }

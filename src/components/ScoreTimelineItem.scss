@@ -1,49 +1,49 @@
 .subheadline {
-    margin: 5px 0;
-    text-align: center;
+  margin: 5px 0;
+  text-align: center;
 }
 
 .time {
-    color: #979797;
-    line-height: 18px;
-    font-size: 12px;
+  color: #979797;
+  line-height: 18px;
+  font-size: 12px;
 }
 
 .score {
-    color: #979797; 
-    line-height: 30px;
-    font-size: 34px;
+  color: #979797;
+  line-height: 30px;
+  font-size: 34px;
 }
 
 .goalscorer {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    line-height: 24px;
-    height: 55px;
-    font-size: 18px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  line-height: 24px;
+  height: 55px;
+  font-size: 18px;
 }
 
 .goalscorer > div {
-    width: 50%;
-    text-align: center;
+  width: 50%;
+  text-align: center;
 }
 
 .goalscorer > div svg {
-    align-self: center;
-    margin: 0 10px;
+  align-self: center;
+  margin: 0 10px;
 }
 
 .goalscorer > div > div {
-    padding: 3px;
-    display: flex;
-    justify-content: center;
+  padding: 3px;
+  display: flex;
+  justify-content: center;
 }
 
 .goalscorer > div:last-of-type {
-    border-left: 1px solid #979797;
+  border-left: 1px solid #979797;
 }
 
 .owngoal {
-    color: #c5c5c5;
+  color: #c5c5c5;
 }

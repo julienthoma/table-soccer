@@ -12,10 +12,14 @@ const ScoreTimelineGoalScorer = ({ goalScorer, isWinner }) => (
         {isWinner ? (
           <div>
             <div>
-              {(goalScorer.position === 'KEEPER' || goalScorer.position === 'DEFENSE') ? <span>🛡</span> : <span>⚔️</span>}
+              {goalScorer.position === 'KEEPER' ||
+              goalScorer.position === 'DEFENSE' ? (
+                <span>🛡</span>
+              ) : (
+                <span>⚔️</span>
+              )}
               &nbsp;
               {goalScorer.name}
-
               {goalScorer.ownGoal ? (
                 <div styleName="owngoal">🐓🐓🐓OWN GOAL🐓🐓🐓</div>
               ) : (
@@ -34,10 +38,14 @@ const ScoreTimelineGoalScorer = ({ goalScorer, isWinner }) => (
         {!isWinner ? (
           <div>
             <div>
-            {goalScorer.name}
-            &nbsp;
-            {(goalScorer.position === 'KEEPER' || goalScorer.position === 'DEFENSE') ? <span>🛡</span> : <span>⚔️</span>}
-
+              {goalScorer.name}
+              &nbsp;
+              {goalScorer.position === 'KEEPER' ||
+              goalScorer.position === 'DEFENSE' ? (
+                <span>🛡</span>
+              ) : (
+                <span>⚔️</span>
+              )}
               {goalScorer.ownGoal ? (
                 <div styleName="owngoal">🐓🐓🐓OWN GOAL🐓🐓🐓</div>
               ) : (

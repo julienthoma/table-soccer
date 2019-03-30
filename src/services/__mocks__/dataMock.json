@@ -1,215 +1,274 @@
 {
   "games": {
-    "BJZf3fuQb": ["BJZf3fuQb", 1498061833063, 451, ["msb", "mpn", "jth", "chr"],
+    "BJZf3fuQb": [
+      "BJZf3fuQb",
+      1498061833063,
+      451,
+      ["msb", "mpn", "jth", "chr"],
       [5, 1, 1, 2, 0, 0, 0, 0],
-      [{
-        "id": "chr",
-        "index": 1,
-        "position": "DEFENSE",
-        "time": 91
-      }, {
-        "id": "chr",
-        "index": 1,
-        "position": "DEFENSE",
-        "time": 112
-      }, {
-        "id": "msb",
-        "index": 2,
-        "position": "STRIKER",
-        "time": 206
-      }, {
-        "id": "msb",
-        "index": 2,
-        "position": "MIDFIELD",
-        "time": 280
-      }, {
-        "id": "msb",
-        "index": 2,
-        "position": "STRIKER",
-        "time": 296
-      }, {
-        "id": "msb",
-        "index": 2,
-        "position": "STRIKER",
-        "time": 388
-      }, {
-        "id": "jth",
-        "index": 0,
-        "position": "STRIKER",
-        "time": 416
-      }, {
-        "id": "mpn",
-        "index": 3,
-        "position": "DEFENSE",
-        "time": 432
-      }, {
-        "id": "msb",
-        "index": 2,
-        "position": "STRIKER",
-        "time": 451
-      }]
+      [
+        {
+          "id": "chr",
+          "index": 1,
+          "position": "DEFENSE",
+          "time": 91
+        },
+        {
+          "id": "chr",
+          "index": 1,
+          "position": "DEFENSE",
+          "time": 112
+        },
+        {
+          "id": "msb",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 206
+        },
+        {
+          "id": "msb",
+          "index": 2,
+          "position": "MIDFIELD",
+          "time": 280
+        },
+        {
+          "id": "msb",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 296
+        },
+        {
+          "id": "msb",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 388
+        },
+        {
+          "id": "jth",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 416
+        },
+        {
+          "id": "mpn",
+          "index": 3,
+          "position": "DEFENSE",
+          "time": 432
+        },
+        {
+          "id": "msb",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 451
+        }
+      ]
     ],
-    "BJuWl55mZ": ["BJuWl55mZ", 1498222591853, 694, ["mpn", "msb", "jth", "nst"],
+    "BJuWl55mZ": [
+      "BJuWl55mZ",
+      1498222591853,
+      694,
+      ["mpn", "msb", "jth", "nst"],
       [5, 1, 4, 1, 0, 0, 0, 0],
-      [{
-        "id": "jth",
-        "index": 0,
-        "position": "MIDFIELD",
-        "time": 34
-      }, {
-        "id": "mpn",
-        "index": 2,
-        "position": "STRIKER",
-        "time": 72
-      }, {
-        "id": "jth",
-        "index": 0,
-        "position": "STRIKER",
-        "time": 90
-      }, {
-        "id": "mpn",
-        "index": 2,
-        "position": "STRIKER",
-        "time": 203
-      }, {
-        "id": "jth",
-        "index": 0,
-        "position": "STRIKER",
-        "time": 237
-      }, {
-        "id": "mpn",
-        "index": 2,
-        "position": "MIDFIELD",
-        "time": 247
-      }, {
-        "id": "jth",
-        "index": 0,
-        "position": "STRIKER",
-        "time": 278
-      }, {
-        "id": "nst",
-        "index": 1,
-        "position": "DEFENSE",
-        "time": 377
-      }, {
-        "id": "msb",
-        "index": 3,
-        "position": "DEFENSE",
-        "time": 442
-      }, {
-        "id": "mpn",
-        "index": 2,
-        "position": "STRIKER",
-        "time": 580
-      }, {
-        "id": "mpn",
-        "index": 2,
-        "position": "STRIKER",
-        "time": 694
-      }]
+      [
+        {
+          "id": "jth",
+          "index": 0,
+          "position": "MIDFIELD",
+          "time": 34
+        },
+        {
+          "id": "mpn",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 72
+        },
+        {
+          "id": "jth",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 90
+        },
+        {
+          "id": "mpn",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 203
+        },
+        {
+          "id": "jth",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 237
+        },
+        {
+          "id": "mpn",
+          "index": 2,
+          "position": "MIDFIELD",
+          "time": 247
+        },
+        {
+          "id": "jth",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 278
+        },
+        {
+          "id": "nst",
+          "index": 1,
+          "position": "DEFENSE",
+          "time": 377
+        },
+        {
+          "id": "msb",
+          "index": 3,
+          "position": "DEFENSE",
+          "time": 442
+        },
+        {
+          "id": "mpn",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 580
+        },
+        {
+          "id": "mpn",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 694
+        }
+      ]
     ],
-    "H1Cn6GuQ-": ["H1Cn6GuQ-", 1498062261919, 420, ["chr", "msb", "mpn", "jth"],
+    "H1Cn6GuQ-": [
+      "H1Cn6GuQ-",
+      1498062261919,
+      420,
+      ["chr", "msb", "mpn", "jth"],
       [4, 2, 1, 1, 0, 0, 0, 0],
-      [{
-        "id": "mpn",
-        "index": 0,
-        "position": "STRIKER",
-        "time": 50
-      }, {
-        "id": "chr",
-        "index": 2,
-        "position": "STRIKER",
-        "time": 74
-      }, {
-        "id": "msb",
-        "index": 3,
-        "position": "DEFENSE",
-        "time": 114
-      }, {
-        "id": "jth",
-        "index": 1,
-        "position": "DEFENSE",
-        "time": 215
-      }, {
-        "id": "chr",
-        "index": 2,
-        "position": "STRIKER",
-        "time": 267
-      }, {
-        "id": "chr",
-        "index": 2,
-        "position": "STRIKER",
-        "time": 312
-      }, {
-        "id": "chr",
-        "index": 2,
-        "position": "STRIKER",
-        "time": 386
-      }, {
-        "id": "msb",
-        "index": 3,
-        "position": "DEFENSE",
-        "time": 420
-      }]
+      [
+        {
+          "id": "mpn",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 50
+        },
+        {
+          "id": "chr",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 74
+        },
+        {
+          "id": "msb",
+          "index": 3,
+          "position": "DEFENSE",
+          "time": 114
+        },
+        {
+          "id": "jth",
+          "index": 1,
+          "position": "DEFENSE",
+          "time": 215
+        },
+        {
+          "id": "chr",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 267
+        },
+        {
+          "id": "chr",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 312
+        },
+        {
+          "id": "chr",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 386
+        },
+        {
+          "id": "msb",
+          "index": 3,
+          "position": "DEFENSE",
+          "time": 420
+        }
+      ]
     ],
-    "H1i-ym_Qb": ["H1i-ym_Qb", 1498062594983, 321, ["chr", "mpn", "msb", "jth"],
+    "H1i-ym_Qb": [
+      "H1i-ym_Qb",
+      1498062594983,
+      321,
+      ["chr", "mpn", "msb", "jth"],
       [6, 0, 4, 1, 0, 0, 0, 0],
-      [{
-        "id": "msb",
-        "index": 2,
-        "position": "STRIKER",
-        "time": 37
-      }, {
-        "id": "msb",
-        "index": 2,
-        "position": "STRIKER",
-        "time": 49
-      }, {
-        "id": "chr",
-        "index": 0,
-        "position": "MIDFIELD",
-        "time": 62
-      }, {
-        "id": "chr",
-        "index": 0,
-        "position": "STRIKER",
-        "time": 75
-      }, {
-        "id": "jth",
-        "index": 3,
-        "position": "DEFENSE",
-        "time": 211
-      }, {
-        "id": "chr",
-        "index": 0,
-        "position": "STRIKER",
-        "time": 221
-      }, {
-        "id": "msb",
-        "index": 2,
-        "position": "MIDFIELD",
-        "time": 233
-      }, {
-        "id": "chr",
-        "index": 0,
-        "position": "STRIKER",
-        "time": 248
-      }, {
-        "id": "msb",
-        "index": 2,
-        "position": "STRIKER",
-        "time": 269
-      }, {
-        "id": "chr",
-        "index": 0,
-        "position": "STRIKER",
-        "time": 281
-      }, {
-        "id": "chr",
-        "index": 0,
-        "position": "STRIKER",
-        "time": 321
-      }]
+      [
+        {
+          "id": "msb",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 37
+        },
+        {
+          "id": "msb",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 49
+        },
+        {
+          "id": "chr",
+          "index": 0,
+          "position": "MIDFIELD",
+          "time": 62
+        },
+        {
+          "id": "chr",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 75
+        },
+        {
+          "id": "jth",
+          "index": 3,
+          "position": "DEFENSE",
+          "time": 211
+        },
+        {
+          "id": "chr",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 221
+        },
+        {
+          "id": "msb",
+          "index": 2,
+          "position": "MIDFIELD",
+          "time": 233
+        },
+        {
+          "id": "chr",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 248
+        },
+        {
+          "id": "msb",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 269
+        },
+        {
+          "id": "chr",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 281
+        },
+        {
+          "id": "chr",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 321
+        }
+      ]
     ]
   },
   "players": {

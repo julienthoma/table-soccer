@@ -1,14 +1,15 @@
 # React Table Soccer
+
 > Web app for tracking your table soccer games. Die Tischkicker / Tischfußball App.
 
 ![](assets/image6.png)
-
 
 ![](assets/image2.png)
 
 ## Getting Started
 
 ### Firebase setup
+
 Create a new project: https://console.firebase.google.com/. You need following firebase products:
 
 - Database: Enable the Firebase database and create following entries in the data tab:
@@ -19,16 +20,18 @@ Create a new project: https://console.firebase.google.com/. You need following f
     players: [],
     games: []
   }
-} 
+}
 ```
+
 - You also need some database rules:
+
 ```json
 {
   "rules": {
     "data": {
       ".read": true,
       "games": {
-      ".write": true
+        ".write": true
       },
       "players": {
         ".write": true
@@ -37,6 +40,7 @@ Create a new project: https://console.firebase.google.com/. You need following f
   }
 }
 ```
+
 - Authentication: Enable the method `Google`.
 
 - Enable Hosting in your firebase console.
@@ -46,11 +50,13 @@ Create a new project: https://console.firebase.google.com/. You need following f
 ```sh
 git clone git@github.com:julienthoma/table-soccer.git
 ```
+
 ```sh
 npm install
 ```
 
 Create a `.firebaserc` file in your project root.
+
 ```json
 {
   "projects": {
@@ -59,13 +65,13 @@ Create a `.firebaserc` file in your project root.
 }
 ```
 
-
 Create configs files for development and live environment and fill them with your firebase credentials. You can use the same config for development and production, but I would create an second firebase project for production.
 
 ```sh
 cp config.dist.json config.json
 cp config.dist.json config-dev.json
 ```
+
 ```json
 {
   "slackUrl": "Url for Slack webhook",
@@ -81,12 +87,15 @@ cp config.dist.json config-dev.json
 ```
 
 ### Development
+
 To start the webpack dev server:
+
 ```sh
 npm run dev
 ```
 
 ### Deployment
+
 ```sh
 npm run prod
 ```
@@ -96,15 +105,18 @@ firebase deploy
 ```
 
 ### Slack webhook
+
 Getting started: `https://api.slack.com/incoming-webhooks`.
 You will get game results posted in your favorite slack channel.
 
 ### Slack Bot
+
 For creating games from Slack you need to setup another project: `https://github.com/ioiooi/kickerbot`.
 
 ## Feature Overview
 
 ### Creating Games
+
 - Google Login
 - 2on2 Mode
 - Time tracking
@@ -112,13 +124,13 @@ For creating games from Slack you need to setup another project: `https://github
 - Own goals
 - Undo feature
 
-
 ![](assets/image1.png)
+
 ### Game History
+
 - Timeline of games
 - Tracking of win streaks
 - MMR based on chess ELO-Rating
-
 
 ![](assets/image2.png)
 

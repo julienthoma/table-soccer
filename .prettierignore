@@ -1,0 +1,15 @@
+.gitignore
+.gitattributes
+.DS_Store
+.idea
+.eslintignore
+.firebaserc
+.prettierignore
+yarn.lock
+package-json.lock
+public
+assets
+.firebase
+config
+*.snap
+*.woff2

@@ -3,8 +3,8 @@
 $team1Color: $blue;
 $team2Color: $pink;
 
-$team1ColorLower : lighten($team1Color, 3%);
-$team2ColorUpper : lighten($team2Color, 5%);
+$team1ColorLower: lighten($team1Color, 3%);
+$team2ColorUpper: lighten($team2Color, 5%);
 
 .root {
   position: relative;
@@ -50,23 +50,23 @@ $team2ColorUpper : lighten($team2Color, 5%);
   cursor: pointer;
   z-index: 2;
 
-  &:hover+div {
+  &:hover + div {
     .team1 & {
       background: lighten($team1Color, 5%);
     }
 
     .team2 & {
-      background: lighten($team2ColorUpper, 5%)
+      background: lighten($team2ColorUpper, 5%);
     }
   }
 
-  &:active+div {
+  &:active + div {
     .team1 & {
       background: lighten($team1Color, 10%);
     }
 
     .team2 & {
-      background: lighten($team2ColorUpper, 10%)
+      background: lighten($team2ColorUpper, 10%);
     }
   }
 }
@@ -88,7 +88,7 @@ $team2ColorUpper : lighten($team2Color, 5%);
 }
 
 .lowerColor {
-   .team1 & {
+  .team1 & {
     background: $team1ColorLower;
   }
 
@@ -101,23 +101,23 @@ $team2ColorUpper : lighten($team2Color, 5%);
   cursor: pointer;
   z-index: 2;
 
-  &:hover+div {
+  &:hover + div {
     .team1 & {
       background: lighten($team1ColorLower, 3%);
     }
 
     .team2 & {
-      background: lighten($team2Color, 8%)
+      background: lighten($team2Color, 8%);
     }
   }
 
-  &:active+div {
+  &:active + div {
     .team1 & {
       background: lighten($team1ColorLower, 5%);
     }
 
     .team2 & {
-      background: lighten($team2Color, 15%)
+      background: lighten($team2Color, 15%);
     }
   }
 }

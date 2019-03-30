@@ -12,9 +12,7 @@ const Container = styled.div`
   overflow: hidden;
 `;
 
-const SkillBar = ({
-  headline, value, property, inverse
-}) => {
+const SkillBar = ({ headline, value, property, inverse }) => {
   const bestValue = inverse
     ? property.min.value.toFixed(2)
     : property.max.value.toFixed(2);

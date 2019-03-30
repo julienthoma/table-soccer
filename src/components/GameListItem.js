@@ -24,8 +24,8 @@ const GameListItem = ({ game, handleClick }) => {
           day="2-digit"
           hour="numeric"
           minute="numeric"
-        />,&nbsp;
-        ({Math.round(game.duration / 60)}min)
+        />
+        ,&nbsp; ({Math.round(game.duration / 60)}min)
       </div>
       <div styleName="bottom">
         <div styleName="left">
@@ -35,10 +35,8 @@ const GameListItem = ({ game, handleClick }) => {
               <WinStreakIcon count={winnerAttack.winStreak} />
             </div>
             <div styleName="playerScore">
-              { winnerAttack.elo }&nbsp;
-              <span styleName="gainColor">
-                (+{ winnerAttack.eloGain })
-              </span>
+              {winnerAttack.elo}&nbsp;
+              <span styleName="gainColor">(+{winnerAttack.eloGain})</span>
             </div>
           </div>
           <div styleName="player">
@@ -47,10 +45,8 @@ const GameListItem = ({ game, handleClick }) => {
               <WinStreakIcon count={winnerDefense.winStreak} />
             </div>
             <div styleName="playerScore">
-              { winnerDefense.elo }&nbsp;
-              <span styleName="gainColor">
-                (+{ winnerDefense.eloGain })
-              </span>
+              {winnerDefense.elo}&nbsp;
+              <span styleName="gainColor">(+{winnerDefense.eloGain})</span>
             </div>
           </div>
         </div>
@@ -63,10 +59,8 @@ const GameListItem = ({ game, handleClick }) => {
               <div>⚔️ {loserAttack.name}</div>
             </div>
             <div styleName="playerScore">
-              { loserAttack.elo }&nbsp;
-              <span styleName="lostColor">
-                ({ loserAttack.eloGain })
-              </span>
+              {loserAttack.elo}&nbsp;
+              <span styleName="lostColor">({loserAttack.eloGain})</span>
             </div>
           </div>
           <div styleName="player">
@@ -74,10 +68,8 @@ const GameListItem = ({ game, handleClick }) => {
               <div>🛡 {loserDefense.name}</div>
             </div>
             <div styleName="playerScore">
-              { loserDefense.elo }&nbsp;
-              <span styleName="lostColor">
-                ({ loserDefense.eloGain })
-              </span>
+              {loserDefense.elo}&nbsp;
+              <span styleName="lostColor">({loserDefense.eloGain})</span>
             </div>
           </div>
         </div>
@@ -85,7 +77,6 @@ const GameListItem = ({ game, handleClick }) => {
     </div>
   );
 };
-
 
 GameListItem.defaultProps = {
   handleClick: () => () => false

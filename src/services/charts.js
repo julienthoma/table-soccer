@@ -5,7 +5,7 @@ function getWeek(dt) {
   const firstThursday = tdt.valueOf();
   tdt.setMonth(0, 1);
   if (tdt.getDay() !== 4) {
-    tdt.setMonth(0, 1 + (4 - tdt.getDay() + 7) % 7);
+    tdt.setMonth(0, 1 + ((4 - tdt.getDay() + 7) % 7));
   }
   return 1 + Math.ceil((firstThursday - tdt) / 604800000);
 }
@@ -45,7 +45,9 @@ export const groupGamesByInterval = (games, interval) => {
 
   const intervals = {
     day: {
-      getKey: g => `${g.startdate.getFullYear()}-${g.startdate.getMonth() + 1}-${g.startdate.getDate()}`,
+      getKey: g =>
+        `${g.startdate.getFullYear()}-${g.startdate.getMonth() +
+          1}-${g.startdate.getDate()}`,
       getLabel: g => `${g.startdate.getDate()}.${g.startdate.getMonth() + 1}`
     },
     week: {
@@ -77,4 +79,4 @@ export const combineChartData = dataSets => {
     datasets: [...dataSets.map(e => e.datasets[0])],
     labels: dataSets[0].labels
   };
-}
+};

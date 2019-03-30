@@ -21,11 +21,9 @@ import {
   combineChartData
 } from '../services/charts';
 import './Player.scss';
-import { PINK, BLUE} from '../components/Colors';
+import { PINK, BLUE } from '../components/Colors';
 
-const Player = ({
-  match, players, games, properties
-}) => {
+const Player = ({ match, players, games, properties }) => {
   const player = players.filter(p => p.id === match.params.id)[0];
   const tableColumnStyle = { padding: '3px', textAlign: 'left' };
   const firstColumnStyle = {
@@ -44,19 +42,9 @@ const Player = ({
     return (
       <div>
         <h2 styleName="headline">
-          {player.name}
-          {' '}
-          {' '}
--
-          {player.elo}
+          {player.name} -{player.elo}
         </h2>
-        <p>
-          You need
-          {' '}
-          {10 - player.games}
-          {' '}
-          more games to get ranked.
-        </p>
+        <p>You need {10 - player.games} more games to get ranked.</p>
       </div>
     );
   }
@@ -64,10 +52,7 @@ const Player = ({
   return (
     <div styleName="root">
       <h2 styleName="headline">
-        {player.name}
-        {' '}
-        -
-        {player.elo}
+        {player.name} -{player.elo}
         <WinStreakIcon count={player.winStreak} />
       </h2>
 

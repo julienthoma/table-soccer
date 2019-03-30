@@ -7,10 +7,7 @@ const env = process.env.NODE_ENV;
 
 export const enhanceStore = (reducer, state) => {
   let enhancer = applyMiddleware(thunk);
-  if (
-    env !== 'production' &&
-    window.__REDUX_DEVTOOLS_EXTENSION__
-  ) {
+  if (env !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION__) {
     enhancer = compose(
       applyMiddleware(thunk),
       window.__REDUX_DEVTOOLS_EXTENSION__ &&

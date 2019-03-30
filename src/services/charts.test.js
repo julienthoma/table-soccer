@@ -38,7 +38,7 @@ describe('Charts', () => {
         'mpn',
         'wins',
         'day',
-        {label: 'wins'}
+        { label: 'wins' }
       )
     ).toEqual({
       datasets: [{ data: [2, 3], label: 'wins' }],
@@ -55,7 +55,7 @@ describe('Charts', () => {
         'mpn',
         'losses',
         'day',
-        {label: 'losses'}
+        { label: 'losses' }
       )
     ).toEqual({
       datasets: [{ data: [1, 1], label: 'losses' }],
@@ -72,7 +72,7 @@ describe('Charts', () => {
         'mpn',
         'elo',
         'week',
-        {label: 'MMR weeks'}
+        { label: 'MMR weeks' }
       )
     ).toEqual({
       datasets: [{ data: [1557], label: 'MMR weeks' }],
@@ -90,7 +90,10 @@ describe('Charts', () => {
       labels: ['21.6', '23.6']
     };
     expect(charts.combineChartData([setA, setB])).toEqual({
-      datasets: [{ data: [2, 3], label: 'wins' }, { data: [1, 1], label: 'losses' }],
+      datasets: [
+        { data: [2, 3], label: 'wins' },
+        { data: [1, 1], label: 'losses' }
+      ],
       labels: ['21.6', '23.6']
     });
   });

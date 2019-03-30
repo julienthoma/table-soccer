@@ -5,10 +5,12 @@ import Chart from 'chart.js';
 
 class BaseChart extends React.Component {
   componentDidMount() {
+    const { type, data, options } = this.props;
+    // eslint-disable-next-line
     this.chart = new Chart(findDOMNode(this), {
-      type: this.props.type,
-      data: this.props.data,
-      options: this.props.options
+      type,
+      data,
+      options
     });
   }
 
@@ -48,26 +50,33 @@ BaseChart.defaultProps = {
   options: {}
 };
 
-const _BarChart = ({ options, data }) =>
-  <BaseChart type="bar" data={data} options={options} />;
+const _BarChart = ({ options, data }) => (
+  <BaseChart type="bar" data={data} options={options} />
+);
 
-const _LineChart = ({ options, data }) =>
-  <BaseChart type="line" data={data} options={options} />;
+const _LineChart = ({ options, data }) => (
+  <BaseChart type="line" data={data} options={options} />
+);
 
-const _RadarChart = ({ options, data }) =>
-  <BaseChart type="radar" data={data} options={options} />;
+const _RadarChart = ({ options, data }) => (
+  <BaseChart type="radar" data={data} options={options} />
+);
 
-const _PolarArea = ({ options, data }) =>
-  <BaseChart type="polarArea" data={data} options={options} />;
+const _PolarArea = ({ options, data }) => (
+  <BaseChart type="polarArea" data={data} options={options} />
+);
 
-const _PieChart = ({ options, data }) =>
-  <BaseChart type="pie" data={data} options={options} />;
+const _PieChart = ({ options, data }) => (
+  <BaseChart type="pie" data={data} options={options} />
+);
 
-const _Doughnut = ({ options, data }) =>
-  <BaseChart type="doughnut" data={data} options={options} />;
+const _Doughnut = ({ options, data }) => (
+  <BaseChart type="doughnut" data={data} options={options} />
+);
 
-const _BubbleChart = ({ options, data }) =>
-  <BaseChart type="bubble" data={data} options={options} />;
+const _BubbleChart = ({ options, data }) => (
+  <BaseChart type="bubble" data={data} options={options} />
+);
 
 _LineChart.propTypes = basePropTypes;
 _BarChart.propTypes = basePropTypes;

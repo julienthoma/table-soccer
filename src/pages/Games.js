@@ -9,7 +9,7 @@ class Games extends React.Component {
     this.props.history.push(`/game/${game.id}`);
   };
 
-render() {
+  render() {
     const { games } = this.props;
 
     return (

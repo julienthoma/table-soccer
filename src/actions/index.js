@@ -2,11 +2,11 @@ import { get, post } from '../services/ajax';
 import * as customAuth from '../services/auth';
 import firebase from '../services/firebase';
 
-import { transform } from '../services/transformer';
+import transform from '../services/transformer';
 import { emailToSlug } from '../services/formatter';
 import { getScore } from '../services/Helper';
 import { GOAL_TIMEOUT } from '../constants';
-import { createEndMessage } from '../services/slack';
+import createEndMessage from '../services/slack';
 
 export const UPDATE_DATA = 'UPDATE_DATA';
 export const START_GAME = 'START_GAME';
@@ -86,7 +86,8 @@ export const getData = () => (dispatch, getState) => {
   // Make initial call as ajax for faster startup (socket startup is slow)
   get(getState().config.dbUrl).then(data => {
     dispatch(updateData(transform(data)));
-    firebase.database()
+    firebase
+      .database()
       .ref('data')
       .on('value', snapshot => {
         // Don't update twice after intial call.
@@ -125,28 +126,34 @@ export const uploadGame = game => (dispatch, getState) => {
     );
   }, GOAL_TIMEOUT * 1.5);
   dispatch(endGame(game));
-  firebase.database()
+  firebase
+    .database()
     .ref(`data/games/${gameId}`)
     .set(game);
 };
 
 export const getPlayersFromSlack = () => (dispatch, getState) => {
   // Make initial call as ajax for faster startup (socket startup is slow)
-  get(getState().config.slackBotUrl).then(data => {
-    dispatch(
-      setPlayers(
-        data.map(email => {
-          const player =
-            getState().app.players.filter(p => p.email === email)[0] ||
-            getState().app.players.filter(p => p.id === 'guest')[0];
+  get(getState().config.slackBotUrl).then(
+    data => {
+      dispatch(
+        setPlayers(
+          data
+            .map(email => {
+              const player =
+                getState().app.players.filter(p => p.email === email)[0] ||
+                getState().app.players.filter(p => p.id === 'guest')[0];
 
-          return {
-            name: player.name,
-            id: player.id,
-            index: player.selectionIndex
-          };
-        }).sort(() => Math.random() - 0.5)
-      )
-    );
-  }, () => alert('Could not create game from slack'));
+              return {
+                name: player.name,
+                id: player.id,
+                index: player.selectionIndex
+              };
+            })
+            .sort(() => Math.random() - 0.5)
+        )
+      );
+    },
+    () => alert('Could not create game from slack')
+  );
 };

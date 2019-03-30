@@ -10,7 +10,10 @@ const Container = styled.div`
 
 const PositionIcon = ({ count, dark }) => (
   <Container>
-    {[...Array(count)].map((e, i) => <PlayerIcon key={i} dark={dark} />)}
+    {[...Array(count)].map((e, i) => (
+      // eslint-disable-next-line
+      <PlayerIcon key={i} dark={dark} />
+    ))}
   </Container>
 );
 

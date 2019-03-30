@@ -1,11 +1,11 @@
 {
-    "slackUrl": "Url for Slack webhook",
-    "firebaseConfig": {
-        "apiKey": "",
-        "authDomain": "",
-        "databaseURL": "",
-        "projectId": ""
-    },
-    "dbUrl": "firebase dbUrl e.g. <databaseURL>/data.json",
-    "slackBotUrl": "Url for kicker bot"
+  "slackUrl": "Url for Slack webhook",
+  "firebaseConfig": {
+    "apiKey": "",
+    "authDomain": "",
+    "databaseURL": "",
+    "projectId": ""
+  },
+  "dbUrl": "firebase dbUrl e.g. <databaseURL>/data.json",
+  "slackBotUrl": "Url for kicker bot"
 }

@@ -99,4 +99,4 @@ export const avgOrFallback = (a, b, fallback = 0) => {
   return a / b;
 };
 
-export const avgOrFirstParameter = (a, b) => b === 0 ? a : a / b;
+export const avgOrFirstParameter = (a, b) => (b === 0 ? a : a / b);

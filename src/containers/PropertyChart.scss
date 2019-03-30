@@ -6,7 +6,8 @@
   margin: -20px auto;
 }
 
-.label-attack, .label-defense {
+.label-attack,
+.label-defense {
   position: absolute;
   color: $gray-55;
   font-size: 20px;
@@ -15,7 +16,6 @@
 .label-attack {
   left: 15px;
   top: 15px;
-
 }
 
 .label-defense {

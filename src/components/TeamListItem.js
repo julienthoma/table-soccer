@@ -12,15 +12,9 @@ const TeamListItem = ({ team, handleClick }) => {
       <TableRowColumn style={tableColumnStyle}>
         {team.defense.name}
       </TableRowColumn>
-      <TableRowColumn style={tableColumnStyle}>
-        {team.wins}
-      </TableRowColumn>
-      <TableRowColumn style={tableColumnStyle}>
-        {team.losses}
-      </TableRowColumn>
-      <TableRowColumn style={tableColumnStyle}>
-        {team.elo}
-      </TableRowColumn>
+      <TableRowColumn style={tableColumnStyle}>{team.wins}</TableRowColumn>
+      <TableRowColumn style={tableColumnStyle}>{team.losses}</TableRowColumn>
+      <TableRowColumn style={tableColumnStyle}>{team.elo}</TableRowColumn>
     </TableRow>
   );
 };

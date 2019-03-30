@@ -1,13 +1,14 @@
 import React from 'react';
-import GameListItem from '../components/GameListItem';
-import ScoreTimeline from '../components/ScoreTimeline';
+import GameListItem from './GameListItem';
+import ScoreTimeline from './ScoreTimeline';
 import { gameShape } from '../proptypes';
 
-const GameDetail = ({ game }) =>
+const GameDetail = ({ game }) => (
   <div>
     <GameListItem game={game} />
     <ScoreTimeline game={game} />
-  </div>;
+  </div>
+);
 
 GameDetail.propTypes = {
   game: gameShape.isRequired
