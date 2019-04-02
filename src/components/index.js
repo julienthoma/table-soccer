@@ -4,6 +4,7 @@ import {
   color,
   fontSize,
   width,
+  height,
   fontWeight,
   lineHeight,
   fontStyle,
@@ -36,6 +37,8 @@ Box.propTypes = {
 
 const Flex = styled(Box)`
   display: flex;
+  ${width}
+  ${height}
   ${alignItems}
   ${alignContent}
   ${justifyContent}
@@ -49,6 +52,8 @@ const Flex = styled(Box)`
 `;
 
 Flex.propTypes = {
+  ...width.propTypes,
+  ...height.propTypes,
   ...alignItems.propTypes,
   ...alignContent.propTypes,
   ...justifyContent.propTypes,

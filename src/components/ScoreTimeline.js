@@ -1,20 +1,19 @@
 import React from 'react';
-import { FormattedDate } from 'react-intl';
 import { gameShape } from '../proptypes';
 import ScoreTimelineItem from './ScoreTimelineItem';
-import { Text, Box } from '.';
+import ScoreTimelineSubheadline from './ScoreTimelineSubheadline';
+import { Box } from '.';
 
 const ScoreTimeline = ({ game }) => (
   <Box mt={3}>
-    <Text my={1} textAlign="center" color="grey.1">
-      <Text lineHeight={1} fontSize={0}>
-        <FormattedDate value={game.startdate} hour="2-digit" minute="2-digit" />
-      </Text>
-      <Text lineHeight={3} fontSize={6}>0 : 0</Text>
-    </Text>
+    <ScoreTimelineSubheadline
+      date={game.startdate}
+      winnerScore={0}
+      loserScore={0}
+    />
     {game.timeline.map((item, index) => (
       <div key={index}>
-        <ScoreTimelineItem  
+        <ScoreTimelineItem
           goalScorer={item}
           isWinner={game.players[item.id].isWinner}
         />
