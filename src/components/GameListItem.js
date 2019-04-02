@@ -3,15 +3,10 @@ import PropTypes from 'prop-types';
 import { FormattedDate } from 'react-intl';
 import styled from '@emotion/styled';
 import WinStreakIcon from './WinStreakIcon';
+import { Box, Text, Flex } from '.';
 import { gameShape } from '../proptypes';
-import './GameListItem.scss';
 
-const Container = styled.div`
-  color: #6d6d6d;
-  box-sizing: border-box;
-  width: 100%;
-  padding: 5px 0;
-
+const Container = styled(Box)`
   &:nth-last-of-type(even) {
     background: #f3f3f3;
   }
@@ -21,12 +16,25 @@ const Container = styled.div`
   }
 `;
 
-const Date = styled.div`
-  text-align: right;
-  color: #bdbdbd;
-  padding: 0 5px;
-  font-style: italic;
-`;
+const Player = ({ name, elo, eloGain, isAttack, isWinner, winStreak }) => {
+  const emoji = isAttack ? '⚔️' : '🛡';
+  return (
+    <Box p={2}>
+      <Flex justifyContent="center">
+        <Text fontSize={3} color="grey.2">
+          {emoji} {name}
+        </Text>
+        {isWinner && <WinStreakIcon count={winStreak} />}
+      </Flex>
+      <Text fontSize={2} color="grey.2" textAlign="center">
+        {elo}&nbsp;
+        <Text color={isWinner ? 'green' : 'red'} as="span">
+          ({isWinner && '+'}{eloGain})
+        </Text>
+      </Text>
+    </Box>
+  );
+};
 
 const GameListItem = ({ game, handleClick }) => {
   const winnerAttack = game.players[game.winnerAttack.id];
@@ -35,8 +43,8 @@ const GameListItem = ({ game, handleClick }) => {
   const loserDefense = game.players[game.loserDefense.id];
 
   return (
-    <Container onClick={handleClick(game)}>
-      <Date>
+    <Container width={1} color="grey.0" py={1} onClick={handleClick(game)}>
+      <Text color="grey.0" py={2} fontStyle="italic" textAlign="right">
         <FormattedDate
           value={game.startdate}
           month="long"
@@ -45,54 +53,48 @@ const GameListItem = ({ game, handleClick }) => {
           minute="numeric"
         />
         ,&nbsp; ({Math.round(game.duration / 60)}min)
-      </Date>
-      <div styleName="bottom">
-        <div styleName="left">
-          <div styleName="player">
-            <div styleName="playerName">
-              <div>⚔️ {winnerAttack.name}</div>
-              <WinStreakIcon count={winnerAttack.winStreak} />
-            </div>
-            <div styleName="playerScore">
-              {winnerAttack.elo}&nbsp;
-              <span styleName="gainColor">(+{winnerAttack.eloGain})</span>
-            </div>
-          </div>
-          <div styleName="player">
-            <div styleName="playerName">
-              <div>🛡 {winnerDefense.name}</div>
-              <WinStreakIcon count={winnerDefense.winStreak} />
-            </div>
-            <div styleName="playerScore">
-              {winnerDefense.elo}&nbsp;
-              <span styleName="gainColor">(+{winnerDefense.eloGain})</span>
-            </div>
-          </div>
-        </div>
-        <div styleName="score">
+      </Text>
+      <Flex justifyContent="space-between">
+        <Flex flex="1 0 100px" flexDirection="column">
+          <Player
+            name={winnerAttack.name}
+            elo={winnerAttack.elo}
+            eloGain={winnerAttack.eloGain}
+            isAttack
+            isWinner
+            winStreak={winnerAttack.winStreak}
+          />
+          <Player
+            name={winnerDefense.name}
+            elo={winnerDefense.elo}
+            eloGain={winnerDefense.eloGain}
+            isAttack={false}
+            isWinner
+            winStreak={winnerDefense.winStreak}
+          />
+        </Flex>
+        <Text color="grey.0" fontSize={6} mt={3}>
           {game.winnerScore} : {game.loserScore}
-        </div>
-        <div styleName="right">
-          <div styleName="player">
-            <div styleName="playerName">
-              <div>⚔️ {loserAttack.name}</div>
-            </div>
-            <div styleName="playerScore">
-              {loserAttack.elo}&nbsp;
-              <span styleName="lostColor">({loserAttack.eloGain})</span>
-            </div>
-          </div>
-          <div styleName="player">
-            <div styleName="playerName">
-              <div>🛡 {loserDefense.name}</div>
-            </div>
-            <div styleName="playerScore">
-              {loserDefense.elo}&nbsp;
-              <span styleName="lostColor">({loserDefense.eloGain})</span>
-            </div>
-          </div>
-        </div>
-      </div>
+        </Text>
+        <Flex flexBasis={100} flex="1 0 100px" flexDirection="column">
+          <Player
+            name={loserAttack.name}
+            elo={loserAttack.elo}
+            eloGain={loserAttack.eloGain}
+            isAttack
+            isWinner={false}
+            winStreak={loserAttack.winStreak}
+          />
+          <Player
+            name={loserDefense.name}
+            elo={loserDefense.elo}
+            eloGain={loserDefense.eloGain}
+            isAttack={false}
+            isWinner={false}
+            winStreak={loserDefense.winStreak}
+          />
+        </Flex>
+      </Flex>
     </Container>
   );
 };
