@@ -1,6 +1,6 @@
 import { transform } from './transformer';
 import rawData from './__mocks__/rawData.json';
-import expectedOutput from './__mocks__/exspected_output.json';
+import expectedOutput from './__mocks__/exspected.json';
 
 describe('Transformer', () => {
   it('game transform', () => {
