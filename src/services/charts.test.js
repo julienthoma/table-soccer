@@ -1,6 +1,6 @@
 import * as charts from './charts';
 import { transform } from './transformer';
-import dataMock from './__mocks__/dataMock';
+import dataMock from './__mocks__/rawData';
 
 describe('Charts', () => {
   it('getChartDataByKeyAndInterval mmr day', () => {

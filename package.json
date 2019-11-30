@@ -7,7 +7,8 @@
     "start": "webpack-dev-server --hot --progress --mode development",
     "build": "NODE_ENV=production webpack --mode production --progress",
     "analyze": "NODE_ENV=production webpack --mode production --profile --json > stats.json",
-    "cloc": "cloc --vcs=git --exclude-ext=json,lock,md,snap --exclude-dir=__mocks__,config ."
+    "cloc": "cloc --vcs=git --exclude-ext=json,lock,md,snap --exclude-dir=__mocks__,config .",
+    "update-mocks": "node -r esm  src/services/__mocks__/updateMocks.js"
   },
   "author": "Julien Thoma",
   "license": "ISC",
@@ -26,6 +27,7 @@
     "babel-preset-stage-0": "^6.22.0",
     "chart.js": "^2.5.0",
     "css-loader": "^1.0.1",
+    "esm": "^3.2.25",
     "express": "^4.14.1",
     "file-loader": "^2.0.0",
     "firebase": "^5.6.0",
