@@ -1,0 +1,2259 @@
+{
+  "players": [
+    {
+      "id": "chr",
+      "name": "Christian",
+      "goalsPosStriker": 9,
+      "goalsPosMidfield": 1,
+      "goalsPosDefense": 2,
+      "goalsPosKeeper": 0,
+      "ownGoals": 0,
+      "winStreak": 2,
+      "longestWinStreak": 2,
+      "wins": 2,
+      "winsAttack": 2,
+      "winsDefense": 0,
+      "losses": 1,
+      "lossesAttack": 0,
+      "lossesDefense": 1,
+      "ownGoalsAttack": 0,
+      "ownGoalsDefense": 0,
+      "games": 3,
+      "gamesAttack": 2,
+      "gamesDefense": 1,
+      "goals": 12,
+      "goalsAttack": 10,
+      "goalsDefense": 2,
+      "gpg": 0,
+      "elo": 1542,
+      "goalsAgainst": 5,
+      "playTime": 1192,
+      "playTimeAttack": 741,
+      "playTimeDefense": 451,
+      "winsAttackDuration": 741,
+      "lossDefenseDuration": 451,
+      "goalsWinnerAttack": 10,
+      "goalsAgainstDefense": 6,
+      "winRatio": 0.6666666666666666,
+      "totalAvgTimeBetweenGoals": 158.5,
+      "totalAvgTimeBetweenGoalsAgainst": 75.16666666666667,
+      "avgWinsAttackDuration": 370.5,
+      "avgLossDefenseDuration": 451,
+      "winRatioAttack": 1,
+      "winRatioDefense": 0,
+      "avgGoalsWinnerAttack": 5,
+      "avgGoalsAgainstDefense": 0,
+      "avgGoalsPosStriker": 4.5,
+      "avgGoalsPosMidfield": 0.5,
+      "avgGoalsPosDefense": 2,
+      "avgGoalsPosKeeper": 0,
+      "avgOwnGoals": 0,
+      "avgTimeBetweenGoals": 74.1,
+      "avgTimeBetweenGoalsAgainst": 75.16666666666667,
+      "placemnentFinished": false,
+      "avgGameDuration": 397.3333333333333,
+      "selectionIndex": 0
+    },
+    {
+      "id": "jth",
+      "name": "Julien",
+      "goalsPosStriker": 4,
+      "goalsPosMidfield": 1,
+      "goalsPosDefense": 2,
+      "goalsPosKeeper": 0,
+      "ownGoals": 0,
+      "winStreak": 0,
+      "longestWinStreak": 0,
+      "wins": 0,
+      "winsAttack": 0,
+      "winsDefense": 0,
+      "losses": 4,
+      "lossesAttack": 2,
+      "lossesDefense": 2,
+      "ownGoalsAttack": 0,
+      "ownGoalsDefense": 0,
+      "games": 4,
+      "gamesAttack": 2,
+      "gamesDefense": 2,
+      "goals": 7,
+      "goalsAttack": 5,
+      "goalsDefense": 2,
+      "gpg": 0,
+      "elo": 1417,
+      "goalsAgainst": 6,
+      "playTime": 1886,
+      "playTimeAttack": 1145,
+      "playTimeDefense": 741,
+      "winsAttackDuration": 0,
+      "lossDefenseDuration": 741,
+      "goalsWinnerAttack": 0,
+      "goalsAgainstDefense": 12,
+      "winRatio": 0,
+      "totalAvgTimeBetweenGoals": 624.5,
+      "totalAvgTimeBetweenGoalsAgainst": 123.5,
+      "avgWinsAttackDuration": 0,
+      "avgLossDefenseDuration": 370.5,
+      "winRatioAttack": 0,
+      "winRatioDefense": 0,
+      "avgGoalsWinnerAttack": 0,
+      "avgGoalsAgainstDefense": 0,
+      "avgGoalsPosStriker": 2,
+      "avgGoalsPosMidfield": 0.5,
+      "avgGoalsPosDefense": 1,
+      "avgGoalsPosKeeper": 0,
+      "avgOwnGoals": 0,
+      "avgTimeBetweenGoals": 229,
+      "avgTimeBetweenGoalsAgainst": 61.75,
+      "placemnentFinished": false,
+      "avgGameDuration": 471.5,
+      "selectionIndex": 1
+    },
+    {
+      "id": "mpn",
+      "name": "Michael",
+      "goalsPosStriker": 5,
+      "goalsPosMidfield": 1,
+      "goalsPosDefense": 1,
+      "goalsPosKeeper": 0,
+      "ownGoals": 0,
+      "winStreak": 2,
+      "longestWinStreak": 2,
+      "wins": 3,
+      "winsAttack": 1,
+      "winsDefense": 2,
+      "losses": 1,
+      "lossesAttack": 1,
+      "lossesDefense": 0,
+      "ownGoalsAttack": 0,
+      "ownGoalsDefense": 0,
+      "games": 4,
+      "gamesAttack": 2,
+      "gamesDefense": 2,
+      "goals": 7,
+      "goalsAttack": 6,
+      "goalsDefense": 1,
+      "gpg": 0,
+      "elo": 1557,
+      "goalsAgainst": 5,
+      "playTime": 1886,
+      "playTimeAttack": 1114,
+      "playTimeDefense": 772,
+      "winsAttackDuration": 694,
+      "lossDefenseDuration": 0,
+      "goalsWinnerAttack": 5,
+      "goalsAgainstDefense": 8,
+      "winRatio": 0.75,
+      "totalAvgTimeBetweenGoals": 558.8,
+      "totalAvgTimeBetweenGoalsAgainst": 214.53333333333336,
+      "avgWinsAttackDuration": 694,
+      "avgLossDefenseDuration": 0,
+      "winRatioAttack": 0.5,
+      "winRatioDefense": 1,
+      "avgGoalsWinnerAttack": 5,
+      "avgGoalsAgainstDefense": 4,
+      "avgGoalsPosStriker": 2.5,
+      "avgGoalsPosMidfield": 0.5,
+      "avgGoalsPosDefense": 0.5,
+      "avgGoalsPosKeeper": 0,
+      "avgOwnGoals": 0,
+      "avgTimeBetweenGoals": 185.66666666666666,
+      "avgTimeBetweenGoalsAgainst": 96.5,
+      "placemnentFinished": false,
+      "avgGameDuration": 471.5,
+      "selectionIndex": 2
+    },
+    {
+      "id": "msb",
+      "name": "Marius",
+      "goalsPosStriker": 7,
+      "goalsPosMidfield": 2,
+      "goalsPosDefense": 3,
+      "goalsPosKeeper": 0,
+      "ownGoals": 0,
+      "winStreak": 1,
+      "longestWinStreak": 2,
+      "wins": 3,
+      "winsAttack": 1,
+      "winsDefense": 2,
+      "losses": 1,
+      "lossesAttack": 1,
+      "lossesDefense": 0,
+      "ownGoalsAttack": 0,
+      "ownGoalsDefense": 0,
+      "games": 4,
+      "gamesAttack": 2,
+      "gamesDefense": 2,
+      "goals": 12,
+      "goalsAttack": 9,
+      "goalsDefense": 3,
+      "gpg": 0,
+      "elo": 1562,
+      "goalsAgainst": 5,
+      "playTime": 1886,
+      "playTimeAttack": 772,
+      "playTimeDefense": 1114,
+      "winsAttackDuration": 451,
+      "lossDefenseDuration": 0,
+      "goalsWinnerAttack": 5,
+      "goalsAgainstDefense": 7,
+      "winRatio": 0.75,
+      "totalAvgTimeBetweenGoals": 170.45,
+      "totalAvgTimeBetweenGoalsAgainst": 348.8,
+      "avgWinsAttackDuration": 451,
+      "avgLossDefenseDuration": 0,
+      "winRatioAttack": 0.5,
+      "winRatioDefense": 1,
+      "avgGoalsWinnerAttack": 5,
+      "avgGoalsAgainstDefense": 3.5,
+      "avgGoalsPosStriker": 3.5,
+      "avgGoalsPosMidfield": 1,
+      "avgGoalsPosDefense": 1.5,
+      "avgGoalsPosKeeper": 0,
+      "avgOwnGoals": 0,
+      "avgTimeBetweenGoals": 85.77777777777777,
+      "avgTimeBetweenGoalsAgainst": 159.14285714285714,
+      "placemnentFinished": false,
+      "avgGameDuration": 471.5,
+      "selectionIndex": 3
+    },
+    {
+      "id": "nst",
+      "name": "Nikolai",
+      "goalsPosStriker": 0,
+      "goalsPosMidfield": 0,
+      "goalsPosDefense": 1,
+      "goalsPosKeeper": 0,
+      "ownGoals": 0,
+      "winStreak": 0,
+      "longestWinStreak": 0,
+      "wins": 0,
+      "winsAttack": 0,
+      "winsDefense": 0,
+      "losses": 1,
+      "lossesAttack": 0,
+      "lossesDefense": 1,
+      "ownGoalsAttack": 0,
+      "ownGoalsDefense": 0,
+      "games": 1,
+      "gamesAttack": 0,
+      "gamesDefense": 1,
+      "goals": 1,
+      "goalsAttack": 0,
+      "goalsDefense": 1,
+      "gpg": 0,
+      "elo": 1478,
+      "goalsAgainst": 6,
+      "playTime": 694,
+      "playTimeAttack": 0,
+      "playTimeDefense": 694,
+      "winsAttackDuration": 0,
+      "lossDefenseDuration": 694,
+      "goalsWinnerAttack": 0,
+      "goalsAgainstDefense": 6,
+      "winRatio": 0,
+      "totalAvgTimeBetweenGoals": 0,
+      "totalAvgTimeBetweenGoalsAgainst": 115.66666666666667,
+      "avgWinsAttackDuration": 0,
+      "avgLossDefenseDuration": 694,
+      "winRatioAttack": 0,
+      "winRatioDefense": 0,
+      "avgGoalsWinnerAttack": 0,
+      "avgGoalsAgainstDefense": 0,
+      "avgGoalsPosStriker": 0,
+      "avgGoalsPosMidfield": 0,
+      "avgGoalsPosDefense": 1,
+      "avgGoalsPosKeeper": 0,
+      "avgOwnGoals": 0,
+      "avgTimeBetweenGoals": 0,
+      "avgTimeBetweenGoalsAgainst": 115.66666666666667,
+      "placemnentFinished": false,
+      "avgGameDuration": 694,
+      "selectionIndex": 4
+    }
+  ],
+  "games": [
+    {
+      "id": "BJZf3fuQb",
+      "startdate": "2017-06-21T16:17:13.063Z",
+      "duration": 451,
+      "timeline": [
+        {
+          "id": "chr",
+          "index": 1,
+          "position": "DEFENSE",
+          "time": 91,
+          "score": [
+            0,
+            1
+          ],
+          "name": "Christian"
+        },
+        {
+          "id": "chr",
+          "index": 1,
+          "position": "DEFENSE",
+          "time": 112,
+          "score": [
+            0,
+            2
+          ],
+          "name": "Christian"
+        },
+        {
+          "id": "msb",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 206,
+          "score": [
+            1,
+            2
+          ],
+          "name": "Marius"
+        },
+        {
+          "id": "msb",
+          "index": 2,
+          "position": "MIDFIELD",
+          "time": 280,
+          "score": [
+            2,
+            2
+          ],
+          "name": "Marius"
+        },
+        {
+          "id": "msb",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 296,
+          "score": [
+            3,
+            2
+          ],
+          "name": "Marius"
+        },
+        {
+          "id": "msb",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 388,
+          "score": [
+            4,
+            2
+          ],
+          "name": "Marius"
+        },
+        {
+          "id": "jth",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 416,
+          "score": [
+            4,
+            3
+          ],
+          "name": "Julien"
+        },
+        {
+          "id": "mpn",
+          "index": 3,
+          "position": "DEFENSE",
+          "time": 432,
+          "score": [
+            5,
+            3
+          ],
+          "name": "Michael"
+        },
+        {
+          "id": "msb",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 451,
+          "score": [
+            6,
+            3
+          ],
+          "name": "Marius"
+        }
+      ],
+      "winnerScore": 6,
+      "loserScore": 3,
+      "winnerAttack": {
+        "id": "msb",
+        "name": "Marius",
+        "score": 5,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [],
+        "goalTimings": [
+          206,
+          280,
+          296,
+          388,
+          451
+        ],
+        "ownGoalTimings": []
+      },
+      "winnerDefense": {
+        "id": "mpn",
+        "name": "Michael",
+        "score": 1,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [
+          206,
+          280,
+          296,
+          388,
+          432,
+          451
+        ],
+        "goalTimings": [],
+        "ownGoalTimings": []
+      },
+      "loserAttack": {
+        "id": "jth",
+        "name": "Julien",
+        "score": 1,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [],
+        "goalTimings": [
+          416
+        ],
+        "ownGoalTimings": []
+      },
+      "loserDefense": {
+        "id": "chr",
+        "name": "Christian",
+        "score": 2,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [
+          91,
+          112,
+          416
+        ],
+        "goalTimings": [],
+        "ownGoalTimings": []
+      },
+      "players": {
+        "msb": {
+          "id": "msb",
+          "name": "Marius",
+          "score": 5,
+          "ownGoals": 0,
+          "STRIKER": 4,
+          "MIDFIELD": 1,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [],
+          "goalTimings": [
+            206,
+            280,
+            296,
+            388,
+            451
+          ],
+          "ownGoalTimings": [],
+          "index": 2,
+          "winStreak": 1,
+          "isWinner": true,
+          "position": "attack",
+          "wins": 1,
+          "losses": 0,
+          "games": 1,
+          "goals": 5,
+          "elo": 1532,
+          "eloGain": 32,
+          "avgTimeBetweenGoals": 90.2,
+          "avgTimeBetweenGoalsAgainst": 0
+        },
+        "mpn": {
+          "id": "mpn",
+          "name": "Michael",
+          "score": 1,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 1,
+          "KEEPER": 0,
+          "goalAgainstTimings": [
+            206,
+            280,
+            296,
+            388,
+            432,
+            451
+          ],
+          "goalTimings": [],
+          "ownGoalTimings": [],
+          "index": 3,
+          "winStreak": 1,
+          "isWinner": true,
+          "position": "defense",
+          "wins": 1,
+          "losses": 0,
+          "games": 1,
+          "goals": 1,
+          "elo": 1528,
+          "eloGain": 28,
+          "avgTimeBetweenGoals": 0,
+          "avgTimeBetweenGoalsAgainst": 150.33333333333334
+        },
+        "jth": {
+          "id": "jth",
+          "name": "Julien",
+          "score": 1,
+          "ownGoals": 0,
+          "STRIKER": 1,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [],
+          "goalTimings": [
+            416
+          ],
+          "ownGoalTimings": [],
+          "index": 0,
+          "winStreak": 0,
+          "isWinner": false,
+          "position": "attack",
+          "wins": 0,
+          "losses": 1,
+          "games": 1,
+          "goals": 1,
+          "elo": 1477,
+          "eloGain": -23,
+          "avgTimeBetweenGoals": 451,
+          "avgTimeBetweenGoalsAgainst": 0
+        },
+        "chr": {
+          "id": "chr",
+          "name": "Christian",
+          "score": 2,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 2,
+          "KEEPER": 0,
+          "goalAgainstTimings": [
+            91,
+            112,
+            416
+          ],
+          "goalTimings": [],
+          "ownGoalTimings": [],
+          "index": 1,
+          "winStreak": 0,
+          "isWinner": false,
+          "position": "defense",
+          "wins": 0,
+          "losses": 1,
+          "games": 1,
+          "goals": 2,
+          "elo": 1478,
+          "eloGain": -22,
+          "avgTimeBetweenGoals": 0,
+          "avgTimeBetweenGoalsAgainst": 75.16666666666667
+        }
+      },
+      "winnerTeamKey": "msb-mpn",
+      "loserTeamKey": "jth-chr",
+      "msb-mpn": {
+        "elo": 1525,
+        "id": "msb-mpn",
+        "goals": 0,
+        "games": 1,
+        "wins": 1,
+        "losses": 0,
+        "attack": {
+          "id": "msb",
+          "name": "Marius",
+          "score": 5,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [],
+          "goalTimings": [
+            206,
+            280,
+            296,
+            388,
+            451
+          ],
+          "ownGoalTimings": []
+        },
+        "defense": {
+          "id": "mpn",
+          "name": "Michael",
+          "score": 1,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [
+            206,
+            280,
+            296,
+            388,
+            432,
+            451
+          ],
+          "goalTimings": [],
+          "ownGoalTimings": []
+        },
+        "winRatio": 1
+      },
+      "jth-chr": {
+        "elo": 1475,
+        "id": "jth-chr",
+        "games": 1,
+        "wins": 0,
+        "losses": 1,
+        "attack": {
+          "id": "jth",
+          "name": "Julien",
+          "score": 1,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [],
+          "goalTimings": [
+            416
+          ],
+          "ownGoalTimings": []
+        },
+        "defense": {
+          "id": "chr",
+          "name": "Christian",
+          "score": 2,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [
+            91,
+            112,
+            416
+          ],
+          "goalTimings": [],
+          "ownGoalTimings": []
+        },
+        "winRatio": 0
+      }
+    },
+    {
+      "id": "H1Cn6GuQ-",
+      "startdate": "2017-06-21T16:24:21.919Z",
+      "duration": 420,
+      "timeline": [
+        {
+          "id": "mpn",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 50,
+          "score": [
+            0,
+            1
+          ],
+          "name": "Michael"
+        },
+        {
+          "id": "chr",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 74,
+          "score": [
+            1,
+            1
+          ],
+          "name": "Christian"
+        },
+        {
+          "id": "msb",
+          "index": 3,
+          "position": "DEFENSE",
+          "time": 114,
+          "score": [
+            2,
+            1
+          ],
+          "name": "Marius"
+        },
+        {
+          "id": "jth",
+          "index": 1,
+          "position": "DEFENSE",
+          "time": 215,
+          "score": [
+            2,
+            2
+          ],
+          "name": "Julien"
+        },
+        {
+          "id": "chr",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 267,
+          "score": [
+            3,
+            2
+          ],
+          "name": "Christian"
+        },
+        {
+          "id": "chr",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 312,
+          "score": [
+            4,
+            2
+          ],
+          "name": "Christian"
+        },
+        {
+          "id": "chr",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 386,
+          "score": [
+            5,
+            2
+          ],
+          "name": "Christian"
+        },
+        {
+          "id": "msb",
+          "index": 3,
+          "position": "DEFENSE",
+          "time": 420,
+          "score": [
+            6,
+            2
+          ],
+          "name": "Marius"
+        }
+      ],
+      "winnerScore": 6,
+      "loserScore": 2,
+      "winnerAttack": {
+        "id": "chr",
+        "name": "Christian",
+        "score": 4,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [],
+        "goalTimings": [
+          74,
+          267,
+          312,
+          386
+        ],
+        "ownGoalTimings": []
+      },
+      "winnerDefense": {
+        "id": "msb",
+        "name": "Marius",
+        "score": 2,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [
+          74,
+          114,
+          267,
+          312,
+          386,
+          420
+        ],
+        "goalTimings": [],
+        "ownGoalTimings": []
+      },
+      "loserAttack": {
+        "id": "mpn",
+        "name": "Michael",
+        "score": 1,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [],
+        "goalTimings": [
+          50
+        ],
+        "ownGoalTimings": []
+      },
+      "loserDefense": {
+        "id": "jth",
+        "name": "Julien",
+        "score": 1,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [
+          50,
+          215
+        ],
+        "goalTimings": [],
+        "ownGoalTimings": []
+      },
+      "players": {
+        "chr": {
+          "id": "chr",
+          "name": "Christian",
+          "score": 4,
+          "ownGoals": 0,
+          "STRIKER": 4,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [],
+          "goalTimings": [
+            74,
+            267,
+            312,
+            386
+          ],
+          "ownGoalTimings": [],
+          "index": 2,
+          "winStreak": 1,
+          "isWinner": true,
+          "position": "attack",
+          "wins": 1,
+          "losses": 1,
+          "games": 2,
+          "goals": 6,
+          "elo": 1511,
+          "eloGain": 33,
+          "avgTimeBetweenGoals": 105,
+          "avgTimeBetweenGoalsAgainst": 75.16666666666667
+        },
+        "msb": {
+          "id": "msb",
+          "name": "Marius",
+          "score": 2,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 2,
+          "KEEPER": 0,
+          "goalAgainstTimings": [
+            74,
+            114,
+            267,
+            312,
+            386,
+            420
+          ],
+          "goalTimings": [],
+          "ownGoalTimings": [],
+          "index": 3,
+          "winStreak": 2,
+          "isWinner": true,
+          "position": "defense",
+          "wins": 2,
+          "losses": 0,
+          "games": 2,
+          "goals": 7,
+          "elo": 1561,
+          "eloGain": 29,
+          "avgTimeBetweenGoals": 90.2,
+          "avgTimeBetweenGoalsAgainst": 210
+        },
+        "mpn": {
+          "id": "mpn",
+          "name": "Michael",
+          "score": 1,
+          "ownGoals": 0,
+          "STRIKER": 1,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [],
+          "goalTimings": [
+            50
+          ],
+          "ownGoalTimings": [],
+          "index": 0,
+          "winStreak": 0,
+          "isWinner": false,
+          "position": "attack",
+          "wins": 1,
+          "losses": 1,
+          "games": 2,
+          "goals": 2,
+          "elo": 1504,
+          "eloGain": -24,
+          "avgTimeBetweenGoals": 420,
+          "avgTimeBetweenGoalsAgainst": 150.33333333333334
+        },
+        "jth": {
+          "id": "jth",
+          "name": "Julien",
+          "score": 1,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 1,
+          "KEEPER": 0,
+          "goalAgainstTimings": [
+            50,
+            215
+          ],
+          "goalTimings": [],
+          "ownGoalTimings": [],
+          "index": 1,
+          "winStreak": 0,
+          "isWinner": false,
+          "position": "defense",
+          "wins": 0,
+          "losses": 2,
+          "games": 2,
+          "goals": 2,
+          "elo": 1455,
+          "eloGain": -22,
+          "avgTimeBetweenGoals": 451,
+          "avgTimeBetweenGoalsAgainst": 70
+        }
+      },
+      "winnerTeamKey": "chr-msb",
+      "loserTeamKey": "mpn-jth",
+      "chr-msb": {
+        "elo": 1525,
+        "id": "chr-msb",
+        "goals": 0,
+        "games": 1,
+        "wins": 1,
+        "losses": 0,
+        "attack": {
+          "id": "chr",
+          "name": "Christian",
+          "score": 4,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [],
+          "goalTimings": [
+            74,
+            267,
+            312,
+            386
+          ],
+          "ownGoalTimings": []
+        },
+        "defense": {
+          "id": "msb",
+          "name": "Marius",
+          "score": 2,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [
+            74,
+            114,
+            267,
+            312,
+            386,
+            420
+          ],
+          "goalTimings": [],
+          "ownGoalTimings": []
+        },
+        "winRatio": 1
+      },
+      "mpn-jth": {
+        "elo": 1475,
+        "id": "mpn-jth",
+        "games": 1,
+        "wins": 0,
+        "losses": 1,
+        "attack": {
+          "id": "mpn",
+          "name": "Michael",
+          "score": 1,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [],
+          "goalTimings": [
+            50
+          ],
+          "ownGoalTimings": []
+        },
+        "defense": {
+          "id": "jth",
+          "name": "Julien",
+          "score": 1,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [
+            50,
+            215
+          ],
+          "goalTimings": [],
+          "ownGoalTimings": []
+        },
+        "winRatio": 0
+      }
+    },
+    {
+      "id": "H1i-ym_Qb",
+      "startdate": "2017-06-21T16:29:54.983Z",
+      "duration": 321,
+      "timeline": [
+        {
+          "id": "msb",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 37,
+          "score": [
+            0,
+            1
+          ],
+          "name": "Marius"
+        },
+        {
+          "id": "msb",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 49,
+          "score": [
+            0,
+            2
+          ],
+          "name": "Marius"
+        },
+        {
+          "id": "chr",
+          "index": 0,
+          "position": "MIDFIELD",
+          "time": 62,
+          "score": [
+            1,
+            2
+          ],
+          "name": "Christian"
+        },
+        {
+          "id": "chr",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 75,
+          "score": [
+            2,
+            2
+          ],
+          "name": "Christian"
+        },
+        {
+          "id": "jth",
+          "index": 3,
+          "position": "DEFENSE",
+          "time": 211,
+          "score": [
+            2,
+            3
+          ],
+          "name": "Julien"
+        },
+        {
+          "id": "chr",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 221,
+          "score": [
+            3,
+            3
+          ],
+          "name": "Christian"
+        },
+        {
+          "id": "msb",
+          "index": 2,
+          "position": "MIDFIELD",
+          "time": 233,
+          "score": [
+            3,
+            4
+          ],
+          "name": "Marius"
+        },
+        {
+          "id": "chr",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 248,
+          "score": [
+            4,
+            4
+          ],
+          "name": "Christian"
+        },
+        {
+          "id": "msb",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 269,
+          "score": [
+            4,
+            5
+          ],
+          "name": "Marius"
+        },
+        {
+          "id": "chr",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 281,
+          "score": [
+            5,
+            5
+          ],
+          "name": "Christian"
+        },
+        {
+          "id": "chr",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 321,
+          "score": [
+            6,
+            5
+          ],
+          "name": "Christian"
+        }
+      ],
+      "winnerScore": 6,
+      "loserScore": 5,
+      "winnerAttack": {
+        "id": "chr",
+        "name": "Christian",
+        "score": 6,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [],
+        "goalTimings": [
+          62,
+          75,
+          221,
+          248,
+          281,
+          321
+        ],
+        "ownGoalTimings": []
+      },
+      "winnerDefense": {
+        "id": "mpn",
+        "name": "Michael",
+        "score": 0,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [
+          37,
+          49,
+          211,
+          233,
+          269
+        ],
+        "goalTimings": [],
+        "ownGoalTimings": []
+      },
+      "loserAttack": {
+        "id": "msb",
+        "name": "Marius",
+        "score": 4,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [],
+        "goalTimings": [
+          37,
+          49,
+          233,
+          269
+        ],
+        "ownGoalTimings": []
+      },
+      "loserDefense": {
+        "id": "jth",
+        "name": "Julien",
+        "score": 1,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [
+          62,
+          75,
+          221,
+          248,
+          281,
+          321
+        ],
+        "goalTimings": [],
+        "ownGoalTimings": []
+      },
+      "players": {
+        "chr": {
+          "id": "chr",
+          "name": "Christian",
+          "score": 6,
+          "ownGoals": 0,
+          "STRIKER": 5,
+          "MIDFIELD": 1,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [],
+          "goalTimings": [
+            62,
+            75,
+            221,
+            248,
+            281,
+            321
+          ],
+          "ownGoalTimings": [],
+          "index": 0,
+          "winStreak": 2,
+          "isWinner": true,
+          "position": "attack",
+          "wins": 2,
+          "losses": 1,
+          "games": 3,
+          "goals": 12,
+          "elo": 1542,
+          "eloGain": 31,
+          "avgTimeBetweenGoals": 74.1,
+          "avgTimeBetweenGoalsAgainst": 75.16666666666667
+        },
+        "mpn": {
+          "id": "mpn",
+          "name": "Michael",
+          "score": 0,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [
+            37,
+            49,
+            211,
+            233,
+            269
+          ],
+          "goalTimings": [],
+          "ownGoalTimings": [],
+          "winStreak": 1,
+          "isWinner": true,
+          "position": "defense",
+          "wins": 2,
+          "losses": 1,
+          "games": 3,
+          "goals": 2,
+          "elo": 1530,
+          "eloGain": 26,
+          "avgTimeBetweenGoals": 420,
+          "avgTimeBetweenGoalsAgainst": 96.5
+        },
+        "msb": {
+          "id": "msb",
+          "name": "Marius",
+          "score": 4,
+          "ownGoals": 0,
+          "STRIKER": 3,
+          "MIDFIELD": 1,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [],
+          "goalTimings": [
+            37,
+            49,
+            233,
+            269
+          ],
+          "ownGoalTimings": [],
+          "index": 2,
+          "winStreak": 0,
+          "isWinner": false,
+          "position": "attack",
+          "wins": 2,
+          "losses": 1,
+          "games": 3,
+          "goals": 11,
+          "elo": 1538,
+          "eloGain": -23,
+          "avgTimeBetweenGoals": 85.77777777777777,
+          "avgTimeBetweenGoalsAgainst": 210
+        },
+        "jth": {
+          "id": "jth",
+          "name": "Julien",
+          "score": 1,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 1,
+          "KEEPER": 0,
+          "goalAgainstTimings": [
+            62,
+            75,
+            221,
+            248,
+            281,
+            321
+          ],
+          "goalTimings": [],
+          "ownGoalTimings": [],
+          "index": 3,
+          "winStreak": 0,
+          "isWinner": false,
+          "position": "defense",
+          "wins": 0,
+          "losses": 3,
+          "games": 3,
+          "goals": 3,
+          "elo": 1434,
+          "eloGain": -21,
+          "avgTimeBetweenGoals": 451,
+          "avgTimeBetweenGoalsAgainst": 61.75
+        }
+      },
+      "winnerTeamKey": "chr-mpn",
+      "loserTeamKey": "msb-jth",
+      "chr-mpn": {
+        "elo": 1525,
+        "id": "chr-mpn",
+        "goals": 0,
+        "games": 1,
+        "wins": 1,
+        "losses": 0,
+        "attack": {
+          "id": "chr",
+          "name": "Christian",
+          "score": 6,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [],
+          "goalTimings": [
+            62,
+            75,
+            221,
+            248,
+            281,
+            321
+          ],
+          "ownGoalTimings": []
+        },
+        "defense": {
+          "id": "mpn",
+          "name": "Michael",
+          "score": 0,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [
+            37,
+            49,
+            211,
+            233,
+            269
+          ],
+          "goalTimings": [],
+          "ownGoalTimings": []
+        },
+        "winRatio": 1
+      },
+      "msb-jth": {
+        "elo": 1475,
+        "id": "msb-jth",
+        "games": 1,
+        "wins": 0,
+        "losses": 1,
+        "attack": {
+          "id": "msb",
+          "name": "Marius",
+          "score": 4,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [],
+          "goalTimings": [
+            37,
+            49,
+            233,
+            269
+          ],
+          "ownGoalTimings": []
+        },
+        "defense": {
+          "id": "jth",
+          "name": "Julien",
+          "score": 1,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [
+            62,
+            75,
+            221,
+            248,
+            281,
+            321
+          ],
+          "goalTimings": [],
+          "ownGoalTimings": []
+        },
+        "winRatio": 0
+      }
+    },
+    {
+      "id": "BJuWl55mZ",
+      "startdate": "2017-06-23T12:56:31.853Z",
+      "duration": 694,
+      "timeline": [
+        {
+          "id": "jth",
+          "index": 0,
+          "position": "MIDFIELD",
+          "time": 34,
+          "score": [
+            0,
+            1
+          ],
+          "name": "Julien"
+        },
+        {
+          "id": "mpn",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 72,
+          "score": [
+            1,
+            1
+          ],
+          "name": "Michael"
+        },
+        {
+          "id": "jth",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 90,
+          "score": [
+            1,
+            2
+          ],
+          "name": "Julien"
+        },
+        {
+          "id": "mpn",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 203,
+          "score": [
+            2,
+            2
+          ],
+          "name": "Michael"
+        },
+        {
+          "id": "jth",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 237,
+          "score": [
+            2,
+            3
+          ],
+          "name": "Julien"
+        },
+        {
+          "id": "mpn",
+          "index": 2,
+          "position": "MIDFIELD",
+          "time": 247,
+          "score": [
+            3,
+            3
+          ],
+          "name": "Michael"
+        },
+        {
+          "id": "jth",
+          "index": 0,
+          "position": "STRIKER",
+          "time": 278,
+          "score": [
+            3,
+            4
+          ],
+          "name": "Julien"
+        },
+        {
+          "id": "nst",
+          "index": 1,
+          "position": "DEFENSE",
+          "time": 377,
+          "score": [
+            3,
+            5
+          ],
+          "name": "Nikolai"
+        },
+        {
+          "id": "msb",
+          "index": 3,
+          "position": "DEFENSE",
+          "time": 442,
+          "score": [
+            4,
+            5
+          ],
+          "name": "Marius"
+        },
+        {
+          "id": "mpn",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 580,
+          "score": [
+            5,
+            5
+          ],
+          "name": "Michael"
+        },
+        {
+          "id": "mpn",
+          "index": 2,
+          "position": "STRIKER",
+          "time": 694,
+          "score": [
+            6,
+            5
+          ],
+          "name": "Michael"
+        }
+      ],
+      "winnerScore": 6,
+      "loserScore": 5,
+      "winnerAttack": {
+        "id": "mpn",
+        "name": "Michael",
+        "score": 5,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [],
+        "goalTimings": [
+          72,
+          203,
+          247,
+          580,
+          694
+        ],
+        "ownGoalTimings": []
+      },
+      "winnerDefense": {
+        "id": "msb",
+        "name": "Marius",
+        "score": 1,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [
+          72,
+          203,
+          247,
+          442,
+          580,
+          694
+        ],
+        "goalTimings": [],
+        "ownGoalTimings": []
+      },
+      "loserAttack": {
+        "id": "jth",
+        "name": "Julien",
+        "score": 4,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [],
+        "goalTimings": [
+          34,
+          90,
+          237,
+          278
+        ],
+        "ownGoalTimings": []
+      },
+      "loserDefense": {
+        "id": "nst",
+        "name": "Nikolai",
+        "score": 1,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [
+          34,
+          90,
+          237,
+          278,
+          377
+        ],
+        "goalTimings": [],
+        "ownGoalTimings": []
+      },
+      "players": {
+        "mpn": {
+          "id": "mpn",
+          "name": "Michael",
+          "score": 5,
+          "ownGoals": 0,
+          "STRIKER": 4,
+          "MIDFIELD": 1,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [],
+          "goalTimings": [
+            72,
+            203,
+            247,
+            580,
+            694
+          ],
+          "ownGoalTimings": [],
+          "index": 2,
+          "winStreak": 2,
+          "isWinner": true,
+          "position": "attack",
+          "wins": 3,
+          "losses": 1,
+          "games": 4,
+          "goals": 7,
+          "elo": 1557,
+          "eloGain": 27,
+          "avgTimeBetweenGoals": 185.66666666666666,
+          "avgTimeBetweenGoalsAgainst": 96.5
+        },
+        "msb": {
+          "id": "msb",
+          "name": "Marius",
+          "score": 1,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 1,
+          "KEEPER": 0,
+          "goalAgainstTimings": [
+            72,
+            203,
+            247,
+            442,
+            580,
+            694
+          ],
+          "goalTimings": [],
+          "ownGoalTimings": [],
+          "index": 3,
+          "winStreak": 1,
+          "isWinner": true,
+          "position": "defense",
+          "wins": 3,
+          "losses": 1,
+          "games": 4,
+          "goals": 12,
+          "elo": 1562,
+          "eloGain": 24,
+          "avgTimeBetweenGoals": 85.77777777777777,
+          "avgTimeBetweenGoalsAgainst": 159.14285714285714
+        },
+        "jth": {
+          "id": "jth",
+          "name": "Julien",
+          "score": 4,
+          "ownGoals": 0,
+          "STRIKER": 3,
+          "MIDFIELD": 1,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [],
+          "goalTimings": [
+            34,
+            90,
+            237,
+            278
+          ],
+          "ownGoalTimings": [],
+          "index": 0,
+          "winStreak": 0,
+          "isWinner": false,
+          "position": "attack",
+          "wins": 0,
+          "losses": 4,
+          "games": 4,
+          "goals": 7,
+          "elo": 1417,
+          "eloGain": -17,
+          "avgTimeBetweenGoals": 229,
+          "avgTimeBetweenGoalsAgainst": 61.75
+        },
+        "nst": {
+          "id": "nst",
+          "name": "Nikolai",
+          "score": 1,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 1,
+          "KEEPER": 0,
+          "goalAgainstTimings": [
+            34,
+            90,
+            237,
+            278,
+            377
+          ],
+          "goalTimings": [],
+          "ownGoalTimings": [],
+          "index": 1,
+          "winStreak": 0,
+          "isWinner": false,
+          "position": "defense",
+          "wins": 0,
+          "losses": 1,
+          "games": 1,
+          "goals": 1,
+          "elo": 1478,
+          "eloGain": -22,
+          "avgTimeBetweenGoals": 0,
+          "avgTimeBetweenGoalsAgainst": 115.66666666666667
+        }
+      },
+      "winnerTeamKey": "mpn-msb",
+      "loserTeamKey": "jth-nst",
+      "mpn-msb": {
+        "elo": 1525,
+        "id": "mpn-msb",
+        "goals": 0,
+        "games": 1,
+        "wins": 1,
+        "losses": 0,
+        "attack": {
+          "id": "mpn",
+          "name": "Michael",
+          "score": 5,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [],
+          "goalTimings": [
+            72,
+            203,
+            247,
+            580,
+            694
+          ],
+          "ownGoalTimings": []
+        },
+        "defense": {
+          "id": "msb",
+          "name": "Marius",
+          "score": 1,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [
+            72,
+            203,
+            247,
+            442,
+            580,
+            694
+          ],
+          "goalTimings": [],
+          "ownGoalTimings": []
+        },
+        "winRatio": 1
+      },
+      "jth-nst": {
+        "elo": 1475,
+        "id": "jth-nst",
+        "games": 1,
+        "wins": 0,
+        "losses": 1,
+        "attack": {
+          "id": "jth",
+          "name": "Julien",
+          "score": 4,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [],
+          "goalTimings": [
+            34,
+            90,
+            237,
+            278
+          ],
+          "ownGoalTimings": []
+        },
+        "defense": {
+          "id": "nst",
+          "name": "Nikolai",
+          "score": 1,
+          "ownGoals": 0,
+          "STRIKER": 0,
+          "MIDFIELD": 0,
+          "DEFENSE": 0,
+          "KEEPER": 0,
+          "goalAgainstTimings": [
+            34,
+            90,
+            237,
+            278,
+            377
+          ],
+          "goalTimings": [],
+          "ownGoalTimings": []
+        },
+        "winRatio": 0
+      }
+    }
+  ],
+  "teams": {
+    "msb-mpn": {
+      "elo": 1525,
+      "id": "msb-mpn",
+      "goals": 0,
+      "games": 1,
+      "wins": 1,
+      "losses": 0,
+      "attack": {
+        "id": "msb",
+        "name": "Marius",
+        "score": 5,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [],
+        "goalTimings": [
+          206,
+          280,
+          296,
+          388,
+          451
+        ],
+        "ownGoalTimings": []
+      },
+      "defense": {
+        "id": "mpn",
+        "name": "Michael",
+        "score": 1,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [
+          206,
+          280,
+          296,
+          388,
+          432,
+          451
+        ],
+        "goalTimings": [],
+        "ownGoalTimings": []
+      },
+      "winRatio": 1
+    },
+    "jth-chr": {
+      "elo": 1475,
+      "id": "jth-chr",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "attack": {
+        "id": "jth",
+        "name": "Julien",
+        "score": 1,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [],
+        "goalTimings": [
+          416
+        ],
+        "ownGoalTimings": []
+      },
+      "defense": {
+        "id": "chr",
+        "name": "Christian",
+        "score": 2,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [
+          91,
+          112,
+          416
+        ],
+        "goalTimings": [],
+        "ownGoalTimings": []
+      },
+      "winRatio": 0
+    },
+    "chr-msb": {
+      "elo": 1525,
+      "id": "chr-msb",
+      "goals": 0,
+      "games": 1,
+      "wins": 1,
+      "losses": 0,
+      "attack": {
+        "id": "chr",
+        "name": "Christian",
+        "score": 4,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [],
+        "goalTimings": [
+          74,
+          267,
+          312,
+          386
+        ],
+        "ownGoalTimings": []
+      },
+      "defense": {
+        "id": "msb",
+        "name": "Marius",
+        "score": 2,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [
+          74,
+          114,
+          267,
+          312,
+          386,
+          420
+        ],
+        "goalTimings": [],
+        "ownGoalTimings": []
+      },
+      "winRatio": 1
+    },
+    "mpn-jth": {
+      "elo": 1475,
+      "id": "mpn-jth",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "attack": {
+        "id": "mpn",
+        "name": "Michael",
+        "score": 1,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [],
+        "goalTimings": [
+          50
+        ],
+        "ownGoalTimings": []
+      },
+      "defense": {
+        "id": "jth",
+        "name": "Julien",
+        "score": 1,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [
+          50,
+          215
+        ],
+        "goalTimings": [],
+        "ownGoalTimings": []
+      },
+      "winRatio": 0
+    },
+    "chr-mpn": {
+      "elo": 1525,
+      "id": "chr-mpn",
+      "goals": 0,
+      "games": 1,
+      "wins": 1,
+      "losses": 0,
+      "attack": {
+        "id": "chr",
+        "name": "Christian",
+        "score": 6,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [],
+        "goalTimings": [
+          62,
+          75,
+          221,
+          248,
+          281,
+          321
+        ],
+        "ownGoalTimings": []
+      },
+      "defense": {
+        "id": "mpn",
+        "name": "Michael",
+        "score": 0,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [
+          37,
+          49,
+          211,
+          233,
+          269
+        ],
+        "goalTimings": [],
+        "ownGoalTimings": []
+      },
+      "winRatio": 1
+    },
+    "msb-jth": {
+      "elo": 1475,
+      "id": "msb-jth",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "attack": {
+        "id": "msb",
+        "name": "Marius",
+        "score": 4,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [],
+        "goalTimings": [
+          37,
+          49,
+          233,
+          269
+        ],
+        "ownGoalTimings": []
+      },
+      "defense": {
+        "id": "jth",
+        "name": "Julien",
+        "score": 1,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [
+          62,
+          75,
+          221,
+          248,
+          281,
+          321
+        ],
+        "goalTimings": [],
+        "ownGoalTimings": []
+      },
+      "winRatio": 0
+    },
+    "mpn-msb": {
+      "elo": 1525,
+      "id": "mpn-msb",
+      "goals": 0,
+      "games": 1,
+      "wins": 1,
+      "losses": 0,
+      "attack": {
+        "id": "mpn",
+        "name": "Michael",
+        "score": 5,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [],
+        "goalTimings": [
+          72,
+          203,
+          247,
+          580,
+          694
+        ],
+        "ownGoalTimings": []
+      },
+      "defense": {
+        "id": "msb",
+        "name": "Marius",
+        "score": 1,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [
+          72,
+          203,
+          247,
+          442,
+          580,
+          694
+        ],
+        "goalTimings": [],
+        "ownGoalTimings": []
+      },
+      "winRatio": 1
+    },
+    "jth-nst": {
+      "elo": 1475,
+      "id": "jth-nst",
+      "games": 1,
+      "wins": 0,
+      "losses": 1,
+      "attack": {
+        "id": "jth",
+        "name": "Julien",
+        "score": 4,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [],
+        "goalTimings": [
+          34,
+          90,
+          237,
+          278
+        ],
+        "ownGoalTimings": []
+      },
+      "defense": {
+        "id": "nst",
+        "name": "Nikolai",
+        "score": 1,
+        "ownGoals": 0,
+        "STRIKER": 0,
+        "MIDFIELD": 0,
+        "DEFENSE": 0,
+        "KEEPER": 0,
+        "goalAgainstTimings": [
+          34,
+          90,
+          237,
+          278,
+          377
+        ],
+        "goalTimings": [],
+        "ownGoalTimings": []
+      },
+      "winRatio": 0
+    }
+  },
+  "properties": {}
+}

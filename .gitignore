@@ -10,3 +10,4 @@ config-dev.json
 .firebase
 yarn-error.log
 stats.json
+.vscode

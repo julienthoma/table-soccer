@@ -4,6 +4,8 @@ import Player from '../entities/Player';
 import { calcScore, avgOrFallback, avgOrFirstParameter, calcTeamElo } from './Helper';
 import * as consts from '../constants';
 
+import { writeFileSync, write } from 'fs';
+
 export const transform = data => {
   const _players = Object.keys(data.players).map(
     key => new Player(data.players[key])
