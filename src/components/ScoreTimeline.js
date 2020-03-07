@@ -2,7 +2,6 @@ import React from 'react';
 import { FormattedDate } from 'react-intl';
 import { gameShape } from '../proptypes';
 import ScoreTimelineItem from './ScoreTimelineItem';
-import './ScoreTimelineItem.scss';
 
 const ScoreTimeline = ({ game }) => (
   <div>

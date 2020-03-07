@@ -5,7 +5,6 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import { setPlayers } from '../actions';
 import { gamePlayerShape, playerShape } from '../proptypes';
-import './PlayerSelection.scss';
 
 class PlayerSelection extends React.Component {
   componentWillMount() {

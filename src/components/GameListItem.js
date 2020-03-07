@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { FormattedDate } from 'react-intl';
 import WinStreakIcon from './WinStreakIcon';
 import { gameShape } from '../proptypes';
-import './GameListItem.scss';
 
 /**
  * @param {GameEntity} game

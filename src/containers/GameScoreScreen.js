@@ -22,7 +22,6 @@ import {
   rotateScreen
 } from '../actions';
 import { scoreTimelineItemShape, simplePlayerShape } from '../proptypes';
-import './GameScoreScreen.scss';
 import * as consts from '../constants';
 
 class GameScoreScreen extends React.Component {
@@ -177,14 +176,14 @@ class GameScoreScreen extends React.Component {
 
     return (
       <div>
-        <div styleName="game">
-          <div styleName="scoreContainer">
+        <div className="game-score-screen__game">
+          <div className="game-score-screen__scoreContainer">
             <h1 styleName="score team1">{team1Score}</h1>
             <h1 styleName="score team2">{team2Score}</h1>
           </div>
           <div>
             {isUpsideDown ? (
-              <div styleName="players">
+              <div className="game-score-screen__players">
                 <PlayerButton
                   name={p3.name}
                   team={'team2'}
@@ -249,7 +248,7 @@ class GameScoreScreen extends React.Component {
                 />
               </div>
             ) : (
-              <div styleName="players">
+              <div className="game-score-screen__players">
                 <PlayerButton
                   name={p1.name}
                   team={'team1'}
@@ -317,7 +316,7 @@ class GameScoreScreen extends React.Component {
           </div>
         </div>
 
-        <div styleName="footer">
+        <div className="game-score-screen__footer">
           <FloatingActionButton
             style={buttonStyle}
             onClick={this.handleSettingsOpen}

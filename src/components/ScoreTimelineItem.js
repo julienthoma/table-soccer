@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './ScoreTimelineItem.scss';
 import PositionIcon from './PositionIcon';
 import { POSITION_COUNT } from '../constants';
 import { scoreTimelineItemShape } from '../proptypes';

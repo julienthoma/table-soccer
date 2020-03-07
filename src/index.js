@@ -16,7 +16,6 @@ import Player from './pages/Player';
 import Game from './pages/Game';
 import GameCreator from './pages/GameCreator';
 import Comparinator from './pages/Comparinator';
-import './index.scss';
 
 addLocaleData(de);
 

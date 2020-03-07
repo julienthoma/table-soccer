@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { RadarChart } from '../components/Charts';
 import { normalizeValue } from '../services/Helper';
 import { playerShape } from '../proptypes';
-import './PropertyChart.scss';
 
 export const PROPERTIES = [
   {

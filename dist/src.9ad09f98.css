@@ -1,0 +1,427 @@
+:root {
+  --gray-75: #3d3d3d;
+  --gray-55: #6d6d6d;
+  --pink: #ff4081;
+  --blue: #00bcd4;
+  --green: #AED581;
+  --red: #E57373;
+  --team1Color: --pink;
+  --team2Color: --blue;
+  --team1ColorLight1: #00c3dc; /* lighten 3% */
+  --team1ColorLight2: #00c9e2; /* lighten 5% */ 
+  --team1ColorLight3: #00d6f1; /* lighten 10% */ 
+  --team2ColorLight1: #fe4987; /* lighten 5% */
+  --team2ColorLight2: #ff538d; /* lighten 10% */
+  --team2ColorLight3: #ff5c93; /* lighten 15% */
+}
+
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+  margin: 0;
+}
+
+.headline {
+  color: var(--gray-55);
+}
+
+h3 {
+  color: var(--gray-75)
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-item {
+  padding: 8px;
+}
+
+.flex-item-small {
+  padding: 8px;
+  flex-grow: 1;
+  flex-basis: 400px;
+}
+
+.flex-item-large {
+  padding: 8px;
+  max-width: 100%;
+  flex-grow: 1;
+  flex-basis: 600px;
+}
+
+.player__chart {
+  height: 240px;
+}
+
+.player__headline {
+  padding: 0 8px;
+  width: 100%;
+  color: var(--gray-55);
+  display: flex;
+  align-items: center;
+}
+
+.game-score-screen__footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.game-score-screen__game {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.game-score-screen__game-score-screen__scoreContainer {
+  display: flex;
+  margin-bottom: 10;
+  justify-content: center;
+}
+
+.game-score-screen__game-score-screen__players {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.game-score-screen__score {
+  padding: 0 30px;
+  line-height: 90px;
+  margin: 0;
+  font-weight: 400;
+  font-size: 110px;
+}
+
+.game-score-screen__team1 {
+  color: var(--blue);
+}
+
+.game-score-screen__team2 {
+  color: var(--pink);
+}
+
+.login__root {
+  align-self: center;
+}
+
+.login__avatarContainer {
+  display: flex;
+  align-items: center;
+}
+
+.login__userName {
+   color: var(--gray-55);
+  font-weight: 600;
+  font-size: 20px;
+  margin-right: 5px;
+  text-align: right;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-selection__root > div:nth-of-type(3) {
+  order: 2;
+}
+
+.player-selection__team1 {
+  background: var(--blue);
+}
+
+.player-selection__team2 {
+  background: var(--pink);
+}
+
+.property-chart__root {
+  max-width: 400px;
+  position: relative;
+  margin: -20px auto;
+}
+
+.property-chart__label-attack, .property-chart__label-defense {
+  position: absolute;
+  color: (var(--gray-55));
+  font-size: 20px;
+}
+
+.property-chart__label-attack {
+  left: 15px;
+  top: 15px;
+
+}
+
+.property-chart__label-defense {
+  bottom: 15px;
+  right: 15px;
+}
+
+.game-list-item__root {
+  color: var(--gray-55);
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px 0;
+}
+
+.game-list-item__root:nth-last-of-type(even) {
+  background: #f3f3f3;
+}
+
+.game-list-item__root:hover {
+  cursor: pointer;
+}
+
+.game-list-item__date {
+  text-align: right;
+  color: #BDBDBD;
+  padding: 0 5px;
+  font-style: italic;
+}
+
+.game-list-item__score {
+  font-size: 46px;
+  padding: 0 5px;
+  margin-top: 15px;
+  color: #BDBDBD;
+}
+
+.game-list-item__left,
+.game-list-item__right {
+  flex-basis: 100px;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.game-list-item__bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.game-list-item__player {
+  font-size: 20px;
+  padding: 5px;
+}
+
+.game-list-item__playerName {
+  display: flex;
+  justify-content: center;
+}
+
+.game-list-item__playerScore {
+  font-size: 16px;
+  text-align: center;
+}
+
+.game-list-item__gainColor {
+  color: var(--green);
+}
+
+.game-list-item__lostColor {
+  color: var(--red);
+}
+
+.score-timeline-item__subheadline {
+  margin: 5px 0;
+  text-align: center;
+}
+
+.score-timeline-item__time {
+  color: #979797;
+  line-height: 18px;
+  font-size: 12px;
+}
+
+.score-timeline-item__score {
+  color: #979797; 
+  line-height: 30px;
+  font-size: 34px;
+}
+
+.score-timeline-item__goalscorer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  line-height: 24px;
+  height: 55px;
+  font-size: 18px;
+}
+
+.score-timeline-item__goalscorer > div {
+  width: 50%;
+  text-align: center;
+}
+
+.score-timeline-item__goalscorer > div svg {
+  align-self: center;
+  margin: 0 10px;
+}
+
+.score-timeline-item__goalscorer > div > div {
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+}
+
+.score-timeline-item__goalscorer > div:last-of-type {
+  border-left: 1px solid #979797;
+}
+
+.score-timeline-item__owngoal {
+  color: #c5c5c5;
+}
+
+.player-button__root {
+  position: relative;
+  font-family: sans-serif;
+  color: white;
+  overflow: hidden;
+  margin-bottom: 6px;
+  width: calc(50% - 3px);
+}
+
+.player-button__heightHack {
+  margin-top: 100%;
+}
+
+.player-button__upperClick,
+.player-button__upperColor {
+  position: absolute;
+  height: 141.2%;
+  width: 141.2%;
+  left: -70.5%;
+  top: -70.5%;
+  transform: rotate(45deg);
+}
+
+.rotate--topLeft .player-button__upperClick,
+.rotate--topLeft .player-button__upperColor {
+  top: -70.5%;
+  right: -70.5%;
+  left: auto;
+}
+
+.player-button__team1 .player-button__upperColor {
+  background: var(--team1Color);
+}
+
+.player-button__team2 .player-button__upperColor {
+  background: var(--team2ColorLight1);
+}
+
+.player-button__upperClick {
+  cursor: pointer;
+  z-index: 2;
+}
+
+.player-button__team1 .player-button__upperClick:active+div {
+  background: var(--team1ColorLight3);
+}
+
+.player-button__team2 .player-button__upperClick:active+div {
+  background: var(--team2ColorLight3);
+}
+
+.player-button__team1 .player-button__upperClick:hover+div {
+  background: var(--team1ColorLight2);
+}
+
+.player-button__team2 .player-button__upperClick:hover+div {
+  background: var(--team2ColorLight2);
+}
+
+.player-button__lowerClick,
+.player-button__lowerColor {
+  position: absolute;
+  height: 141.2%;
+  width: 141.2%;
+  bottom: -70.5%;
+  right: -70.5%;
+  transform: rotate(-45deg);
+}
+
+.rotate--topLeft .player-button__lowerClick,
+.rotate--topLeft .player-button__lowerColor {
+    bottom: -70.5%;
+    left: -70.5%;
+    right: auto;
+}
+
+.player-button__team1 .player-button__lowerColor {
+  background: var(--team1ColorLight1);
+}
+
+.player-button__team2 .player-button__lowerColor {
+  background: var(--team2Color);
+}
+
+
+.player-button__lowerClick {
+  cursor: pointer;
+  z-index: 2;
+}
+
+.player-button__team1 .player-button__lowerClick:hover+div {
+  background: var(--team1ColorLight2);
+}
+
+.player-button__team2 .player-button__lowerClick:hover+div {
+  background: var(--team2ColorLight2);
+}
+
+.player-button__team1 .player-button__lowerClick:active+div {
+  background: var(--team1ColorLight3);
+}
+
+.player-button__team2 .player-button__lowerClick:active+div {
+  background: var(--team2ColorLight3);
+}
+
+.player-button__text {
+  z-index: 1;
+  line-height: 24px;
+  font-size: 18px;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.player-button__upperText,
+.player-button__lowerText {
+  z-index: 1;
+  text-transform: uppercase;
+  font-size: 11px;
+  position: absolute;
+}
+
+.player-button__upperText {
+  left: 5px;
+  top: 5px;
+}
+
+.rotate--topLeft .player-button__upperText {
+  left: auto;
+  right: 5px;
+}
+
+.player-button__lowerText {
+  bottom: 5px;
+  right: 5px;
+}
+
+.rotate--topLeft .player-button__lowerText {
+  right: auto;
+  left: 5px;
+}
+
+
+/*# sourceMappingURL=/src.9ad09f98.css.map */

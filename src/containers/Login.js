@@ -9,7 +9,6 @@ import IconButton from 'material-ui/IconButton';
 import { startLogin } from '../actions';
 import { logout } from '../services/auth';
 import { userShape } from '../proptypes';
-import './Login.scss';
 
 const Login = ({ currentUser, dispatch }) => {
   const iconStyle = { width: 40, height: 40 };

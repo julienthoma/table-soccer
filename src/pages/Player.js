@@ -20,7 +20,6 @@ import {
   getChartDataByKeyAndInterval,
   combineChartData
 } from '../services/charts';
-import './Player.scss';
 import { PINK, BLUE} from '../components/Colors';
 
 const Player = ({
@@ -43,7 +42,7 @@ const Player = ({
   if (!player.placemnentFinished) {
     return (
       <div>
-        <h2 styleName="headline">
+        <h2 className="headline">
           {player.name}
           {' '}
           {' '}
@@ -62,8 +61,8 @@ const Player = ({
   }
 
   return (
-    <div styleName="root">
-      <h2 styleName="headline">
+    <div className="flex-container">
+      <h2 className="headline">
         {player.name}
         {' '}
         -
@@ -71,9 +70,9 @@ const Player = ({
         <WinStreakIcon count={player.winStreak} />
       </h2>
 
-      <div styleName="chart-outer">
+      <div className="flex-item-large">
         <h3>MMR</h3>
-        <div styleName="chart">
+        <div className="player__chart">
           <LineChart
             data={getChartDataByKeyAndInterval(games, player.id, 'elo', 'day')}
             options={defaultGraphStyles}
@@ -81,9 +80,9 @@ const Player = ({
         </div>
       </div>
 
-      <div styleName="chart-outer">
+      <div className="flex-item-large">
         <h3>Games</h3>
-        <div styleName="chart">
+        <div className="player__chart">
           <LineChart
             data={combineChartData([
               getChartDataByKeyAndInterval(games, player.id, 'wins', 'day', {
@@ -108,7 +107,7 @@ const Player = ({
         </div>
       </div>
 
-      <div styleName="attackDefense">
+      <div className="flex-item-small">
         <h3>⚔️ Attack vs 🛡 Defense</h3>
 
         <CompareBar
@@ -149,7 +148,7 @@ const Player = ({
         />
       </div>
 
-      <div styleName="performance">
+      <div className="flex-item-small">
         <h3>Performance Comparision</h3>
         <div>
           {PROPERTIES.map(({ key, label, inverse }, i) => (
@@ -164,12 +163,12 @@ const Player = ({
         </div>
       </div>
 
-      <div styleName="propchart">
+      <div className="flex-item-small">
         <h3>Skill Overview</h3>
         <PropertyChart players={[player]} showLabel={false} />
       </div>
 
-      <div styleName="stats">
+      <div className="flex-item-small">
         <h3>More Stats</h3>
         <Table allRowsSelected={false}>
           <TableHeader adjustForCheckbox={false} displaySelectAll={false}>

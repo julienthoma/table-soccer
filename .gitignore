@@ -1,9 +1,6 @@
 node_modules
 .idea
-public/app.js
-public/app.js.map
-public/index.html
-public/fonts
+public
 config.json
 config-dev.json
 .firebaserc
@@ -11,3 +8,4 @@ config-dev.json
 yarn-error.log
 stats.json
 .vscode
+.cache

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PositionIcon from './PositionIcon';
-import './PlayerButton.scss';
 
 const PlayerButton = ({
   name,

@@ -1,18 +1,6 @@
 {
   "presets": ["es2015", "react", "stage-0"],
   "plugins": [
-    "react-hot-loader/babel",
-    "transform-class-properties",
-    "transform-runtime", [
-      "react-css-modules",
-      {
-        "generateScopedName": "[name]__[local]",
-        "filetypes": {
-          ".scss": "postcss-scss"
-        },
-        "exclude": "node_modules",
-        "webpackHotModuleReloading": true
-      }
-    ]
+    "transform-class-properties"
   ]
 }
