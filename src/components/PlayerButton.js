@@ -12,20 +12,20 @@ const PlayerButton = ({
   handleLowerClick,
   className
 }) => (
-  <div styleName={`root ${className} ${team} ${disabled ? 'disabled' : ''}`}>
-    <div styleName="heightHack" />
-    <span styleName="upperText">
+  <div className={`player-button_root ${className} ${team} ${disabled ? 'disabled' : ''}`}>
+    <div className="player-button__heightHack" />
+    <span className="player-button__upperText">
       <PositionIcon count={upperCount} />
     </span>
-    <div styleName="upperClick" onClick={handleUpperClick} />
-    <div styleName="upperColor" />
-    <span styleName="text">{name}</span>
+    <div className="player-button__upperClick" onClick={handleUpperClick} />
+    <div className="player-button__upperColor" />
+    <span className="player-button__text">{name}</span>
 
-    <span styleName="lowerText">
+    <span className="player-button__lowerText">
       <PositionIcon count={lowerCount} />
     </span>
-    <div styleName="lowerClick" onClick={handleLowerClick} />
-    <div styleName="lowerColor" />
+    <div className="player-button__lowerClick" onClick={handleLowerClick} />
+    <div className="player-button__lowerColor" />
   </div>
 );
 

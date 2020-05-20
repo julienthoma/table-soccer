@@ -15,8 +15,8 @@ const GameListItem = ({ game, handleClick }) => {
   const loserDefense = game.players[game.loserDefense.id];
 
   return (
-    <div styleName="root" onClick={handleClick(game)}>
-      <div styleName="date">
+    <div className="game-list-item__root" onClick={handleClick(game)}>
+      <div className="game-list-item__date">
         <FormattedDate
           value={game.startdate}
           month="long"
@@ -26,55 +26,55 @@ const GameListItem = ({ game, handleClick }) => {
         />,&nbsp;
         ({Math.round(game.duration / 60)}min)
       </div>
-      <div styleName="bottom">
-        <div styleName="left">
-          <div styleName="player">
-            <div styleName="playerName">
+      <div className="game-list-item__bottom">
+        <div className="game-list-item__left">
+          <div className="game-list-item__player">
+            <div className="game-list-item__playerName">
               <div>⚔️ {winnerAttack.name}</div>
               <WinStreakIcon count={winnerAttack.winStreak} />
             </div>
-            <div styleName="playerScore">
+            <div className="game-list-item__playerScore">
               { winnerAttack.elo }&nbsp;
-              <span styleName="gainColor">
+              <span className="game-list-item__gainColor">
                 (+{ winnerAttack.eloGain })
               </span>
             </div>
           </div>
-          <div styleName="player">
-            <div styleName="playerName">
+          <div className="game-list-item__player">
+            <div className="game-list-item__playerName">
               <div>🛡 {winnerDefense.name}</div>
               <WinStreakIcon count={winnerDefense.winStreak} />
             </div>
-            <div styleName="playerScore">
+            <div className="game-list-item__playerScore">
               { winnerDefense.elo }&nbsp;
-              <span styleName="gainColor">
+              <span className="game-list-item__gainColor">
                 (+{ winnerDefense.eloGain })
               </span>
             </div>
           </div>
         </div>
-        <div styleName="score">
+        <div className="game-list-item__score">
           {game.winnerScore} : {game.loserScore}
         </div>
-        <div styleName="right">
-          <div styleName="player">
-            <div styleName="playerName">
+        <div className="game-list-item__right">
+          <div className="game-list-item__player">
+            <div className="game-list-item__playerName">
               <div>⚔️ {loserAttack.name}</div>
             </div>
-            <div styleName="playerScore">
+            <div className="game-list-item__playerScore">
               { loserAttack.elo }&nbsp;
-              <span styleName="lostColor">
+              <span className="game-list-item__lostColor">
                 ({ loserAttack.eloGain })
               </span>
             </div>
           </div>
-          <div styleName="player">
-            <div styleName="playerName">
+          <div className="game-list-item__player">
+            <div className="game-list-item__playerName">
               <div>🛡 {loserDefense.name}</div>
             </div>
-            <div styleName="playerScore">
+            <div className="game-list-item__playerScore">
               { loserDefense.elo }&nbsp;
-              <span styleName="lostColor">
+              <span className="game-list-item__lostColor">
                 ({ loserDefense.eloGain })
               </span>
             </div>

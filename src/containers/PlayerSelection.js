@@ -67,10 +67,10 @@ class PlayerSelection extends React.Component {
     };
 
     return (
-      <div style={containerStyle} styleName="root">
+      <div style={containerStyle} className="player-selection__root">
         {currentPlayers.map((player, index) => (
           <div
-            styleName={index < 2 ? 'team1' : 'team2'}
+            className={index < 2 ? 'player-selection__team1' : 'player-selection__team2'}
             style={fieldStyle}
             key={index}
           >

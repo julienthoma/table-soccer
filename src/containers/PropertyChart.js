@@ -69,8 +69,8 @@ const PropertyChart = ({ players, properties, showLabel }) => {
   };
 
   return (
-    <div styleName="root">
-      <div styleName="label-attack">Attack</div>
+    <div className="property-chart__root">
+      <div className="property-chart__label-attack">Attack</div>
       <RadarChart
         data={data}
         options={{
@@ -84,7 +84,7 @@ const PropertyChart = ({ players, properties, showLabel }) => {
           }
         }}
       />
-      <div styleName="label-defense">Defense</div>
+      <div className="property-chart__label-defense">Defense</div>
     </div>
   );
 };

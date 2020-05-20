@@ -7,11 +7,11 @@ const ScoreTimeline = ({ game }) => (
   <div>
     <br />
     <br />
-    <div styleName="subheadline">
-      <div styleName="time">
+    <div className="score-time-line__subheadline">
+      <div className="score-time-line__time">
         <FormattedDate value={game.startdate} hour="2-digit" minute="2-digit" />
       </div>
-      <div styleName="score">0 : 0</div>
+      <div className="score-time-line__score">0 : 0</div>
     </div>
     {game.timeline.map((item, index) => (
       <div key={index}>

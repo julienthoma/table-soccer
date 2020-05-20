@@ -178,8 +178,8 @@ class GameScoreScreen extends React.Component {
       <div>
         <div className="game-score-screen__game">
           <div className="game-score-screen__scoreContainer">
-            <h1 styleName="score team1">{team1Score}</h1>
-            <h1 styleName="score team2">{team2Score}</h1>
+            <h1 className="game-score-screen__score game-score-screen__team1">{team1Score}</h1>
+            <h1 className="game-score-screen__score game-score-screen__team2">{team2Score}</h1>
           </div>
           <div>
             {isUpsideDown ? (

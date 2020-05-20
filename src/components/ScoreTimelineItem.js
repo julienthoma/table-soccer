@@ -6,7 +6,7 @@ import { scoreTimelineItemShape } from '../proptypes';
 
 const ScoreTimelineGoalScorer = ({ goalScorer, isWinner }) => (
   <div>
-    <div styleName="goalscorer">
+    <div className="score-timeline-item__goalscorer">
       <div className="team1score">
         {isWinner ? (
           <div>
@@ -16,7 +16,7 @@ const ScoreTimelineGoalScorer = ({ goalScorer, isWinner }) => (
               {goalScorer.name}
 
               {goalScorer.ownGoal ? (
-                <div styleName="owngoal">🐓🐓🐓OWN GOAL🐓🐓🐓</div>
+                <div className="score-timeline-item__owngoal">🐓🐓🐓OWN GOAL🐓🐓🐓</div>
               ) : (
                 <PositionIcon
                   dark
@@ -38,7 +38,7 @@ const ScoreTimelineGoalScorer = ({ goalScorer, isWinner }) => (
             {(goalScorer.position === 'KEEPER' || goalScorer.position === 'DEFENSE') ? <span>🛡</span> : <span>⚔️</span>}
 
               {goalScorer.ownGoal ? (
-                <div styleName="owngoal">🐓🐓🐓OWN GOAL🐓🐓🐓</div>
+                <div className="score-timeline-item__owngoal">🐓🐓🐓OWN GOAL🐓🐓🐓</div>
               ) : (
                 <PositionIcon
                   dark
@@ -53,9 +53,9 @@ const ScoreTimelineGoalScorer = ({ goalScorer, isWinner }) => (
       </div>
     </div>
 
-    <div styleName="subheadline">
-      <div styleName="time">{goalScorer.time} sec</div>
-      <div styleName="score">{`${goalScorer.score[0]} : ${
+    <div className="score-timeline-item__subheadline">
+      <div className="score-timeline-item__time">{goalScorer.time} sec</div>
+      <div className="score-timeline-item__score">{`${goalScorer.score[0]} : ${
         goalScorer.score[1]
       }`}</div>
     </div>

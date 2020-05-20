@@ -14,10 +14,10 @@ const Login = ({ currentUser, dispatch }) => {
   const iconStyle = { width: 40, height: 40 };
 
   return (
-    <div styleName="root">
+    <div className="login__root">
       {currentUser
-        ? <div styleName="avatarContainer">
-          <div styleName="userName">
+        ? <div className="login__avatarContainer">
+          <div className="login__userName">
             {currentUser.name.split(' ')[0]}
           </div>
           <IconMenu
